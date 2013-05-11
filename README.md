@@ -1,1 +1,1 @@
-Project: Freeuni Football League
+Project Freeuni Football League
