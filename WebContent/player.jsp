@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<%@ page import="web.Player" %>
+<%@ page import="model.Player" %>
 <!doctype html>
 <html>
 <head>
