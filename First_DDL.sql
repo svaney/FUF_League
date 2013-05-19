@@ -1,4 +1,5 @@
 create schema FUF_League;
+USE FUF_League;
 
 create table Degrees(
 	degree_name varchar(10),
