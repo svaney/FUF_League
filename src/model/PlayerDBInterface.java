@@ -5,7 +5,10 @@ import java.sql.*;
 public interface PlayerDBInterface {
 	
 	/* ცხრილები: player_award, Persons, Players
+	 * კლასი, რომელიც ამ ინტერფეისს დაუკეთეს იმპლემენტაციას შეძლებს ბაზიდან ამოიღოს ყველა ინფრომაცია
+	 * მოთამაშის შესახებ. 
 	 * 
+	 * ---- აქ უნდა ვიკითხო პერსონს ნაწილი ცალკე ხო არ ჯობია.
 	 * */
 	
 	public void initConncection();

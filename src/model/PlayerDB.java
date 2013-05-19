@@ -1,42 +1,155 @@
 package model;
-import java.net.URL;
-import java.sql.*;
 
-public interface PlayerDB {
+import java.net.URL;
+import java.sql.Date;
+
+public class PlayerDB implements PlayerDBInterface{
 	
-	/* ცხრილები: player_award, Persons, Players
-	 * 
-	 * */
+	//cxrilebi: players, persons, player_award, 
 	
-	public void initConncection();
-	
-	public double getRating(int playerID);
-	public int getSpeed(int playerID);
-	public int getDribbling(int playerID);
-	public int getHeading(int playerID);
-	public int getClubLoyalty(int playerID);
-	public int getDiving(int playerID);
-	public int getDurability(int playerID);
-	public int getShooting(int playerID);
-	public int getWorkRate(int playerID);
-	public int getCreativity(int playerID);
-	public int getFearFactor(int playerID);
-	public int getKillerInstinct(int playerID);
-	public String getFoot(int playerID);
-	public URL getFBPage(int playerID);
-	public String getPosition(int playerID);
-	
-	public int getPersonID(int playerID);
-	public String getFirstName(int playerID);
-	public String getLastName(int playerID);
-	public String getNickname(int playerID);
-	public Date getBirthDate(int playerID);
-	public Date getUniStartYear(int playerID);
-	public int getUniCurrentCourse(int playerID);
-	public char getGraduated(int playerID);
-	public String getSchool(int playerID);
-	public int getWeight(int playerID);
-	public int getHeight(int playerID);
-	public URL getImageURL(int playerID);
-	
+	public PlayerDB(){
+		initConncection();
+	}
+
+	@Override
+	public void initConncection() {
+		
+	}
+
+	@Override
+	public double getRating(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getSpeed(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getDribbling(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getHeading(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getClubLoyalty(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getDiving(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getDurability(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getShooting(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getWorkRate(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getCreativity(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getFearFactor(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getKillerInstinct(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public String getFoot(int playerID) {
+		return null;
+	}
+
+	@Override
+	public URL getFBPage(int playerID) {
+		return null;
+	}
+
+	@Override
+	public String getPosition(int playerID) {
+		return null;
+	}
+
+	@Override
+	public int getPersonID(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public String getFirstName(int playerID) {
+		return null;
+	}
+
+	@Override
+	public String getLastName(int playerID) {
+		return null;
+	}
+
+	@Override
+	public String getNickname(int playerID) {
+		return null;
+	}
+
+	@Override
+	public Date getBirthDate(int playerID) {
+		return null;
+	}
+
+	@Override
+	public Date getUniStartYear(int playerID) {
+		return null;
+	}
+
+	@Override
+	public int getUniCurrentCourse(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public char getGraduated(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public String getSchool(int playerID) {
+		return null;
+	}
+
+	@Override
+	public int getWeight(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public int getHeight(int playerID) {
+		return 0;
+	}
+
+	@Override
+	public URL getImageURL(int playerID) {
+		return null;
+	}
+
+
 }
