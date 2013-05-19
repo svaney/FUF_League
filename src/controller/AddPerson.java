@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class AddPerson
+ * სერვლეტი უზრუნველყოფს, რომ მიიღოს ინფორმაცია ადმინისტრატორისგან და შემდგომ გადასცეს იგი
+ * სხვა კლასს რათა შეიქმნას ახალი ინფო რომელიმე პერსონის შესახებ.
  */
 @WebServlet("/AddPerson")
 public class AddPerson extends HttpServlet {
