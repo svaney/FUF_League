@@ -1,5 +1,6 @@
 USE FUF_League;
 
+
 create table News_Comments(
 	comment_id int auto_increment,
 	news_id int,
@@ -20,7 +21,7 @@ create table Users(
 	user_id varchar(50),
 	pass varchar(20),
 	primary key (user_id)
-);
+)Comment 'იუზერების ცხრილი';
 
 alter table Positions modify position varchar(50);
 
