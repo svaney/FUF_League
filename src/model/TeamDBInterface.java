@@ -1,4 +1,4 @@
-package web;
+package model;
 
 public interface TeamDBInterface {
 	/* ცხრილები: Teams, Positions, Team_Players, captains, team_award

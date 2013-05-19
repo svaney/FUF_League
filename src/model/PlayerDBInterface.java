@@ -1,4 +1,4 @@
-package web;
+package model;
 import java.net.URL;
 import java.sql.*;
 

@@ -1,4 +1,4 @@
-package web;
+package model;
 
 public interface MatchDBInterface {
 	/* cxrilebi: Matches, Penalties, Yellows, Reds, Goals, captains, 
