@@ -1,4 +1,4 @@
-package model;
+package model.dblayer;
 import java.net.URL;
 import java.sql.*;
 

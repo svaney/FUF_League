@@ -1,4 +1,4 @@
-package model;
+package model.dblayer;
 
 public interface NewsDBInterface {
 	/* ცხრილები: News

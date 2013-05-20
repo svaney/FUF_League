@@ -1,4 +1,4 @@
-package model;
+package model.dblayer;
 
 public interface MatchDBInterface {
 	/* cxrilebi: Matches, Penalties, Yellows, Reds, Goals, captains, 
