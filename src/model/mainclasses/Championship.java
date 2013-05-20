@@ -1,4 +1,4 @@
-package model;
+package model.mainclasses;
 
 public class Championship {
 
