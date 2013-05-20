@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class PlayerDB implements PlayerDBInterface{
 	
-	//cxrilebi: players, persons, player_award, 
+	//cxrilebi: players, persons, player_award, //
 	
 	public PlayerDB(){
 		initConncection();
