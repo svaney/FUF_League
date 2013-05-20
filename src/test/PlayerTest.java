@@ -1,15 +1,16 @@
 package test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
+
+import model.dblayer.*;
 
 public class PlayerTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
 		System.out.println("აღარ მიწითლებს");
+		PlayerDB_DEO deo = new PlayerDB_DEO();
+		System.out.println(deo.getSpeed(992)); // უნდა დაწეროს 95
 	}
 
 }
