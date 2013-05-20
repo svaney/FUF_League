@@ -1,5 +1,8 @@
 package controller;
-
+/**
+ * საჭიროა იმისათვის, რომ მაგალითად ადმინმა დაადოს - ბანი იუზერს. 
+ * ამ სერვლეტმა უნდა გამოიძახოს user-management.jsp
+ * */
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
