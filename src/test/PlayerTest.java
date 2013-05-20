@@ -9,7 +9,7 @@ public class PlayerTest {
 	@Test
 	public void test() {
 		fail("Not yet implemented");
-		System.out.println("კვლავ მიწითლებს");
+		System.out.println("აღარ მიწითლებს");
 	}
 
 }
