@@ -10,7 +10,7 @@ public class PlayerTest {
 	public void test() {
 		System.out.println("აღარ მიწითლებს");
 		PlayerDB_DEO deo = new PlayerDB_DEO();
-		System.out.println(deo.getSpeed(992)); // უნდა დაწეროს 95
+		System.out.println(deo.toString(992)); // უნდა დაწეროს ყველა ატრიბუტი
 	}
 
 }

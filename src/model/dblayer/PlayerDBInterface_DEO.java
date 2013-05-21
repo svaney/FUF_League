@@ -15,7 +15,7 @@ public interface PlayerDBInterface_DEO {
 	 * ---- აქ უნდა ვიკითხო პერსონს ნაწილი ცალკე ხო არ ჯობია.
 	 * */
 	
-	public Connection initConncection();
+	public void initConncection();
 	
 	//მოთამაშის ცხრილიდან ამოღება
 	public double getRating(int playerID);
@@ -35,7 +35,7 @@ public interface PlayerDBInterface_DEO {
 	public int getPenalty(int playerID);
 	public int getPenaltySaving(int playerID);
 	public int getLidership(int playerID);
-	public int getRefxlexes(int playerID);
+	public int getReflexes(int playerID);
 	public int getShotStoping(int playerID);
 	public int getMistakeFactor(int playerID);
 	public String getFoot(int playerID);
