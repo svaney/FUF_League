@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 /**
  * PlayerDB-ის ჩემი სამუშაო ვერსია.
- * რადგან პირადი ვერსიაა, ამიტომ MySQL კონსტანტები არ არის default
  * @author DEO.Gochava
  *
  */
@@ -38,12 +38,17 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	
 	/**
 	 * playerParametres არის პერსონის პარამეტრები Person ცხრილიდან.
-	 * ამ პარამეტრების  შესაბამისი მნიშვნელობები ბაზაში არის STRING ტიპის;
-	 * სია ემთხვევა Persons ცხრილის სვეტების სახელებს (მაგრამ არა ყველას);
+	 * ამ პარამეტრების  შესაბამისი მნიშვნელობები ბაზაში არის STRING ან DATE ტიპის;
+	 * სია ემთხვევა Persons ცხრილის სვეტების სახელებს;
 	 */
 	private static ArrayList<String> playerParametres = new ArrayList<String>();
-
-	private static HashMap<Integer,HashMap<String,Integer>> playersAtributesList = new HashMap<Integer,HashMap<String,Integer>>();
+	/**
+	 * მოთამაშის საფეხბურთო ატრიბუტების სია. (გასაღები:მოთამაშის ID; მნიშვნელობა:(გასაღები:ატრიბუტის სახელი; მნიშვნელობა ბაზაში));
+	 */
+	private static HashMap<Integer,HashMap<String,Object>> playersAtributesList = new HashMap<Integer,HashMap<String,Object>>();
+	/**
+	 * პერსონის პირადი პარამეტრების სია. (გასაღები:პერსონის ID; მნიშვნელობა:(გასაღები:პარამეტრის სახელი; მნიშვნელობა ბაზაში));
+	 */
 	private static HashMap<Integer,HashMap<String,Object>> playersParametresList = new HashMap<Integer,HashMap<String,Object>>();
 
 	private static Connection con;
@@ -70,27 +75,6 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	}
 
 	/**
-	 * თუ დააბრუნა -1.0, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0.0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
-	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
-	 * მაგალითად: 9.7;
-	 */
-	@Override
-	public double getRating(int playerID) {
-		String atribute = "rating";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute) == null) return 0;
-			return Double.parseDouble((String)playersParametresList.get(getPersonID(playerID)).get(atribute));
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute) == null) return 0;
-			return Double.parseDouble((String)playersParametresList.get(getPersonID(playerID)).get(atribute));
-		}
-		return -1;
-	}
-
-	/**
 	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
 	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
@@ -98,16 +82,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getSpeed(int playerID) {
-		int res = -1;
 		String atribute = "speed";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 	
 	/**
@@ -118,16 +98,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getDribbling(int playerID) {
-		int res = -1;
 		String atribute = "dribbling";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 	
 	/**
@@ -138,16 +114,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getHeading(int playerID) {
-		int res = -1;
 		String atribute = "heading";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -158,16 +130,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getClubLoyalty(int playerID) {
-		int res = -1;
 		String atribute = "club_loyalty";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -178,16 +146,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getDiving(int playerID) {
-		int res = -1;
 		String atribute = "diving";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -198,16 +162,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getDurability(int playerID) {
-		int res = -1;
 		String atribute = "durability";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -218,16 +178,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getShooting(int playerID) {
-		int res = -1;
 		String atribute = "shooting";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -238,16 +194,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getWorkRate(int playerID) {
-		int res = -1;
 		String atribute = "work_rate";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -258,16 +210,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getCreativity(int playerID) {
-		int res = -1;
 		String atribute = "creativity";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -278,16 +226,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getFearFactor(int playerID) {
-		int res = -1;
 		String atribute = "fear_factor";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -298,16 +242,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getKillerInstinct(int playerID) {
-		int res = -1;
 		String atribute = "killer_instinct";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -318,17 +258,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getPassing(int playerID) {
-		// TODO Auto-generated method stub
-		int res = -1;
 		String atribute = "passing";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -339,17 +274,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getPenalty(int playerID) {
-		// TODO Auto-generated method stub
-		int res = -1;
 		String atribute = "penalty";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -360,17 +290,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getVision(int playerID) {
-		// TODO Auto-generated method stub
-		int res = -1;
 		String atribute = "vision";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -381,17 +306,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getPenaltySaving(int playerID) {
-		// TODO Auto-generated method stub
-		int res = -1;
 		String atribute = "penalty_saving";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -402,17 +322,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getLidership(int playerID) {
-		// TODO Auto-generated method stub
-		int res = -1;
 		String atribute = "lidership";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -423,17 +338,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getReflexes(int playerID) {
-		// TODO Auto-generated method stub
-		int res = -1;
 		String atribute = "reflexes";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -444,17 +354,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getShotStoping(int playerID) {
-		// TODO Auto-generated method stub
-		int res = -1;
 		String atribute = "shot_stopping";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
@@ -465,97 +370,57 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public int getMistakeFactor(int playerID) {
-		// TODO Auto-generated method stub
-		int res = -1;
 		String atribute = "mistake_factor";
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return playersAtributesList.get(playerID).get(atribute);
-		}
-		return res;
+		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა "უცნობია", მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
-	 * მაგალითად: მარჯვენა;
+	 * მაგალითად: 10;
 	 */
 	@Override
-	public String getFoot(int playerID) {
-		String atribute = "foot";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
+	public int getNumber(int playerID) {
+		String atribute = "number";
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
-	}
-	
-	/**
-	 * თუ დააბრუნა null, მაშინ ან მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * ან  მითითებული მოთამაშის ეს პარამეტრი არის null;
-	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
-	 * მაგალითად: www.facebook.com/Joni;
-	 */
-	@Override
-	public String getFBPage(int playerID) {
-		String atribute = "fb_page";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			return (String) playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
+		return (int) res; 
 	}
 
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა "უცნობია", მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
-	 * მაგალითად: მცველი;
-	 */
-	@Override
-	public String getPosition(int playerID) {
-		String atribute = "position";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
-	}
-	
-	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
-	 * მაგალითად: 108;
+	 * მაგალითად: 001;
 	 */
 	@Override
 	public int getPersonID(int playerID) {
-		int res = -1;
 		String atribute = "person_id";
-		if(playersAtributesList.containsKey(playerID)){
-			return (int)playersAtributesList.get(playerID).get(atribute);
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
 		}
-		getPlayer(playerID);
-		if(playersAtributesList.containsKey(playerID)){
-			return (int)playersAtributesList.get(playerID).get(atribute);
+		return (int) res;
+	}
+
+	/**
+	 * თუ დააბრუნა 0.0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: 9.7;
+	 */
+	@Override
+	public double getRating(int playerID) {
+		String parameter = "rating";
+		if(getParametre(parameter,playerID)==null){
+			return 0.0;
 		}
-		return res;
+		return (double)getParametre(parameter,playerID);
 	}
 
 	/**
@@ -565,15 +430,8 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public String getFirstName(int playerID) {
-		String atribute = "firstname";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
+		String parameter = "firstname";
+		return (String)getParametre(parameter,playerID);
 	}
 	
 	/**
@@ -583,67 +441,52 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public String getLastName(int playerID) {
-		String atribute = "lastname";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
+		String parameter = "lastname";
+		return (String)getParametre(parameter,playerID);
 	}
 
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა "უცნობია", მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი უცნობია;
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: მუშნი;
 	 */
 	@Override
 	public String getNickname(int playerID) {
-		String atribute = "nickname";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
-	}
-
-	@Override
-	public Date getBirthDate(int playerID) {
-		return null;
-	}
-
-	@Override
-	public Date getUniStartYear(int playerID) {
-		return null;
+		String parameter = "nickname";
+		return (String)getParametre(parameter, playerID);
 	}
 
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა "უცნობია", მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი უცნობია;
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: 1992-01-01. YYYY-MM-DD;
+	 */
+	@Override
+	public Date getBirthDate(int playerID) {
+		String parameter = "birth_date";
+		return (Date)getParametre(parameter, playerID);
+	}
+
+	/**
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი უცნობია;
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: 2010. YYYY;
+	 */
+	@Override
+	public Date getUniStartYear(int playerID) {
+		String parameter = "uni_start";
+		return (Date)getParametre(parameter, playerID);
+	}
+
+	/**
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: III;
 	 */
 	@Override
 	public String getUniCurrentCourse(int playerID) {
-		String atribute = "uni_cur_course";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
+		String parameter = "uni_cur_course";
+		return (String)getParametre(parameter, playerID);
 	}
 
 	/**
@@ -654,116 +497,99 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public String getGraduated(int playerID) {
-		String atribute = "graduated";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
+		String parameter = "graduated";
+		return (String)getParametre(parameter, playerID);
 	}
 	
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა "უცნობია", მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: ESM;
 	 */
 	@Override
 	public String getSchool(int playerID) {
-		String atribute = "school";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
+		String parameter = "school";
+		return (String)getParametre(parameter, playerID);
 	}
 
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა "უცნობია", მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 65;
 	 */
 	@Override
 	public String getWeight(int playerID) {
-		String atribute = "weight";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
+		String parameter = "weight";
+		return (String)getParametre(parameter, playerID);
 	}
 
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა "უცნობია", მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 185;
 	 */
 	@Override
 	public String getHeight(int playerID) {
-		String atribute = "height";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
+		String parameter = "height";
+		return (String)getParametre(parameter, playerID);
 	}
 	
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა "უცნობია", მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: avatar_993.jpg;
 	 */
 	@Override
 	public String getImageURL(int playerID) {
-		String atribute = "image_URL";
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		getPerson(playerID);
-		if(playersParametresList.containsKey(getPersonID(playerID))){
-			if((String)playersParametresList.get(getPersonID(playerID)).get(atribute)==null) return "უცნობია";
-			return (String)playersParametresList.get(getPersonID(playerID)).get(atribute);
-		}
-		return null;
+		String parameter = "image_URL";
+		return (String)getParametre(parameter, playerID);
 	}
 	
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
+	 * თუ დააბრუნა null, მაშინ ან მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
+	 * ან  მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: www.facebook.com/Joni;
+	 */
+	@Override
+	public String getFBPage(int playerID) {
+		String parameter = "fb_page";
+		return (String)getParametre(parameter, playerID);
+	}
+
+	/**
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: მცველი;
+	 */
+	@Override
+	public String getPosition(int playerID) {
+		String parameter = "position";
+		return (String)getParametre(parameter, playerID);
+	}
+
+	/**
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: მარჯვენა;
+	 */
+	@Override
+	public String getFoot(int playerID) {
+		String parameter = "foot";
+		return (String)getParametre(parameter, playerID);
+	}
+
+	/**
+	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 107;
 	 */
 	@Override
 	public int getPlayerID(int personID) {
-		// TODO Auto-generated method stub
 		String col = PLAYER_ID;
 		try {
 			stmt = con.createStatement();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			System.out.println("createStatement problem at PlayerDB_DEO.getPlayerID()");
 			return -1;
 		}
@@ -772,7 +598,6 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 		try {
 			result = stmt.executeQuery(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			System.out.println("executeQuery problem at PlayerDB_DEO.getPlayerID(); error: "+sql);
 			return -1;
 		}
@@ -781,16 +606,14 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 				return result.getInt(col);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			stmt.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		return 0;
+		return -1;
 	}
 
 	@Override
@@ -968,6 +791,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 		// TODO Auto-generated method stub
 	}
 	
+	@Override
+	public void setNumber(int playerID) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/**
 	 * ეს მეთოდი ბაზიდან იღებს Players ცხრილის მთლიან რიგს;
 	 * თუ მითითებული რიგი არსებობს, მაშინ ის გამოძახებს მეთოდს store(ResultSet result),
@@ -975,12 +804,10 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 * რომლის გასაღებიც არის playerID;
 	 */
 	private void getPlayer(int playerID) {
-		// TODO Auto-generated method stub
 		String col = "*";
 		try {
 			stmt = con.createStatement();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			System.out.println("createStatement problem at PlayerDB_DEO.getPlayer()");
 			return;
 		}
@@ -989,7 +816,6 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 		try {
 			result = stmt.executeQuery(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			System.out.println("executeQuery problem at PlayerDB_DEO.getPlayer(); error: "+sql);
 			return;
 		}
@@ -998,13 +824,11 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 				playersAtributesList.put(playerID,storeAtributes(result));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			stmt.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return;
@@ -1017,12 +841,10 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 * რომლის გასაღებიც არის personID;
 	 */
 	private void getPerson(int personID) {
-		// TODO Auto-generated method stub
 		String col = "*";
 		try {
 			stmt = con.createStatement();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			System.out.println("createStatement problem at PlayerDB_DEO.getPerson()");
 			return;
 		}
@@ -1031,22 +853,19 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 		try {
 			result = stmt.executeQuery(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			System.out.println("executeQuery problem at PlayerDB_DEO.getPerson(); error: "+sql);
 			return;
 		}
 		try {
 			if(result.next()) {
-				playersParametresList.put(personID,storeParametres(result));
+				playersParametresList.put(personID,storeParameters(result));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			stmt.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return;
@@ -1083,6 +902,8 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 		playerParametres.add("firstname");
 		playerParametres.add("lastname");
 		playerParametres.add("nickname");
+		playerParametres.add("birth_date");
+		playerParametres.add("uni_start");
 		playerParametres.add("school");
 		playerParametres.add("degree");
 		playerParametres.add("uni_cur_course");
@@ -1104,14 +925,12 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 * @param result
 	 * @return
 	 */
-	private HashMap<String, Integer> storeAtributes(ResultSet result) {
-		// TODO Auto-generated method stub
-		HashMap<String,Integer> atr = new HashMap<String,Integer>();
+	private HashMap<String, Object> storeAtributes(ResultSet result) {
+		HashMap<String,Object> atr = new HashMap<String,Object>();
 		for(String str:playerAtributes){
 			try {
-				atr.put(str, result.getInt(str));
+				atr.put(str, result.getObject(str));
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -1123,20 +942,51 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 * @param result
 	 * @return
 	 */
-	private HashMap<String, Object> storeParametres(ResultSet result) {
-		// TODO Auto-generated method stub
+	private HashMap<String, Object> storeParameters(ResultSet result) {
 		HashMap<String,Object> atr = new HashMap<String,Object>();
 		for(String str:playerParametres){
 			try {
 				atr.put(str, result.getObject(str));
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return atr;
 	}
 	
+	/**
+	 * აბრუნებს ობიექტს ატრიბუტების სიიდან.
+	 * @param atribute - მეორე გასაღები
+	 * @param playerID - ატრიბუტების სიის გასაღები
+	 * @return
+	 */
+	private Object getAtribute(String atribute,int playerID){
+		if(playersAtributesList.containsKey(playerID)){
+			return playersAtributesList.get(playerID).get(atribute);
+		}
+		getPlayer(playerID);
+		if(playersAtributesList.containsKey(playerID)){
+			return playersAtributesList.get(playerID).get(atribute);
+		}
+		return null;
+	}
+	/**
+	 * აბრუნებს ობიექტს პარამეტრების სიიდან.
+	 * @param parametre - მეორე გასაღები.
+	 * @param playerID - გამოყენება: getPerson(playerID).
+	 * @return
+	 */
+	private Object getParametre(String parameter, int playerID){
+		if(playersParametresList.containsKey(getPersonID(playerID))){
+			return playersParametresList.get(getPersonID(playerID)).get(parameter);
+		}
+		getPerson(playerID);
+		if(playersParametresList.containsKey(getPersonID(playerID))){
+			return playersParametresList.get(getPersonID(playerID)).get(parameter);
+		}
+		return null;
+	}
+
 	/**
 	 * ტესტებისთვის მჭირდება; დაბეჭდავს მოთამაშის ყველა ატრიბუტს და პარამეტრს;
 	 * @param playerID

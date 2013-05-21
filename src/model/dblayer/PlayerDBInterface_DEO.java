@@ -17,7 +17,6 @@ public interface PlayerDBInterface_DEO {
 	public void initConncection();
 	
 	//მოთამაშის ცხრილიდან ამოღება
-	public double getRating(int playerID);
 	public int getSpeed(int playerID);
 	public int getDribbling(int playerID);
 	public int getHeading(int playerID);
@@ -37,12 +36,11 @@ public interface PlayerDBInterface_DEO {
 	public int getReflexes(int playerID);
 	public int getShotStoping(int playerID);
 	public int getMistakeFactor(int playerID);
-	public String getFoot(int playerID);
-	public String getFBPage(int playerID);
-	public String getPosition(int playerID);
+	public int getNumber(int playerID);
 	
 	//პერსონის ცხრილიდან ამოღება
 	public int getPersonID(int playerID);
+	public double getRating(int playerID);
 	public String getFirstName(int playerID);
 	public String getLastName(int playerID);
 	public String getNickname(int playerID);
@@ -54,12 +52,14 @@ public interface PlayerDBInterface_DEO {
 	public String getWeight(int playerID);
 	public String getHeight(int playerID);
 	public String getImageURL(int playerID);
+	public String getFoot(int playerID);
+	public String getFBPage(int playerID);
+	public String getPosition(int playerID);
 	
 	// შეიძლება არ დამჭირდეს
 	public int getPlayerID(int personID);
 	
 	//მოთამაშის ცხრილში ჩამატება
-	public void setRating(int playerID);
 	public void setSpeed(int playerID);
 	public void setDribbling(int playerID);
 	public void setHeading(int playerID);
@@ -79,12 +79,11 @@ public interface PlayerDBInterface_DEO {
 	public void setRefxlexes(int playerID);
 	public void setShotStoping(int playerID);
 	public void setMistakeFactor(int playerID);
-	public void setFoot(int playerID);
-	public void setFBPage(int playerID);
-	public void setPosition(int playerID);
+	public void setNumber(int playerID);
 	
 	//პერსონის ცხრილში ჩამატება
 	public void setPersonID(int playerID);
+	public void setRating(int playerID);
 	public void setFirstName(int playerID);
 	public void setLastName(int playerID);
 	public void setNickname(int playerID);
@@ -96,4 +95,7 @@ public interface PlayerDBInterface_DEO {
 	public void setWeight(int playerID);
 	public void setHeight(int playerID);
 	public void setImageURL(int playerID);
+	public void setFoot(int playerID);
+	public void setFBPage(int playerID);
+	public void setPosition(int playerID);
 }
