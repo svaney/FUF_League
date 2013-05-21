@@ -9,4 +9,6 @@ UPDATE `fuf_league`.`persons` SET `position`='თავდამსხმელ�
 
 UPDATE `fuf_league`.`persons` SET `Uni_Cur_course`='III' WHERE `person_id`='992';
 
+UPDATE `fuf_league`.`persons` SET `foot`='მარჯვენა' WHERE `person_id`='992';
+
 commit;
