@@ -1,18 +1,19 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<%@ page import="model.mainclasses.Player" %>
+<%@ page import="model.mainclasses.Player_DEO" %>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <%
 	//ტემპლეიტი, ცხადია, არ არის საბოლოო.
-	String id =  request.getParameter("id");
-	String name = Player.getName(id);
-	String family = Player.getFamily(id);
-	double max = 10;
+	int playerID =  Integer.parseInt(request.getParameter("id"));
+	Player_DEO player = new Player_DEO(playerID);
+	String name = player.getFirstName(playerID);
+	String family = player.getLastName(playerID);
+	double max = 100;
 %>
 
-<title><%=name+" "+family %></title>
+<title><%=name+" "+family%></title>
 <style type="text/css">
 <!--
 body {
@@ -147,37 +148,9 @@ footer {
 }
 
 #progressbar1 div {
-<% double div1 = (Player.getSpeed(id)/max)*100;%>
+<%double div1 = (player.getSpeed(playerID)/max)*100;%>
    background-color: <%if(div1>=85){%>green<%}else if(div1>=70){%>yellow<%}else if(div1>=50){%>orange<%}else{%>red<%}%>;
    width: <%=div1%>%;
-   height: 20px;
-   border-radius: 10px;
-}
-
-#progressbar2 {
-  background-color: grey;
-  border-radius: 13px;
-  padding: 3px;
-}
-
-#progressbar2 div {
-<% double div2 = (Player.getControl(id)/max)*100;%>
-   background-color: <%if(div2>=85){%>green<%}else if(div2>=70){%>yellow<%}else if(div2>=50){%>orange<%}else{%>red<%}%>;
-   width: <%=div2%>%;
-   height: 20px;
-   border-radius: 10px;
-}
-
-#progressbar3 {
-  background-color: grey;
-  border-radius: 13px;
-  padding: 3px;
-}
-
-#progressbar3 div {
-<% double div3 = (Player.getHeading(id)/max)*100;%>
-   background-color: <%if(div3>=85){%>green<%}else if(div3>=70){%>yellow<%}else if(div3>=50){%>orange<%}else{%>red<%}%>;
-   width: <%=div3%>%;
    height: 20px;
    border-radius: 10px;
 }
@@ -237,35 +210,43 @@ header, section, footer, aside, article, figure {
     <tr>
         <td>
             <div>
-                <img src="images/<%out.print(Player.getAvatar(id)); %>" id="avatar" width="211" height="236"/>
+                <img src="images/<%out.print(player.getAvatar(playerID));%>" id="avatar" width="211" height="236"/>
             </div>
         </td>
         <td>
             <div>
                 <table >
                   <tr><td class="Label">სახელი:</td>
-			      <td class="Value"><strong><%=name+" "+family %></strong></td>
-			      <%if(Player.getNick(id)!=null){%>
+			      <td class="Value"><strong><%=name+" "+family%></strong></td>
+			      <%
+			      	if(player.getNickname(playerID)!=null){
+			      %>
 			      <tr><td class="Label">მეტსახელი:</td>
-			      <td class="Value"><%=Player.getNick(id) %></td></tr>
-			      <%}%>
+			      <td class="Value"><%=player.getNickname(playerID)%></td></tr>
+			      <%
+			      	}
+			      %>
 			      <tr><td class="Label">დაბადების თარიღი:</td>
-			      <td class="Value"><%=Player.getBirth(id) %></td></tr>
+			      <td class="Value"><%=player.getBirthDate(playerID)%></td></tr>
 			  	  <tr><td class="Label">სკოლა:</td>
-			      <td class="Value"><%=Player.getSchool(id) %></td></tr>   
+			      <td class="Value"><%=player.getSchool(playerID)%></td></tr>   
 			  	  <tr><td class="Label">კურსი:</td>
-			      <td class="Value"><%=Player.getLevel(id) %></td></tr>   
+			      <td class="Value"><%=player.getUniCurrentCourse(playerID)%></td></tr>   
 			      <tr><td class="Label">სიმაღლე:</td>
-			      <td class="Value"><%=Player.getHeigth(id) %> სმ.</td></tr>
+			      <td class="Value"><%=player.getHeight(playerID)%> სმ.</td></tr>
 			      <tr><td class="Label">წონა:</td>
-			      <td class="Value"><%=Player.getWeight(id) %> კგ.</td></tr>
+			      <td class="Value"><%=player.getWeight(playerID)%> კგ.</td></tr>
 			      <tr><td class="Label">პოზიცია:</td>
-			      <td class="Value"><%=Player.getPosition(id) %></td></tr>
+			      <td class="Value"><%=player.getPosition(playerID)%></td></tr>
 			      <tr><td class="Label">ნომერი:</td>
-			      <td class="Value"><%=Player.getNumber(id) %></td></tr>   
-			      <%if(Player.getPage(id)!=null){%>
-			      <tr><td></td><td class="Value"><a href="<%=Player.getPage(id) %>" target="new">ოფიციალური გვერდი</a></td></tr>
-			      <%}%>      
+			      <td class="Value"><%=player.getNumber(playerID)%></td></tr>   
+			      <%
+   			      	if(player.getFBPage(playerID)!=null){
+   			      %>
+			      <tr><td></td><td class="Value"><a href="<%=player.getFBPage(playerID)%>" target="new">ოფიციალური გვერდი</a></td></tr>
+			      <%
+			      	}
+			      %>      
           </table>
         </div>
     </td>
@@ -273,8 +254,10 @@ header, section, footer, aside, article, figure {
 </table>
 </article>
             <div>
-            <%//გუნდის ლოგო მაქვს პირდაპირ მითითებული. დასრულებულ ვერსიაში კი გუნდის ლოგოს უნდა ვიძახებდე გუნდის სახელის მიხედვით%>
-              <a href="homepage.jsp"><img src="images/team_000.png" width="60" height="60" /><%=Player.getTeam(id) %></a>
+            <%
+            	//გუნდის ლოგო მაქვს პირდაპირ მითითებული. დასრულებულ ვერსიაში კი გუნდის ლოგოს უნდა ვიძახებდე გუნდის სახელის მიხედვით
+            %>
+              <a href="homepage.jsp"><img src="images/team_000.png" width="60" height="60" /><%="not implimented"%></a>
       </div>
 </section>
 <br></br>
@@ -285,24 +268,11 @@ header, section, footer, aside, article, figure {
           <td width="180"><p>სისწრაფე</p></td>          
           <td width="318"> <div id="progressbar1"><div></div></div></td>
           <td width="59"><blockquote>
-            <p><%=Player.getSpeed(id)%></p>
+            <p><%=player.getSpeed(playerID)%></p>
           </blockquote></td>
         </tr>
         <tr>
-          <td><p>ბურთის ფლობა</p></td>
-          <td width="318"> <div id="progressbar2"><div></div></div></td>
-          <td width="59"><blockquote>
-            <p><%=Player.getControl(id) %></p>
-          </blockquote></td>
-        </tr>
-        <tr>
-          <td><p>თავით თამაში</p></td>
-          <td width="318"> <div id="progressbar3"><div></div></div></td>
-          <td width="59"><blockquote>
-            <p><%=Player.getHeading(id) %></p>
-          </blockquote></td>
-        </tr>
-      </table>
+        </table>
     </section>
     <section>
       <h2>ფეხბურთელის შესახებ</h2>
@@ -316,7 +286,7 @@ header, section, footer, aside, article, figure {
     </section>
  </article>
   <aside>
-    <h4><%=Player.getTeam(id)%></h4>
+    <h4><%="not implimented"%></h4>
     <p>აქ იქნება მოთამაშის გუნდის შემადგენლობა. აქედან შესაძლებელი უნდა იყოს გუნდელების პროფილში გადასვლა</p>
     <p>[გასაკეთებელი]</p>      
   </aside>

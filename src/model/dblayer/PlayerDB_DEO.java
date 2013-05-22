@@ -1022,4 +1022,11 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 		}
 		return("მოთამაშე მითითებული ID-ით:: "+playerID+" არ არსებობს");
 	}
+	
+	public void reset(){
+		playerAtributes.clear();
+		playerParametres.clear();
+		playersAtributesList.clear();
+		playersParametresList.clear();
+	}
 }

@@ -83,7 +83,6 @@ public interface PlayerDBInterface_DEO {
 	
 	//პერსონის ცხრილში ჩამატება
 	public void setPersonID(int playerID);
-	public void setRating(int playerID);
 	public void setFirstName(int playerID);
 	public void setLastName(int playerID);
 	public void setNickname(int playerID);
@@ -95,6 +94,7 @@ public interface PlayerDBInterface_DEO {
 	public void setWeight(int playerID);
 	public void setHeight(int playerID);
 	public void setImageURL(int playerID);
+	public void setRating(int playerID);
 	public void setFoot(int playerID);
 	public void setFBPage(int playerID);
 	public void setPosition(int playerID);
