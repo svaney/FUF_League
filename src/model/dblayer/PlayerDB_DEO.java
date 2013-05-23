@@ -345,6 +345,22 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 		}
 		return (int) res;
 	}
+	
+	/**
+	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: 95;
+	 */
+	@Override
+	public int getTackling(int playerID) {
+		String atribute = "tackling";
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
+		}
+		return (int) res;
+	}
 
 	/**
 	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
@@ -380,22 +396,6 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 
 	/**
 	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
-	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
-	 * მაგალითად: 10;
-	 */
-	@Override
-	public int getNumber(int playerID) {
-		String atribute = "number";
-		Object res = getAtribute(atribute,playerID);
-		if(res == null){
-			return -1;
-		}
-		return (int) res; 
-	}
-
-	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 001;
 	 */
@@ -416,11 +416,11 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public double getRating(int playerID) {
-		String parameter = "rating";
-		if(getParametre(parameter,playerID)==null){
+		String atribute = "rating";
+		if(getAtribute(atribute,playerID)==null){
 			return 0.0;
 		}
-		return (double)getParametre(parameter,playerID);
+		return (double)getAtribute(atribute,playerID);
 	}
 
 	/**
@@ -431,7 +431,7 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	@Override
 	public String getFirstName(int playerID) {
 		String parameter = "firstname";
-		return (String)getParametre(parameter,playerID);
+		return (String)getParameter(parameter,playerID);
 	}
 	
 	/**
@@ -442,7 +442,7 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	@Override
 	public String getLastName(int playerID) {
 		String parameter = "lastname";
-		return (String)getParametre(parameter,playerID);
+		return (String)getParameter(parameter,playerID);
 	}
 
 	/**
@@ -453,7 +453,7 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	@Override
 	public String getNickname(int playerID) {
 		String parameter = "nickname";
-		return (String)getParametre(parameter, playerID);
+		return (String)getParameter(parameter, playerID);
 	}
 
 	/**
@@ -464,7 +464,7 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	@Override
 	public Date getBirthDate(int playerID) {
 		String parameter = "birth_date";
-		return (Date)getParametre(parameter, playerID);
+		return (Date)getParameter(parameter, playerID);
 	}
 
 	/**
@@ -475,7 +475,7 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	@Override
 	public Date getUniStartYear(int playerID) {
 		String parameter = "uni_start";
-		return (Date)getParametre(parameter, playerID);
+		return (Date)getParameter(parameter, playerID);
 	}
 
 	/**
@@ -484,9 +484,9 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 * მაგალითად: III;
 	 */
 	@Override
-	public String getUniCurrentCourse(int playerID) {
+	public int getUniCurrentCourse(int playerID) {
 		String parameter = "uni_cur_course";
-		return (String)getParametre(parameter, playerID);
+		return (int)getParameter(parameter, playerID);
 	}
 
 	/**
@@ -498,7 +498,7 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	@Override
 	public String getGraduated(int playerID) {
 		String parameter = "graduated";
-		return (String)getParametre(parameter, playerID);
+		return (String)getParameter(parameter, playerID);
 	}
 	
 	/**
@@ -509,7 +509,7 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	@Override
 	public String getSchool(int playerID) {
 		String parameter = "school";
-		return (String)getParametre(parameter, playerID);
+		return (String)getParameter(parameter, playerID);
 	}
 
 	/**
@@ -518,9 +518,9 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 * მაგალითად: 65;
 	 */
 	@Override
-	public String getWeight(int playerID) {
+	public int getWeight(int playerID) {
 		String parameter = "weight";
-		return (String)getParametre(parameter, playerID);
+		return (int)getParameter(parameter, playerID);
 	}
 
 	/**
@@ -529,9 +529,9 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 * მაგალითად: 185;
 	 */
 	@Override
-	public String getHeight(int playerID) {
+	public int getHeight(int playerID) {
 		String parameter = "height";
-		return (String)getParametre(parameter, playerID);
+		return (int)getParameter(parameter, playerID);
 	}
 	
 	/**
@@ -542,7 +542,7 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	@Override
 	public String getImageURL(int playerID) {
 		String parameter = "image_URL";
-		return (String)getParametre(parameter, playerID);
+		return (String)getParameter(parameter, playerID);
 	}
 	
 	/**
@@ -554,7 +554,7 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	@Override
 	public String getFBPage(int playerID) {
 		String parameter = "fb_page";
-		return (String)getParametre(parameter, playerID);
+		return (String)getParameter(parameter, playerID);
 	}
 
 	/**
@@ -564,8 +564,8 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public String getPosition(int playerID) {
-		String parameter = "position";
-		return (String)getParametre(parameter, playerID);
+		String atribute = "position";
+		return (String)getAtribute(atribute, playerID);
 	}
 
 	/**
@@ -575,8 +575,8 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	@Override
 	public String getFoot(int playerID) {
-		String parameter = "foot";
-		return (String)getParametre(parameter, playerID);
+		String atribute = "foot";
+		return (String)getAtribute(atribute, playerID);
 	}
 
 	/**
@@ -705,6 +705,11 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	public void setRefxlexes(int playerID) {
 		// TODO Auto-generated method stub
 	}
+	
+	@Override
+	public void setTackling(int playerID) {
+		// TODO Auto-generated method stub
+	}
 
 	@Override
 	public void setShotStoping(int playerID) {
@@ -790,12 +795,6 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	public void setImageURL(int playerID) {
 		// TODO Auto-generated method stub
 	}
-	
-	@Override
-	public void setNumber(int playerID) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	/**
 	 * ეს მეთოდი ბაზიდან იღებს Players ცხრილის მთლიან რიგს;
@@ -878,6 +877,7 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	 */
 	private static void fillColumnsTitle(){
 		playerAtributes.add("person_id");
+		playerAtributes.add("rating");
 		playerAtributes.add("speed");
 		playerAtributes.add("dribbling");
 		playerAtributes.add("heading");
@@ -892,12 +892,14 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 		playerAtributes.add("vision");
 		playerAtributes.add("passing");
 		playerAtributes.add("penalty");
+		playerAtributes.add("tackling");		
 		playerAtributes.add("penalty_saving");
 		playerAtributes.add("lidership");
 		playerAtributes.add("reflexes");
 		playerAtributes.add("shot_stopping");
 		playerAtributes.add("mistake_factor");
-		playerAtributes.add("number");
+		playerAtributes.add("foot");
+		playerAtributes.add("def_position");
 		
 		playerParametres.add("firstname");
 		playerParametres.add("lastname");
@@ -913,10 +915,7 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 		playerParametres.add("image_URL");
 		playerParametres.add("biography");
 		playerParametres.add("special_atr");
-		playerParametres.add("rating");
 		playerParametres.add("fb_page");
-		playerParametres.add("position");
-		playerParametres.add("foot");
 	}
 	
 	/**
@@ -972,11 +971,11 @@ public class PlayerDB_DEO implements PlayerDBInterface_DEO{
 	}
 	/**
 	 * აბრუნებს ობიექტს პარამეტრების სიიდან.
-	 * @param parametre - მეორე გასაღები.
+	 * @param parameter - მეორე გასაღები.
 	 * @param playerID - გამოყენება: getPerson(playerID).
 	 * @return
 	 */
-	private Object getParametre(String parameter, int playerID){
+	private Object getParameter(String parameter, int playerID){
 		if(playersParametresList.containsKey(getPersonID(playerID))){
 			return playersParametresList.get(getPersonID(playerID)).get(parameter);
 		}

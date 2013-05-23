@@ -238,8 +238,8 @@ header, section, footer, aside, article, figure {
 			      <td class="Value"><%=player.getWeight(playerID)%> კგ.</td></tr>
 			      <tr><td class="Label">პოზიცია:</td>
 			      <td class="Value"><%=player.getPosition(playerID)%></td></tr>
-			      <tr><td class="Label">ნომერი:</td>
-			      <td class="Value"><%=player.getNumber(playerID)%></td></tr>   
+			      <tr><td class="Label">პოზიცია:</td>
+			      <td class="Value"><%=player.getPosition(playerID)%></td></tr>
 			      <%
    			      	if(player.getFBPage(playerID)!=null){
    			      %>

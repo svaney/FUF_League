@@ -1,45 +1,43 @@
 package model.mainclasses;
 
-import java.sql.Date;
-
 public interface PlayerInterface_DEO {
 
-	public int getPersonID(int playerID);
-	public String getFirstName(int playerID);
-	public String getLastName(int playerID);
-	public String getNickname(int playerID);
-	public Date getBirthDate(int playerID);
-	public Date getUniStartYear(int playerID);
-	public String getUniCurrentCourse(int playerID);
-	public String getGraduated(int playerID);
-	public String getSchool(int playerID);
-	public String getWeight(int playerID);
-	public String getHeight(int playerID);
-	public String getAvatar(int playerID);
-	public double getRating(int playerID);
-	public String getFoot(int playerID);
-	public String getFBPage(int playerID);
-	public String getPosition(int playerID);
+	public String getFirstName();
+	public String getLastName();
+	public String getNickname();
+	public String getBirthDate();
+	public String getUniStartYear();
+	public String getUniCurrentCourse();
+	public boolean isStudent();
+	public String getSchool();
+	public int getWeight();
+	public int getHeight();
+	public String getAvatar();
+	public double getRating();
+	public String getFoot();
+	public String getFBPage();
+	public String getPosition();
 
-	public int getSpeed(int playerID);
-	public int getDribbling(int playerID);
-	public int getHeading(int playerID);
-	public int getClubLoyalty(int playerID);
-	public int getDiving(int playerID);
-	public int getDurability(int playerID);
-	public int getShooting(int playerID);
-	public int getWorkRate(int playerID);
-	public int getCreativity(int playerID);
-	public int getFearFactor(int playerID);
-	public int getKillerInstinct(int playerID);
-	public int getVision(int playerID);
-	public int getPassing(int playerID);
-	public int getPenalty(int playerID);
-	public int getPenaltySaving(int playerID);
-	public int getLidership(int playerID);
-	public int getReflexes(int playerID);
-	public int getShotStoping(int playerID);
-	public int getMistakeFactor(int playerID);
-	public int getNumber(int playerID);
-	
+	public int getSpeed();
+	public int getDribbling();
+	public int getHeading();
+	public int getClubLoyalty();
+	public int getDiving();
+	public int getDurability();
+	public int getShooting();
+	public int getWorkRate();
+	public int getCreativity();
+	public int getFearFactor();
+	public int getKillerInstinct();
+	public int getVision();
+	public int getPassing();
+	public int getPenalty();
+	public int getPenaltySaving();
+	public int getLidership();
+	public int getReflexes();
+	public int getTackling();
+	public int getShotStoping();
+	public int getMistakeFactor();
+	public int getPersonID();
+	public int getPlayerID();
 }

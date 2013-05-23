@@ -17,6 +17,7 @@ public interface PlayerDBInterface_DEO {
 	public void initConncection();
 	
 	//მოთამაშის ცხრილიდან ამოღება
+	public double getRating(int playerID);
 	public int getSpeed(int playerID);
 	public int getDribbling(int playerID);
 	public int getHeading(int playerID);
@@ -34,27 +35,26 @@ public interface PlayerDBInterface_DEO {
 	public int getPenaltySaving(int playerID);
 	public int getLidership(int playerID);
 	public int getReflexes(int playerID);
+	public int getTackling(int playerID);
 	public int getShotStoping(int playerID);
 	public int getMistakeFactor(int playerID);
-	public int getNumber(int playerID);
+	public String getPosition(int playerID);
+	public String getFoot(int playerID);
 	
 	//პერსონის ცხრილიდან ამოღება
 	public int getPersonID(int playerID);
-	public double getRating(int playerID);
 	public String getFirstName(int playerID);
 	public String getLastName(int playerID);
 	public String getNickname(int playerID);
 	public Date getBirthDate(int playerID);
 	public Date getUniStartYear(int playerID);
-	public String getUniCurrentCourse(int playerID);
+	public int getUniCurrentCourse(int playerID);
 	public String getGraduated(int playerID);
 	public String getSchool(int playerID);
-	public String getWeight(int playerID);
-	public String getHeight(int playerID);
+	public int getWeight(int playerID);
+	public int getHeight(int playerID);
 	public String getImageURL(int playerID);
-	public String getFoot(int playerID);
 	public String getFBPage(int playerID);
-	public String getPosition(int playerID);
 	
 	// შეიძლება არ დამჭირდეს
 	public int getPlayerID(int personID);
@@ -77,9 +77,9 @@ public interface PlayerDBInterface_DEO {
 	public void setPenaltySaving(int playerID);
 	public void setLidership(int playerID);
 	public void setRefxlexes(int playerID);
+	public void setTackling(int playerID);
 	public void setShotStoping(int playerID);
 	public void setMistakeFactor(int playerID);
-	public void setNumber(int playerID);
 	
 	//პერსონის ცხრილში ჩამატება
 	public void setPersonID(int playerID);
