@@ -11,6 +11,10 @@ import java.util.ArrayList;
 
 public class Score_DLAPI implements Score{
 
+	/**
+	 * კონსტრუქტორი
+	 *  
+	 */
 	public Score_DLAPI(){
 		
 	}
@@ -26,11 +30,12 @@ public class Score_DLAPI implements Score{
 	}
 
 	/**
-	 * აბრუნებს ამ მონაწილე გუნდებიდან ერთ-ერთის 
-	 * @return  
+	 * აბრუნებს ამ მონაწილე გუნდებიდან ერთ-ერთის შედეგს პენლების სერიაში
+	 * @return  Penalties კლასის ობიექტს თუკი იყო პენლები, თუ არადა null
+	 * @param taemID გუნდის ID, რათა გაარკვიოს რომელი გუნდისთვის სურს დაბრუნება 
 	 */
 	@Override
-	public ArrayList<Goal> getPenaltiesForTeam(int teamID) {
+	public Penalties getPenaltiesForTeam(int teamID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -46,6 +51,11 @@ public class Score_DLAPI implements Score{
 		return 0;
 	}
 
+	/**
+	 * გვეუბნება მე-n გოლი რომელი იყო ამ თამაშში, არ აქვს მნიშვნელობა, რომელმა გუნდმა გაიტანა
+	 * @param Nth - n მერამდენე გოლი გვინდა
+	 * @return Goal ტიპის ცვლადი.
+	 */
 	@Override
 	public Goal getNthGoal(int Nth) {
 		// TODO Auto-generated method stub

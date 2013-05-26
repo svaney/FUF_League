@@ -7,6 +7,14 @@
  */
 package model.mainclasses;
 
-public interface Penalties {
+import java.util.ArrayList;
 
+public interface Penalties {
+	
+	public ArrayList<Goal> getTeamsSerie(int teamID);
+	public ArrayList<Goal> getAllGoalsInSerie();
+	public int getMissedQuantity();
+	public int getTeamScore(int teamID);
+	public int getTeamMissedQuantity();
+	
 }
