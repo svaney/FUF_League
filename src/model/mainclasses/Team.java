@@ -11,7 +11,7 @@ import java.util.List;
 import java.net.URL;
 
 
-public interface TeamInterface {
+public interface Team {
 	
 	public String getTeamName();
 	public URL getTeamImageURL();

@@ -6,6 +6,6 @@
  */
 package model.mainclasses;
 
-public interface MatchInterface {
+public interface Match {
 
 }

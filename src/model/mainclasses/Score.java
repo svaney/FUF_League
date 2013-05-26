@@ -6,6 +6,6 @@
  * */
 package model.mainclasses;
 
-public interface ScoreInterface {
+public interface Score {
 
 }
