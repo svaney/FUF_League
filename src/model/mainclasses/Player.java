@@ -1,8 +1,8 @@
 package model.mainclasses;
 
-public class player {
+public class Player {
 	
-	public player(){
+	public Player(){
 		
 	}
 
