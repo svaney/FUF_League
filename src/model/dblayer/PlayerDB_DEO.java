@@ -14,7 +14,7 @@ import java.util.HashMap;
  * @author DEO.Gochava
  *
  */
-public class PlayerDB_DEO implements PlayerDBInterface_DEO{
+public class PlayerDB_DEO implements PlayerDB{
 	// ბაზის პარამეტრები
 	private static final String MYSQL_USERNAME = "root";
 	private static final String MYSQL_PASSWORD = "123456";

@@ -1,3 +1,5 @@
+//@auhor: ruska
+
 package model.dblayer;
 import java.sql.*;
 /**
@@ -5,7 +7,7 @@ import java.sql.*;
  * @author DEO.Gochava
  *
  */
-public interface PlayerDBInterface_DEO {
+public interface PlayerDB {
 	
 	/* ცხრილები: player_award, Persons, Players
 	 * კლასი, რომელიც ამ ინტერფეისს დაუკეთეს იმპლემენტაციას შეძლებს ბაზიდან ამოიღოს ყველა ინფრომაცია
