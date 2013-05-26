@@ -16,6 +16,8 @@ public interface TeamDB {
 	public Team getTeam(int teamID);
 	public List<Player> getPlayers(int teamID, int champID);
 	public List<Award> getAwards(int teamID);
+	public Award getAwardInChampByTeam(int teamID, int ChampID);
 	public void addPlayer(int teamID, int playerID);
 	public Player getCaptain(int teamID, int champID);
+	
 }
