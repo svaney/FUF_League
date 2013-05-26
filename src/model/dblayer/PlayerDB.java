@@ -1,5 +1,3 @@
-//@auhor: ruska
-
 package model.dblayer;
 import java.sql.*;
 /**
