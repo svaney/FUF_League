@@ -80,5 +80,16 @@ public class Score_DLAPI implements Score{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	/**
+	 * პირველი ტაიმში გუნდის მიერ გატანილი გოლების რაოდენობა
+	 * @param teamID გუნდის მაიდენტიფიცირებელი ID
+	 * @return int ტიპის მნიშვნელობა - გატანილი გოლების რაოდენობა
+	 */
+	@Override
+	public int getScoreForTeamFirstHalf(int teamID) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

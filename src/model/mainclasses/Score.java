@@ -31,6 +31,13 @@ public interface Score {
 	public int getScoreForTeam(int teamID);
 	
 	/**
+	 * პირველი ტაიმში გუნდის მიერ გატანილი გოლების რაოდენობა
+	 * @param teamID გუნდის მაიდენტიფიცირებელი ID
+	 * @return int ტიპის მნიშვნელობა - გატანილი გოლების რაოდენობა
+	 */
+	public int getScoreForTeamFirstHalf(int teamID);
+	
+	/**
 	 * გვეუბნება მე-n გოლი რომელი იყო ამ თამაშში, არ აქვს მნიშვნელობა, რომელმა გუნდმა გაიტანა
 	 * @param Nth - n მერამდენე გოლი გვინდა
 	 * @return Goal ტიპის ცვლადი.
