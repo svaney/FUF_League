@@ -13,23 +13,40 @@ import java.net.URL;
 
 public interface Team {
 	
-	public String getTeamName();
-	public URL getTeamImageURL();
-	public String getTeamEmail();
-	public String getTeamTel();
-	public int getTeamRating();
-	public URL getTeamLogoURL();
-	public List<Player> getTeamPlayers();
-//	public List<Award> getTeamAwards();
+	public String getName();
+	public URL getImageURL();
+	public String getEmail();
+	public String getTel();
+	public int getRating();
+	public URL getLogoURL();
+	public List<Player> getPlayers();
+	public List<Award> getAwards();
+	public Player getCaptain();
 	
-	public void setTeamImageURL(String strURL);
-	public void setTeamLogo(String strURL);
+	public void setImageURL(String strURL);
+	public void removeImage();
+	
+	public void setLogo(String strURL);
+	public void removeLogo();
+	
 	public void addPlayer(int playerID);
-	public void setTeamEmail(String email);
-	public void setTeamTel(String tel);
-//	public void addAward(Award award);
+	public void removePlayer(int playerID);
 	
+	public void setEmail(String email);
+	public void removeEmail();
 	
+	public void setTel(String tel);
+	public void removeTel();
+	
+	public void addAward(Award award);
+//	public void removeAward(Award award); //im shemtxvevisatis tu shecdomit daemata
+	
+	/**
+	 * გუნდი უკაპიტნოდ არ უნდა არსებობდეს, ამიტომ ცალკე  removeCaptain setCaptain არაა საჭირო.
+	 * ამ ორივე ფუნქციას შეასრულებს ეს მეთოდი და შედეგად არასდროს არ მოხდება ისე, რომ გუნდს არ
+	 * ყავს კაპიტანი.
+	 * */
+	public void changeCaptain(Player player); 
 	
 
 }
