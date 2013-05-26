@@ -5,5 +5,6 @@ package model.mainclasses;
 
 
 public interface Award {
-	
+	public String getAward();
+	public String getChampName(); 
 }
