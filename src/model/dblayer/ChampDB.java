@@ -1,6 +1,8 @@
 package model.dblayer;
 
-public class ChampDB {
-
+public interface ChampDB {
+	/*ცხრილები: championships, Coachs, Groups, PlayOff, awards
+	 * 
+	 * */
 
 }

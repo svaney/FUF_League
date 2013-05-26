@@ -1,5 +1,9 @@
 package model.dblayer;
 
-public class TeamDB implements TeamDBInterface{
-
+public interface TeamDB {
+	/* ცხრილები: Teams, Positions, Team_Players, captains, team_award
+	 * კლასი, რომელიც დააიმპლემენტირებს ამ ინტერფეისს პასუხისმგებელი იქნება ბაზიდან ამოიღოს ინფორ-
+	 * მაცია გუნდის შესახება, რომელიც ზემოთ ჩამოთვლილ ცხრილებშია. ასევე თუ რომელიც დაკავშირებულია
+	 * სხვა ცრილთან ინფრომაციას შესაბამისი კლასს დავაბრუნებინებ.
+	 * */
 }
