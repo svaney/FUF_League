@@ -9,47 +9,48 @@ public class Player_DEO implements Player {
 	private int id;
 	private static int personID = -1;
 	// პერსონის ატრიბუტები
-	private static String firstname = null;
-	private static String lastname = null;
-	private static String nickname = null;
-	private static Date birthDate = null;
-	private static Date uniStart = null;
-	private static int uniCourse = 0;
-	private static String graduated = null;
-	private static String school = null;
-	private static int weight = 0;
-	private static int height = 0;
-	private static String homePage = null;
-	private static String image = "design/defaultAvatar.png";
+	private String firstname = null;
+	private String lastname = null;
+	private String nickname = null;
+	private Date birthDate = null;
+	private Date uniStart = null;
+	private int uniCourse = 0;
+	private String graduated = null;
+	private String school = null;
+	private int weight = 0;
+	private int height = 0;
+	private String homePage = null;
+	private String image = "design/defaultAvatar.png";
 
 	//მოთამაშის ატრიბუტები
-	private static Double rating = null;
-	private static String position = null;
-	private static String foot = null;
-	private static int speed = 0;
-	private static int dribbling = 0;
-	private static int heading = 0;
-	private static int diving = 0;
-	private static int durability = 0;
-	private static int loyalty = 0;
-	private static int shooting = 0;
-	private static int work = 0;
-	private static int creativity = 0;
-	private static int fear_factor = 0;
-	private static int killer_instinct = 0;
-	private static int tackling = 0;
-	private static int vision = 0;
-	private static int passing = 0;
-	private static int penalty = 0;
-	private static int penalty_saveing = 0;
-	private static int shot_stopping = 0;
-	private static int lidership = 0;
-	private static int reflexes = 0;
-	private static int mistake_factor = 0;
-
-	//სამუშაო ველი
-	private static String[] month = {"იანვარი","თებერვალი","მარტი","აპრილი","მაისი","ივნისი","ივლისი","აგვისტო","სექტემბერი","ოქტომბერი","ნოემბერი","დეკემბერი"};
-
+	private Double rating = null;
+	private String position = null;
+	private String foot = null;
+	private int speed = 0;
+	private int dribbling = 0;
+	private int heading = 0;
+	private int diving = 0;
+	private int durability = 0;
+	private int loyalty = 0;
+	private int shooting = 0;
+	private int work = 0;
+	private int creativity = 0;
+	private int fear_factor = 0;
+	private int killer_instinct = 0;
+	private int tackling = 0;
+	private int vision = 0;
+	private int passing = 0;
+	private int penalty = 0;
+	private int penalty_saveing = 0;
+	private int shot_stopping = 0;
+	private int lidership = 0;
+	private int reflexes = 0;
+	private int mistake_factor = 0;
+	private int positioning = 0;
+	private String biography = null;
+	//იყენებს თარიღიდან თვის სახელის ამოსაღებად.
+	private static final String[] month = {"იანვარი","თებერვალი","მარტი","აპრილი","მაისი","ივნისი","ივლისი","აგვისტო","სექტემბერი","ოქტომბერი","ნოემბერი","დეკემბერი"};
+	
 	public Player_DEO(int playerID){
 		player = new PlayerDB_DEO();
 		id = playerID;
@@ -89,7 +90,9 @@ public class Player_DEO implements Player {
 		lidership = player.getLidership(playerID);
 		reflexes = player.getReflexes(playerID);
 		mistake_factor = player.getMistakeFactor(playerID);
+		positioning = player.getMistakeFactor(playerID);
 		position = player.getPosition(playerID);
+		biography = player.getBio(playerID);
 		player.reset();
 	}
 
@@ -137,7 +140,7 @@ public class Player_DEO implements Player {
 	@Override
 	public String getUniStartYear() {
 		if(uniStart != null){
-			return(""+(1900+birthDate.getYear()));
+			return(""+(1900+uniStart.getYear()));
 		}
 		return null;
 	}
@@ -164,7 +167,7 @@ public class Player_DEO implements Player {
 		if(graduated.equals("N")) return true;
 		return false;
 	}
-
+	
 	/**
 	 * აბრუნებს სკოლის სახელს, რომელშიც ჩარიცხულია მოთამაშე;
 	 * მაგ: LIBERAL ART
@@ -199,7 +202,15 @@ public class Player_DEO implements Player {
 	public String getAvatar() {
 		return image;
 	}
-
+	
+	/**
+	 * აბრუნებს მოთამაშის ბიოგრაფიას
+	 */
+	@Override
+	public String getBio() {
+		return biography;
+	}
+	
 	/**
 	 * აბრუნებს მომხმრაბლების მიერ მინიჭებულ რეიტინგს
 	 */
@@ -313,7 +324,7 @@ public class Player_DEO implements Player {
 	public int getReflexes() {
 		return reflexes;
 	}
-
+	
 	@Override
 	public int getTackling() {
 		return tackling;
@@ -328,12 +339,17 @@ public class Player_DEO implements Player {
 	public int getMistakeFactor() {
 		return mistake_factor;
 	}
+	
+	@Override
+	public int getPositioning() {
+		return positioning;
+	}
 
 	@Override
 	public int getPersonID() {
 		return personID;
 	}
-
+	
 	@Override
 	public int getPlayerID() {
 		return id;

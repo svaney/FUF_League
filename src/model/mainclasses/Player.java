@@ -1,6 +1,6 @@
 package model.mainclasses;
 
-public interface Player {
+public interface Player{
 
 	public String getFirstName();
 	public String getLastName();
@@ -13,6 +13,7 @@ public interface Player {
 	public int getWeight();
 	public int getHeight();
 	public String getAvatar();
+	public String getBio();
 	public double getRating();
 	public String getFoot();
 	public String getFBPage();
@@ -38,6 +39,7 @@ public interface Player {
 	public int getTackling();
 	public int getShotStoping();
 	public int getMistakeFactor();
+	public int getPositioning();
 	public int getPersonID();
 	public int getPlayerID();
 }

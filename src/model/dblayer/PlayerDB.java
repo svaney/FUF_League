@@ -5,7 +5,7 @@ import java.sql.*;
  * @author DEO.Gochava
  *
  */
-public interface PlayerDB {
+public interface PlayerDB{
 	
 	/* ცხრილები: player_award, Persons, Players
 	 * კლასი, რომელიც ამ ინტერფეისს დაუკეთეს იმპლემენტაციას შეძლებს ბაზიდან ამოიღოს ყველა ინფრომაცია
@@ -38,8 +38,10 @@ public interface PlayerDB {
 	public int getTackling(int playerID);
 	public int getShotStoping(int playerID);
 	public int getMistakeFactor(int playerID);
+	public int getPositioning(int playerID);
 	public String getPosition(int playerID);
 	public String getFoot(int playerID);
+	public String getBio(int playerID);
 	
 	//პერსონის ცხრილიდან ამოღება
 	public int getPersonID(int playerID);
@@ -80,6 +82,7 @@ public interface PlayerDB {
 	public void setTackling(int playerID);
 	public void setShotStoping(int playerID);
 	public void setMistakeFactor(int playerID);
+	public void setPositioning(int playerID);
 	
 	//პერსონის ცხრილში ჩამატება
 	public void setPersonID(int playerID);
@@ -98,4 +101,5 @@ public interface PlayerDB {
 	public void setFoot(int playerID);
 	public void setFBPage(int playerID);
 	public void setPosition(int playerID);
+	public void setBio(int playerID);
 }

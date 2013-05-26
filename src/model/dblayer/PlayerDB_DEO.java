@@ -67,7 +67,7 @@ public class PlayerDB_DEO implements PlayerDB{
 			con = DriverManager.getConnection(url, MYSQL_USERNAME, MYSQL_PASSWORD);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("შეცვალე MySQL კონსტანტები შენი კონსტანტებით!");
+			System.err.println("შეცვალე MySQL კონსტანტები შენი კონსტანტებით! (ან შეამოწმე გაშვებულია თუ არა სერვერი).");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			System.err.println("CS108 student: Add the MySQL jar file to your build path!");
@@ -393,6 +393,22 @@ public class PlayerDB_DEO implements PlayerDB{
 		}
 		return (int) res;
 	}
+	
+	/**
+	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: 95;
+	 */
+	@Override
+	public int getPositioning(int playerID) {
+		String atribute = "positioning";
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
+		}
+		return (int) res;
+	}
 
 	/**
 	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
@@ -578,6 +594,17 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "foot";
 		return (String)getAtribute(atribute, playerID);
 	}
+	
+	/**
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: მარჯვენა;
+	 */
+	@Override
+	public String getBio(int playerID) {
+		String atribute = "biography";
+		return (String)getAtribute(atribute, playerID);
+	}
 
 	/**
 	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
@@ -720,6 +747,11 @@ public class PlayerDB_DEO implements PlayerDB{
 	public void setMistakeFactor(int playerID) {
 		// TODO Auto-generated method stub
 	}
+	
+	@Override
+	public void setPositioning(int playerID) {
+		// TODO Auto-generated method stub
+	}
 
 	@Override
 	public void setFoot(int playerID) {
@@ -793,6 +825,11 @@ public class PlayerDB_DEO implements PlayerDB{
 
 	@Override
 	public void setImageURL(int playerID) {
+		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void setBio(int playerID) {
 		// TODO Auto-generated method stub
 	}
 
@@ -898,6 +935,7 @@ public class PlayerDB_DEO implements PlayerDB{
 		playerAtributes.add("reflexes");
 		playerAtributes.add("shot_stopping");
 		playerAtributes.add("mistake_factor");
+		playerAtributes.add("positioning");
 		playerAtributes.add("foot");
 		playerAtributes.add("def_position");
 		
