@@ -1,6 +1,6 @@
 package model.mainclasses;
 
-public interface PlayerInterface_DEO {
+public interface Player {
 
 	public String getFirstName();
 	public String getLastName();

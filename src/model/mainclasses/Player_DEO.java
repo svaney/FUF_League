@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import model.dblayer.PlayerDB_DEO;
 
-public class Player_DEO implements PlayerInterface_DEO {
+public class Player_DEO implements Player {
 	private PlayerDB_DEO player;
 	private int id;
 	private static int personID = -1;
