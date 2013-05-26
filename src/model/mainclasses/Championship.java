@@ -1,5 +1,5 @@
 package model.mainclasses;
 
-public class Championship {
+public interface Championship {
 
 }

@@ -1,5 +1,5 @@
 package model.mainclasses;
 
-public interface Group {
+public class Championship_svani {
 
 }

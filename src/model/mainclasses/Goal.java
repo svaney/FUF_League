@@ -1,5 +1,5 @@
 package model.mainclasses;
 
-public class Goal {
+public interface Goal {
 
 }

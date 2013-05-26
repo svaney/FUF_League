@@ -1,5 +1,5 @@
 package model.mainclasses;
 
-public interface Group {
+public class Goal_kire {
 
 }
