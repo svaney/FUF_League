@@ -8,7 +8,7 @@
  * **/
 package model.mainclasses;
 
-public class Award_Ruska {
+public class Award_Ruska implements Award{
 	
 	private String award;
 	private String champName;
