@@ -19,9 +19,10 @@ public interface Team {
 	public String getTel();
 	public int getRating();
 	public URL getLogoURL();
-	public List<Player> getPlayers();
+	public List<Player> getPlayers(int champID);
 	public List<Award> getAwards();
-	public Player getCaptain();
+	public Award getAwardInChamp(int champID);
+	public Player getCaptain(int champID);
 	
 	public void setImageURL(String strURL);
 	public void removeImage();
