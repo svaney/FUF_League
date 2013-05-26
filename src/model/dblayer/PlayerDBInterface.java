@@ -1,3 +1,5 @@
+//@auhor: ruska
+
 package model.dblayer;
 import java.net.URL;
 import java.sql.*;
