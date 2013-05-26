@@ -7,8 +7,6 @@
 
 package model.mainclasses;
 
-import java.util.ArrayList;
-
 public class Score_DLAPI implements Score{
 
 	/**
@@ -41,7 +39,7 @@ public class Score_DLAPI implements Score{
 	}
 
 	/**
-	 * ითვლის რამდენი გოლი გაიტანა გუნდმა
+	 * ითვლის რამდენი გოლი გაიტანა გუნდმა (მხოლოდ ძირითად დროში)
 	 * @param teamID გუნდის ID რომ გაირკვეს რომელ გუნდზეა საუბარი
 	 * @return რამდენი გოლი გაიტანა ძირითად დროში
 	 */
@@ -60,6 +58,27 @@ public class Score_DLAPI implements Score{
 	public Goal getNthGoal(int Nth) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	/**
+	 * გვეუბნება რამდენი გოლი გავიდა ამ თამაშის ძირითად დროში (დამატებითი პენლების გარდა)
+	 * @return int ტიპის რაოდენობა ძირითად დროში გატანილი გოლების
+	 */
+	@Override
+	public int goalQuantty() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * გვეუბნება გუნდმა რამდენი გოლი გაიტანა დამატებით დროში. თუკი ასეთი დრო არსებობდა.
+	 * @param TeamID გუნდის ID რომ გაირკვეს რომელ გუნდზეა საუბარი
+	 * @return რამდენი გოლი გაიტანა დამატებით დროში.
+	 */
+	@Override
+	public int getExtraTimeGoalForTeam(int TeamID) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

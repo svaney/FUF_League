@@ -8,5 +8,10 @@
 package model.mainclasses;
 
 public interface Match {
-
+	
+	public String getMatchRound();
+	public boolean hasExtraTime();
+	public Score getScore();
+	public String getDate();
+	
 }
