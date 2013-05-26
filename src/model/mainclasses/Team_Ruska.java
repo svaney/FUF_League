@@ -7,105 +7,126 @@
 
 package model.mainclasses;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import model.dblayer.TeamDB;
+
 public class Team_Ruska implements Team{
+	
+	private int teamID;
+	private TeamDB teamDataBase;
+	private Team team;
+	private String name;
+	private URL imageURL;
+	private URL logoURL;
+	private String email;
+	private String tel;
+	private int rating;
+	private List<Player> players;
+	private List<Award> awards;
+	private Award award;
+	private Player captain;
+	
+	public Team_Ruska(int teamID){
+		this.teamID = teamID;
+		team = teamDataBase.getTeam(teamID);
+	}
 
 	@Override
-	public String getName() {
+	public int getID() {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
+	}
+	
+	@Override
+	public String getName() {
+		return name;
 	}
 
 	@Override
 	public URL getImageURL() {
-		// TODO Auto-generated method stub
-		return null;
+		return imageURL;
 	}
 
 	@Override
 	public String getEmail() {
-		// TODO Auto-generated method stub
-		return null;
+		return email;
 	}
 
 	@Override
 	public String getTel() {
-		// TODO Auto-generated method stub
-		return null;
+		return tel;
 	}
 
 	@Override
 	public int getRating() {
-		// TODO Auto-generated method stub
-		return 0;
+		return rating;
 	}
 
 	@Override
 	public URL getLogoURL() {
-		// TODO Auto-generated method stub
-		return null;
+		return logoURL;
 	}
 
 	@Override
 	public List<Player> getPlayers(int champID) {
-		// TODO Auto-generated method stub
-		return null;
+		return players;
 	}
 
 	@Override
 	public List<Award> getAwards() {
-		// TODO Auto-generated method stub
-		return null;
+		return awards;
 	}
 
 	@Override
 	public Award getAwardInChamp(int champID) {
-		// TODO Auto-generated method stub
-		return null;
+		return award;
 	}
 
 	@Override
 	public Player getCaptain(int champID) {
-		// TODO Auto-generated method stub
-		return null;
+		return captain;
 	}
 
 	@Override
 	public void setImageURL(String strURL) {
-		// TODO Auto-generated method stub
-		
+		URL temp;
+		try {
+			temp = new URL(strURL);
+			if(teamDataBase.setImage(strURL))
+				imageURL = temp;
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void removeImage() {
-		// TODO Auto-generated method stub
-		
+		if(teamDataBase.removeImage(teamID))
+			imageURL = null;
 	}
 
 	@Override
 	public void setLogo(String strURL) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void removeLogo() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void addPlayer(int playerID) {
-		// TODO Auto-generated method stub
-		
+	public boolean addPlayer(int playerID) {
+		return false;
 	}
 
 	@Override
-	public void removePlayer(int playerID) {
-		// TODO Auto-generated method stub
-		
+	public boolean removePlayer(int playerID) {
+		return false;
 	}
 
 	@Override
@@ -143,6 +164,6 @@ public class Team_Ruska implements Team{
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 
 }

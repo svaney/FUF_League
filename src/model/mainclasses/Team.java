@@ -13,6 +13,7 @@ import java.net.URL;
 
 public interface Team {
 	
+	public int getID();
 	public String getName();
 	public URL getImageURL();
 	public String getEmail();
@@ -30,8 +31,8 @@ public interface Team {
 	public void setLogo(String strURL);
 	public void removeLogo();
 	
-	public void addPlayer(int playerID);
-	public void removePlayer(int playerID);
+	public boolean addPlayer(int playerID);
+	public boolean removePlayer(int playerID);
 	
 	public void setEmail(String email);
 	public void removeEmail();
