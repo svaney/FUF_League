@@ -1,6 +1,7 @@
-/*
+/**
  * File: MatchInterface.java
- * Author: dlapi10
+ * type: Interface
+ * @author Data
  * -------------------------
  * ეს კლასი აღწერს ერთი კონკრეტული მატჩის ინტერფეისს.
  */
