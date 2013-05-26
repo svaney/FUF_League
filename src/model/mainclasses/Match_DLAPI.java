@@ -1,5 +1,6 @@
 /**
  * File: MatchData.java
+ * type: class
  * @author Data
  * -------------------------
  * ეს კლასი აღწერს ერთ კონკრეტულ მატჩს.
