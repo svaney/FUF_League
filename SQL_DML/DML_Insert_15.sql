@@ -110,3 +110,6 @@ INSERT INTO `fuf_league`.`team_players` (`team_ID`, `player_ID`, `championship_I
 -- ამატებს პირველი გუნდის კაპიტანს
 
 INSERT INTO `fuf_league`.`captains` (`team_ID`, `championship_ID`, `player_ID`) VALUES ('1', '1', '1');
+
+
+commit;
