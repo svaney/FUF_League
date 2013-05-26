@@ -1,12 +1,12 @@
-/*
+/**
  * File: MatchData.java
- * Author: dlapi10
+ * @author Data
  * -------------------------
  * ეს კლასი აღწერს ერთ კონკრეტულ მატჩს.
  */
 
 package model.mainclasses;
 
-public class Match_DLAPI {
-
+public class Match_DLAPI implements Match{
+	
 }
