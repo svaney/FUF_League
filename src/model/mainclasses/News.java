@@ -1,5 +1,5 @@
 package model.mainclasses;
 
-public class News {
+public interface News {
 
 }
