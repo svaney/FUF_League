@@ -15,6 +15,6 @@ public interface Penalties {
 	public ArrayList<Goal> getAllGoalsInSerie();
 	public int getMissedQuantity();
 	public int getTeamScore(int teamID);
-	public int getTeamMissedQuantity();
+	public int getTeamMissedQuantity(int teamID);
 	
 }

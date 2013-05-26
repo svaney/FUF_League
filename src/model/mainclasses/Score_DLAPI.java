@@ -13,9 +13,9 @@ public class Score_DLAPI implements Score{
 
 	/**
 	 * კონსტრუქტორი
-	 *  
+	 * @param matchID გადაეცემა მატჩის საიდენტიფიკაციო ნომერი
 	 */
-	public Score_DLAPI(){
+	public Score_DLAPI(int matchID){
 		
 	}
 	
