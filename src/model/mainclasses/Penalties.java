@@ -8,11 +8,12 @@
 package model.mainclasses;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface Penalties {
 	
-	public ArrayList<Goal> getTeamsSerie(int teamID);
-	public ArrayList<Goal> getAllGoalsInSerie();
+	public List<Goal> getTeamsSerie(int teamID);
+	public List<Goal> getAllGoalsInSerie();
 	public int getMissedQuantity();
 	public int getTeamScore(int teamID);
 	public int getTeamMissedQuantity(int teamID);
