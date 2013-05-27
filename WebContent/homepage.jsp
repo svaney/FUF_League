@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<%@ page import="model.mainclasses.Player_DEO" %>
 <!doctype html>
 <html>
 <head>

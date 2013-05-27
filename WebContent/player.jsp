@@ -1,20 +1,12 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<%@ page import="model.mainclasses.Player_DEO" %>
 <!doctype html>
+<!-- ეს არის სამუშაო ფაილია. მონამემები შეყვანილია ხელით და ჯერ არ ხდება რაიმე ფუნქციის გამოძახება -->
 <html>
 <head>
 <meta charset="utf-8">
-<%
-	//ტემპლეიტი, ცხადია, არ არის საბოლოო.
-	int playerID =  Integer.parseInt(request.getParameter("id"));
-	Player_DEO player = new Player_DEO(playerID);
-	String name = player.getFirstName();
-	String family = player.getLastName();
-	double max = 100;
-%>
     <link href="PlayerProfile.css" rel="stylesheet" />
     <link rel="icon" href="images/design/freeuniLogo.png" type="image/x-icon">
-<title><%=name+" "+family%></title>
+<title>დავით გოჩავა</title>
 <body>
 
 <div class="container">
@@ -54,21 +46,21 @@
     </aside>
   <!-- end .sidebar1 --></div>
   <article class="content">
-    <h1><%=name+" "+family%></h1>
+    <h1>დავით გოჩავა</h1>
   <section>
    	<article class="content">
 		<table><tr>
 			<td>
 				<table>
 					<tr>
-						<td><img alt="avatar_001" src="/images/avatar_001.png" height="320" width="240"></td>
+						<td><img alt="avatar_001" src="images/players/avatar_001.png" height="320" width="240"></td>
 					</tr>
 					<tr>
 						<td>
 							<table>
 								<tr>
 								   <td class="tableC12" width="42" style="height:31.5pt;width:32pt;">
-								   	<img alt="logo_001" src="/images/logo_001.png" height="42" width="42">
+								   	<img alt="logo_001" src="images/teams/logo_001.png" height="42" width="42">
 								   </td>
 								   <td class="tableC13" width="176" style="width:132pt;">მფრინავი ჰოლანდიელი</td>
 								</tr>
@@ -128,7 +120,7 @@
 	</article>
             <div>
             
-              <a href="homepage.jsp"><img src="images/team_000.png" width="60" height="60" />not implimented</a>
+              <a href="homepage.jsp"><img src="images/teams/team_001.png" width="60" height="60" />not implimented</a>
       </div>
 </section>
 </article>
