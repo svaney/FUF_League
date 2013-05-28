@@ -4,47 +4,13 @@
 <html>
 <head>
 <meta charset="utf-8">
-    <link href="PlayerProfile.css" rel="stylesheet" />
+    <link href="css/PlayerProfile.css" rel="stylesheet" />
     <link rel="icon" href="images/design/freeuniLogo.png" type="image/x-icon">
+	<script type='text/javascript' src='js/PlayerProfile.js'> </script>
+
 <title>დავით გოჩავა</title>
 <body>
-
 <div class="container">
-  <header>
-	<h1>ეს არის "ჰედერი", რომელიც ჩვენი საიტის ყველა გვერდისთვის საერთო იქნება, ამიტომ მე ხელს არ ვახლებ</h1>
-  	<br></br>
-  </header>
-  <div class="sidebar1">
-    <ul class="nav">
-      <li><a href="#"></a></li>
-      <li><a href="#">სეზონი 2011</a></li>
-      <li><a href="#">სეზონი 2012</a></li>
-      <li><a href="#">სეზონი 2013</a></li>
-    </ul>
-    <aside>
-      <p> ამ პანელს, ლბათ, გამოვიყენებთ რამეში</p>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-    </aside>
-  <!-- end .sidebar1 --></div>
   <article class="content">
     <h1>დავით გოჩავა</h1>
   <section>
@@ -118,17 +84,15 @@
 		</tr>
 		</table>
 	</article>
-            <div>
-            
-              <a href="homepage.jsp"><img src="images/teams/team_001.png" width="60" height="60" />not implimented</a>
-      </div>
 </section>
+  <section>
+<label id="skill" class="label" value=98>სისწრაფე</label>
+
+    <div class="progress">
+      <div class="progress-bar"></div>
+    </div>
+  </section>
 </article>
-  <aside>
-    <h4><%="not implimented"%></h4>
-    <p>აქ იქნება მოთამაშის გუნდის შემადგენლობა. აქედან შესაძლებელი უნდა იყოს გუნდელების პროფილში გადასვლა</p>
-    <p>[გასაკეთებელი]</p>      
-  </aside>
   <footer>
     <p>აქ ჩვეულებრივ საიტის შესახებ არის ინფორმაცია :შ ყველა გვერდისთვის საერთო იქნება</p>
     <address>
