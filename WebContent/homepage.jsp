@@ -6,6 +6,6 @@
 <title>თავისუფალი უნივერსიტეტი - ფეხბურთი</title>
 
 <body>
-<a href="player.jsp?id=1"> <input name="deo" type=button value="დეო გოჩავა"></input></a>
+<a href="PlayerProfileServlet?playerID=1"> <input name="deo" type=button value="დეო გოჩავა"></input></a>
 </body>
 </html>
