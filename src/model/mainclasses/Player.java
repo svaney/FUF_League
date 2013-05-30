@@ -18,6 +18,7 @@ public interface Player{
 	public String getFoot();
 	public String getFBPage();
 	public String getPosition();
+	public String getTeamName();
 
 	public int getSpeed();
 	public int getDribbling();
@@ -43,4 +44,7 @@ public interface Player{
 	public int getStrength();	
 	public int getPersonID();
 	public int getPlayerID();
+	public int getTeamID();
+	public boolean hasRatingBar();
+	public boolean hasNickname();
 }

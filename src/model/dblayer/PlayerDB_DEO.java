@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -34,14 +33,15 @@ public class PlayerDB_DEO implements PlayerDB{
 	 * ამ ატრიბუტების შესაბამისი მნიშვნელობები ბაზაში  არის INT ტიპის;
 	 * სია ემთხვევა Players ცხრილის სვეტების სახელებს;
 	 */
-	private static ArrayList<String> playerAtributes = new ArrayList<String>();
+	private static String[] playerAtributes = {"person_id", "rating", "speed", "dribbling", "heading", "club_loyalty", "diving", "durability", "shooting", "work_rate", "creativity", "fear_factor", "killer_instinct", "vision", "passing", "penalty", "tackling", "penalty_saving", "lidership", "reflexes", "shot_stopping", "mistake_factor", "positioning", "strength", "foot", "def_position", "team_id"};
+
 	
 	/**
 	 * playerParametres არის პერსონის პარამეტრები Person ცხრილიდან.
 	 * ამ პარამეტრების  შესაბამისი მნიშვნელობები ბაზაში არის STRING ან DATE ტიპის;
 	 * სია ემთხვევა Persons ცხრილის სვეტების სახელებს;
 	 */
-	private static ArrayList<String> playerParametres = new ArrayList<String>();
+	private static String[] playerParametres = {"firstname", "lastname", "nickname", "birth_date", "uni_start", "school", "degree", "uni_cur_course", "graduated", "weight", "height", "image_URL", "biography", "special_atr", "fb_page", "firstname", "lastname", "nickname", "birth_date", "uni_start", "school", "degree", "uni_cur_course", "graduated", "weight", "height", "image_URL", "biography", "special_atr", "fb_page"};
 	/**
 	 * მოთამაშის საფეხბურთო ატრიბუტების სია. (გასაღები:მოთამაშის ID; მნიშვნელობა:(გასაღები:ატრიბუტის სახელი; მნიშვნელობა ბაზაში));
 	 */
@@ -56,7 +56,6 @@ public class PlayerDB_DEO implements PlayerDB{
 	
 	public PlayerDB_DEO(){
 		initConncection();
-		fillColumnsTitle();
 	}
 
 	@Override
@@ -75,8 +74,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -85,14 +83,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "speed";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 	
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -101,14 +98,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "dribbling";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 	
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -117,14 +113,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "heading";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -133,14 +128,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "club_loyalty";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -149,14 +143,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "diving";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -165,14 +158,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "durability";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -181,14 +173,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "shooting";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -197,14 +188,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "work_rate";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -213,14 +203,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "creativity";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -229,14 +218,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "fear_factor";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -245,14 +233,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "killer_instinct";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -261,14 +248,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "passing";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -277,14 +263,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "penalty";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -293,14 +278,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "vision";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -309,14 +293,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "penalty_saving";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -325,14 +308,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "lidership";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -341,14 +323,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "reflexes";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 	
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -357,14 +338,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "tackling";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -373,14 +353,13 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "shot_stopping";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -389,14 +368,14 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "mistake_factor";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 	
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -405,14 +384,14 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "positioning";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 95;
 	 */
@@ -421,13 +400,12 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "strength";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 001;
 	 */
@@ -436,13 +414,27 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "person_id";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return -1;
+			return 0;
+		}
+		return (int) res;
+	}
+	
+	/**
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: 001;
+	 */
+	@Override
+	public int getTeamID(int playerID) {
+		String atribute = "team_id";
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return 0;
 		}
 		return (int) res;
 	}
 
 	/**
-	 * თუ დააბრუნა 0.0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0.0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 9.7;
 	 */
@@ -511,19 +503,20 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: III;
 	 */
 	@Override
 	public int getUniCurrentCourse(int playerID) {
 		String parameter = "uni_cur_course";
+		if(getParameter(parameter, playerID)==null) return 0;
 		return (int)getParameter(parameter, playerID);
 	}
 
 	/**
 	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
-	 * თუ დააბრუნა "უცნობია", მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა "უცნობია", მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: N;
 	 */
@@ -534,7 +527,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 	
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: ESM;
 	 */
@@ -545,7 +538,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 65;
 	 */
@@ -556,7 +549,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 185;
 	 */
@@ -567,7 +560,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 	
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: avatar_993.jpg;
 	 */
@@ -590,18 +583,18 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: მცველი;
 	 */
 	@Override
 	public String getPosition(int playerID) {
-		String atribute = "position";
+		String atribute = "def_position";
 		return (String)getAtribute(atribute, playerID);
 	}
 
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: მარჯვენა;
 	 */
@@ -612,7 +605,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 	
 	/**
-	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: მარჯვენა;
 	 */
@@ -623,7 +616,6 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 
 	/**
-	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 107;
 	 */
@@ -634,7 +626,7 @@ public class PlayerDB_DEO implements PlayerDB{
 			stmt = con.createStatement();
 		} catch (SQLException e) {
 			System.out.println("createStatement problem at PlayerDB_DEO.getPlayerID()");
-			return -1;
+			return 0;
 		}
 		ResultSet result = null;
 		String sql = "select "+col+" from "+PLAYERS+" where "+PLAYER_ID+"=\""+personID+"\";";
@@ -642,7 +634,7 @@ public class PlayerDB_DEO implements PlayerDB{
 			result = stmt.executeQuery(sql);
 		} catch (SQLException e) {
 			System.out.println("executeQuery problem at PlayerDB_DEO.getPlayerID(); error: "+sql);
-			return -1;
+			return 0;
 		}
 		try {
 			if(result.next()) {
@@ -656,7 +648,7 @@ public class PlayerDB_DEO implements PlayerDB{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
-		return -1;
+		return 0;
 	}
 
 	@Override
@@ -924,56 +916,6 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 	
 	/**
-	 * ავსებს ატრიბუტებისა და პარამეტრების  სიას; მოსახერხებელს ხდის resultSet-ში ინტერაციას
-	 * ატრიბუტების სია არის მოთამაშის საფეხბურთო ატრიბუტების სია. ამ ატრიბუტების შესაბამისი მნიშვნელობები int-ებია;
-	 * პარამეტრების სია არის პერსონის პარამეტრების სია. ამ პარამეტრების შესამაბისი მნიშვნელობები string-ებია;
-	 */
-	private static void fillColumnsTitle(){
-		playerAtributes.add("person_id");
-		playerAtributes.add("rating");
-		playerAtributes.add("speed");
-		playerAtributes.add("dribbling");
-		playerAtributes.add("heading");
-		playerAtributes.add("club_loyalty");
-		playerAtributes.add("diving");
-		playerAtributes.add("durability");
-		playerAtributes.add("shooting");
-		playerAtributes.add("work_rate");
-		playerAtributes.add("creativity");
-		playerAtributes.add("fear_factor");
-		playerAtributes.add("killer_instinct");
-		playerAtributes.add("vision");
-		playerAtributes.add("passing");
-		playerAtributes.add("penalty");
-		playerAtributes.add("tackling");		
-		playerAtributes.add("penalty_saving");
-		playerAtributes.add("lidership");
-		playerAtributes.add("reflexes");
-		playerAtributes.add("shot_stopping");
-		playerAtributes.add("mistake_factor");
-		playerAtributes.add("positioning");
-		playerAtributes.add("strength");
-		playerAtributes.add("foot");
-		playerAtributes.add("def_position");
-		
-		playerParametres.add("firstname");
-		playerParametres.add("lastname");
-		playerParametres.add("nickname");
-		playerParametres.add("birth_date");
-		playerParametres.add("uni_start");
-		playerParametres.add("school");
-		playerParametres.add("degree");
-		playerParametres.add("uni_cur_course");
-		playerParametres.add("graduated");
-		playerParametres.add("weight");
-		playerParametres.add("height");
-		playerParametres.add("image_URL");
-		playerParametres.add("biography");
-		playerParametres.add("special_atr");
-		playerParametres.add("fb_page");
-	}
-	
-	/**
 	 * ვაბრუნებინებ მეპს (გასაღები = ატრიბუტი (მაგ: სიჩქარე); მნიშვნელობა ობიექტი, რომელსაც მეთოდი დაკასტავს შესაბამისად);
 	 * თუ შენახული მნიშვნელობა არის 0, ეს იმას ნიშნავს, რომ ბაზაში მისი მნიშვნელობა null არის;
 	 * @param result
@@ -1078,8 +1020,6 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 	
 	public void reset(){
-		playerAtributes.clear();
-		playerParametres.clear();
 		playersAtributesList.clear();
 		playersParametresList.clear();
 	}

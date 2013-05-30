@@ -61,6 +61,7 @@ public interface PlayerDB{
 	
 	// შეიძლება არ დამჭირდეს
 	public int getPlayerID(int personID);
+	public int getTeamID(int playerID);
 	
 	//მოთამაშის ცხრილში ჩამატება
 	public void setSpeed(int playerID);

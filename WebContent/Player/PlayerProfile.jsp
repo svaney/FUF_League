@@ -33,11 +33,13 @@
 	<%@include file="PlayerCard.jsp" %>
     </section>
   </div>
-  <div>
-    <section>
- 	<%@include file="PlayerRating.jsp" %>
-    </section>
-    </div>
+	<%if(player.hasRatingBar()){ %>
+	 	<div>
+	    <section>
+	 	<%@include file="PlayerRating.jsp" %>
+	    </section>
+	    </div>
+ 	<%} %>
     <div>
         <section>
       <h2>ბიოგრაფია</h2>

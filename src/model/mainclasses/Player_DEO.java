@@ -20,7 +20,8 @@ public class Player_DEO implements Player {
 	private int weight = 0;
 	private int height = 0;
 	private String homePage = null;
-	private String image = "design/defaultAvatar.png";
+	private String image = "avatar_000.png";
+	private int teamID = 0;
 
 	//მოთამაშის ატრიბუტები
 	private Double rating = null;
@@ -69,7 +70,7 @@ public class Player_DEO implements Player {
 		homePage = player.getFBPage(playerID);
 		rating = player.getRating(playerID);
 		foot = player.getFoot(playerID);
-		if(player.getImageURL(playerID) != null)image = "players/"+player.getImageURL(playerID);
+		if(player.getImageURL(playerID) != null)image = player.getImageURL(playerID);
 		position = player.getPosition(playerID);
 		speed = player.getSpeed(playerID);
 		dribbling = player.getDribbling(playerID);
@@ -91,10 +92,11 @@ public class Player_DEO implements Player {
 		lidership = player.getLidership(playerID);
 		reflexes = player.getReflexes(playerID);
 		mistake_factor = player.getMistakeFactor(playerID);
-		positioning = player.getMistakeFactor(playerID);
+		positioning = player.getPositioning(playerID);
 		position = player.getPosition(playerID);
 		biography = player.getBio(playerID);
 		strength = player.getStrength(playerID);
+		teamID = player.getTeamID(playerID);
 		player.reset();
 	}
 
@@ -154,7 +156,7 @@ public class Player_DEO implements Player {
 	public String getUniCurrentCourse() {	
 		if(uniCourse!=0){
 			if(uniCourse==1) return(uniCourse+"-ლი კურსი;");
-			return("მე-"+uniCourse+" კურსი;");
+			return("მე-"+uniCourse+" კურსი");
 		}
 		return null;
 	}
@@ -361,5 +363,27 @@ public class Player_DEO implements Player {
 	public int getPlayerID() {
 		return id;
 	}
-
+	
+	@Override
+	public int getTeamID(){
+		return teamID;
+	}
+	
+	@Override
+	public String getTeamName(){
+		Team_Ruska team = new Team_Ruska(getTeamID());
+		return team.getName();
+	}
+	
+	@Override
+	public boolean hasRatingBar(){
+		if(speed == 0) return false;
+		return true;
+	}
+	
+	@Override
+	public boolean hasNickname(){
+		if(nickname == null) return false;
+		return true;
+	}
 }
