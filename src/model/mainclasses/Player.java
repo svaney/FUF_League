@@ -10,8 +10,8 @@ public interface Player{
 	public String getUniCurrentCourse();
 	public boolean isStudent();
 	public String getSchool();
-	public int getWeight();
-	public int getHeight();
+	public String getWeight();
+	public String getHeight();
 	public String getAvatar();
 	public String getBio();
 	public double getRating();
@@ -40,6 +40,7 @@ public interface Player{
 	public int getShotStoping();
 	public int getMistakeFactor();
 	public int getPositioning();
+	public int getStrength();	
 	public int getPersonID();
 	public int getPlayerID();
 }

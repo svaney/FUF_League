@@ -39,6 +39,7 @@ public interface PlayerDB{
 	public int getShotStoping(int playerID);
 	public int getMistakeFactor(int playerID);
 	public int getPositioning(int playerID);
+	public int getStrength(int playerID);
 	public String getPosition(int playerID);
 	public String getFoot(int playerID);
 	public String getBio(int playerID);

@@ -47,6 +47,7 @@ public class Player_DEO implements Player {
 	private int reflexes = 0;
 	private int mistake_factor = 0;
 	private int positioning = 0;
+	private int strength = 0;
 	private String biography = null;
 	//იყენებს თარიღიდან თვის სახელის ამოსაღებად.
 	private static final String[] month = {"იანვარი","თებერვალი","მარტი","აპრილი","მაისი","ივნისი","ივლისი","აგვისტო","სექტემბერი","ოქტომბერი","ნოემბერი","დეკემბერი"};
@@ -93,6 +94,7 @@ public class Player_DEO implements Player {
 		positioning = player.getMistakeFactor(playerID);
 		position = player.getPosition(playerID);
 		biography = player.getBio(playerID);
+		strength = player.getStrength(playerID);
 		player.reset();
 	}
 
@@ -182,8 +184,8 @@ public class Player_DEO implements Player {
 	 * ერთეული: კგ (კილოგრამი)
 	 */
 	@Override
-	public int getWeight() {
-		return weight;
+	public String getWeight() {
+		return weight+" კგ.";
 	}
 
 	/**
@@ -191,8 +193,8 @@ public class Player_DEO implements Player {
 	 * ერთეული: სმ (სანტიმეტრი)
 	 */
 	@Override
-	public int getHeight() {
-		return height;
+	public String getHeight() {
+		return height+" სმ.";
 	}
 
 	/**
@@ -344,6 +346,11 @@ public class Player_DEO implements Player {
 	public int getPositioning() {
 		return positioning;
 	}
+	
+	@Override
+	public int getStrength() {
+		return strength;
+	}
 
 	@Override
 	public int getPersonID() {
@@ -354,4 +361,5 @@ public class Player_DEO implements Player {
 	public int getPlayerID() {
 		return id;
 	}
+
 }

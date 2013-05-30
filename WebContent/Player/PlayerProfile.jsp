@@ -7,7 +7,7 @@
 <meta charset="utf-8">
     <link rel="icon" href="images/design/freeuniLogo.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/PlayerProfile.css" />
-	<%Player_DEO player = new Player_DEO(1);%> <!-- სერვლეტი უნდა გადმოსცემდეს ამას -->
+	<%Player_DEO player = (Player_DEO) request.getAttribute(request.getParameter("playerID"));%> <!-- სერვლეტი უნდა გადმოსცემდეს ამას -->
 <head>
 <meta charset="utf-8">
 <title><%=player.getFirstName()+" "+player.getLastName()%></title>

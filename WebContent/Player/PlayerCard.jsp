@@ -2,8 +2,8 @@
 <%@ page import="model.mainclasses.Player_DEO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<%Player_DEO card = (Player_DEO) request.getAttribute(request.getParameter("playerID"));%>
 <body>
-<!-- <%//Player_DEO player = new Player_DEO(1);%>  --><!-- სერვლეტი უნდა გადმოსცემდეს ამას -->
 		<table>
  			<tr>
  				<td>
@@ -19,39 +19,39 @@
      <table class="excel1">
         <tr style="height:18.75pt;">
           <td class="excel2" width="162" style="width:122pt;">სახელი:</td>
-          <td class="excel4" width="125" style="width:94pt;"><%=player.getFirstName()+" "+player.getLastName()%></td>
+          <td class="excel4" width="125" style="width:94pt;"><%=card.getFirstName()+" "+card.getLastName()%></td>
         </tr>
         <tr style="height:18.75pt;">
           <td class="excel2" style="height:18.75pt;">მეტსახელი:</td>
-          <td class="excel3"><%=player.getNickname()%></td>
+          <td class="excel3"><%=card.getNickname()%></td>
         </tr>
         <tr style="height:18.75pt;">
           <td class="excel2" style="height:18.75pt;">დაბადების თარიღი:</td>
-          <td class="excel3" align="right"><%=player.getBirthDate()%></td>
+          <td class="excel3" align="right"><%=card.getBirthDate()%></td>
         </tr>
         <tr style="height:18.75pt;">
           <td class="excel2" style="height:18.75pt;">სკოლა:</td>
-          <td class="excel3"><%=player.getSchool()%></td>
+          <td class="excel3"><%=card.getSchool()%></td>
         </tr>
         <tr style="height:18.75pt;">
           <td class="excel2" style="height:18.75pt;">კურსი:</td>
-          <td class="excel3" align="right"><%=player.getUniCurrentCourse()%></td>
+          <td class="excel3" align="right"><%=card.getUniCurrentCourse()%></td>
         </tr>
         <tr style="height:18.75pt;">
           <td class="excel2" style="height:18.75pt;">ჩაბარების წელი:</td>
-          <td class="excel3" align="right"><%=player.getUniStartYear()%></td>
+          <td class="excel3" align="right"><%=card.getUniStartYear()%></td>
         </tr>
         <tr style="height:18.75pt;">
           <td class="excel3" style="height:18.75pt;">სიმაღლე:</td>
-          <td class="excel2" align="right"><%=player.getHeight()%></td>
+          <td class="excel2" align="right"><%=card.getHeight()%></td>
         </tr>
         <tr style="height:18.75pt;">
           <td class="excel2" style="height:18.75pt;">წონა:</td>
-          <td class="excel3" align="right"><%=player.getWeight()%></td>
+          <td class="excel3" align="right"><%=card.getWeight()%></td>
         </tr>
         <tr style="height:15.75pt;">
           <td class="excel2" style="height:15.75pt;">პოზიცია:</td>
-          <td class="excel3"><%=player.getPosition()%></td>
+          <td class="excel3"><%=card.getPosition()%></td>
         </tr>
         <tr style="height:15.75pt;">
           <td class="excel2" style="height:15.75pt;">ნომერი</td>

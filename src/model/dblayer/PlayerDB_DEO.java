@@ -412,6 +412,22 @@ public class PlayerDB_DEO implements PlayerDB{
 
 	/**
 	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
+	 * თუ დააბრუნა 0, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null;
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: 95;
+	 */
+	@Override
+	public int getStrength(int playerID) {
+		String atribute = "strength";
+		Object res = getAtribute(atribute,playerID);
+		if(res == null){
+			return -1;
+		}
+		return (int) res;
+	}
+
+	/**
+	 * თუ დააბრუნა -1, მაშინ მითითებული მოთამაშე არ არსებობს (შესაბამისად, არც ეს ატრიბუტი);
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 001;
 	 */
@@ -936,6 +952,7 @@ public class PlayerDB_DEO implements PlayerDB{
 		playerAtributes.add("shot_stopping");
 		playerAtributes.add("mistake_factor");
 		playerAtributes.add("positioning");
+		playerAtributes.add("strength");
 		playerAtributes.add("foot");
 		playerAtributes.add("def_position");
 		
