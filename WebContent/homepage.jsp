@@ -7,5 +7,7 @@
 
 <body>
 <a href="PlayerProfileServlet?playerID=1"> <input name="deo" type=button value="დეო გოჩავა"></input></a>
+<a href="PlayerProfileServlet?playerID=2"> <input name="Luka" type=button value="ლუკა თურქაძე"></input></a>
+
 </body>
 </html>

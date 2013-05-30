@@ -8,7 +8,7 @@
  			<tr>
  				<td>
      <table class="excel1">
-        <tr><img src="images/players/avatar_001.png" height="320" width="240"/></tr>
+        <tr><img src="images/<%=card.getAvatar() %>" height="320" width="240"/></tr>
         <tr style="height:15.75pt;">
           <td style="height:15.75pt;"><img alt="logo_001" src="images/teams/logo_001.png" height="42" width="42"></td>
           <td class="excel5">მფრინავი ჰოლანდიელი</td>
