@@ -7,14 +7,24 @@
 
 package model.mainclasses;
 
+import model.dblayer.MatchDB;
+import model.dblayer.MatchDB_DLAPI;
+
 public class Score_DLAPI implements Score{
+	
+	// DataBase instance 
+	private MatchDB mtBase;
+		
+	// სხვა private ცვლადები
+	private int matchID;
 
 	/**
 	 * კონსტრუქტორი
 	 * @param matchID გადაეცემა მატჩის საიდენტიფიკაციო ნომერი
 	 */
 	public Score_DLAPI(int matchID){
-		
+		mtBase = new MatchDB_DLAPI();
+		this.matchID = matchID;
 	}
 	
 	/**
@@ -23,19 +33,23 @@ public class Score_DLAPI implements Score{
 	 */
 	@Override
 	public boolean hasPenaltySeries() {
-		// TODO Auto-generated method stub
-		return false;
+		char ans = mtBase.hasPenalties(matchID);
+		if(ans == 'Y')
+			return true;
+		else
+			return false;
 	}
 
 	/**
-	 * აბრუნებს ამ მონაწილე გუნდებიდან ერთ-ერთის შედეგს პენლების სერიაში
+	 * აბრუნებს პენლების სერიას
 	 * @return  Penalties კლასის ობიექტს თუკი იყო პენლები, თუ არადა null
-	 * @param taemID გუნდის ID, რათა გაარკვიოს რომელი გუნდისთვის სურს დაბრუნება 
 	 */
 	@Override
-	public Penalties getPenaltiesForTeam(int teamID) {
-		// TODO Auto-generated method stub
-		return null;
+	public Penalties getPenaltiesForTeam() {
+		if(mtBase.wasPenaltiesSerie(matchID))
+			return new Penalties_DLAPI(matchID);
+		else 
+			return null;
 	}
 
 	/**
@@ -45,8 +59,7 @@ public class Score_DLAPI implements Score{
 	 */
 	@Override
 	public int getScoreForTeam(int teamID) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mtBase.getScoreForTeamForFullTime(matchID,teamID);
 	}
 
 	/**
@@ -56,18 +69,7 @@ public class Score_DLAPI implements Score{
 	 */
 	@Override
 	public Goal getNthGoal(int Nth) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * გვეუბნება რამდენი გოლი გავიდა ამ თამაშის ძირითად დროში (დამატებითი პენლების გარდა)
-	 * @return int ტიპის რაოდენობა ძირითად დროში გატანილი გოლების
-	 */
-	@Override
-	public int goalQuantty() {
-		// TODO Auto-generated method stub
-		return 0;
+		return new Goal_kire(mtBase.getGoalNthInRow(matchID,Nth));
 	}
 
 	/**
@@ -76,9 +78,8 @@ public class Score_DLAPI implements Score{
 	 * @return რამდენი გოლი გაიტანა დამატებით დროში.
 	 */
 	@Override
-	public int getExtraTimeGoalForTeam(int TeamID) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getExtraTimeGoalForTeam(int teamID) {
+		return mtBase.getExtraTimeGoalForTeam(teamID,matchID);
 	}
 
 	/**
@@ -88,8 +89,7 @@ public class Score_DLAPI implements Score{
 	 */
 	@Override
 	public int getScoreForTeamFirstHalf(int teamID) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mtBase.getScoreForTeamFirstHalf(teamID,matchID);
 	}
 	
 }

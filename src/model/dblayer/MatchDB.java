@@ -16,6 +16,8 @@ package model.dblayer;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.mainclasses.Goal;
+
 public interface MatchDB {
 
 	/**
@@ -93,9 +95,50 @@ public interface MatchDB {
 	 */
 	public String getReview(int matchID);
 
+	/**
+	 * აბრუნებს ჰქონდა თუ არა მატჩს პენლების სერია
+	 * @param  matchID მატჩის იდენტიფიკატორი
+	 * @return char ტიპის ობიექტი - 'Y'(YES) ან  'N'(NO)
+	 */
+	public char hasPenalties(int matchID);
 
-	
-	
-	
-	
+	/**
+	 * აბრუნებს იყო თუ არა პენლების სერია
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @return true თუ იყო, false თუ არ იყო
+	 */
+	public boolean wasPenaltiesSerie(int matchID);
+
+	/**
+	 * აბრუნებს კონკრეტულ მატჩზე გუნდის გატანილ გოლებს ძირითად დროში
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @return რაოდენობა ძირითად დროში გატანილი გოლების
+	 */
+	public int getScoreForTeamForFullTime(int matchID, int teamID);
+
+	/**
+	 * აბრუნებს იმ გოლის იდენტიფიკატორს, რომელიც გავიგე მე-N მატჩის განმავლობაში
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param nth მერამდენე
+	 * @return გოლის იდენტიფიკატორი
+	 */
+	public int getGoalNthInRow(int matchID, int Nth);
+
+	/**
+	 * აბრუნებს ამ გუნდის მიერ გატანილი გოლების რაოდენობას დამატებით დროში
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @return გოლების რაოდენობა
+	 */
+	public int getExtraTimeGoalForTeam(int teamID, int matchID);
+
+	/**
+	 * აბრუნებს გუნდის მიერ მატჩში - პირველ ტაიმში გატანილ გოლების რაოდენობას
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @return გოლების რაოდენობა
+	 */
+	public int getScoreForTeamFirstHalf(int teamID, int matchID);
+
 }

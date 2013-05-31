@@ -17,11 +17,10 @@ public interface Score {
 	public boolean hasPenaltySeries();
 	
 	/**
-	 * აბრუნებს ამ მონაწილე გუნდებიდან ერთ-ერთის შედეგს პენლების სერიაში
+	 * აბრუნებს პენლების სერიას
 	 * @return  Penalties კლასის ობიექტს თუკი იყო პენლები, თუ არადა null
-	 * @param taemID გუნდის ID, რათა გაარკვიოს რომელი გუნდისთვის სურს დაბრუნება 
 	 */
-	public Penalties getPenaltiesForTeam(int teamID);
+	public Penalties getPenaltiesForTeam();
 	
 	/**
 	 * ითვლის რამდენი გოლი გაიტანა გუნდმა (მხოლოდ ძირითად დროში)
@@ -45,16 +44,10 @@ public interface Score {
 	public Goal getNthGoal(int Nth);
 	
 	/**
-	 * გვეუბნება რამდენი გოლი გავიდა ამ თამაშის ძირითად დროში (დამატებითი პენლების გარდა)
-	 * @return int ტიპის რაოდენობა ძირითად დროში გატანილი გოლების
-	 */
-	public int goalQuantty();
-	
-	/**
 	 * გვეუბნება გუნდმა რამდენი გოლი გაიტანა დამატებით დროში. თუკი ასეთი დრო არსებობდა.
 	 * @param TeamID გუნდის ID რომ გაირკვეს რომელ გუნდზეა საუბარი
 	 * @return რამდენი გოლი გაიტანა დამატებით დროში.
 	 */
-	public int getExtraTimeGoalForTeam(int TeamID);
+	public int getExtraTimeGoalForTeam(int teamID);
 	
 }
