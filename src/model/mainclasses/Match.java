@@ -38,7 +38,7 @@ public interface Match {
 	/**
 	 * გვიბრუნებს კონკრეტული გუნდის განაცხადს
 	 * @param teamID გუნდის საიდენტიფიკაციო ID
-	 * @return გვიბრუნებს List ტიპის ობიექტს, რომელშიც წარმოდგენელია ფეხბურთელების განაცხადი
+	 * @return გვიბრუნებს List ტიპის ობიექტს, რომელშიც წარმოდგენელია ფეხბურთელების განაცხადი Player ობიექტების სახით
 	 */
 	public List<Player> getLineUp(int teamID);
 	
@@ -68,5 +68,18 @@ public interface Match {
 	 * @return List სადაც წერია Player-ები.
 	 */
 	public List<Player> getTeamReds(int taemID);
+	
+	/**
+	 * აბრუნებს მატჩის რევიუს
+	 * @return String ტიპის ცვლადი
+	 */
+	//TODO გასარკვევია ქართულ ასოებს სტრინგი როგორ შვრება
+	public String getMatchReview();
+	
+	/**
+	 * აბრუნებს ჩემპიონატის ID-ს
+	 * @return int ტიპის ID
+	 */
+	public int getChampionship();
 	
 }

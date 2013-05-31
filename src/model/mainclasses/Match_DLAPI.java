@@ -8,18 +8,34 @@
 
 package model.mainclasses;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import model.dblayer.MatchDB;
+import model.dblayer.MatchDB_DLAPI;
 
 public class Match_DLAPI implements Match{
 
+	// DataBase instance 
+	private MatchDB mtBase;
+	private int matchID;
+	
+	/**
+	 * კონსტრუქტორი
+	 * @param match_id
+	 */
+	public Match_DLAPI(int matchID){
+		mtBase = new MatchDB_DLAPI();
+		this.matchID = matchID;
+	}
+	
 	/**
 	 * გვიბრუნებს თუ რომელი რაუნდის მატჩია
 	 * @return String ტიპის მნიშვნელობა, მაგალითად Final, semi-final და ა.შ.
 	 */
 	@Override
 	public String getMatchRound() {
-		// TODO Auto-generated method stub
-		return null;
+		return mtBase.getStageOfMatch(matchID);
 	}
 
 	/**
@@ -28,8 +44,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public boolean hasExtraTime() {
-		// TODO Auto-generated method stub
-		return false;
+		return (mtBase.getExtraTime(matchID) > 0);
 	}
 	
 	/**
@@ -38,8 +53,8 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public Score getScore() {
-		// TODO Auto-generated method stub
-		return null;
+		Score matchScore = new Score_DLAPI(matchID);
+		return matchScore;
 	}
 
 	/**
@@ -48,19 +63,24 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public String getDate() {
-		// TODO Auto-generated method stub
-		return null;
+		String date = mtBase.getMatchDate(matchID);
+		//TODO date - modifications
+		return date;
 	}
 
 	/**
 	 * გვიბრუნებს კონკრეტული გუნდის განაცხადს
 	 * @param teamID გუნდის საიდენტიფიკაციო ID
-	 * @return გვიბრუნებს List ტიპის ობიექტს, რომელშიც წარმოდგენელია ფეხბურთელების განაცხადი
+	 * @return გვიბრუნებს List ტიპის ობიექტს, რომელშიც წარმოდგენელია ფეხბურთელების განაცხადი Player_DEO ობიექტების სახით
 	 */
 	@Override
 	public List<Player> getLineUp(int teamID) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Integer> players = (ArrayList<Integer>) mtBase.getMatchPlayersForTeam(matchID,teamID);
+		ArrayList<Player> result = new ArrayList<Player>();
+		for(int i=0;i<players.size();i++){
+			result.add(new Player_DEO(players.get(i)));
+		}
+		return result;
 	}
 
 	/**
@@ -69,8 +89,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public int[] getTeamIDs() {
-		// TODO Auto-generated method stub
-		return null;
+		return mtBase.getMatchTeams(matchID);
 	}
 	
 	/**
@@ -80,8 +99,24 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public Player getCaptainForTeam(int teamID) {
-		// TODO Auto-generated method stub
-		return null;
+		int captainID = mtBase.getCapForMatchTeam(teamID,matchID);
+		Player result;
+		if(captainID == -1){
+			result = new Player_DEO(captainID);
+		} else {
+			Team team = new Team_Ruska(teamID);
+			result = team.getCaptain(getChampionship());
+		}
+		return result;
+	}
+
+	/**
+	 * აბრუნებს ჩემპიონატის ID-ს
+	 * @return int ტიპის ID
+	 */
+	@Override
+	public int getChampionship() {
+		return mtBase.getChampionshipID(matchID);
 	}
 
 	/**
@@ -102,6 +137,16 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public List<Player> getTeamReds(int taemID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * აბრუნებს მატჩის რევიუს
+	 * @return String ტიპის ცვლადი
+	 */
+	@Override
+	public String getMatchReview() {
 		// TODO Auto-generated method stub
 		return null;
 	}
