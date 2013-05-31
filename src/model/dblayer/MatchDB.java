@@ -13,6 +13,7 @@
 
 package model.dblayer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface MatchDB {
@@ -68,6 +69,29 @@ public interface MatchDB {
 	 * @return int ტიპის იდენტიფიკატორი
 	 */
 	public int getChampionshipID(int matchID);
+
+	/**
+	 * კონკრეტულ მატჩზე გუნდის რომელმა წევრებმა მიიღეს ყვითელი ბარათები
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param teamID int ტიპის მაიდენტიფიცირებელი - გუნდის
+	 * @return List ტიპის ობიექტი სადაც წერია მოთამაშეების ID-ები
+	 */
+	public List<Integer> getYellowsForTeamInMatch(int matchID, int teamID);
+
+	/**
+	 * კონკრეტულ მატჩზე გუნდის რომელმა წევრებმა მიიღეს წითელი ბარათები
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param teamID int ტიპის მაიდენტიფიცირებელი - გუნდის
+	 * @return List ტიპის ობიექტი სადაც წერია მოთამაშეების ID-ები
+	 */
+	public List<Integer> getRedsForTeamInMatch(int matchID, int teamID);
+
+	/**
+	 * აბრუნებს მატჩზე დაწერილ რევიუს
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @return სტრინგ ტიპის ობიექტი სადაც წერია ტექსტი.
+	 */
+	public String getReview(int matchID);
 
 
 	

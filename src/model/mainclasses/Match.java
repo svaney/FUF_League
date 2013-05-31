@@ -60,14 +60,14 @@ public interface Match {
 	 * @param taemID გუნდის ID ვისი ყვითლიანებიც გვაინტერესებს
 	 * @return List სადაც წერია Player-ები.
 	 */
-	public List<Player> getTeamYellows(int taemID);
+	public List<Player> getTeamYellows(int teamID);
 	
 	/**
 	 * აბრუნებს გუნდის მიერ მიღებული წითლების List-ს, სადაც ხალხი წერია, ვინც წითლები მიიღო
 	 * @param taemID გუნდის ID ვისი წითლიანებიც გვაინტერესებს
 	 * @return List სადაც წერია Player-ები.
 	 */
-	public List<Player> getTeamReds(int taemID);
+	public List<Player> getTeamReds(int teamID);
 	
 	/**
 	 * აბრუნებს მატჩის რევიუს

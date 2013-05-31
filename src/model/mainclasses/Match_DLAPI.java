@@ -18,6 +18,8 @@ public class Match_DLAPI implements Match{
 
 	// DataBase instance 
 	private MatchDB mtBase;
+	
+	// სხვა private ცვლადები
 	private int matchID;
 	
 	/**
@@ -76,11 +78,7 @@ public class Match_DLAPI implements Match{
 	@Override
 	public List<Player> getLineUp(int teamID) {
 		ArrayList<Integer> players = (ArrayList<Integer>) mtBase.getMatchPlayersForTeam(matchID,teamID);
-		ArrayList<Player> result = new ArrayList<Player>();
-		for(int i=0;i<players.size();i++){
-			result.add(new Player_DEO(players.get(i)));
-		}
-		return result;
+		return setPlayersFromIDs(players);
 	}
 
 	/**
@@ -125,10 +123,24 @@ public class Match_DLAPI implements Match{
 	 * @return List სადაც წერია Player-ები.
 	 */
 	@Override
-	public List<Player> getTeamYellows(int taemID) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Player> getTeamYellows(int teamID) {
+		ArrayList<Integer> playerIDs = (ArrayList<Integer>) mtBase.getYellowsForTeamInMatch(matchID,teamID);
+		return setPlayersFromIDs(playerIDs);
 	}
+	
+	/**
+	 * გადაცემული ID-ებიდან, ქმნის Player ობიექტების ArrayList-ს 
+	 * @param players ArrayList<Integer> ID-ების ჩამონათვალი
+	 * @return აბრუნებს ArrayList<Player> ობიექტს
+	 */
+	private ArrayList<Player> setPlayersFromIDs(ArrayList<Integer> players){
+		ArrayList<Player> result = new ArrayList<Player>();
+		for(int i=0;i<players.size();i++){
+			result.add(new Player_DEO(players.get(i)));
+		}
+		return result;
+	}
+	
 	
 	/**
 	 * აბრუნებს გუნდის მიერ მიღებული წითლების List-ს, სადაც ხალხი წერია, ვინც წითლები მიიღო
@@ -136,9 +148,9 @@ public class Match_DLAPI implements Match{
 	 * @return List სადაც წერია Player-ები.
 	 */
 	@Override
-	public List<Player> getTeamReds(int taemID) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Player> getTeamReds(int teamID) {
+		ArrayList<Integer> playerIDs = (ArrayList<Integer>) mtBase.getRedsForTeamInMatch(matchID,teamID);
+		return setPlayersFromIDs(playerIDs);
 	}
 
 	/**
@@ -147,8 +159,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public String getMatchReview() {
-		// TODO Auto-generated method stub
-		return null;
+		return mtBase.getReview(matchID);
 	}
 	
 }
