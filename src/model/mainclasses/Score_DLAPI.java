@@ -28,6 +28,16 @@ public class Score_DLAPI implements Score{
 	}
 	
 	/**
+	 * კონსტრუქტორი, რომელსაც ასევე გადაეცემა ბაზასთან კონტაქტორის ობიექტი
+	 * @param matchID მატცის იდენტიფიკატორი
+	 * @param mtBase ბაზასთან კონტაქტორის ობიექტი
+	 */
+	public Score_DLAPI(int matchID, MatchDB mtBase){
+		this.mtBase = mtBase;
+		this.matchID = matchID;
+	}
+	
+	/**
 	 * აბრუნებს ამ თამაშის Score-ში არის თუ არა პენლების სერია გათვალისწინებული
 	 * @return true - თუკი იყო პენლების სერია, false წინააღმდეგ შემთხვევაში
 	 */
@@ -47,7 +57,7 @@ public class Score_DLAPI implements Score{
 	@Override
 	public Penalties getPenaltiesForTeam() {
 		if(mtBase.wasPenaltiesSerie(matchID))
-			return new Penalties_DLAPI(matchID);
+			return new Penalties_DLAPI(matchID,mtBase);
 		else 
 			return null;
 	}

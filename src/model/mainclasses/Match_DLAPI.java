@@ -55,7 +55,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public Score getScore() {
-		Score matchScore = new Score_DLAPI(matchID);
+		Score matchScore = new Score_DLAPI(matchID,mtBase);
 		return matchScore;
 	}
 

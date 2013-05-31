@@ -9,46 +9,44 @@ package model.mainclasses;
 
 import java.util.ArrayList;
 
+import model.dblayer.MatchDB;
+import model.dblayer.MatchDB_DLAPI;
+
 public class Penalties_DLAPI implements Penalties{
 
+	// DataBase instance 
+	private MatchDB mtBase;
+			
+	// სხვა private ცვლადები
+	private int matchID;
+	
 	/**
 	 * კონსტრუტორი
 	 * @param matchID გადაეცემა მატჩის საიდენტიფიკაციო პარამეტრი
 	 */
 	public Penalties_DLAPI(int matchID){
-		
+		mtBase = new MatchDB_DLAPI();
+		this.matchID = matchID;
+	}
+	
+	/**
+	 * კონსტრუქტორი, რომელსაც ასევე გადაეცემა ბაზასთან კონტაქტორის ობიექტი
+	 * @param matchID მატცის იდენტიფიკატორი
+	 * @param mtBase ბაზასთან კონტაქტორის ობიექტი
+	 */
+	public Penalties_DLAPI(int matchID, MatchDB mtBase){
+		this.mtBase = mtBase;
+		this.matchID = matchID;
 	}
 	
 	/**
 	 * აბრუნებს პენლების სერიის შედეგს ერთი გუნდისთვის 
 	 * @param teamID გუნდის საიდენტიფიკაციო ID
-	 * @return ArrayList რომელშიც არის Goal კლასის ობიექტები (იმდენი, რამდენიც დაარტყეს) თუ პენალი
-	 * ვერ გაიტანეს, მაშინ იქნება სპეციალური Goal კლასის ობიექტი, რომელსაც isGoalMissedPenalty იქნება true
+	 * @return ArrayList რომელშიც არის PenaltyShoot კლასის ობიექტები 
 	 */
 	@Override
-	public ArrayList<Goal> getTeamsSerie(int teamID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * აბრუნებს ყველა გოლს, ნებისმიერი გუნდის გატანილს, ამ ორი გუნდიდან
-	 * @return ArrayList რომელშიც თანმიმდევრულად ყრია Goal ობიექტები, რომლებიც გაიტანეს.
-	 */
-	@Override
-	public ArrayList<Goal> getAllGoalsInSerie() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * გვეუბნება რამდენი აცდენა იყო პენლების სერიაში
-	 * @return int ტიპის რაოდენობა, რამდენჯერ ააცილეს
-	 */
-	@Override
-	public int getMissedQuantity() {
-		// TODO Auto-generated method stub
-		return 0;
+	public ArrayList<PenaltyShoot> getTeamsSerie(int teamID) {
+		return (ArrayList<PenaltyShoot>) mtBase.getTeamPenalties(teamID,matchID);
 	}
 
 	/**
@@ -58,8 +56,7 @@ public class Penalties_DLAPI implements Penalties{
 	 */
 	@Override
 	public int getTeamScore(int teamID) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mtBase.getTeamsScoresInPenalties(teamID,matchID);
 	}
 
 	/**
@@ -69,8 +66,7 @@ public class Penalties_DLAPI implements Penalties{
 	 */
 	@Override
 	public int getTeamMissedQuantity(int teamID) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mtBase.getTeamsMissedInPenalties(teamID,matchID);
 	}
 
 }

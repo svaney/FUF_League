@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.mainclasses.Goal;
+import model.mainclasses.PenaltyShoot;
 
 public interface MatchDB {
 
@@ -140,5 +141,30 @@ public interface MatchDB {
 	 * @return გოლების რაოდენობა
 	 */
 	public int getScoreForTeamFirstHalf(int teamID, int matchID);
+
+	/**
+	 * აბრუნებს გუნდის მიერ პენლების სერიის შედეგს
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @return List სადაც წერია PenaltyShoot ტიპის ობიექტები.
+	 */
+	public List<PenaltyShoot> getTeamPenalties(int teamID, int matchID);
+
+	/**
+	 * აბრუნებს რამდენი გაიტანა გუნდმა პენლების სერიაში
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @return რაოდენობა
+	 */
+	public int getTeamsScoresInPenalties(int teamID, int matchID);
+
+	/**
+	 * აბრუნებს რამდენი ვერ გაიტანა გუნდმა პენლების სერიაში
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @return რაოდენობა
+	 */
+	public int getTeamsMissedInPenalties(int teamID, int matchID);
+
 
 }
