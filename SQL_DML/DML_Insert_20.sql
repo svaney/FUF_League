@@ -45,7 +45,7 @@ INSERT INTO `fuf_league`.`teams` (`name`) VALUES ('ძველი სკოლ�
 
 
 -- ლუკა თურქაძე
-INSERT INTO `fuf_league`.`persons` (`firstname`, `lastname`, `nickname`, `birth_date`, `uni_start`, `uni_cur_course`, `graduated`, `school`, `degree`, `weight`, `height`, `fb_Page`, `special_atr`) VALUES ('ლუკა', 'თურქაძე', 'ფეხში', '1994-12-20', 2012, '1', 'LAW', 'BBA', '69', '171', 'https://www.facebook.com/luka.turqadze', 'ბურთს ითხოვს ფეხში');
+INSERT INTO `fuf_league`.`persons` (`firstname`, `lastname`, `nickname`, `birth_date`, `uni_start`, `uni_cur_course`, `school`, `degree`, `weight`, `height`, `fb_Page`, `special_atr`) VALUES ('ლუკა', 'თურქაძე', 'ფეხში', '1994-12-20', 2012, '1', 'LAW', 'BBA', '69', '171', 'https://www.facebook.com/luka.turqadze', 'ბურთს ითხოვს ფეხში');
 
 INSERT INTO `fuf_league`.`players` (`person_id`, `def_position`, `foot`, `team_id`) VALUES ('2', 'თავდამსხმელი/შემ.ნახევარმვცელი', 'L', '3');
 
