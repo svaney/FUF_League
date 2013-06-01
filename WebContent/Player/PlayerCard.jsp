@@ -30,7 +30,7 @@
         <%} %>
         <tr style="height:18.75pt;">
           <td class="excel2" style="height:18.75pt;">დაბადების თარიღი:</td>
-          <td class="excel3" align="right"><%=card.getBirthDate()%></td>
+          <td class="excel3" align="right"><%=card.getBirthDate()%> (<%=card.getAge()%> წლის)</td>
         </tr>
         <tr style="height:18.75pt;">
           <td class="excel2" style="height:18.75pt;">სკოლა:</td>

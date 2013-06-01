@@ -1,6 +1,7 @@
 package model.mainclasses;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import model.dblayer.PlayerDB_DEO;
 
@@ -135,6 +136,22 @@ public class Player_DEO implements Player {
 			return(""+birthDate.getDate()+" "+month[birthDate.getMonth()]+", "+(1900+birthDate.getYear()));
 		}
 		return null;
+	}
+	
+	/**
+	 * აბრუნებს მოთამაშის ასაკს
+	 * @return
+	 */
+	@Override
+	public int getAge(){
+		SimpleDateFormat sdfY = new SimpleDateFormat("yyyy");
+		SimpleDateFormat sdfM = new SimpleDateFormat("MM");
+		SimpleDateFormat sdfD = new SimpleDateFormat("dd");
+		Date now = new Date();
+		int age = Integer.parseInt(sdfY.format(now))-Integer.parseInt(sdfY.format(birthDate));
+		if(Integer.parseInt(sdfM.format(now))<Integer.parseInt(sdfM.format(birthDate))) return (age-1);
+		if((Integer.parseInt(sdfM.format(now))==Integer.parseInt(sdfM.format(birthDate)))&(Integer.parseInt(sdfD.format(now))>Integer.parseInt(sdfD.format(birthDate)))) return 12;
+		return age;
 	}
 
 	/**

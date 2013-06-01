@@ -6,6 +6,7 @@ public interface Player{
 	public String getLastName();
 	public String getNickname();
 	public String getBirthDate();
+	public int getAge();
 	public String getUniStartYear();
 	public String getUniCurrentCourse();
 	public boolean isStudent();
