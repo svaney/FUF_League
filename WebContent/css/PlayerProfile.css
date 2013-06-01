@@ -1,73 +1,3 @@
-.excel1 {
-padding-top:1px;
-padding-right:1px;
-padding-left:1px;
-color:black;
-font-size:11.0pt;
-font-weight:400;
-font-style:normal;
-text-decoration:none;
-text-align:left;
-vertical-align:bottom;
-border:none;
-white-space:nowrap;
-}
-.excel2 {
-padding-top:1px;
-padding-right:1px;
-padding-left:1px;
-color:black;
-font-size:12.0pt;
-font-weight:400;
-font-style:normal;
-text-decoration:none;
-text-align:left;
-vertical-align:middle;
-border:none;
-white-space:nowrap;
-}
-.excel3 {
-padding-top:1px;
-padding-right:1px;
-padding-left:1px;
-color:black;
-font-size:12.0pt;
-font-weight:400;
-font-style:normal;
-text-decoration:none;
-text-align:left;
-vertical-align:middle;
-border:none;
-white-space:nowrap;
-}
-.excel4 {
-padding-top:1px;
-padding-right:1px;
-padding-left:1px;
-color:black;
-font-size:12.0pt;
-font-weight:700;
-font-style:normal;
-text-decoration:none;
-text-align:left;
-vertical-align:middle;
-border:none;
-white-space:nowrap;
-}
-.excel5 {
-padding-top:1px;
-padding-right:1px;
-padding-left:1px;
-color:black;
-font-size:12.0pt;
-font-weight:700;
-font-style:normal;
-text-decoration:none;
-text-align:left;
-vertical-align:middle;
-border:none;
-white-space:nowrap;
-}
 .progress {
   margin: 0 auto;
   width: inherit;
@@ -193,4 +123,33 @@ footer {
 
 header, section, footer, aside, article, figure {
 	display: block;
+}
+.CardLeftSide {
+	text-align: center;
+	vertical-align: middle;
+	height: 365px;
+	width: 241px;
+}
+.CardRigthSide {
+	text-align: center;
+	vertical-align: top;
+	align: top;
+	height: 365px;
+	width: 482px;
+}
+.TableCentreText {
+	font-weight: bold;
+	text-align: center;
+	valign: middle;
+}
+.CardDefaultInfo {
+	text-align: left;
+	vertical-align: middle;
+	font-weight: bold;
+	position: relative;
+	top: -61px;
+}
+.CardRigthSide tr td {
+	width: 50%;
+}
 }

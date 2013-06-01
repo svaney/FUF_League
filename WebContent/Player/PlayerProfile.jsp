@@ -25,7 +25,7 @@
  </div>
  <div>
   <article class="content">
-  <div>
+  <div style="text-indent: 8px;">
     <h1><%=player.getFirstName()+" "+player.getLastName()%></h1>
   </div>
   <div>

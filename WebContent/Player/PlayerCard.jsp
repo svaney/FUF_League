@@ -5,82 +5,76 @@
 <html>
 <%Player_DEO card = (Player_DEO) request.getAttribute(request.getParameter("playerID"));%>
 <body>
-		<table>
- 			<tr>
- 				<td>
-     <table class="excel1">
-        <tr><img src="images/players/<%=card.getAvatar() %>" height="320" width="240"/></tr>
-        <tr style="height:15.75pt;">
-          <td style="height:15.75pt;"><img alt="logo_001" src="images/teams/logo_001.png" height="42" width="42"></td>
-          <td class="excel5">მფრინავი ჰოლანდიელი</td>
+<table>
+  <tr>
+    <td class="CardLeftSide">
+    <table width="100%">
+  <tr>
+    <td><img src="images/players/<%=card.getAvatar() %>" height="320" width="240"/></td>
+  </tr>
+  <tr>
+    <td><table width="100%">
+  <tr>
+    <td><img alt="logo_001" src="images/teams/logo_001.png" height="42" width="42"></td>
+    <td class="TableCentreText">მფრინავი ჰოლანდიელი</td>
+  </tr>
+</table>
+</td>
+  </tr>
+</table>
+</td>
+    <td class="CardRigthSide">
+      <table class="CardDefaultInfo" width="100%" style="position: relative; top: -25px;">
+        <tr>
+          <td>სახელი:</td>
+          <td><strong><%=card.getFirstName()+" "+card.getLastName() %></strong></td>
         </tr>
-      </table>
- 	</td>
- 	<td>
-     <table class="excel1">
-        <tr style="height:18.75pt;">
-          <td class="excel2" width="162" style="width:122pt;">სახელი:</td>
-          <td class="excel4" width="125" style="width:94pt;"><%=card.getFirstName()+" "+card.getLastName()%></td>
-        </tr>
+        <tr>
         <%if(card.hasNickname()){%>
-        <tr style="height:18.75pt;">
-          <td class="excel2" style="height:18.75pt;">მეტსახელი:</td>
-          <td class="excel3"><%=card.getNickname()%></td>
+          <td>მეტსახელი:</td>
+          <td><%=card.getNickname() %></td>
         </tr>
+        <tr>
         <%} %>
-        <tr style="height:18.75pt;">
-          <td class="excel2" style="height:18.75pt;">დაბადების თარიღი:</td>
-          <td class="excel3" align="right"><%=card.getBirthDate()%> (<%=card.getAge()%> წლის)</td>
+          <td>დაბადების თარიღი:</td>
+          <td><%=card.getBirthDate()%> (<%=card.getAge()%> წლის)</td>
         </tr>
-        <tr style="height:18.75pt;">
-          <td class="excel2" style="height:18.75pt;">სკოლა:</td>
-          <td class="excel3"><%=card.getSchool()%></td>
+        <tr>
+          <td>სკოლა:</td>
+          <td><%=card.getSchool() %></td>
         </tr>
+        <tr>
         <%if(card.isStudent()){%>
-        <tr style="height:18.75pt;">
-          <td class="excel2" style="height:18.75pt;">კურსი:</td>
-          <td class="excel3" align="right"><%=card.getUniCurrentCourse()%></td>
+          <td>კურსი:</td>
+          <td><%=card.getUniCurrentCourse() %></td>
         </tr>
-        <tr style="height:18.75pt;">
-          <td class="excel2" style="height:18.75pt;">ჩაბარების წელი:</td>
-          <td class="excel3" align="right"><%=card.getUniStartYear()%></td>
+        <tr>
+          <td>ჩაბარების წელი:</td>
+          <td><%=card.getUniStartYear() %></td>
         </tr>
+        <tr>
         <%} %>
-        <tr style="height:18.75pt;">
-          <td class="excel3" style="height:18.75pt;">სიმაღლე:</td>
-          <td class="excel2" align="right"><%=card.getHeight()%></td>
+          <td>სიმაღლე:</td>
+          <td><%=card.getHeight() %></td>
         </tr>
-        <tr style="height:18.75pt;">
-          <td class="excel2" style="height:18.75pt;">წონა:</td>
-          <td class="excel3" align="right"><%=card.getWeight()%></td>
+        <tr>
+          <td>წონა:</td>
+          <td><%=card.getWeight() %></td>
         </tr>
-        <tr style="height:15.75pt;">
-          <td class="excel2" style="height:15.75pt;">პოზიცია:</td>
-          <td class="excel3"><%=card.getPosition()%></td>
+        <tr>
+          <td>დომინანტი ფეხი:</td>
+          <td><%=card.getFoot() %></td>
         </tr>
-        <tr style="height:15.75pt;">
-          <td class="excel2" style="height:15.75pt;">ნომერი</td>
-          <td class="excel3" align="right">10</td>
+        <tr>
+          <td>პოზიცია:</td>
+          <td><%=card.getPosition() %></td>
         </tr>
-        <tr style="height:15.0pt;">
-          <td style="height:15.0pt;"></td>
-          <td></td>
+        <tr>
+          <td>ნომერი:</td>
+          <td>10</td>
         </tr>
-        <tr style="height:7.5pt;">
-          <td style="height:7.5pt;"></td>
-          <td></td>
-        </tr>
-        <tr style="height:31.5pt;">
-          <td style="height:31.5pt;"></td>
-          <td></td>
-        </tr>
-        <tr style="height:15.0pt;">
-          <td style="height:15.0pt;"></td>
-          <td></td>
-        </tr>
-      </table> 				
- 				</td>
- 			</tr>
- 		</table>
+    </table></td>
+  </tr>
+</table>
 </body>
 </html>
