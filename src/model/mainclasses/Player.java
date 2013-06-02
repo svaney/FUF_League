@@ -17,6 +17,7 @@ public interface Player{
 	public String getWeight();
 	public String getHeight();
 	public String getAvatar();
+	public String getFbPage();
 	public String getBio();
 	public double getRating();
 	public String getFoot();
@@ -57,7 +58,7 @@ public interface Player{
 	public void setLastName(String lastName);
 	public void setNickname(String nickName);
 	public void setBirthDate(Date birthDate);
-	public void setUniStartYear(int startYear);
+	public void setUniStartYear(Date startYear);
 	public void setUniCurrentCourse(int course);
 	public void setSchool(String school);
 	public void setWeight(int weight);

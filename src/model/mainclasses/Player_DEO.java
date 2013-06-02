@@ -22,6 +22,7 @@ public class Player_DEO implements Player {
 	private int height = 0;
 	private String homePage = null;
 	private String image = "avatar_000.png";
+	private String fbPage = null;
 	private int teamID = 0;
 
 	//მოთამაშის ატრიბუტები
@@ -83,6 +84,7 @@ public class Player_DEO implements Player {
 			rating = player.getRating(playerID);
 			foot = player.getFoot(playerID);
 			if(player.getImageURL(playerID) != null)image = player.getImageURL(playerID);
+			fbPage = player.getFBPage(playerID);
 			position = player.getPosition(playerID);
 			speed = player.getSpeed(playerID);
 			dribbling = player.getDribbling(playerID);
@@ -235,6 +237,14 @@ public class Player_DEO implements Player {
 	@Override
 	public String getAvatar() {
 		return image;
+	}
+	
+	/**
+	 * აბრუნებს მოთამაშის ფეისბუქის გვერდის მისამართს
+	 */
+	@Override
+	public String getFbPage() {
+		return fbPage;
 	}
 	
 	/**
@@ -405,112 +415,151 @@ public class Player_DEO implements Player {
 		return team.getName();
 	}
 	
+	/**
+	 * გვეუბნება აქვს თუ არა მოთამაშეს რეიტინგის გრაფა.
+	 */
 	@Override
 	public boolean hasRatingBar(){
 		if(speed == 0) return false;
 		return true;
 	}
 	
+	/**
+	 * გვეუბნება აქვს თუ არა მოთამაშეს მეტსახელი.
+	 */
 	@Override
 	public boolean hasNickname(){
 		if(nickname == null) return false;
 		return true;
 	}
 
+	/**
+	 * ბაზას უგზავნის დასაკომიტებელ ინფორმაციას.
+	 */
 	@Override
 	public void commitPlayer() {
-		// TODO Auto-generated method stub
-		
+		PlayerDB_DEO player = new PlayerDB_DEO();
+		player.commitPlayer(this);		
 	}
-
+	
+	/**
+	 * მოთამაშის სახელს ანიშებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setFirstName(String firstName) {
-		// TODO Auto-generated method stub
-		
+		this.firstname = firstName;		
 	}
 
+	/**
+	 * მოთამაშის გვარს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setLastName(String lastName) {
-		// TODO Auto-generated method stub
-		
+		this.lastname = lastName;		
 	}
 
+	/**
+	 * მოთამაშის მეტსახელს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setNickname(String nickName) {
-		// TODO Auto-generated method stub
-		
+		this.nickname = nickName;		
 	}
 
+	/**
+	 * მოთამაშის დაბადების დღეს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setBirthDate(Date birthDate) {
-		// TODO Auto-generated method stub
-		
+		this.birthDate = birthDate;		
 	}
 
+	/**
+	 * მოთამაშის ჩაბარების/დაწყების წელს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
-	public void setUniStartYear(int startYear) {
-		// TODO Auto-generated method stub
-		
+	public void setUniStartYear(Date startYear) {
+		this.uniStart = startYear;		
 	}
 
+	/**
+	 * მოთამაშის მიმდინარე კურსს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setUniCurrentCourse(int course) {
-		// TODO Auto-generated method stub
-		
+		this.uniCourse = course;
 	}
 
+	/**
+	 * მოთამაშის სკოლას/ფაკულტეტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setSchool(String school) {
-		// TODO Auto-generated method stub
-		
+		this.school = school;		
 	}
 
+	/**
+	 * მოთამაშის წონას ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setWeight(int weight) {
-		// TODO Auto-generated method stub
-		
+		this.weight = weight;		
 	}
 
+	/**
+	 * მოთამაშის სიმაღლეს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setHeight(int height) {
-		// TODO Auto-generated method stub
-		
+		this.height = height;
 	}
 
+	/**
+	 * მოთამაშის პროფილის სურათს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setAvatar(String avatar) {
-		// TODO Auto-generated method stub
-		
+		this.image = avatar;
 	}
 
+	/**
+	 * მოთამაშის ბიოგრაფიას ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setBio(String bio) {
-		// TODO Auto-generated method stub
-		
+		this.biography = bio;
 	}
 
+	/**
+	 * მოთამაშის რეიტინგს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setRating(double rating) {
-		// TODO Auto-generated method stub
-		
+		this.rating = rating;
 	}
 
+	/**
+	 * მოთამაშის დომინანტ ფეხს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setFoot(String foot) {
-		// TODO Auto-generated method stub
-		
+		this.foot = foot;
 	}
 
+	/**
+	 * მოთამაშის ფბ-ს გვერდს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setFBPage(String fbPage) {
-		// TODO Auto-generated method stub
-		
+		this.fbPage = fbPage;
 	}
 
+	/**
+	 * მოთამაშის პოზიციას ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setPosition(String position) {
-		// TODO Auto-generated method stub
-		
+		this.position = position;
 	}
 
 	@Override
