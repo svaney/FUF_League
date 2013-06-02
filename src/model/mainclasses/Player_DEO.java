@@ -7,7 +7,7 @@ import model.dblayer.PlayerDB_DEO;
 
 public class Player_DEO implements Player {
 	private PlayerDB_DEO player;
-	private int id;
+	private int playerID = -1;
 	private static int personID = -1;
 	// პერსონის ატრიბუტები
 	private String firstname = null;
@@ -54,50 +54,62 @@ public class Player_DEO implements Player {
 	//იყენებს თარიღიდან თვის სახელის ამოსაღებად.
 	private static final String[] month = {"იანვარი","თებერვალი","მარტი","აპრილი","მაისი","ივნისი","ივლისი","აგვისტო","სექტემბერი","ოქტომბერი","ნოემბერი","დეკემბერი"};
 	
+	/**
+	 * ქმნის ახალ მოთამაშეს. ყველა ატრიბუტი არის 0 ან NULL.
+	 */
+	public Player_DEO(){		
+	}
+	
+	/**
+	 * პარამეტრის მიხედვით ბაზიდან იღებს მოთამაშის მონაცემებს.
+	 * @param playerID
+	 */
 	public Player_DEO(int playerID){
 		player = new PlayerDB_DEO();
-		id = playerID;
-		personID = player.getPersonID(playerID);
-		firstname = player.getFirstName(playerID);
-		lastname = player.getLastName(playerID);
-		nickname = player.getNickname(playerID);
-		birthDate = player.getBirthDate(playerID);
-		uniStart = player.getUniStartYear(playerID);
-		uniCourse = player.getUniCurrentCourse(playerID);
-		graduated = player.getGraduated(playerID);
-		school = player.getSchool(playerID);
-		weight = player.getWeight(playerID);
-		height = player.getHeight(playerID);
-		homePage = player.getFBPage(playerID);
-		rating = player.getRating(playerID);
-		foot = player.getFoot(playerID);
-		if(player.getImageURL(playerID) != null)image = player.getImageURL(playerID);
-		position = player.getPosition(playerID);
-		speed = player.getSpeed(playerID);
-		dribbling = player.getDribbling(playerID);
-		heading = player.getHeading(playerID);
-		diving = player.getDiving(playerID);
-		durability = player.getDurability(playerID);
-		loyalty = player.getClubLoyalty(playerID);
-		shooting = player.getShooting(playerID);
-		work = player.getWorkRate(playerID);
-		creativity = player.getCreativity(playerID);
-		fear_factor = player.getFearFactor(playerID);
-		killer_instinct = player.getKillerInstinct(playerID);
-		tackling = player.getTackling(playerID);
-		vision = player.getVision(playerID);
-		passing = player.getPassing(playerID);
-		penalty = player.getPenalty(playerID);
-		penalty_saveing = player.getPenaltySaving(playerID);
-		shot_stopping = player.getShotStoping(playerID);
-		lidership = player.getLidership(playerID);
-		reflexes = player.getReflexes(playerID);
-		mistake_factor = player.getMistakeFactor(playerID);
-		positioning = player.getPositioning(playerID);
-		position = player.getPosition(playerID);
-		biography = player.getBio(playerID);
-		strength = player.getStrength(playerID);
-		teamID = player.getTeamID(playerID);
+		if(player.exists(playerID)){
+			this.playerID = player.getPlayerID(playerID);		
+			personID = player.getPersonID(playerID);
+			firstname = player.getFirstName(playerID);
+			lastname = player.getLastName(playerID);
+			nickname = player.getNickname(playerID);
+			birthDate = player.getBirthDate(playerID);
+			uniStart = player.getUniStartYear(playerID);
+			uniCourse = player.getUniCurrentCourse(playerID);
+			graduated = player.getGraduated(playerID);
+			school = player.getSchool(playerID);
+			weight = player.getWeight(playerID);
+			height = player.getHeight(playerID);
+			homePage = player.getFBPage(playerID);
+			rating = player.getRating(playerID);
+			foot = player.getFoot(playerID);
+			if(player.getImageURL(playerID) != null)image = player.getImageURL(playerID);
+			position = player.getPosition(playerID);
+			speed = player.getSpeed(playerID);
+			dribbling = player.getDribbling(playerID);
+			heading = player.getHeading(playerID);
+			diving = player.getDiving(playerID);
+			durability = player.getDurability(playerID);
+			loyalty = player.getClubLoyalty(playerID);
+			shooting = player.getShooting(playerID);
+			work = player.getWorkRate(playerID);
+			creativity = player.getCreativity(playerID);
+			fear_factor = player.getFearFactor(playerID);
+			killer_instinct = player.getKillerInstinct(playerID);
+			tackling = player.getTackling(playerID);
+			vision = player.getVision(playerID);
+			passing = player.getPassing(playerID);
+			penalty = player.getPenalty(playerID);
+			penalty_saveing = player.getPenaltySaving(playerID);
+			shot_stopping = player.getShotStoping(playerID);
+			lidership = player.getLidership(playerID);
+			reflexes = player.getReflexes(playerID);
+			mistake_factor = player.getMistakeFactor(playerID);
+			positioning = player.getPositioning(playerID);
+			position = player.getPosition(playerID);
+			biography = player.getBio(playerID);
+			strength = player.getStrength(playerID);
+			teamID = player.getTeamID(playerID);
+		}
 		player.reset();
 	}
 
@@ -185,6 +197,7 @@ public class Player_DEO implements Player {
 	 */
 	@Override
 	public boolean isStudent() {
+		if(graduated==null) return true;
 		if(graduated.equals("N")) return true;
 		return false;
 	}
@@ -378,7 +391,7 @@ public class Player_DEO implements Player {
 	
 	@Override
 	public int getPlayerID() {
-		return id;
+		return playerID;
 	}
 	
 	@Override
@@ -402,5 +415,245 @@ public class Player_DEO implements Player {
 	public boolean hasNickname(){
 		if(nickname == null) return false;
 		return true;
+	}
+
+	@Override
+	public void setFirstName() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setLastName() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setNickname() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setBirthDate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setUniStartYear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setUniCurrentCourse() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSchool() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setWeight() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setHeight() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setAvatar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setBio() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setRating() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFoot() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFBPage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPosition() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setTeamName() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSpeed() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setDribbling() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setHeading() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setClubLoyalty() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setDiving() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setDurability() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setShooting() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setWorkRate() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setCreativity() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFearFactor() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setKillerInstinct() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setVision() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPassing() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPenalty() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPenaltySaving() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setLidership() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setReflexes() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setTackling() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setShotStoping() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setMistakeFactor() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPositioning() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setStrength() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setTeamID() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void commitPlayer() {
+		// TODO Auto-generated method stub
+		
 	}
 }
