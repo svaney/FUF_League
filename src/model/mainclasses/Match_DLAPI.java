@@ -8,6 +8,8 @@
 
 package model.mainclasses;
 
+import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +39,12 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public String getMatchRound() {
-		return mtBase.getStageOfMatch(matchID);
+		try {
+			return mtBase.getStageOfMatch(matchID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return "";
+		}
 	}
 
 	/**
@@ -46,7 +53,12 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public boolean hasExtraTime() {
-		return (mtBase.getExtraTime(matchID) > 0);
+		try {
+			return (mtBase.getExtraTime(matchID) > 0);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	/**
@@ -61,12 +73,16 @@ public class Match_DLAPI implements Match{
 
 	/**
 	 * გვეუბნება როდის ჩატარდა მატჩი
-	 * @return String ტიპის მნიშვნელობით გადმოგვცემს თარიღს
+	 * @return sql.date ტიპის მნიშვნელობით გადმოგვცემს თარიღს
 	 */
 	@Override
-	public String getDate() {
-		String date = mtBase.getMatchDate(matchID);
-		//TODO date - modifications
+	public Date getDate() {
+		Date date = null;
+		try {
+			date = mtBase.getMatchDate(matchID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return date;
 	}
 
@@ -77,7 +93,13 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public List<Player> getLineUp(int teamID) {
-		ArrayList<Integer> players = (ArrayList<Integer>) mtBase.getMatchPlayersForTeam(matchID,teamID);
+		ArrayList<Integer> players = null;
+		try {
+			players = (ArrayList<Integer>) mtBase.getMatchPlayersForTeam(matchID,teamID);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return setPlayersFromIDs(players);
 	}
 
@@ -87,7 +109,12 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public int[] getTeamIDs() {
-		return mtBase.getMatchTeams(matchID);
+		try {
+			return mtBase.getMatchTeams(matchID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**
@@ -97,7 +124,13 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public Player getCaptainForTeam(int teamID) {
-		int captainID = mtBase.getCapForMatchTeam(teamID,matchID);
+		int captainID = -1;
+		try {
+			captainID = mtBase.getCapForMatchTeam(teamID,matchID);
+		} catch (SQLException e) {
+			System.out.println("ერორია sql-ში, დააბრუნებს ახალ პლეიერს. captainID=-1");
+			e.printStackTrace();
+		}
 		Player result;
 		if(captainID == -1){
 			result = new Player_DEO(captainID);
@@ -114,7 +147,12 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public int getChampionship() {
-		return mtBase.getChampionshipID(matchID);
+		try {
+			return mtBase.getChampionshipID(matchID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 	/**
@@ -124,7 +162,13 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public List<Player> getTeamYellows(int teamID) {
-		ArrayList<Integer> playerIDs = (ArrayList<Integer>) mtBase.getYellowsForTeamInMatch(matchID,teamID);
+		ArrayList<Integer> playerIDs;
+		try {
+			playerIDs = (ArrayList<Integer>) mtBase.getYellowsForTeamInMatch(matchID,teamID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			playerIDs=null;
+		}
 		return setPlayersFromIDs(playerIDs);
 	}
 	
@@ -149,7 +193,13 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public List<Player> getTeamReds(int teamID) {
-		ArrayList<Integer> playerIDs = (ArrayList<Integer>) mtBase.getRedsForTeamInMatch(matchID,teamID);
+		ArrayList<Integer> playerIDs;
+		try {
+			playerIDs = (ArrayList<Integer>) mtBase.getRedsForTeamInMatch(matchID,teamID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			playerIDs=null;
+		}
 		return setPlayersFromIDs(playerIDs);
 	}
 
@@ -159,7 +209,12 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public String getMatchReview() {
-		return mtBase.getReview(matchID);
+		try {
+			return mtBase.getReview(matchID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return "";
+		}
 	}
 	
 }

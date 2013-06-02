@@ -7,6 +7,7 @@
  */
 package model.mainclasses;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.dblayer.MatchDB;
@@ -46,7 +47,12 @@ public class Penalties_DLAPI implements Penalties{
 	 */
 	@Override
 	public ArrayList<PenaltyShoot> getTeamsSerie(int teamID) {
-		return (ArrayList<PenaltyShoot>) mtBase.getTeamPenalties(teamID,matchID);
+		try {
+			return (ArrayList<PenaltyShoot>) mtBase.getTeamPenalties(teamID,matchID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	/**
@@ -56,7 +62,12 @@ public class Penalties_DLAPI implements Penalties{
 	 */
 	@Override
 	public int getTeamScore(int teamID) {
-		return mtBase.getTeamsScoresInPenalties(teamID,matchID);
+		try {
+			return mtBase.getTeamsScoresInPenalties(teamID,matchID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 	/**
@@ -66,7 +77,12 @@ public class Penalties_DLAPI implements Penalties{
 	 */
 	@Override
 	public int getTeamMissedQuantity(int teamID) {
-		return mtBase.getTeamsMissedInPenalties(teamID,matchID);
+		try {
+			return mtBase.getTeamsMissedInPenalties(teamID,matchID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 }

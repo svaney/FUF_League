@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.mainclasses.PenaltyShoot;
@@ -111,10 +112,13 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public List<Integer> getMatchPlayersForTeam(int matchID, int teamID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select player_id from match_players where team_id='"+teamID+"' and match_id='"+matchID+"';");
+		ArrayList<Integer> answer = new ArrayList<Integer>();
+		while(rs.next()){
+			answer.add(rs.getInt("player_id"));
+		}
 		st.close();
-	
-		return null;
+		return answer;
 	}
 
 	/**
@@ -126,7 +130,11 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public int[] getMatchTeams(int matchID) throws SQLException {
 		startUpStatement();
-		
+		int[] answer = new int[2];
+		rs = st.executeQuery("select team1_id, team2_id from matches where match_id='"+matchID+"';");
+		rs.next();
+		answer[0] = rs.getInt("team1");
+		answer[1] = rs.getInt("team2");
 		st.close();
 		return null;
 	}
@@ -142,9 +150,11 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public int getCapForMatchTeam(int teamID, int matchID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select player_id from match_caprains where match_id='"+matchID+"' and team_id='"+teamID+"';");
+		rs.next();
+		int answer = rs.getInt("player_id");
 		st.close();
-		return 0;
+		return answer;
 	}
 
 	/**
@@ -156,9 +166,11 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public int getChampionshipID(int matchID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select championship_id from matches where match_id='"+matchID+"';");
+		rs.next();
+		int answer = rs.getInt("championship_id");
 		st.close();
-		return 0;
+		return answer;
 	}
 
 	/**
@@ -171,9 +183,13 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public List<Integer> getYellowsForTeamInMatch(int matchID, int teamID) throws SQLException {
 		startUpStatement();
-		
+		ArrayList<Integer> answer = new ArrayList<Integer>();
+		rs = st.executeQuery("select player_id from yellows where match_id='"+matchID+"' and team_id='"+teamID+"';");
+		while(rs.next()){
+			answer.add(rs.getInt("player_id"));
+		}
 		st.close();
-		return null;
+		return answer;
 	}
 
 	/**
@@ -186,9 +202,13 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public List<Integer> getRedsForTeamInMatch(int matchID, int teamID) throws SQLException {
 		startUpStatement();
-		
+		ArrayList<Integer> answer = new ArrayList<Integer>();
+		rs = st.executeQuery("select player_id from reds where match_id='"+matchID+"' and team_id='"+teamID+"';");
+		while(rs.next()){
+			answer.add(rs.getInt("player_id"));
+		}
 		st.close();
-		return null;
+		return answer;
 	}
 
 	/**
@@ -200,23 +220,11 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public String getReview(int matchID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select review from matches where match_id = '"+matchID+"';");
+		rs.next();
+		String answer = rs.getString("review");
 		st.close();
-		return null;
-	}
-
-	/**
-	 * აბრუნებს ჰქონდა თუ არა მატჩს პენლების სერია
-	 * @param  matchID მატჩის იდენტიფიკატორი
-	 * @return char ტიპის ობიექტი - 'Y'(YES) ან  'N'(NO)
-	 * @throws SQLException 
-	 */
-	@Override
-	public char hasPenalties(int matchID) throws SQLException {
-		startUpStatement();
-		
-		st.close();
-		return 0;
+		return answer;
 	}
 
 	/**
@@ -226,11 +234,13 @@ public class MatchDB_DLAPI implements MatchDB{
 	 * @throws SQLException 
 	 */
 	@Override
-	public boolean wasPenaltiesSerie(int matchID) throws SQLException {
+	public boolean hasPenalties(int matchID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select penalties from matches where match_id = '"+matchID+"';");
+		rs.next();
+		boolean answer = rs.getString("penalties").charAt(0)=='Y';
 		st.close();
-		return false;
+		return answer;
 	}
 
 	/**
@@ -243,9 +253,11 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public int getScoreForTeamForFullTime(int matchID, int teamID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select count(*) as total from goals where match_id='"+matchID+"' and extra_time='N' and team_id='"+teamID+"';");
+		rs.next();
+		int answer = rs.getInt("total");
 		st.close();
-		return 0;
+		return answer;
 	}
 
 	/**
@@ -258,9 +270,11 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public int getGoalNthInRow(int matchID, int Nth) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select goal_id from goals where match_id='"+matchID+"' and inrow='"+Nth+"';");
+		rs.next();
+		int answer = rs.getInt("goal_id");
 		st.close();
-		return 0;
+		return answer;
 	}
 
 	/**
@@ -273,9 +287,11 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public int getExtraTimeGoalForTeam(int teamID, int matchID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select count(*) as total from goals where match_id='"+matchID+"' and extra_time='Y' and team_id='"+teamID+"';");
+		rs.next();
+		int answer = rs.getInt("total");
 		st.close();
-		return 0;
+		return answer;
 	}
 
 	/**
@@ -288,9 +304,11 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public int getScoreForTeamFirstHalf(int teamID, int matchID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select count(*) as total from goals where match_id='"+matchID+"' and half=1 and team_id='"+teamID+"';");
+		rs.next();
+		int answer = rs.getInt("total");
 		st.close();
-		return 0;
+		return answer;
 	}
 
 	/**
@@ -303,9 +321,13 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public List<PenaltyShoot> getTeamPenalties(int teamID, int matchID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select * from penalties where match_id='"+matchID+"' and team_id='"+teamID+"';");
+		ArrayList<PenaltyShoot> answer = new ArrayList<PenaltyShoot>();
+		while(rs.next()){
+			answer.add(new PenaltyShoot(rs.getInt("match_id"), rs.getInt("team_id"), rs.getInt("turn"), rs.getInt("Player_id"), rs.getString("score").charAt(0)=='N'));
+		}
 		st.close();
-		return null;
+		return answer;
 	}
 
 	/**
@@ -318,9 +340,11 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public int getTeamsScoresInPenalties(int teamID, int matchID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select count(*) as total from penalties where match_id='' and team_id='' and score='Y';");
+		rs.next();
+		int answer = rs.getInt("total");
 		st.close();
-		return 0;
+		return answer;
 	}
 
 	/**
@@ -333,9 +357,11 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public int getTeamsMissedInPenalties(int teamID, int matchID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select count(*) as total from penalties where match_id='' and team_id='' and score='N';");
+		rs.next();
+		int answer = rs.getInt("total");
 		st.close();
-		return 0;
+		return answer;
 	}
 	
 	

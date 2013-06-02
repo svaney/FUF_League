@@ -7,6 +7,7 @@
  */
 package model.mainclasses;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface Match {
@@ -31,9 +32,9 @@ public interface Match {
 	
 	/**
 	 * გვეუბნება როდის ჩატარდა მატჩი
-	 * @return String ტიპის მნიშვნელობით გადმოგვცემს თარიღს
+	 * @return sql.date ტიპის მნიშვნელობით გადმოგვცემს თარიღს
 	 */
-	public String getDate();
+	public Date getDate();
 	
 	/**
 	 * გვიბრუნებს კონკრეტული გუნდის განაცხადს

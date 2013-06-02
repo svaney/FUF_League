@@ -109,20 +109,12 @@ public interface MatchDB {
 	public String getReview(int matchID) throws SQLException;
 
 	/**
-	 * აბრუნებს ჰქონდა თუ არა მატჩს პენლების სერია
-	 * @param  matchID მატჩის იდენტიფიკატორი
-	 * @return char ტიპის ობიექტი - 'Y'(YES) ან  'N'(NO)
-	 * @throws SQLException 
-	 */
-	public char hasPenalties(int matchID) throws SQLException;
-
-	/**
 	 * აბრუნებს იყო თუ არა პენლების სერია
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @return true თუ იყო, false თუ არ იყო
 	 * @throws SQLException 
 	 */
-	public boolean wasPenaltiesSerie(int matchID) throws SQLException;
+	public boolean hasPenalties(int matchID) throws SQLException;
 
 	/**
 	 * აბრუნებს კონკრეტულ მატჩზე გუნდის გატანილ გოლებს ძირითად დროში

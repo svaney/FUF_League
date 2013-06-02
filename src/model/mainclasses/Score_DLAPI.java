@@ -7,6 +7,8 @@
 
 package model.mainclasses;
 
+import java.sql.SQLException;
+
 import model.dblayer.MatchDB;
 import model.dblayer.MatchDB_DLAPI;
 
@@ -43,11 +45,12 @@ public class Score_DLAPI implements Score{
 	 */
 	@Override
 	public boolean hasPenaltySeries() {
-		char ans = mtBase.hasPenalties(matchID);
-		if(ans == 'Y')
-			return true;
-		else
+		try {
+			return mtBase.hasPenalties(matchID);
+		} catch (SQLException e) {
+			e.printStackTrace();
 			return false;
+		}
 	}
 
 	/**
@@ -56,10 +59,15 @@ public class Score_DLAPI implements Score{
 	 */
 	@Override
 	public Penalties getPenaltiesForTeam() {
-		if(mtBase.wasPenaltiesSerie(matchID))
-			return new Penalties_DLAPI(matchID,mtBase);
-		else 
+		try {
+			if(mtBase.hasPenalties(matchID))
+				return new Penalties_DLAPI(matchID,mtBase);
+			else 
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
+		}
 	}
 
 	/**
@@ -69,7 +77,12 @@ public class Score_DLAPI implements Score{
 	 */
 	@Override
 	public int getScoreForTeam(int teamID) {
-		return mtBase.getScoreForTeamForFullTime(matchID,teamID);
+		try {
+			return mtBase.getScoreForTeamForFullTime(matchID,teamID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 	/**
@@ -79,7 +92,12 @@ public class Score_DLAPI implements Score{
 	 */
 	@Override
 	public Goal getNthGoal(int Nth) {
-		return new Goal_kire(mtBase.getGoalNthInRow(matchID,Nth));
+		try {
+			return new Goal_kire(mtBase.getGoalNthInRow(matchID,Nth));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	/**
@@ -89,7 +107,12 @@ public class Score_DLAPI implements Score{
 	 */
 	@Override
 	public int getExtraTimeGoalForTeam(int teamID) {
-		return mtBase.getExtraTimeGoalForTeam(teamID,matchID);
+		try {
+			return mtBase.getExtraTimeGoalForTeam(teamID,matchID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 	/**
@@ -99,7 +122,12 @@ public class Score_DLAPI implements Score{
 	 */
 	@Override
 	public int getScoreForTeamFirstHalf(int teamID) {
-		return mtBase.getScoreForTeamFirstHalf(teamID,matchID);
+		try {
+			return mtBase.getScoreForTeamFirstHalf(teamID,matchID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 	
 }
