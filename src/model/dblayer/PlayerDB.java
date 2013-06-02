@@ -1,5 +1,7 @@
 package model.dblayer;
 import java.sql.*;
+
+import model.mainclasses.Player_DEO;
 /**
  * PlayerDBInterface-ის ჩემი სამუშაო ვერსია
  * @author DEO.Gochava
@@ -16,7 +18,7 @@ public interface PlayerDB{
 	
 	public void initConncection();
 	
-	//მოთამაშის ცხრილიდან ამოღება
+	//მოთამაშის ცხრილიდან ამოღება.
 	public double getRating(int playerID);
 	public int getSpeed(int playerID);
 	public int getDribbling(int playerID);
@@ -59,49 +61,13 @@ public interface PlayerDB{
 	public String getImageURL(int playerID);
 	public String getFBPage(int playerID);
 	
-	// შეიძლება არ დამჭირდეს
+	// გადაცემულ ID-სთან მიბმული სხვა ID-ების ამოღება.
 	public int getPlayerID(int personID);
 	public int getTeamID(int playerID);
 	
-	//მოთამაშის ცხრილში ჩამატება
-	public void setSpeed(int playerID);
-	public void setDribbling(int playerID);
-	public void setHeading(int playerID);
-	public void setClubLoyalty(int playerID);
-	public void setDiving(int playerID);
-	public void setDurability(int playerID);
-	public void setShooting(int playerID);
-	public void setWorkRate(int playerID);
-	public void setCreativity(int playerID);
-	public void setFearFactor(int playerID);
-	public void setKillerInstinct(int playerID);
-	public void setVission(int playerID);
-	public void setPassing(int playerID);
-	public void setPenalty(int playerID);
-	public void setPenaltySaving(int playerID);
-	public void setLidership(int playerID);
-	public void setRefxlexes(int playerID);
-	public void setTackling(int playerID);
-	public void setShotStoping(int playerID);
-	public void setMistakeFactor(int playerID);
-	public void setPositioning(int playerID);
+	// შემოწმება.
+	public boolean exists(int playerID);
 	
-	//პერსონის ცხრილში ჩამატება
-	public void setPersonID(int playerID);
-	public void setFirstName(int playerID);
-	public void setLastName(int playerID);
-	public void setNickname(int playerID);
-	public void setBirthDate(int playerID);
-	public void setUniStartYear(int playerID);
-	public void setUniCurrentCourse(int playerID);
-	public void setGraduated(int playerID);
-	public void setSchool(int playerID);
-	public void setWeight(int playerID);
-	public void setHeight(int playerID);
-	public void setImageURL(int playerID);
-	public void setRating(int playerID);
-	public void setFoot(int playerID);
-	public void setFBPage(int playerID);
-	public void setPosition(int playerID);
-	public void setBio(int playerID);
+	// მოთამაშის შენახვა.
+	public void commitPlayer(Player_DEO player);
 }

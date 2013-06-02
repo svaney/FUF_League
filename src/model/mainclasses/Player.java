@@ -2,6 +2,7 @@ package model.mainclasses;
 
 public interface Player{
 
+	// ამოღება.
 	public String getFirstName();
 	public String getLastName();
 	public String getNickname();
@@ -48,4 +49,49 @@ public interface Player{
 	public int getTeamID();
 	public boolean hasRatingBar();
 	public boolean hasNickname();
+	
+	// ჩაწერა.
+	public void setFirstName();
+	public void setLastName();
+	public void setNickname();
+	public void setBirthDate();
+	public void setUniStartYear();
+	public void setUniCurrentCourse();
+	public void setSchool();
+	public void setWeight();
+	public void setHeight();
+	public void setAvatar();
+	public void setBio();
+	public void setRating();
+	public void setFoot();
+	public void setFBPage();
+	public void setPosition();
+	public void setTeamName();
+
+	public void setSpeed();
+	public void setDribbling();
+	public void setHeading();
+	public void setClubLoyalty();
+	public void setDiving();
+	public void setDurability();
+	public void setShooting();
+	public void setWorkRate();
+	public void setCreativity();
+	public void setFearFactor();
+	public void setKillerInstinct();
+	public void setVision();
+	public void setPassing();
+	public void setPenalty();
+	public void setPenaltySaving();
+	public void setLidership();
+	public void setReflexes();
+	public void setTackling();
+	public void setShotStoping();
+	public void setMistakeFactor();
+	public void setPositioning();
+	public void setStrength();	
+	public void setTeamID();
+	
+	// ადასტურებს ცვლილებებს და გადასცემს ბაზასთან მომუშავე კლასს შესანახად.
+	public void commitPlayer();
 }

@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
+import model.mainclasses.Player_DEO;
+
 /**
  * PlayerDB-ის ჩემი სამუშაო ვერსია.
  * @author DEO.Gochava
@@ -69,7 +71,7 @@ public class PlayerDB_DEO implements PlayerDB{
 			System.err.println("შეცვალე MySQL კონსტანტები შენი კონსტანტებით! (ან შეამოწმე გაშვებულია თუ არა სერვერი).");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			System.err.println("CS108 student: Add the MySQL jar file to your build path!");
+			System.err.println("დაამატე MySQL jar ფაილი კონსტრუქტორის მისამართში!");
 		}
 	}
 
@@ -414,7 +416,7 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "person_id";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
-			return 0;
+			return -1;
 		}
 		return (int) res;
 	}
@@ -545,6 +547,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	@Override
 	public int getWeight(int playerID) {
 		String parameter = "weight";
+		if(getParameter(parameter, playerID)==null) return -1;
 		return (int)getParameter(parameter, playerID);
 	}
 
@@ -556,6 +559,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	@Override
 	public int getHeight(int playerID) {
 		String parameter = "height";
+		if(getParameter(parameter, playerID)==null) return -1;
 		return (int)getParameter(parameter, playerID);
 	}
 	
@@ -616,11 +620,13 @@ public class PlayerDB_DEO implements PlayerDB{
 	}
 
 	/**
+	 * აბრუნებს მოთამაშის ID-ს;
+	 * თუ მოთამაშე არ არის ბაზაში, მაშინ აბრუნებს -1-ს.
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 107;
 	 */
 	@Override
-	public int getPlayerID(int personID) {
+	public int getPlayerID(int playerID) {
 		String col = PLAYER_ID;
 		try {
 			stmt = con.createStatement();
@@ -629,7 +635,7 @@ public class PlayerDB_DEO implements PlayerDB{
 			return 0;
 		}
 		ResultSet result = null;
-		String sql = "select "+col+" from "+PLAYERS+" where "+PLAYER_ID+"=\""+personID+"\";";
+		String sql = "select "+col+" from "+PLAYERS+" where "+PLAYER_ID+"=\""+playerID+"\";";
 		try {
 			result = stmt.executeQuery(sql);
 		} catch (SQLException e) {
@@ -648,197 +654,7 @@ public class PlayerDB_DEO implements PlayerDB{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
-		return 0;
-	}
-
-	@Override
-	public void setRating(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setSpeed(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setDribbling(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setHeading(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setClubLoyalty(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setDiving(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setDurability(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setShooting(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setWorkRate(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setCreativity(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setFearFactor(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setKillerInstinct(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setVission(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setPassing(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setPenalty(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setPenaltySaving(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setLidership(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setRefxlexes(int playerID) {
-		// TODO Auto-generated method stub
-	}
-	
-	@Override
-	public void setTackling(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setShotStoping(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setMistakeFactor(int playerID) {
-		// TODO Auto-generated method stub
-	}
-	
-	@Override
-	public void setPositioning(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setFoot(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setFBPage(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setPosition(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setPersonID(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setFirstName(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setLastName(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setNickname(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setBirthDate(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setUniStartYear(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setUniCurrentCourse(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setGraduated(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setSchool(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setWeight(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setHeight(int playerID) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void setImageURL(int playerID) {
-		// TODO Auto-generated method stub
-	}
-	
-	@Override
-	public void setBio(int playerID) {
-		// TODO Auto-generated method stub
+		return -1;
 	}
 
 	/**
@@ -966,6 +782,7 @@ public class PlayerDB_DEO implements PlayerDB{
 		}
 		return null;
 	}
+	
 	/**
 	 * აბრუნებს ობიექტს პარამეტრების სიიდან.
 	 * @param parameter - მეორე გასაღები.
@@ -1022,5 +839,43 @@ public class PlayerDB_DEO implements PlayerDB{
 	public void reset(){
 		playersAtributesList.clear();
 		playersParametresList.clear();
+	}
+	
+	/**
+	 * ამოწმებს არსებობს თუ არა მოთამაშე მითითებული ID-ით.
+	 * @param playerID
+	 * @return TRUE - არსებობს, FALSE - არ არსებობს.
+	 */
+	@Override
+	public boolean exists(int playerID){
+		if(getPlayerID(playerID)==-1) return false;
+		return true;
+	}
+
+	/**
+	 * აკომიტებს ახალი მოთამაშის შექმნას ან არსებულის ცვლილებას
+	 */
+	@Override
+	public void commitPlayer(Player_DEO player) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
+	 * ბაზაში ახალი მოთამაშის დამატება.
+	 */
+	private void newPlayer(Player_DEO player) {
+	}
+	
+	/**
+	 * ბაზაში არსებული მოთამაშის შესწორების დადასტურება.
+	 */
+	private void editPlayer(Player_DEO player) {
+	}
+	
+	/**
+	 * ბაზაში არსებული მოთამაშის წაშლა.
+	 */
+	private void deletePlayer(Player_DEO player) {
 	}
 }
