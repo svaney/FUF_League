@@ -858,7 +858,11 @@ public class PlayerDB_DEO implements PlayerDB{
 	@Override
 	public void commitPlayer(Player_DEO player) {
 		// TODO Auto-generated method stub
-		
+		if(player.getPlayerID()==-1){
+			newPlayer(player);
+		}else{
+			editPlayer(player);
+		}
 	}
 	
 	/**
@@ -876,6 +880,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	/**
 	 * ბაზაში არსებული მოთამაშის წაშლა.
 	 */
-	private void deletePlayer(Player_DEO player) {
+	@Override
+	public void deletePlayer(Player_DEO player) {
 	}
 }

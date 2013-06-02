@@ -434,15 +434,6 @@ public class Player_DEO implements Player {
 	}
 
 	/**
-	 * ბაზას უგზავნის დასაკომიტებელ ინფორმაციას.
-	 */
-	@Override
-	public void commitPlayer() {
-		PlayerDB_DEO player = new PlayerDB_DEO();
-		player.commitPlayer(this);		
-	}
-	
-	/**
 	 * მოთამაშის სახელს ანიშებს გადაცემულ მნიშვნელობას.
 	 */
 	@Override
@@ -562,141 +553,193 @@ public class Player_DEO implements Player {
 		this.position = position;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setSpeed(int param) {
-		// TODO Auto-generated method stub
-		
+		this.speed = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setDribbling(int param) {
-		// TODO Auto-generated method stub
-		
+		this.dribbling = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setHeading(int param) {
-		// TODO Auto-generated method stub
-		
+		this.heading = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setClubLoyalty(int param) {
-		// TODO Auto-generated method stub
-		
+		this.loyalty = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setDiving(int param) {
-		// TODO Auto-generated method stub
-		
+		this.diving = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setDurability(int param) {
-		// TODO Auto-generated method stub
-		
+		this.durability = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setShooting(int param) {
-		// TODO Auto-generated method stub
-		
+		this.shooting = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setWorkRate(int param) {
-		// TODO Auto-generated method stub
-		
+		this.work = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setCreativity(int param) {
-		// TODO Auto-generated method stub
-		
+		this.creativity = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setFearFactor(int param) {
-		// TODO Auto-generated method stub
-		
+		this.fear_factor = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setKillerInstinct(int param) {
-		// TODO Auto-generated method stub
-		
+		this.killer_instinct = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setVision(int param) {
-		// TODO Auto-generated method stub
-		
+		this.vision = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setPassing(int param) {
-		// TODO Auto-generated method stub
-		
+		this.passing = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setPenalty(int param) {
-		// TODO Auto-generated method stub
-		
+		this.penalty = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setPenaltySaving(int param) {
-		// TODO Auto-generated method stub
-		
+		this.penalty_saveing = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setLidership(int param) {
-		// TODO Auto-generated method stub
-		
+		this.lidership = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setReflexes(int param) {
-		// TODO Auto-generated method stub
-		
+		this.reflexes = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setTackling(int param) {
-		// TODO Auto-generated method stub
-		
+		this.tackling = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setShotStoping(int param) {
-		// TODO Auto-generated method stub
-		
+		this.shot_stopping = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setMistakeFactor(int param) {
-		// TODO Auto-generated method stub
-		
+		this.mistake_factor = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setPositioning(int param) {
-		// TODO Auto-generated method stub
-		
+		this.positioning = param;
 	}
 
+	/**
+	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
+	 */
 	@Override
 	public void setStrength(int param) {
-		// TODO Auto-generated method stub
-		
+		this.strength = param;
 	}
 
 	@Override
 	public void setTeamID(int teamID) {
-		// TODO Auto-generated method stub
-		
+		this.teamID = teamID;
+	}
+
+	/**
+	 * ბაზას უგზავნის დასაკომიტებელ ინფორმაციას.
+	 */
+	@Override
+	public void commitPlayer() {
+		PlayerDB_DEO player = new PlayerDB_DEO();
+		player.commitPlayer(this);		
 	}
 }

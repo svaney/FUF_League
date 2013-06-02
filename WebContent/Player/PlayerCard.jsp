@@ -73,8 +73,7 @@
           <td>ნომერი:</td>
           <td>10</td>
         </tr>
-    </table></td>
-  </tr>
+    </table>
 </table>
 </body>
 </html>

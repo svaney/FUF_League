@@ -68,6 +68,7 @@ public interface PlayerDB{
 	// შემოწმება.
 	public boolean exists(int playerID);
 	
-	// მოთამაშის შენახვა.
+	// მოთამაშის შენახვა/წაშლა.
 	public void commitPlayer(Player_DEO player);
+	public void deletePlayer(Player_DEO player);
 }

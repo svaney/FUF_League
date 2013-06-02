@@ -10,7 +10,7 @@
      <h2>მოთამაშის რეიტინგი</h2>
      <table class="ratingAtr">
      <tr>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">სისწრაფე</td>
@@ -23,7 +23,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">დრიბლინგი</td>
@@ -36,7 +36,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">თავით თამაში</td>
@@ -49,7 +49,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">ართმევა</td>
@@ -64,7 +64,7 @@
 	     </td>
      </tr>
      <tr>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">გამძლეობა</td>
@@ -77,7 +77,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">მოგერიება</td>
@@ -90,7 +90,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">დარტყმა</td>
@@ -103,7 +103,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">სიმულაცია</td>
@@ -118,7 +118,7 @@
 	     </td>
      </tr>
      <tr>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">ძალა</td>
@@ -131,7 +131,7 @@
 				</tr>
 		     </table>	     
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">კრეატიულობა</td>
@@ -144,7 +144,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">შიშის ფაქტორი</td>
@@ -157,7 +157,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">ფინიში</td>
@@ -172,7 +172,7 @@
 	     </td>
      </tr>
      <tr>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">მოედნის ხედვა</td>
@@ -185,7 +185,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">პასები</td>
@@ -198,7 +198,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">პენალტი</td>
@@ -211,7 +211,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">ლიდერობა</td>
@@ -226,7 +226,7 @@
 	     </td>
      </tr>
      <tr>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">მუშაობის ხარისხი</td>
@@ -239,7 +239,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">პოზიციის შერჩევა</td>
@@ -252,7 +252,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">გუნდის ერთგულება </td>
@@ -265,7 +265,7 @@
 				</tr>
 		     </table>
 	     </td>
-	     <td>
+	     <td width="25%">
 		     <table>
 		     	<tr>
 		     		<td width="85%">შეცდომის სიხშირე</td>
