@@ -418,241 +418,235 @@ public class Player_DEO implements Player {
 	}
 
 	@Override
-	public void setFirstName() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setLastName() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setNickname() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setBirthDate() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setUniStartYear() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setUniCurrentCourse() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setSchool() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setWeight() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setHeight() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setAvatar() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setBio() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setRating() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setFoot() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setFBPage() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPosition() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setTeamName() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setSpeed() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setDribbling() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setHeading() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setClubLoyalty() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setDiving() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setDurability() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setShooting() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setWorkRate() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setCreativity() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setFearFactor() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setKillerInstinct() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setVision() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPassing() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPenalty() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPenaltySaving() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setLidership() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setReflexes() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setTackling() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setShotStoping() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setMistakeFactor() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPositioning() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setStrength() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setTeamID() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void commitPlayer() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFirstName(String firstName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setLastName(String lastName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setNickname(String nickName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setBirthDate(Date birthDate) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setUniStartYear(int startYear) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setUniCurrentCourse(int course) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSchool(String school) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setWeight(int weight) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setHeight(int height) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setAvatar(String avatar) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setBio(String bio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setRating(double rating) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFoot(String foot) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFBPage(String fbPage) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPosition(String position) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSpeed(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setDribbling(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setHeading(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setClubLoyalty(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setDiving(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setDurability(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setShooting(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setWorkRate(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setCreativity(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setFearFactor(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setKillerInstinct(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setVision(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPassing(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPenalty(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPenaltySaving(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setLidership(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setReflexes(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setTackling(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setShotStoping(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setMistakeFactor(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPositioning(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setStrength(int param) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setTeamID(int teamID) {
 		// TODO Auto-generated method stub
 		
 	}
