@@ -31,5 +31,15 @@ public interface Penalties {
 	 * @return int ტიპის მნიშვნელობა, რამდენი ააცდინა გუნდმა ამ სერიაში 
 	 */
 	int getTeamMissedQuantity(int teamID);
+	
+	//---------------------------------------------------------------------
+	//სეტერები
+	//---------------------------------------------------------------------
+	
+	/**
+	 * ამატებს ერთ დარტყმას პენლების სერიაში
+	 * @param pSh PenaltyShoot ობიექტი
+	 */
+	void setPenaltyForTeam(PenaltyShoot pSh);
 
 }

@@ -85,4 +85,14 @@ public class Penalties_DLAPI implements Penalties{
 		}
 	}
 
+	/**
+	 * ამატებს ერთ დარტყმას პენლების სერიაში
+	 * @param pSh PenaltyShoot ობიექტი
+	 */
+	@Override
+	public void setPenaltyForTeam(PenaltyShoot pSh) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
