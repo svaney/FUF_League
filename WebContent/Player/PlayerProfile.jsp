@@ -1,15 +1,12 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" errorPage="" %>
 <%@ page import="model.mainclasses.Player_DEO" %>
 <!doctype html>
-<!-- ეს არის სამუშაო ფაილია. მონაცემები შეყვანილია ხელით და ჯერ არ ხდება რაიმე ფუნქციის გამოძახება -->
 <html>
 <head>
-<meta charset="utf-8">
     <link rel="icon" href="images/design/freeuniLogo.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/PlayerProfile.css" />
 	<%Player_DEO player = (Player_DEO) request.getAttribute(request.getParameter("playerID"));%> <!-- სერვლეტი უნდა გადმოსცემდეს ამას -->
 <head>
-<meta charset="utf-8">
 <title><%=player.getFirstName()+" "+player.getLastName()%></title>
 </head>
 <body>

@@ -1,6 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" errorPage="" %>
 <%@ page import="model.mainclasses.Player_DEO" %>
-<%@ page import="model.mainclasses.Team_Ruska" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%Player_DEO card = (Player_DEO) request.getAttribute(request.getParameter("playerID"));%>
@@ -24,7 +23,7 @@
 </table>
 </td>
     <td class="CardRigthSide">
-      <table class="CardDefaultInfo" width="100%" style="position: relative; top: -25px;">
+      <table class="CardDefaultInfo" width="100%">
         <tr>
           <td>სახელი:</td>
           <td><strong><%=card.getFirstName()+" "+card.getLastName() %></strong></td>
