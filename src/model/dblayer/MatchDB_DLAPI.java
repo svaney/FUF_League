@@ -363,6 +363,16 @@ public class MatchDB_DLAPI implements MatchDB{
 		st.close();
 		return answer;
 	}
+
+	/**
+	 * აბრუნებს ჩემპიონატის რაუნდების სიას
+	 * @return List რომელშიც შევსებულია Integer ობიექტებით.
+	 */
+	@Override
+	public List<Integer> getStageIDList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }
