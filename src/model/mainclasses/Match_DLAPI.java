@@ -29,11 +29,15 @@ public class Match_DLAPI implements Match{
 	 * @param team1_ID პირველი გუნდის იდენტიფიკატორი
 	 * @param team2_ID მეორე გუნდის იდენტიფიკატორი
 	 * @param championship_ID ჩემპიონატის იდენტიფიკატორი
-	 * @param stage_ID რაუნდის იდენტიფიკატორი
+	 * @param stage რაუნდის იდენტიფიკატორი
 	 */
-	public Match_DLAPI(int team1_ID, int team2_ID, int championship_ID, int stage_ID){
+	public Match_DLAPI(int team1_ID, int team2_ID, int championship_ID, String stage){
 		mtBase = new MatchDB_DLAPI();
-		matchID = (int) mtBase.setMatch(team1_ID,team2_ID,championship_ID,stage_ID);
+		try {
+			matchID = (int) mtBase.setMatch(team1_ID,team2_ID,championship_ID,stage);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -239,11 +243,11 @@ public class Match_DLAPI implements Match{
 
 	/**
 	 * ცვლის მატჩის რაუნდს
-	 * @param stageID რაუნდის იდენტიფიკატორი
+	 * @param stage რაუნდის იდენტიფიკატორი
 	 */
 	@Override
-	public void setMatchStageID(int stageID) {
-		mtBase.setMatchStage(matchID, stageID);
+	public void setMatchStageID(String stage) {
+		mtBase.setMatchStage(matchID, stage);
 	}
 
 	/**

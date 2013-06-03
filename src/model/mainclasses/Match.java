@@ -94,9 +94,9 @@ public interface Match {
 
 	/**
 	 * ცვლის მატჩის რაუნდს
-	 * @param stageID რაუნდის იდენტიფიკატორი
+	 * @param stage რაუნდის იდენტიფიკატორი
 	 */
-	void setMatchStageID(int stageID);
+	void setMatchStageID(String stage);
 	
 	/**
 	 * უთითებს რომ მატჩს ჰქონდა დამატებითი დრო

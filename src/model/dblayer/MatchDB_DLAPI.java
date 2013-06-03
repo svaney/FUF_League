@@ -388,21 +388,27 @@ public class MatchDB_DLAPI implements MatchDB{
 	 * @param championship_ID ჩემპიონატის ID
 	 * @param stage_ID რაუნდის ID
 	 * @return matchID მატჩის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
 	@Override
-	public int setMatch(int team1_ID, int team2_ID, int championship_ID,
-			int stage_ID) {
-		// TODO Auto-generated method stub
-		return 0;
+	public synchronized int setMatch(int team1_ID, int team2_ID, int championship_ID,
+			String stage) throws SQLException {
+		startUpStatement();
+		st.executeUpdate("insert into matches(team1_ID,team2_ID,Championship_ID,stage) values ("+team1_ID+","+team2_ID+","+championship_ID+",'"+stage+"');");
+		rs = st.executeQuery("select max(match_id) as ID from matches where team1_ID="+team1_ID+" and team2_ID="+team2_ID+" and championship_ID="+championship_ID+" and stage='"+stage+"'");
+		// es implementacia ar momwons, imitom rom vaida vigacam ara auto_increment-it chaamatos didi ID-iani rame uechveli erxeva
+		rs.next();
+		st.close();
+		return rs.getInt("ID");
 	}
 
 	/**
 	 * ამატებს, ან ცვლის მატჩის რაუნდს
 	 * @param matchID მატჩის იდენტიფიკატორი
-	 * @param stageID რაუნდის იდენტიფიკატორი
+	 * @param stage რაუნდის იდენტიფიკატორი
 	 */
 	@Override
-	public void setMatchStage(int matchID, int stageID) {
+	public void setMatchStage(int matchID, String stage) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -191,17 +191,18 @@ public interface MatchDB {
 	 * @param team1_ID პირველი გუნდის იდენტიფიკატორი
 	 * @param team2_ID მეორე გუნდის იდენტიფიკატორი
 	 * @param championship_ID ჩემპიონატის ID
-	 * @param stage_ID რაუნდის ID
+	 * @param stage რაუნდის იდენტიფიკატორი
 	 * @return matchID მატჩის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
-	int setMatch(int team1_ID, int team2_ID, int championship_ID, int stage_ID);
+	int setMatch(int team1_ID, int team2_ID, int championship_ID, String stage) throws SQLException;
 
 	/**
 	 * ამატებს, ან ცვლის მატჩის რაუნდს
 	 * @param matchID მატჩის იდენტიფიკატორი
-	 * @param stageID რაუნდის იდენტიფიკატორი
+	 * @param stage რაუნდის იდენტიფიკატორი
 	 */
-	void setMatchStage(int matchID, int stageID);
+	void setMatchStage(int matchID, String stage);
 
 	/**
 	 * წერს ჰქონდა თუ არა დამატებითი დრო
