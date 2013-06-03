@@ -25,7 +25,18 @@ public class Match_DLAPI implements Match{
 	private int matchID;
 	
 	/**
-	 * კონსტრუქტორი
+	 * კონსტრუქტორი, რომელიც ქმნის სრულიად ახალ მატჩს
+	 * @param team1_ID პირველი გუნდის იდენტიფიკატორი
+	 * @param team2_ID მეორე გუნდის იდენტიფიკატორი
+	 * @param championship_ID ჩემპიონატის იდენტიფიკატორი
+	 * @param stage_ID რაუნდის იდენტიფიკატორი
+	 */
+	public Match_DLAPI(int team1_ID, int team2_ID, int championship_ID, int stage_ID){
+		
+	}
+	
+	/**
+	 * კონსტრუქტორი, იქმენა უკვე არსებული მატჩიდან
 	 * @param match_id
 	 */
 	public Match_DLAPI(int matchID){
@@ -97,7 +108,6 @@ public class Match_DLAPI implements Match{
 		try {
 			players = (ArrayList<Integer>) mtBase.getMatchPlayersForTeam(matchID,teamID);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return setPlayersFromIDs(players);
@@ -215,6 +225,130 @@ public class Match_DLAPI implements Match{
 			e.printStackTrace();
 			return "";
 		}
+	}
+
+	/**
+	 * აბრუნებს მატჩის იდენტიფიკატორს
+	 * @return int ტიპის იდენტიფიკატორი
+	 */
+	@Override
+	public int getMatchID() {
+		return matchID;
+	}
+
+	/**
+	 * ცვლის მატჩის რაუნდს
+	 * @param stageID რაუნდის იდენტიფიკატორი
+	 */
+	@Override
+	public void setMatchStageID(int stageID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * უთითებს რომ მატჩს ჰქონდა დამატებითი დრო
+	 * @param extra true - თუ ჰქონდა, false თუ არ ჰქონდა
+	 */
+	@Override
+	public void setExtraTime(boolean extra) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * აფიქსირებს მატჩის ანგარიშს
+	 * @param score Score ტიპის ობიექტი
+	 */
+	@Override
+	public void setScore(Score score) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * აფიქსირებს მატჩის ჩატარების თარიღს
+	 * @param date sql.Date ტიპის ობიექტი
+	 */
+	@Override
+	public void setDate(Date date) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * მოთამაშეს ამატებს კონკრეტული გუნდის განაცხადში განაცხადში
+	 * @param player მოთამაშე Player ტიპის ობიექტი
+	 * @param teamID int გუნდის იდენტიფიკატორი
+	 */
+	@Override
+	public void setInLineUp(Player player, int teamID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * უთითებს მატჩის ორ მოთამაშე გუნდს
+	 * @param team1ID მასპინძელი გუნდის იდენტიფიკატორი
+	 * @param team2ID სტუმარი გუნდის იდენტიფიკატორი
+	 */
+	@Override
+	public void setTeamIDsInMatch(int team1id, int team2id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * კონკრეტულ მატჩზე ნიშნავს რომელიმე გუნდში კაპიტანს
+	 * @param teamID გუნდის იდენტიფიკატორი, სადაც ინიშნება კაპიტანი
+	 * @param player კაპიტანი
+	 */
+	@Override
+	public void setCaptainForMatch(int teamID, Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * უთითებს რომ ამ მოთამაშემ ამ გუნდში მიიღო ყვითელი ბარათი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param player მოთამაშის იდენტიფიკატორი
+	 */
+	@Override
+	public void setYellowForPlayer(int teamID, Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * უთითებს რომ ამ მოთამაშემ ამ გუნდში მიიღო წითელი ბარათი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param player მოთამაშის იდენტიფიკატორი
+	 */
+	@Override
+	public void setRedForPlayer(int teamID, Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * ანახლებს მატჩის მიმოხილვას
+	 * @param review String ტიპის ობიექტი
+	 */
+	@Override
+	public void setMatchReview(String review) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * ამატებს, ცვლის ჩემპიონატის იდენტიფიკატორს
+	 * @param championship_ID int ტიპის იდენტიფიკატორი
+	 */
+	@Override
+	public void setChampionship(int championship_ID) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

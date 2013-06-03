@@ -16,20 +16,20 @@ public interface Penalties {
 	 * @param teamID გუნდის საიდენტიფიკაციო ID
 	 * @return ArrayList რომელშიც არის PenaltyShoot კლასის ობიექტები 
 	 */
-	public List<PenaltyShoot> getTeamsSerie(int teamID);
+	 List<PenaltyShoot> getTeamsSerie(int teamID);
 	
 	/**
 	 * რამდენი გაიტანა გუნდმა ამ სერიაში
 	 * @param teamID გუნდის მაიდენტიფიცირებელი
 	 * @return int ტიპის მნიშვნელობა, რამდენი გაიტანა გუნდმა ამ სერიაში 
 	 */
-	public int getTeamScore(int teamID);
+	 int getTeamScore(int teamID);
 	
 	/**
 	 * რამდენი ააცდინა გუნდმა
 	 * @param teamID გუნდის მაიდენტიფიცირებელი
 	 * @return int ტიპის მნიშვნელობა, რამდენი ააცდინა გუნდმა ამ სერიაში 
 	 */
-	public int getTeamMissedQuantity(int teamID);
+	 int getTeamMissedQuantity(int teamID);
 	
 }

@@ -1,3 +1,10 @@
+/**	
+ * File: PenalyShoot.java
+ * type: class
+ * @author Data
+ * -----------------
+ * აღწერს ერთ კონკრეტულ დარტყმას პენლების სერიაში
+ * */
 package model.mainclasses;
 
 public class PenaltyShoot {

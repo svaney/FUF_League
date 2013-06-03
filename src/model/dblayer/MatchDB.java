@@ -29,7 +29,7 @@ public interface MatchDB {
 	 * @return String ტიპის პარამეტრი - რაუნდი, ეტაპი
 	 * @throws SQLException 
 	 */
-	public String getStageOfMatch(int matchID) throws SQLException;
+	String getStageOfMatch(int matchID) throws SQLException;
 
 	/**
 	 * გვეუბნება მატჩს რამდენი ჰქონდა დამატებით დრო (თუ არ ჰქონდა მაშინ 0)
@@ -37,7 +37,7 @@ public interface MatchDB {
 	 * @return წთ-ებში გამოსახული დრო
 	 * @throws SQLException 
 	 */
-	public int getExtraTime(int matchID) throws SQLException;
+	int getExtraTime(int matchID) throws SQLException;
 
 	/**
 	 * აბრუნებს მატჩის ჩატარების თარიღს
@@ -45,7 +45,7 @@ public interface MatchDB {
 	 * @return java.sql.Date ტიპის თარიღი
 	 * @throws SQLException 
 	 */
-	public Date getMatchDate(int matchID) throws SQLException;
+	Date getMatchDate(int matchID) throws SQLException;
 
 	/**
 	 * აბრუნებს კონკრეტულ მატჩზე, კონკრეტული გუნდის განაცხადს, List-ის სახით
@@ -54,7 +54,7 @@ public interface MatchDB {
 	 * @return List ტიპის ობიექტი სადაც ყრია Integer ტიპის მაიდენტიფიცირებელი კოდები თითოეული მოთამაშისთვის
 	 * @throws SQLException 
 	 */
-	public List<Integer> getMatchPlayersForTeam(int matchID, int teamID) throws SQLException;
+	List<Integer> getMatchPlayersForTeam(int matchID, int teamID) throws SQLException;
 
 	/**
 	 * აბრუნებს მატჩის მონაწილე ორი გუნდის ID-ებს მასივის სახით
@@ -62,7 +62,7 @@ public interface MatchDB {
 	 * @return int ტიპის ორელემენტიანი მასივი, რომელშიც მოცემულია მატჩის მონაწილე გუნდების ID-ები
 	 * @throws SQLException 
 	 */
-	public int[] getMatchTeams(int matchID) throws SQLException;
+	int[] getMatchTeams(int matchID) throws SQLException;
 
 	/**
 	 * აბრუნებს მოცემულ მატჩზე მოცემული გუნდის კაპიტანს, თუ ასეთი არ არსებობს აბრუნებს -1_ს (ანუ default კაპიტანი ჰყავდათ)
@@ -72,7 +72,7 @@ public interface MatchDB {
 	 * წინააღმდეგ შემთხვევაში აბრუნებს -1_ს
 	 * @throws SQLException 
 	 */
-	public int getCapForMatchTeam(int teamID, int matchID) throws SQLException;
+	int getCapForMatchTeam(int teamID, int matchID) throws SQLException;
 
 	/**
 	 * აბრუნებს მოცემული მატჩის შესახებ ინფორმაციას - რომელ ჩემპიონატზე ჩატარდა
@@ -80,7 +80,7 @@ public interface MatchDB {
 	 * @return int ტიპის იდენტიფიკატორი
 	 * @throws SQLException 
 	 */
-	public int getChampionshipID(int matchID) throws SQLException;
+	int getChampionshipID(int matchID) throws SQLException;
 
 	/**
 	 * კონკრეტულ მატჩზე გუნდის რომელმა წევრებმა მიიღეს ყვითელი ბარათები
@@ -89,7 +89,7 @@ public interface MatchDB {
 	 * @return List ტიპის ობიექტი სადაც წერია მოთამაშეების ID-ები
 	 * @throws SQLException 
 	 */
-	public List<Integer> getYellowsForTeamInMatch(int matchID, int teamID) throws SQLException;
+	List<Integer> getYellowsForTeamInMatch(int matchID, int teamID) throws SQLException;
 
 	/**
 	 * კონკრეტულ მატჩზე გუნდის რომელმა წევრებმა მიიღეს წითელი ბარათები
@@ -98,7 +98,7 @@ public interface MatchDB {
 	 * @return List ტიპის ობიექტი სადაც წერია მოთამაშეების ID-ები
 	 * @throws SQLException 
 	 */
-	public List<Integer> getRedsForTeamInMatch(int matchID, int teamID) throws SQLException;
+	List<Integer> getRedsForTeamInMatch(int matchID, int teamID) throws SQLException;
 
 	/**
 	 * აბრუნებს მატჩზე დაწერილ რევიუს
@@ -106,7 +106,7 @@ public interface MatchDB {
 	 * @return სტრინგ ტიპის ობიექტი სადაც წერია ტექსტი.
 	 * @throws SQLException 
 	 */
-	public String getReview(int matchID) throws SQLException;
+	String getReview(int matchID) throws SQLException;
 
 	/**
 	 * აბრუნებს იყო თუ არა პენლების სერია
@@ -114,7 +114,7 @@ public interface MatchDB {
 	 * @return true თუ იყო, false თუ არ იყო
 	 * @throws SQLException 
 	 */
-	public boolean hasPenalties(int matchID) throws SQLException;
+	boolean hasPenalties(int matchID) throws SQLException;
 
 	/**
 	 * აბრუნებს კონკრეტულ მატჩზე გუნდის გატანილ გოლებს ძირითად დროში
@@ -123,7 +123,7 @@ public interface MatchDB {
 	 * @return რაოდენობა ძირითად დროში გატანილი გოლების
 	 * @throws SQLException 
 	 */
-	public int getScoreForTeamForFullTime(int matchID, int teamID) throws SQLException;
+	int getScoreForTeamForFullTime(int matchID, int teamID) throws SQLException;
 
 	/**
 	 * აბრუნებს იმ გოლის იდენტიფიკატორს, რომელიც გავიგე მე-N მატჩის განმავლობაში
@@ -132,7 +132,7 @@ public interface MatchDB {
 	 * @return გოლის იდენტიფიკატორი
 	 * @throws SQLException 
 	 */
-	public int getGoalNthInRow(int matchID, int Nth) throws SQLException;
+	int getGoalNthInRow(int matchID, int Nth) throws SQLException;
 
 	/**
 	 * აბრუნებს ამ გუნდის მიერ გატანილი გოლების რაოდენობას დამატებით დროში
@@ -141,7 +141,7 @@ public interface MatchDB {
 	 * @return გოლების რაოდენობა
 	 * @throws SQLException 
 	 */
-	public int getExtraTimeGoalForTeam(int teamID, int matchID) throws SQLException;
+	int getExtraTimeGoalForTeam(int teamID, int matchID) throws SQLException;
 
 	/**
 	 * აბრუნებს გუნდის მიერ მატჩში - პირველ ტაიმში გატანილ გოლების რაოდენობას
@@ -150,7 +150,7 @@ public interface MatchDB {
 	 * @return გოლების რაოდენობა
 	 * @throws SQLException 
 	 */
-	public int getScoreForTeamFirstHalf(int teamID, int matchID) throws SQLException;
+	int getScoreForTeamFirstHalf(int teamID, int matchID) throws SQLException;
 
 	/**
 	 * აბრუნებს გუნდის მიერ პენლების სერიის შედეგს
@@ -159,7 +159,7 @@ public interface MatchDB {
 	 * @return List სადაც წერია PenaltyShoot ტიპის ობიექტები.
 	 * @throws SQLException 
 	 */
-	public List<PenaltyShoot> getTeamPenalties(int teamID, int matchID) throws SQLException;
+	List<PenaltyShoot> getTeamPenalties(int teamID, int matchID) throws SQLException;
 
 	/**
 	 * აბრუნებს რამდენი გაიტანა გუნდმა პენლების სერიაში
@@ -168,7 +168,7 @@ public interface MatchDB {
 	 * @return რაოდენობა
 	 * @throws SQLException 
 	 */
-	public int getTeamsScoresInPenalties(int teamID, int matchID) throws SQLException;
+	int getTeamsScoresInPenalties(int teamID, int matchID) throws SQLException;
 
 	/**
 	 * აბრუნებს რამდენი ვერ გაიტანა გუნდმა პენლების სერიაში
@@ -177,7 +177,11 @@ public interface MatchDB {
 	 * @return რაოდენობა
 	 * @throws SQLException 
 	 */
-	public int getTeamsMissedInPenalties(int teamID, int matchID) throws SQLException;
+	int getTeamsMissedInPenalties(int teamID, int matchID) throws SQLException;
 
-
+	/**
+	 * აბრუნებს ჩემპიონატის რაუნდების სიას
+	 * @return List რომელშიც შევსებულია Integer ობიექტებით.
+	 */
+	List<Integer> getStageIDList();
 }
