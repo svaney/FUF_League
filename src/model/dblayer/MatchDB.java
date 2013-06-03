@@ -181,9 +181,10 @@ public interface MatchDB {
 
 	/**
 	 * აბრუნებს ჩემპიონატის რაუნდების სიას
-	 * @return List რომელშიც შევსებულია Integer ობიექტებით.
+	 * @return List რომელშიც შევსებულია String ობიექტებით.
+	 * @throws SQLException 
 	 */
-	List<Integer> getStageIDList();
+	List<String> getStageList() throws SQLException;
 
 	/**
 	 * ქმნის მატჩს მოცემული პარამეტრებით

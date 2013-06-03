@@ -366,12 +366,19 @@ public class MatchDB_DLAPI implements MatchDB{
 
 	/**
 	 * აბრუნებს ჩემპიონატის რაუნდების სიას
-	 * @return List რომელშიც შევსებულია Integer ობიექტებით.
+	 * @return List რომელშიც შევსებულია String ობიექტებით.
+	 * @throws SQLException 
 	 */
 	@Override
-	public List<Integer> getStageIDList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> getStageList() throws SQLException {
+		startUpStatement();
+		rs = st.executeQuery("select * from championship_stages;");
+		ArrayList<String> answer = new ArrayList<String>();
+		while(rs.next()){
+			answer.add(rs.getString("stage"));
+		}
+		st.close();
+		return answer;
 	}
 
 	/**
