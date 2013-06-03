@@ -184,4 +184,90 @@ public interface MatchDB {
 	 * @return List რომელშიც შევსებულია Integer ობიექტებით.
 	 */
 	List<Integer> getStageIDList();
+
+	/**
+	 * ქმნის მატჩს მოცემული პარამეტრებით
+	 * @param team1_ID პირველი გუნდის იდენტიფიკატორი
+	 * @param team2_ID მეორე გუნდის იდენტიფიკატორი
+	 * @param championship_ID ჩემპიონატის ID
+	 * @param stage_ID რაუნდის ID
+	 * @return matchID მატჩის იდენტიფიკატორი
+	 */
+	int setMatch(int team1_ID, int team2_ID, int championship_ID, int stage_ID);
+
+	/**
+	 * ამატებს, ან ცვლის მატჩის რაუნდს
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param stageID რაუნდის იდენტიფიკატორი
+	 */
+	void setMatchStage(int matchID, int stageID);
+
+	/**
+	 * წერს ჰქონდა თუ არა დამატებითი დრო
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param extra true თუ ჰქონდა, false წინააღმდეგ შემთხვევაში
+	 */
+	void setExtraTimeForMatch(int matchID, boolean extra);
+
+	/**
+	 * წერს თარიღს როდესაც ჩატარდა მატჩი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param date თარიღი sql.date ტიპის
+	 */
+	void setDateForMatch(int matchID, Date date);
+
+	/**
+	 * ამატებს მატჩის განაცხადში მოთამაშეს
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 */
+	void setLineUpPlayer(int matchID, int teamID, int playerID);
+
+	/**
+	 * ამატებს ან ცვლის მატჩის მოთამაშე გუნდებს
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param team1id გუნდის იდენტიფიკატორი
+	 * @param team2id გუნდის იდენტიფიკატორი
+	 */
+	void setTeamsInMatch(int matchID, int team1id, int team2id);
+
+	/**
+	 * წერს გუნდის კაპიტანს მოცემული მატჩისთვის
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 */
+	void setCaptainForMatch(int matchID, int teamID, int playerID);
+
+	/**
+	 * წერს ფეხბურთელს რომელმაც მატჩზე მიიღო ყვითელი ბარათი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 */
+	void setYellowForPlayerInMatch(int matchID, int teamID, int playerID);
+
+	/**
+	 * წერს ფეხბურთელს რომელმაც მატჩზე მიიღო ყვითელი ბარათი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 */
+	void setRedForPlayerInMatch(int matchID, int teamID, int playerID);
+
+	/**
+	 * წერს მატჩის შესახებ სტატიას
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param review მიმოხილვა ტექსტის სახით
+	 */
+	void setMatchReview(int matchID, String review);
+
+	/**
+	 * წერს ჩემპიონატის ID-ს
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param championship_ID ჩემპიონატის იდენტიფიკატორი
+	 */
+	void setChampionship(int matchID, int championship_ID);
+	
 }

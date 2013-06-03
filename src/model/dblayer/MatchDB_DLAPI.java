@@ -373,6 +373,136 @@ public class MatchDB_DLAPI implements MatchDB{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+	 * ქმნის მატჩს მოცემული პარამეტრებით
+	 * @param team1_ID პირველი გუნდის იდენტიფიკატორი
+	 * @param team2_ID მეორე გუნდის იდენტიფიკატორი
+	 * @param championship_ID ჩემპიონატის ID
+	 * @param stage_ID რაუნდის ID
+	 * @return matchID მატჩის იდენტიფიკატორი
+	 */
+	@Override
+	public int setMatch(int team1_ID, int team2_ID, int championship_ID,
+			int stage_ID) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/**
+	 * ამატებს, ან ცვლის მატჩის რაუნდს
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param stageID რაუნდის იდენტიფიკატორი
+	 */
+	@Override
+	public void setMatchStage(int matchID, int stageID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * წერს ჰქონდა თუ არა დამატებითი დრო
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param extra true თუ ჰქონდა, false წინააღმდეგ შემთხვევაში
+	 */
+	@Override
+	public void setExtraTimeForMatch(int matchID, boolean extra) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * წერს თარიღს როდესაც ჩატარდა მატჩი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param date თარიღი sql.date ტიპის
+	 */
+	@Override
+	public void setDateForMatch(int matchID, Date date) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * ამატებს მატჩის განაცხადში მოთამაშეს
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 */
+	@Override
+	public void setLineUpPlayer(int matchID, int teamID, int playerID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * ამატებს ან ცვლის მატჩის მოთამაშე გუნდებს
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param team1id გუნდის იდენტიფიკატორი
+	 * @param team2id გუნდის იდენტიფიკატორი
+	 */
+	@Override
+	public void setTeamsInMatch(int matchID, int team1id, int team2id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * წერს გუნდის კაპიტანს მოცემული მატჩისთვის
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 */
+	@Override
+	public void setCaptainForMatch(int matchID, int teamID, int playerID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * წერს ფეხბურთელს რომელმაც მატჩზე მიიღო ყვითელი ბარათი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 */
+	@Override
+	public void setYellowForPlayerInMatch(int matchID, int teamID, int playerID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * წერს ფეხბურთელს რომელმაც მატჩზე მიიღო ყვითელი ბარათი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 */
+	@Override
+	public void setRedForPlayerInMatch(int matchID, int teamID, int playerID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * წერს მატჩის შესახებ სტატიას
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param review მიმოხილვა ტექსტის სახით
+	 */
+	@Override
+	public void setMatchReview(int matchID, String review) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * წერს ჩემპიონატის ID-ს
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param championship_ID ჩემპიონატის იდენტიფიკატორი
+	 */
+	@Override
+	public void setChampionship(int matchID, int championship_ID) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

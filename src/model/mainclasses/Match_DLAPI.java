@@ -32,7 +32,8 @@ public class Match_DLAPI implements Match{
 	 * @param stage_ID რაუნდის იდენტიფიკატორი
 	 */
 	public Match_DLAPI(int team1_ID, int team2_ID, int championship_ID, int stage_ID){
-		
+		mtBase = new MatchDB_DLAPI();
+		matchID = (int) mtBase.setMatch(team1_ID,team2_ID,championship_ID,stage_ID);
 	}
 	
 	/**
@@ -242,8 +243,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setMatchStageID(int stageID) {
-		// TODO Auto-generated method stub
-		
+		mtBase.setMatchStage(matchID, stageID);
 	}
 
 	/**
@@ -252,8 +252,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setExtraTime(boolean extra) {
-		// TODO Auto-generated method stub
-		
+		mtBase.setExtraTimeForMatch(matchID, extra);
 	}
 
 	/**
@@ -262,8 +261,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setScore(Score score) {
-		// TODO Auto-generated method stub
-		
+		// TODO complicated
 	}
 
 	/**
@@ -272,8 +270,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setDate(Date date) {
-		// TODO Auto-generated method stub
-		
+		mtBase.setDateForMatch(matchID,date);
 	}
 
 	/**
@@ -283,8 +280,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setInLineUp(Player player, int teamID) {
-		// TODO Auto-generated method stub
-		
+		mtBase.setLineUpPlayer(matchID,teamID,player.getPlayerID());
 	}
 
 	/**
@@ -293,9 +289,8 @@ public class Match_DLAPI implements Match{
 	 * @param team2ID სტუმარი გუნდის იდენტიფიკატორი
 	 */
 	@Override
-	public void setTeamIDsInMatch(int team1id, int team2id) {
-		// TODO Auto-generated method stub
-		
+	public void setTeamIDsInMatch(int team1ID, int team2ID) {
+		mtBase.setTeamsInMatch(matchID,team1ID, team2ID);
 	}
 
 	/**
@@ -305,8 +300,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setCaptainForMatch(int teamID, Player player) {
-		// TODO Auto-generated method stub
-		
+		mtBase.setCaptainForMatch(matchID,teamID,player.getPlayerID());
 	}
 
 	/**
@@ -316,8 +310,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setYellowForPlayer(int teamID, Player player) {
-		// TODO Auto-generated method stub
-		
+		mtBase.setYellowForPlayerInMatch(matchID,teamID,player.getPlayerID());
 	}
 
 	/**
@@ -327,8 +320,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setRedForPlayer(int teamID, Player player) {
-		// TODO Auto-generated method stub
-		
+		mtBase.setRedForPlayerInMatch(matchID,teamID,player.getPlayerID());
 	}
 
 	/**
@@ -337,8 +329,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setMatchReview(String review) {
-		// TODO Auto-generated method stub
-		
+		mtBase.setMatchReview(matchID,review);
 	}
 
 	/**
@@ -347,8 +338,7 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setChampionship(int championship_ID) {
-		// TODO Auto-generated method stub
-		
+		mtBase.setChampionship(matchID,championship_ID);
 	}
 	
 }
