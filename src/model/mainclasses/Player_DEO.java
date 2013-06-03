@@ -152,6 +152,10 @@ public class Player_DEO implements Player {
 		return null;
 	}
 	
+	public Date birthDate(){
+		return birthDate;
+	}
+	
 	/**
 	 * აბრუნებს მოთამაშის ასაკს
 	 * @return
@@ -173,23 +177,27 @@ public class Player_DEO implements Player {
 	 */
 	@SuppressWarnings("deprecation")
 	@Override
-	public String getUniStartYear() {
-		if(uniStart != null){
-			return(""+(1900+uniStart.getYear()));
-		}
-		return null;
+	public int getUniStartYear() {
+		return (1900+uniStart.getYear());
 	}
 
 	/**
 	 * აბრუნებს კურსს, რომელზეც იმყოფება მოთამაშე
 	 */
-	@Override
-	public String getUniCurrentCourse() {	
+	public String getUniCurrentCourseString() {	
 		if(uniCourse!=0){
 			if(uniCourse==1) return(uniCourse+"-ლი კურსი;");
 			return("მე-"+uniCourse+" კურსი");
 		}
 		return null;
+	}
+	
+	/**
+	 * აბრუნებს კურსს, რომელზეც იმყოფება მოთამაშე
+	 */
+	@Override
+	public int getUniCurrentCourse() {	
+		return uniCourse;
 	}
 
 	/**
@@ -218,7 +226,15 @@ public class Player_DEO implements Player {
 	 * ერთეული: კგ (კილოგრამი)
 	 */
 	@Override
-	public String getWeight() {
+	public int getWeight() {
+		return weight;
+	}
+	
+	/**
+	 * აბრუნებს მოთამაშის წონას;
+	 * ერთეული: კგ (კილოგრამი)
+	 */
+	public String getWeightString() {
 		return weight+" კგ.";
 	}
 
@@ -227,7 +243,15 @@ public class Player_DEO implements Player {
 	 * ერთეული: სმ (სანტიმეტრი)
 	 */
 	@Override
-	public String getHeight() {
+	public int getHeight() {
+		return height;
+	}
+	
+	/**
+	 * აბრუნებს მოთამაშის სიმაღლეს;
+	 * ერთეული: სმ (სანტიმეტრი)
+	 */
+	public String getHeightString(){
 		return height+" სმ.";
 	}
 

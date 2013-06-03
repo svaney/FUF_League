@@ -45,7 +45,7 @@
         <tr>
         <%if(card.isStudent()){%>
           <td>კურსი:</td>
-          <td><%=card.getUniCurrentCourse() %></td>
+          <td><%=card.getUniCurrentCourseString() %></td>
         </tr>
         <tr>
           <td>ჩაბარების წელი:</td>
@@ -54,11 +54,11 @@
         <tr>
         <%} %>
           <td>სიმაღლე:</td>
-          <td><%=card.getHeight() %></td>
+          <td><%=card.getHeightString() %></td>
         </tr>
         <tr>
           <td>წონა:</td>
-          <td><%=card.getWeight() %></td>
+          <td><%=card.getWeightString() %></td>
         </tr>
         <tr>
           <td>დომინანტი ფეხი:</td>

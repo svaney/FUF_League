@@ -10,12 +10,12 @@ public interface Player{
 	public String getNickname();
 	public String getBirthDate();
 	public int getAge();
-	public String getUniStartYear();
-	public String getUniCurrentCourse();
+	public int getUniStartYear();
+	public int getUniCurrentCourse();
 	public boolean isStudent();
 	public String getSchool();
-	public String getWeight();
-	public String getHeight();
+	public int getWeight();
+	public int getHeight();
 	public String getAvatar();
 	public String getFbPage();
 	public String getBio();
@@ -62,7 +62,7 @@ public interface Player{
 	public void setUniCurrentCourse(int course);
 	public void setSchool(String school);
 	public void setWeight(int weight);
-	public void setHeight(int height);
+	public void setHeight(int height);	
 	public void setAvatar(String avatar);
 	public void setBio(String bio);
 	public void setRating(double rating);
