@@ -129,5 +129,59 @@ public class Score_DLAPI implements Score{
 			return 0;
 		}
 	}
+
+	/**
+	 * ანიჭებს პენლების სერიის ობიექტს
+	 * @param penalties Penalties ტიპის ობიექტი
+	 */
+	@Override
+	public void setPenaltiesSerie(Penalties penalties) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * წერს, რამდენი გოლი გაიტანა გუნდმა ძირითად დროში
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param score გოლების რაოდენობა
+	 */
+	@Override
+	public void setScoreForTeam(int teamID, int score) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * წერს, რამდენი გოლი გაიტანა გუნდმა პირველ ტაიმში
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param score გოლების რაოდენობა
+	 */
+	@Override
+	public void setScoreForTeamFirstHalf(int teamID, int score) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * წერს მე-n გოლს რომელიც გავიდა თამაშში (არ აქვს მნიშვნელობა ძირითად დროში თუ დამატებითში)
+	 * @param goal Goal ტიპის ობიექტი
+	 * @param Nth გოლის რიგითი ნომერი
+	 */
+	@Override
+	public void setNthGoal(Goal goal, int Nth) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * წერს რამდენი გოლი გაიტანა გუნდმა დამატებით დროში
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param n რაოდენობა გატანილი გოლების, დამატებულ დროში.
+	 */
+	@Override
+	public void setExtraTimeGoalForTeam(int teamID, int n) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
