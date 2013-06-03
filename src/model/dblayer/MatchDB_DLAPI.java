@@ -503,6 +503,20 @@ public class MatchDB_DLAPI implements MatchDB{
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	/**
+	 * პენლის ერთი დარტყმის ჩაწერა
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param playerID დამრტყმელის იდენტიფიკატორი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param turnOfTeam მერამდენე პენალი იყო
+	 * @param hasScored თუ გაიტანა true თუ ვერა false
+	 */
+	@Override
+	public void setPenaltyForTeam(int matchID, int playerID, int teamID,
+			int turnOfTeam, boolean hasScored) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

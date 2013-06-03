@@ -269,5 +269,17 @@ public interface MatchDB {
 	 * @param championship_ID ჩემპიონატის იდენტიფიკატორი
 	 */
 	void setChampionship(int matchID, int championship_ID);
+
+	/**
+	 * პენლის ერთი დარტყმის ჩაწერა
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param playerID დამრტყმელის იდენტიფიკატორი
+	 * @param teamID გუნდის იდენტიფიკატორი
+	 * @param turnOfTeam მერამდენე პენალი იყო
+	 * @param hasScored თუ გაიტანა true თუ ვერა false
+	 */
+	void setPenaltyForTeam(int matchID, int playerID, int teamID, int turnOfTeam,
+			boolean hasScored);
+
 	
 }

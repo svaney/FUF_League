@@ -105,12 +105,6 @@ public interface Match {
 	void setExtraTime(boolean extra);
 
 	/**
-	 * აფიქსირებს მატჩის ანგარიშს
-	 * @param score Score ტიპის ობიექტი
-	 */
-	void setScore(Score score);
-
-	/**
 	 * აფიქსირებს მატჩის ჩატარების თარიღს
 	 * @param date sql.Date ტიპის ობიექტი
 	 */

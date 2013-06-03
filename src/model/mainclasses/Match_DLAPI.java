@@ -256,15 +256,6 @@ public class Match_DLAPI implements Match{
 	}
 
 	/**
-	 * აფიქსირებს მატჩის ანგარიშს
-	 * @param score Score ტიპის ობიექტი
-	 */
-	@Override
-	public void setScore(Score score) {
-		// TODO complicated
-	}
-
-	/**
 	 * აფიქსირებს მატჩის ჩატარების თარიღს
 	 * @param date sql.Date ტიპის ობიექტი
 	 */

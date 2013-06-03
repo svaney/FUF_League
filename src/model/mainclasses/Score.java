@@ -50,41 +50,5 @@ public interface Score {
 	 */
 	int getExtraTimeGoalForTeam(int teamID);
 
-	//-------------------------------------------------------------------------------------
-	// სეტერები
-	//-------------------------------------------------------------------------------------
-	/**
-	 * ანიჭებს პენლების სერიის ობიექტს
-	 * @param penalties Penalties ტიპის ობიექტი
-	 */
-	void setPenaltiesSerie(Penalties penalties);
-
-	/**
-	 * წერს, რამდენი გოლი გაიტანა გუნდმა ძირითად დროში
-	 * @param teamID გუნდის იდენტიფიკატორი
-	 * @param score გოლების რაოდენობა
-	 */
-	void setScoreForTeam(int teamID, int score);
-
-	/**
-	 * წერს, რამდენი გოლი გაიტანა გუნდმა პირველ ტაიმში
-	 * @param teamID გუნდის იდენტიფიკატორი
-	 * @param score გოლების რაოდენობა
-	 */
-	void setScoreForTeamFirstHalf(int teamID, int score);
-
-	/**
-	 * წერს მე-n გოლს რომელიც გავიდა თამაშში (არ აქვს მნიშვნელობა ძირითად დროში თუ დამატებითში)
-	 * @param goal Goal ტიპის ობიექტი
-	 * @param Nth გოლის რიგითი ნომერი
-	 */
-	void setNthGoal(Goal goal, int Nth);
-
-	/**
-	 * წერს რამდენი გოლი გაიტანა გუნდმა დამატებით დროში
-	 * @param teamID გუნდის იდენტიფიკატორი
-	 * @param n რაოდენობა გატანილი გოლების, დამატებულ დროში.
-	 */
-	void setExtraTimeGoalForTeam(int teamID, int n);
 
 }

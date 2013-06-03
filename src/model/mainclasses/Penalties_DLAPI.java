@@ -91,8 +91,7 @@ public class Penalties_DLAPI implements Penalties{
 	 */
 	@Override
 	public void setPenaltyForTeam(PenaltyShoot pSh) {
-		// TODO Auto-generated method stub
-		
+		mtBase.setPenaltyForTeam(matchID,pSh.getPlayer().getPlayerID(), pSh.getTeam().getID(), pSh.getTurnOfTeam(),pSh.hasScored());
 	}
 
 }
