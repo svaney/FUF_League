@@ -324,7 +324,7 @@ public class MatchDB_DLAPI implements MatchDB{
 		rs = st.executeQuery("select * from penalties where match_id='"+matchID+"' and team_id='"+teamID+"';");
 		ArrayList<PenaltyShoot> answer = new ArrayList<PenaltyShoot>();
 		while(rs.next()){
-			answer.add(new PenaltyShoot(rs.getInt("match_id"), rs.getInt("team_id"), rs.getInt("turn"), rs.getInt("Player_id"), rs.getString("score").charAt(0)=='N'));
+			answer.add(new PenaltyShoot(rs.getInt("match_id"), rs.getInt("team_id"), rs.getInt("turn"), rs.getInt("Player_id"), rs.getString("score").charAt(0)=='Y'));
 		}
 		st.close();
 		return answer;
