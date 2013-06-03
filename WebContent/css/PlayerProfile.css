@@ -124,9 +124,8 @@ header, section, footer, aside, article, figure {
 .CardDefaultInfo {
 	text-align: left;
 	vertical-align: middle;
-	font-weight: bold;
 	position: relative;
-	top: -61px;
+	top: -5px;
 }
 .CardRigthSide tr td {
 	width: 50%;
