@@ -99,10 +99,10 @@ public interface Match {
 	void setMatchStageID(String stage);
 	
 	/**
-	 * უთითებს რომ მატჩს ჰქონდა დამატებითი დრო
-	 * @param extra true - თუ ჰქონდა, false თუ არ ჰქონდა
+	 * წერს მატჩს რამდენი ჰქონდა დამატებითი დრო
+	 * @param extra წთ-ებში გამოსახული დრო
 	 */
-	void setExtraTime(boolean extra);
+	void setExtraTime(int extra);
 
 	/**
 	 * აფიქსირებს მატჩის ჩატარების თარიღს

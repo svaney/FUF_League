@@ -201,76 +201,86 @@ public interface MatchDB {
 	 * ამატებს, ან ცვლის მატჩის რაუნდს
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param stage რაუნდის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
-	void setMatchStage(int matchID, String stage);
+	void setMatchStage(int matchID, String stage) throws SQLException;
 
 	/**
-	 * წერს ჰქონდა თუ არა დამატებითი დრო
+	 * წერს წთ-ებში
 	 * @param matchID მატჩის იდენტიფიკატორი
-	 * @param extra true თუ ჰქონდა, false წინააღმდეგ შემთხვევაში
+	 * @param extra წთ-ებში გამოსახული დრო
+	 * @throws SQLException 
 	 */
-	void setExtraTimeForMatch(int matchID, boolean extra);
+	void setExtraTimeForMatch(int matchID, int extra) throws SQLException;
 
 	/**
 	 * წერს თარიღს როდესაც ჩატარდა მატჩი
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param date თარიღი sql.date ტიპის
+	 * @throws SQLException 
 	 */
-	void setDateForMatch(int matchID, Date date);
+	void setDateForMatch(int matchID, Date date) throws SQLException;
 
 	/**
 	 * ამატებს მატჩის განაცხადში მოთამაშეს
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param teamID გუნდის იდენტიფიკატორი
 	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
-	void setLineUpPlayer(int matchID, int teamID, int playerID);
+	void setLineUpPlayer(int matchID, int teamID, int playerID) throws SQLException;
 
 	/**
 	 * ამატებს ან ცვლის მატჩის მოთამაშე გუნდებს
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param team1id გუნდის იდენტიფიკატორი
 	 * @param team2id გუნდის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
-	void setTeamsInMatch(int matchID, int team1id, int team2id);
+	void setTeamsInMatch(int matchID, int team1id, int team2id) throws SQLException;
 
 	/**
 	 * წერს გუნდის კაპიტანს მოცემული მატჩისთვის
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param teamID გუნდის იდენტიფიკატორი
 	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
-	void setCaptainForMatch(int matchID, int teamID, int playerID);
+	void setCaptainForMatch(int matchID, int teamID, int playerID) throws SQLException;
 
 	/**
 	 * წერს ფეხბურთელს რომელმაც მატჩზე მიიღო ყვითელი ბარათი
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param teamID გუნდის იდენტიფიკატორი
 	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
-	void setYellowForPlayerInMatch(int matchID, int teamID, int playerID);
+	void setYellowForPlayerInMatch(int matchID, int teamID, int playerID) throws SQLException;
 
 	/**
 	 * წერს ფეხბურთელს რომელმაც მატჩზე მიიღო ყვითელი ბარათი
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param teamID გუნდის იდენტიფიკატორი
 	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
-	void setRedForPlayerInMatch(int matchID, int teamID, int playerID);
+	void setRedForPlayerInMatch(int matchID, int teamID, int playerID) throws SQLException;
 
 	/**
 	 * წერს მატჩის შესახებ სტატიას
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param review მიმოხილვა ტექსტის სახით
+	 * @throws SQLException 
 	 */
-	void setMatchReview(int matchID, String review);
+	void setMatchReview(int matchID, String review) throws SQLException;
 
 	/**
 	 * წერს ჩემპიონატის ID-ს
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param championship_ID ჩემპიონატის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
-	void setChampionship(int matchID, int championship_ID);
+	void setChampionship(int matchID, int championship_ID) throws SQLException;
 
 	/**
 	 * პენლის ერთი დარტყმის ჩაწერა
@@ -279,9 +289,10 @@ public interface MatchDB {
 	 * @param teamID გუნდის იდენტიფიკატორი
 	 * @param turnOfTeam მერამდენე პენალი იყო
 	 * @param hasScored თუ გაიტანა true თუ ვერა false
+	 * @throws SQLException 
 	 */
 	void setPenaltyForTeam(int matchID, int playerID, int teamID, int turnOfTeam,
-			boolean hasScored);
+			boolean hasScored) throws SQLException;
 
 	
 }

@@ -406,33 +406,39 @@ public class MatchDB_DLAPI implements MatchDB{
 	 * ამატებს, ან ცვლის მატჩის რაუნდს
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param stage რაუნდის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
 	@Override
-	public void setMatchStage(int matchID, String stage) {
-		// TODO Auto-generated method stub
-		
+	public void setMatchStage(int matchID, String stage) throws SQLException {
+		startUpStatement();
+		st.executeUpdate("update matches set stage='"+stage+"' where match_id="+matchID+";");
+		st.close();
 	}
 
 	/**
-	 * წერს ჰქონდა თუ არა დამატებითი დრო
+	 * წერს წთ-ებში
 	 * @param matchID მატჩის იდენტიფიკატორი
-	 * @param extra true თუ ჰქონდა, false წინააღმდეგ შემთხვევაში
+	 * @param extra წთ-ებში გამოსახული დრო
+	 * @throws SQLException 
 	 */
 	@Override
-	public void setExtraTimeForMatch(int matchID, boolean extra) {
-		// TODO Auto-generated method stub
-		
+	public void setExtraTimeForMatch(int matchID, int extra) throws SQLException {
+		startUpStatement();
+		st.executeUpdate("update matches set extra_time="+extra+" where match_id="+matchID+";");
+		st.close();
 	}
 
 	/**
 	 * წერს თარიღს როდესაც ჩატარდა მატჩი
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param date თარიღი sql.date ტიპის
+	 * @throws SQLException 
 	 */
 	@Override
-	public void setDateForMatch(int matchID, Date date) {
-		// TODO Auto-generated method stub
-		
+	public void setDateForMatch(int matchID, Date date) throws SQLException {
+		startUpStatement();
+		st.executeUpdate("update matches set match_date="+date+" where match_id="+matchID+";");
+		st.close();
 	}
 
 	/**
@@ -440,11 +446,13 @@ public class MatchDB_DLAPI implements MatchDB{
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param teamID გუნდის იდენტიფიკატორი
 	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
 	@Override
-	public void setLineUpPlayer(int matchID, int teamID, int playerID) {
-		// TODO Auto-generated method stub
-		
+	public void setLineUpPlayer(int matchID, int teamID, int playerID) throws SQLException {
+		startUpStatement();
+		st.executeUpdate("insert into match_players(match_id,team_id,Player_id) values ("+matchID+","+teamID+","+playerID+");");
+		st.close();
 	}
 
 	/**
@@ -452,11 +460,14 @@ public class MatchDB_DLAPI implements MatchDB{
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param team1id გუნდის იდენტიფიკატორი
 	 * @param team2id გუნდის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
 	@Override
-	public void setTeamsInMatch(int matchID, int team1id, int team2id) {
-		// TODO Auto-generated method stub
-		
+	public void setTeamsInMatch(int matchID, int team1ID, int team2ID) throws SQLException {
+		startUpStatement();
+		st.executeUpdate("update matches set team1_id="+team1ID+" where match_id="+matchID+";");
+		st.executeUpdate("update matches set team2_id="+team2ID+" where match_id="+matchID+";");
+		st.close();
 	}
 
 	/**
@@ -464,11 +475,13 @@ public class MatchDB_DLAPI implements MatchDB{
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param teamID გუნდის იდენტიფიკატორი
 	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
 	@Override
-	public void setCaptainForMatch(int matchID, int teamID, int playerID) {
-		// TODO Auto-generated method stub
-		
+	public void setCaptainForMatch(int matchID, int teamID, int playerID) throws SQLException {
+		startUpStatement();
+		st.executeUpdate("insert into match_captains (Match_id,Player_ID,team_id) values ("+matchID+","+teamID+","+playerID+")");
+		st.close();
 	}
 
 	/**
@@ -476,11 +489,13 @@ public class MatchDB_DLAPI implements MatchDB{
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param teamID გუნდის იდენტიფიკატორი
 	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
 	@Override
-	public void setYellowForPlayerInMatch(int matchID, int teamID, int playerID) {
-		// TODO Auto-generated method stub
-		
+	public void setYellowForPlayerInMatch(int matchID, int teamID, int playerID) throws SQLException {
+		startUpStatement();
+		st.executeUpdate("insert into yellows (player_id,team_id,match_id) values("+playerID+","+teamID+","+matchID+")");
+		st.close();
 	}
 
 	/**
@@ -488,33 +503,39 @@ public class MatchDB_DLAPI implements MatchDB{
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param teamID გუნდის იდენტიფიკატორი
 	 * @param playerID მოთამაშის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
 	@Override
-	public void setRedForPlayerInMatch(int matchID, int teamID, int playerID) {
-		// TODO Auto-generated method stub
-		
+	public void setRedForPlayerInMatch(int matchID, int teamID, int playerID) throws SQLException {
+		startUpStatement();
+		st.executeUpdate("insert into reds (player_id,team_id,match_id) values("+playerID+","+teamID+","+matchID+")");
+		st.close();
 	}
 
 	/**
 	 * წერს მატჩის შესახებ სტატიას
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param review მიმოხილვა ტექსტის სახით
+	 * @throws SQLException 
 	 */
 	@Override
-	public void setMatchReview(int matchID, String review) {
-		// TODO Auto-generated method stub
-		
+	public void setMatchReview(int matchID, String review) throws SQLException {
+		startUpStatement();
+		st.executeUpdate("update matches set review='"+review+"' where match_id="+matchID+";");
+		st.close();
 	}
 
 	/**
 	 * წერს ჩემპიონატის ID-ს
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param championship_ID ჩემპიონატის იდენტიფიკატორი
+	 * @throws SQLException 
 	 */
 	@Override
-	public void setChampionship(int matchID, int championship_ID) {
-		// TODO Auto-generated method stub
-		
+	public void setChampionship(int matchID, int championship_ID) throws SQLException {
+		startUpStatement();
+		st.executeUpdate("update matches set championship_id="+championship_ID+" where match_id="+matchID+";");
+		st.close();
 	}
 
 	/**
@@ -524,12 +545,15 @@ public class MatchDB_DLAPI implements MatchDB{
 	 * @param teamID გუნდის იდენტიფიკატორი
 	 * @param turnOfTeam მერამდენე პენალი იყო
 	 * @param hasScored თუ გაიტანა true თუ ვერა false
+	 * @throws SQLException 
 	 */
 	@Override
 	public void setPenaltyForTeam(int matchID, int playerID, int teamID,
-			int turnOfTeam, boolean hasScored) {
-		// TODO Auto-generated method stub
-		
+			int turnOfTeam, boolean hasScored) throws SQLException {
+		startUpStatement();
+		char c = (hasScored)?'Y':'N';
+		st.executeUpdate("insert into penalties(Match_id,Player_id,Team_id,score,turn) values("+matchID+","+playerID+","+teamID+",'"+c+"',"+turnOfTeam+")");
+		st.close();
 	}
 	
 }

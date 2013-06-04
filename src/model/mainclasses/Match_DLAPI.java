@@ -247,16 +247,24 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setMatchStageID(String stage) {
-		mtBase.setMatchStage(matchID, stage);
+		try {
+			mtBase.setMatchStage(matchID, stage);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
-	 * უთითებს რომ მატჩს ჰქონდა დამატებითი დრო
-	 * @param extra true - თუ ჰქონდა, false თუ არ ჰქონდა
+	 * წერს მატჩს რამდენი ჰქონდა დამატებითი დრო
+	 * @param extra წთ-ებში გამოსახული დრო
 	 */
 	@Override
-	public void setExtraTime(boolean extra) {
-		mtBase.setExtraTimeForMatch(matchID, extra);
+	public void setExtraTime(int extra) {
+		try {
+			mtBase.setExtraTimeForMatch(matchID, extra);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -265,7 +273,11 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setDate(Date date) {
-		mtBase.setDateForMatch(matchID,date);
+		try {
+			mtBase.setDateForMatch(matchID,date);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -275,7 +287,11 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setInLineUp(Player player, int teamID) {
-		mtBase.setLineUpPlayer(matchID,teamID,player.getPlayerID());
+		try {
+			mtBase.setLineUpPlayer(matchID,teamID,player.getPlayerID());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -285,7 +301,11 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setTeamIDsInMatch(int team1ID, int team2ID) {
-		mtBase.setTeamsInMatch(matchID,team1ID, team2ID);
+		try {
+			mtBase.setTeamsInMatch(matchID,team1ID, team2ID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -295,7 +315,11 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setCaptainForMatch(int teamID, Player player) {
-		mtBase.setCaptainForMatch(matchID,teamID,player.getPlayerID());
+		try {
+			mtBase.setCaptainForMatch(matchID,teamID,player.getPlayerID());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -305,7 +329,11 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setYellowForPlayer(int teamID, Player player) {
-		mtBase.setYellowForPlayerInMatch(matchID,teamID,player.getPlayerID());
+		try {
+			mtBase.setYellowForPlayerInMatch(matchID,teamID,player.getPlayerID());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -315,7 +343,11 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setRedForPlayer(int teamID, Player player) {
-		mtBase.setRedForPlayerInMatch(matchID,teamID,player.getPlayerID());
+		try {
+			mtBase.setRedForPlayerInMatch(matchID,teamID,player.getPlayerID());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -324,7 +356,11 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setMatchReview(String review) {
-		mtBase.setMatchReview(matchID,review);
+		try {
+			mtBase.setMatchReview(matchID,review);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -333,7 +369,11 @@ public class Match_DLAPI implements Match{
 	 */
 	@Override
 	public void setChampionship(int championship_ID) {
-		mtBase.setChampionship(matchID,championship_ID);
+		try {
+			mtBase.setChampionship(matchID,championship_ID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
