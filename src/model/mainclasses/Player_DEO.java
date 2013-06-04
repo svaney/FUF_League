@@ -15,15 +15,15 @@ public class Player_DEO implements Player {
 	private String nickname = null;
 	private Date birthDate = null;
 	private Date uniStart = null;
-	private int uniCourse = 0;
+	private int uniCourse = -1;
 	private String graduated = null;
 	private String school = null;
-	private int weight = 0;
-	private int height = 0;
+	private int weight = -1;
+	private int height = -1;
 	private String homePage = null;
 	private String image = "avatar_000.png";
 	private String fbPage = null;
-	private int teamID = 0;
+	private int teamID = -1;
 
 	//მოთამაშის ატრიბუტები
 	private Double rating = null;
@@ -116,7 +116,7 @@ public class Player_DEO implements Player {
 	}
 
 	/**
-	 * აბრუნებს მოთამაშის სახელს;
+	 * აბრუნებს მოთამაშის სახელს.
 	 */
 	@Override
 	public String getFirstName() {
@@ -124,7 +124,7 @@ public class Player_DEO implements Player {
 	}
 
 	/**
-	 * აბრუნებს მოთამაშის გვარს;
+	 * აბრუნებს მოთამაშის გვარს.
 	 */
 	@Override
 	public String getLastName() {
@@ -132,7 +132,7 @@ public class Player_DEO implements Player {
 	}
 
 	/**
-	 * აბრუნებს მოთამაშის მეტსახელს
+	 * აბრუნებს მოთამაშის მეტსახელს.
 	 */
 	@Override
 	public String getNickname() {
@@ -141,7 +141,7 @@ public class Player_DEO implements Player {
 
 	/**
 	 * აბრუნებს მოთამაშის დაბადების თარიღს;
-	 * ფორმატი: YYYY-MM-DD
+	 * ფორმატი: YYYY-MM-DD.
 	 */
 	@SuppressWarnings("deprecation")
 	@Override
@@ -157,11 +157,13 @@ public class Player_DEO implements Player {
 	}
 	
 	/**
-	 * აბრუნებს მოთამაშის ასაკს
+	 * აბრუნებს მოთამაშის ასაკს;
+	 * აბრუნებს -1-ს თუ მოთხოვნილი პარამეტრი არ არსებობს (null-ის ტოლია).
 	 * @return
 	 */
 	@Override
 	public int getAge(){
+		if(birthDate==null) return -1;
 		SimpleDateFormat sdfY = new SimpleDateFormat("yyyy");
 		SimpleDateFormat sdfM = new SimpleDateFormat("MM");
 		SimpleDateFormat sdfD = new SimpleDateFormat("dd");
@@ -173,16 +175,18 @@ public class Player_DEO implements Player {
 	}
 
 	/**
-	 * აბრუნებს მოთამაშის უნივერსიტეტში ჩაბარების წელს
+	 * აბრუნებს მოთამაშის უნივერსიტეტში ჩაბარების წელს;
+	 * თუ დააბრუნა -1, მაშინ გამოძახებული ატრიბუტი არ არსებობს (null-ის ტოლია).
 	 */
 	@SuppressWarnings("deprecation")
 	@Override
 	public int getUniStartYear() {
-		return (1900+uniStart.getYear());
+		if(uniStart != null) return (1900+uniStart.getYear());
+		return -1;
 	}
 
 	/**
-	 * აბრუნებს კურსს, რომელზეც იმყოფება მოთამაშე
+	 * აბრუნებს კურსს, რომელზეც იმყოფება მოთამაშე.
 	 */
 	public String getUniCurrentCourseString() {	
 		if(uniCourse!=0){
@@ -193,7 +197,7 @@ public class Player_DEO implements Player {
 	}
 	
 	/**
-	 * აბრუნებს კურსს, რომელზეც იმყოფება მოთამაშე
+	 * აბრუნებს კურსს, რომელზეც იმყოფება მოთამაშე.
 	 */
 	@Override
 	public int getUniCurrentCourse() {	
@@ -203,7 +207,7 @@ public class Player_DEO implements Player {
 	/**
 	 * აბრუნებს მოთამაშის სტუდენტობის სტატუსს;
 	 * TRUE - სტუდენტია;
-	 * FALSE - დაამთავრა (ან  შეყწვიტა სწავლა);
+	 * FALSE - დაამთავრა (ან  შეყწვიტა სწავლა).
 	 */
 	@Override
 	public boolean isStudent() {

@@ -20,5 +20,10 @@ public class PlayerTest {
 			System.out.println("სკოლა: "+player.getSchool());
 			System.out.println("კურსი: "+player.getUniCurrentCourse());
 		}
+		System.out.println("სიმაღლე: "+player.getHeight());
+		System.out.println("წონა: "+player.getWeight());
+		System.out.println("გუნდის ნომერი: "+player.getTeamID());
+		System.out.println("პერსონის ნომერი: "+player.getPersonID());
+		System.out.println("ასაკი: "+player.getAge());
 	}
 }
