@@ -91,7 +91,11 @@ public class Penalties_DLAPI implements Penalties{
 	 */
 	@Override
 	public void setPenaltyForTeam(PenaltyShoot pSh) {
-		mtBase.setPenaltyForTeam(matchID,pSh.getPlayer().getPlayerID(), pSh.getTeam().getID(), pSh.getTurnOfTeam(),pSh.hasScored());
+		try {
+			mtBase.setPenaltyForTeam(matchID,pSh.getPlayer().getPlayerID(), pSh.getTeam().getID(), pSh.getTurnOfTeam(),pSh.hasScored());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

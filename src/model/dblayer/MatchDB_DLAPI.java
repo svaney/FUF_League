@@ -238,7 +238,7 @@ public class MatchDB_DLAPI implements MatchDB{
 		startUpStatement();
 		rs = st.executeQuery("select penalties from matches where match_id = '"+matchID+"';");
 		rs.next();
-		boolean answer = rs.getString("penalties").charAt(0)=='Y';
+		boolean answer = (rs.getString("penalties").charAt(0)=='Y');
 		st.close();
 		return answer;
 	}
