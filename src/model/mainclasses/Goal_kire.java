@@ -1,5 +1,7 @@
 package model.mainclasses;
 
+import java.sql.SQLException;
+
 import model.dblayer.MatchDB;
 
 public class Goal_kire implements Goal {
@@ -28,7 +30,11 @@ public class Goal_kire implements Goal {
 		this.team=team;
 		this.match=match;
 		this.isAuto=isAuto;
-		mt.createGoal(scorer.getPlayerID(), team.getID(), match.getMatchID(), isAuto);
+		try {
+			mt.createGoal(scorer.getPlayerID(), team.getID(), match.getMatchID(), isAuto);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override

@@ -301,8 +301,9 @@ public interface MatchDB {
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param isAuto საკუთარ კარში გავიდა თუ არა გოლი
 	 * @author gkire
+	 * @throws SQLException 
 	 */
-	void createGoal(int playerID, int teamID, int matchID, boolean isAuto);
+	void createGoal(int playerID, int teamID, int matchID, boolean isAuto) throws SQLException;
 
 	
 }
