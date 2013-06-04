@@ -555,5 +555,19 @@ public class MatchDB_DLAPI implements MatchDB{
 		st.executeUpdate("insert into penalties(Match_id,Player_id,Team_id,score,turn) values("+matchID+","+playerID+","+teamID+",'"+c+"',"+turnOfTeam+")");
 		st.close();
 	}
+
+	/**
+	 * ამატებს გოლს
+	 * @param playerID დამრტყმელის იდენტიფიკატორი
+	 * @param teamID  გუნდის იდენტიფიკატორი
+	 * @param matchID მატჩის იდენტიფიკატორი
+	 * @param isAuto საკუთარ კარში გავიდა თუ არა გოლი
+	 * @author gkire
+	 */
+	@Override
+	public void createGoal(int playerID, int teamID, int matchID, boolean isAuto) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
