@@ -624,9 +624,9 @@ public class PlayerDB_DEO implements PlayerDB{
 	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
 	 * მაგალითად: 107;
 	 */
-	@Override
-	public int getPlayerID(int playerID) {
+	private int getPlayerID(int playerID) {
 		String col = PLAYER_ID;
+		int resultID = -1;
 		try {
 			stmt = con.createStatement();
 		} catch (SQLException e) {
@@ -643,7 +643,7 @@ public class PlayerDB_DEO implements PlayerDB{
 		}
 		try {
 			if(result.next()) {
-				return result.getInt(col);
+				resultID = result.getInt(col);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -653,7 +653,7 @@ public class PlayerDB_DEO implements PlayerDB{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
-		return -1;
+		return resultID;
 	}
 
 	/**

@@ -59,7 +59,6 @@ public interface PlayerDB{
 	public String getFBPage(int playerID);
 	
 	// გადაცემულ ID-სთან მიბმული სხვა ID-ების ამოღება.
-	public int getPlayerID(int personID);
 	public int getTeamID(int playerID);
 	
 	// შემოწმება.

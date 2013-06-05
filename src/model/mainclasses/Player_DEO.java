@@ -68,7 +68,7 @@ public class Player_DEO implements Player {
 	public Player_DEO(int playerID){
 		player = new PlayerDB_DEO();
 		if(player.exists(playerID)){
-			this.playerID = player.getPlayerID(playerID);		
+			this.playerID = playerID;		
 			personID = player.getPersonID(playerID);
 			firstname = player.getFirstName(playerID);
 			lastname = player.getLastName(playerID);

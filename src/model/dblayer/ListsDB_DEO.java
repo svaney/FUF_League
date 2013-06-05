@@ -18,6 +18,11 @@ public class ListsDB_DEO implements ListsDB{
 	private static final String MYSQL_PASSWORD = "123456";
 	private static final String MYSQL_DATABASE_SERVER = "localhost";
 	private static final String MYSQL_DATABASE_NAME = "fuf_league";
+	
+	// ცხრილების პარამეტრები
+	private static final String TEAMS = "teams";
+	private static final String TEAM_ID = "team_id";
+	private static final String TEAM_NAME = "name";
 
 	private static Connection con;
 	private static Statement stmt;
@@ -61,6 +66,47 @@ public class ListsDB_DEO implements ListsDB{
 	@Override
 	public String[][] listAllTypes() {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	/**
+	 * ეს მეთოდი ბაზიდან იღებს მოთხოვნილი ცხრილის ყველა რიგს;
+	 * თუ მითითებული რიგი არსებობს, მაშინ ის გამოძახებს მეთოდს normalized(ResultSet result),
+	 * რომელიც დააბრუნებს გამზადებულ მასივს;
+	 */
+	private String[][] getTeams() {
+		String col = "team_id, name";
+		String[][] teams = null;
+		try {
+			stmt = con.createStatement();
+		} catch (SQLException e) {
+			System.out.println("createStatement problem at ListDB_DEO.getTeams()");
+			return null;
+		}
+		ResultSet result = null;
+		String sql = "select "+col+" from "+TEAMS+";";
+		try {
+			result = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			System.out.println("executeQuery problem at ListDB_DEO.getTeams(); error: "+sql);
+			return null;
+		}
+		try {
+			if(result.next()) {
+				teams = (normalized(result));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return teams;
+	}
+	
+	private String[][] normalized(ResultSet result){
 		return null;
 	}
 
