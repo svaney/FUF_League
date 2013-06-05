@@ -12,8 +12,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
+import model.mainclasses.Converter;
 import model.mainclasses.Player;
 
 public class StatisticsDB_DLAPI implements StatisticsDB{
@@ -59,9 +61,14 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		@Override
 		public List<Player> getTopScorers(int champID) throws SQLException {
 			startUpStatement();
-			
+			rs = st.executeQuery("select player_id, count(goal_id) as numberOfGoals from goals where match_id in (select match_id from matches  where championship_id = "+champID+") group by player_idorder by numberOfGoals desc;");
+			ArrayList<Integer> ids = new ArrayList<Integer>();
+			while(rs.next()){
+				ids.add(rs.getInt("player_id"));
+			}
+			ArrayList<Player> answer = (ArrayList<Player>) Converter.setPlayersFromIDs(ids);
 			st.close();
-			return null;
+			return answer;
 		}
 
 		/**

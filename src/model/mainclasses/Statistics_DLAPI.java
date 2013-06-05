@@ -89,7 +89,7 @@ public class Statistics_DLAPI implements Statistics{
 	@Override
 	public List<Player> getMostYellows() {
 		try {
-			return setPlayersFromIDs((ArrayList<Integer>) db.getMostYellows(champID));
+			return Converter.setPlayersFromIDs((ArrayList<Integer>) db.getMostYellows(champID));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -103,23 +103,11 @@ public class Statistics_DLAPI implements Statistics{
 	@Override
 	public List<Player> getMostReds() {
 		try {
-			return setPlayersFromIDs((ArrayList<Integer>) db.getMostReds(champID));
+			return Converter.setPlayersFromIDs((ArrayList<Integer>) db.getMostReds(champID));
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	/**
-	 * გადაცემული ID-ებიდან, ქმნის Player ობიექტების ArrayList-ს 
-	 * @param players ArrayList<Integer> ID-ების ჩამონათვალი
-	 * @return აბრუნებს ArrayList<Player> ობიექტს
-	 */
-	private ArrayList<Player> setPlayersFromIDs(ArrayList<Integer> players){
-		ArrayList<Player> result = new ArrayList<Player>();
-		for(int i=0;i<players.size();i++){
-			result.add(new Player_DEO(players.get(i)));
-		}
-		return result;
-	}
 }

@@ -115,7 +115,7 @@ public class Match_DLAPI implements Match{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return setPlayersFromIDs(players);
+		return Converter.setPlayersFromIDs(players);
 	}
 
 	/**
@@ -184,22 +184,8 @@ public class Match_DLAPI implements Match{
 			e.printStackTrace();
 			playerIDs=null;
 		}
-		return setPlayersFromIDs(playerIDs);
+		return Converter.setPlayersFromIDs(playerIDs);
 	}
-	
-	/**
-	 * გადაცემული ID-ებიდან, ქმნის Player ობიექტების ArrayList-ს 
-	 * @param players ArrayList<Integer> ID-ების ჩამონათვალი
-	 * @return აბრუნებს ArrayList<Player> ობიექტს
-	 */
-	private ArrayList<Player> setPlayersFromIDs(ArrayList<Integer> players){
-		ArrayList<Player> result = new ArrayList<Player>();
-		for(int i=0;i<players.size();i++){
-			result.add(new Player_DEO(players.get(i)));
-		}
-		return result;
-	}
-	
 	
 	/**
 	 * აბრუნებს გუნდის მიერ მიღებული წითლების List-ს, სადაც ხალხი წერია, ვინც წითლები მიიღო
@@ -215,7 +201,7 @@ public class Match_DLAPI implements Match{
 			e.printStackTrace();
 			playerIDs=null;
 		}
-		return setPlayersFromIDs(playerIDs);
+		return Converter.setPlayersFromIDs(playerIDs);
 	}
 
 	/**
