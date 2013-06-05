@@ -132,8 +132,11 @@
   </tr>
   <tr>
     <td>გუნდი:</td>
-    <td><select name="teamID"><option value="">თავისუფალი აგენტი</option>
-			<option value="value">ჩასვი გუნდების სია</option>
+    <td><select name="teamID">
+    		<option value="">თავისუფალი აგენტი</option>
+    		<%for(int i = 0; i < Lists_DEO.teams().length; i++){ %>
+				<option value="<%=Lists_DEO.teams()[i][0]%>"><%=Lists_DEO.teams()[i][1]%></option>
+			<%} %>
 		</select>
 	</td>
   </tr>
