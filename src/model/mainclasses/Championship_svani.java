@@ -1,10 +1,21 @@
 package model.mainclasses;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Championship_svani implements Championship{
-	public Championship_svani() {
-		
+	private String champType;
+	private Date startDate;
+	private Date endDate;
+	
+	public Championship_svani(String type, Date startDate, Date endDate) {
+		this.champType = type;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+	
+	public Championship_svani(int id){
+		// aq udna bazastan kavshiri da ikidan amogeba????
 	}
 
 	@Override
