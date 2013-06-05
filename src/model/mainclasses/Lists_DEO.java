@@ -8,7 +8,7 @@ public class Lists_DEO{
 	 * ყველა მოთამაშის მისამართი და სახელი მასივის სახით. მასივი[ID][სახილი];
 	 * @return
 	 */
-	public String[][] players() {
+	public static String[][] players() {
 		ListsDB_DEO players = new ListsDB_DEO();
 		return players.listAllPlayers();
 	}

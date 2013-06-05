@@ -25,8 +25,18 @@ public class ListsDB_DEO implements ListsDB{
 	private static final String TEAM_ID = "team_id";
 	private static final String TEAM_NAME = "name";
 	
+	private static final String PLAYERS = "players";
+	private static final String PERSONS = "persons";
+	private static final String PLAYER_ID = "player_id";
+	private static final String PERSON_ID = "person_id";
+	private static final String FIRST_NAME = "firstname";
+	private static final String LAST_NAME = "lastname";
+	
 	private static final String POSITIONS = "positions";
 	private static final String POSITION = "position";
+	
+	private static final String CHAMP_TYPES = "champ_types";
+	private static final String TYPES = "champ_type";
 
 	private static Connection con;
 	private static Statement stmt;
@@ -51,8 +61,7 @@ public class ListsDB_DEO implements ListsDB{
 
 	@Override
 	public String[][] listAllPlayers() {
-		// TODO Auto-generated method stub
-		return null;
+		return normalizedPlayers(getPlayerPersons(), getPlayerNames());
 	}
 	
 	/**
@@ -70,8 +79,7 @@ public class ListsDB_DEO implements ListsDB{
 
 	@Override
 	public String[] listAllTypes() {
-		// TODO Auto-generated method stub
-		return null;
+		return getTypes();
 	}
 	
 	/**
@@ -181,6 +189,197 @@ public class ListsDB_DEO implements ListsDB{
 			pos[i] = positions.get(i);
 		}
 		return pos;
+	}
+	
+	/**
+	 * ეს მეთოდი ბაზიდან იღებს ჩემპიონატის ტიპების ცხრილის ყველა რიგს;
+	 * თუ მითითებული რიგი არსებობს, მაშინ ის გამოიძახებს მეთოდს normalized(ResultSet result),
+	 * რომელიც დააბრუნებს გამზადებულ მასივს;
+	 */
+	private String[] getTypes() {
+		String col = TYPES;
+		String[] positions = null;
+		try {
+			stmt = con.createStatement();
+		} catch (SQLException e) {
+			System.out.println("createStatement problem at ListDB_DEO.getTypes()");
+			return null;
+		}
+		ResultSet result = null;
+		String sql = "select "+col+" from "+CHAMP_TYPES+";";
+		try {
+			result = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			System.out.println("executeQuery problem at ListDB_DEO.getTypes(); error: "+sql);
+			return null;
+		}
+		positions = (normalizedTypes(result));
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return positions;
+	}
+	
+	/**
+	 * ResultSet-ს ამუშავებს ჩემპიონატის ტიპების სიის შესაბამის ფორმამდე.
+	 * @param result
+	 * @return
+	 */
+	private String[] normalizedTypes(ResultSet result){
+		ArrayList<String> types = new ArrayList<String>();
+		try {
+			while(result.next()){
+				types.add(result.getString(TYPES));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String[] type = new String[types.size()];
+		for(int i = 0; i < type.length; i++){
+			type[i] = types.get(i);
+		}
+		return type;
+	}
+	
+	/**
+	 * ეს მეთოდი ბაზიდან იღებს მოთამაშეების ცხრილის ყველა რიგს;
+	 * თუ მითითებული რიგი არსებობს, მაშინ ის გამოიძახებს მეთოდს normalized(ResultSet result),
+	 * რომელიც დააბრუნებს გამზადებულ მასივს;
+	 */
+	private String[][] getPlayerPersons() {
+		String col = PLAYER_ID+", "+PERSON_ID;
+		String[][] persons = null;
+		try {
+			stmt = con.createStatement();
+		} catch (SQLException e) {
+			System.out.println("createStatement problem at ListDB_DEO.getPlayerPersons()");
+			return null;
+		}
+		ResultSet result = null;
+		String sql = "select "+col+" from "+PLAYERS+";";
+		try {
+			result = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			System.out.println("executeQuery problem at ListDB_DEO.getPlayerPersons(); error: "+sql);
+			return null;
+		}
+		persons = (normalizedPersons(result));
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return persons;
+	}
+	
+	/**
+	 * ეს მეთოდი ბაზიდან იღებს მოთამაშეების ცხრილის ყველა რიგს;
+	 * თუ მითითებული რიგი არსებობს, მაშინ ის გამოიძახებს მეთოდს normalized(ResultSet result),
+	 * რომელიც დააბრუნებს გამზადებულ მასივს;
+	 */
+	private String[][] getPlayerNames() {
+		String col = PERSON_ID+", "+FIRST_NAME+", "+LAST_NAME;
+		String[][] names = null;
+		try {
+			stmt = con.createStatement();
+		} catch (SQLException e) {
+			System.out.println("createStatement problem at ListDB_DEO.getPlayerNames()");
+			return null;
+		}
+		ResultSet result = null;
+		String sql = "select "+col+" from "+PERSONS+";";
+		try {
+			result = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			System.out.println("executeQuery problem at ListDB_DEO.getPlayerNames(); error: "+sql);
+			return null;
+		}
+		names = (normalizedNames(result));
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return names;
+	}
+	
+	/**
+	 * ResultSet-ს ამუშავებს გუნდების სიის შესაბამის ფორმამდე.
+	 * @param result
+	 * @return
+	 */
+	private String[][] normalizedPlayers(String[][]ids, String[][]names){
+		ArrayList<String> playerID = new ArrayList<String>();
+		ArrayList<String> playerName = new ArrayList<String>();
+		for(int i = 0; i < ids.length; i ++){
+			for(int j = 0; j < names.length; j++){
+				if(ids[i][0].equals(names[j][0])){
+					playerID.add(ids[i][1]);
+					playerName.add(names[j][1]);
+				}
+			}
+		}
+		String[][] players = new String[playerID.size()][2];
+		for(int i = 0; i < players.length; i++){
+			players[i][0] = playerID.get(i);
+			players[i][1] = playerName.get(i);
+		}
+		playerID.clear();
+		playerName.clear();
+		return players;
+	}
+	
+	/**
+	 * ResultSet-ს ამუშავებს გუნდების სიის შესაბამის ფორმამდე.
+	 * @param result
+	 * @return
+	 */
+	private String[][] normalizedNames(ResultSet result){
+		ArrayList<String> personID = new ArrayList<String>();
+		ArrayList<String> playerName = new ArrayList<String>();
+		try {
+			while(result.next()){
+				personID.add(result.getString(PERSON_ID));
+				playerName.add(result.getString(FIRST_NAME)+" "+result.getString(LAST_NAME));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String[][] players = new String[personID.size()][2];
+		for(int i = 0; i < players.length; i++){
+			players[i][0] = personID.get(i);
+			players[i][1] = playerName.get(i);
+		}
+		personID.clear();
+		playerName.clear();
+		return players;
+	}
+	
+	/**
+	 * ResultSet-ს ამუშავებს გუნდების სიის შესაბამის ფორმამდე.
+	 * @param result
+	 * @return
+	 */
+	private String[][] normalizedPersons(ResultSet result){
+		ArrayList<String> playerID = new ArrayList<String>();
+		ArrayList<String> personID = new ArrayList<String>();
+		try {
+			while(result.next()){
+				playerID.add(result.getString(PLAYER_ID));
+				personID.add(result.getString(PERSON_ID));			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String[][] persons = new String[playerID.size()][2];
+		for(int i = 0; i < persons.length; i++){
+			persons[i][0] = personID.get(i);
+			persons[i][1] = playerID.get(i);
+		}
+		playerID.clear();
+		personID.clear();
+		return persons;
 	}
 
 }

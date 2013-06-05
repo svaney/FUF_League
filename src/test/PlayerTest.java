@@ -26,6 +26,7 @@ public class PlayerTest {
 		System.out.println("გუნდის ნომერი: "+player.getTeamID());
 		System.out.println("პერსონის ნომერი: "+player.getPersonID());
 		System.out.println("ასაკი: "+player.getAge());
-		System.out.println(Lists_DEO.teams()[3][1]); // უნდა დაწეოს გუნდის სახელი
+		System.out.println(Lists_DEO.teams()[0][1]); // უნდა დაწეროს გუნდის სახელი
+		System.out.println(Lists_DEO.players()[0][1]); // უნდა დაწეროს მოთამაშის სახელი
 	}
 }

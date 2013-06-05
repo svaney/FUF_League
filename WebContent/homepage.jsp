@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page import="model.mainclasses.Lists_DEO" %>
 <!doctype html>
 <html>
 <head>
@@ -6,9 +7,8 @@
 <title>თავისუფალი უნივერსიტეტი - ფეხბურთი</title>
 
 <body>
-<a href="PlayerProfileServlet?playerID=1"> <input name="player1" type=button value="დეო გოჩავა"></input></a>
-<a href="PlayerProfileServlet?playerID=2"> <input name="player2" type=button value="ლუკა თურქაძე"></input></a>
-<a href="PlayerProfileServlet?playerID=3"> <input name="player3" type=button value="ლუკა გეწაძე"></input></a>
-<a href="PlayerProfileServlet?playerID=4"> <input name="player4" type=button value="ალეკო მოსიძე"></input></a>
+<%for(int i = 0; i < Lists_DEO.players().length; i++){%>
+	<p><a href="PlayerProfileServlet?playerID=<%=Lists_DEO.players()[i][0]%>"> <input name="player<%=i%>" type=button value="<%=Lists_DEO.players()[i][1]%>"></input></a></p>
+<%} %>
 </body>
 </html>
