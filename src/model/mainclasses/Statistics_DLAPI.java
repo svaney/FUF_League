@@ -9,9 +9,16 @@
  */
 package model.mainclasses;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import model.dblayer.StatisticsDB;
+import model.dblayer.StatisticsDB_DLAPI;
+
 public class Statistics_DLAPI implements Statistics{
+	
+	//DataBase instance
+	private StatisticsDB db;
 	
 	//private variables
 	private int champID;
@@ -22,6 +29,7 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	public Statistics_DLAPI(int champID){
 		this.champID = champID;
+		db = (StatisticsDB) new StatisticsDB_DLAPI();
 	}
 	
 	/**
@@ -30,8 +38,7 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public List<Player> getTopScorers() {
-		// TODO Auto-generated method stub
-		return null;
+		return db.getTopScorers(champID);
 	}
 
 	/**
@@ -40,8 +47,7 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public List<Player> getAssists() {
-		// TODO Auto-generated method stub
-		return null;
+		return db.getAssistants(champID);
 	}
 
 	/**
@@ -51,8 +57,12 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public List<Goal> getGoalsForPlayer(Player player) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Integer> goalIDs = (ArrayList<Integer>) db.getGoalsForPlayer(champID);
+		ArrayList<Goal> answer = new ArrayList<Goal>();
+		for(int i=0;i<goalIDs.size();i++){
+			answer.add(new Goal_kire(goalIDs.get(i)));
+		}
+		return answer;
 	}
 
 	/**
@@ -61,8 +71,7 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public List<Player> getMostYellows() {
-		// TODO Auto-generated method stub
-		return null;
+		return setPlayersFromIDs((ArrayList<Integer>) db.getMostYellows(champID));
 	}
 
 	/**
@@ -71,8 +80,19 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public List<Player> getMostReds() {
-		// TODO Auto-generated method stub
-		return null;
+		return setPlayersFromIDs((ArrayList<Integer>) db.getMostReds(champID));
 	}
 
+	/**
+	 * გადაცემული ID-ებიდან, ქმნის Player ობიექტების ArrayList-ს 
+	 * @param players ArrayList<Integer> ID-ების ჩამონათვალი
+	 * @return აბრუნებს ArrayList<Player> ობიექტს
+	 */
+	private ArrayList<Player> setPlayersFromIDs(ArrayList<Integer> players){
+		ArrayList<Player> result = new ArrayList<Player>();
+		for(int i=0;i<players.size();i++){
+			result.add(new Player_DEO(players.get(i)));
+		}
+		return result;
+	}
 }

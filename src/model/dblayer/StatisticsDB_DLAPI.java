@@ -12,8 +12,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
-public class StatisticsDB_DLAPI {
+import model.mainclasses.Player;
+
+public class StatisticsDB_DLAPI implements StatisticsDB{
 	// ბაზის პარამეტრები
 		private static final String MYSQL_USERNAME = "root";
 		private static final String MYSQL_PASSWORD = "123456";
@@ -45,6 +48,61 @@ public class StatisticsDB_DLAPI {
 		private void startUpStatement() throws SQLException{
 			st = con.createStatement();
 			st.executeQuery("USE " + MYSQL_DATABASE_NAME);
+		}
+
+		/**
+		 * აბრუნებს ჩემპიონატის ბომბარდირებს.
+		 * @param champID ჩემპიონატის იდენტიფიკატორი
+		 * @return Player ტიპის ობიექტების List, გოლების კლებადობითაა დალაგებული მოთამაშეები
+		 */
+		@Override
+		public List<Player> getTopScorers(int champID) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		/**
+		 * აბრუნებს ჩემპიონატის მონაწილეთა სიას, რომლებმაც ყველაზე მეტი საგოლე გადაცემა გააკეთეს
+		 * @param champID ჩემპიონატის იდენტიფიკატორი
+		 * @return Player ტიპის ობიექტების List, ასისტების კლებადობითაა დალაგებული მოთამაშეები
+		 */
+		@Override
+		public List<Player> getAssistants(int champID) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		/**
+		 *  აბრუნებს ჩემპიონატის განმავლობაში მოთამაშის მიერ გატანილ გოლებს, თანმიმდევრობით (თარიღების მიხედვით). არ ითვლება საკუთარ კარში გატანილი გოლები
+		 * @param champID ჩემპიონატის იდენტიფიკატორი
+		 * @return Goal ტიპის ობიექტების List
+		 */
+		@Override
+		public List<Integer> getGoalsForPlayer(int champID) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		/**
+		 * აბრუნებს სიას სადაც წერია ვინ მიიღო ყვითელი ბარათები ჩემპიონატის განავლობაში
+		 * @param champID ჩემპიონატის იდენტიფიკატორი
+		 * @return Player ტიპის ობიექტები, რომლებიც დალაგებულია იმის კლებადობით თუ ვის რამდენი ყვითელი აქვს
+		 */
+		@Override
+		public List<Integer> getMostYellows(int champID) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		/**
+		 * აბრუნებს სიას სადაც წერია ვინ მიიღო წითელი ბარათები ჩემპიონატის განავლობაში
+		 * @param champID ჩემპიონატის იდენტიფიკატორი
+		 * @return Player ტიპის ობიექტები, რომლებიც დალაგებულია იმის კლებადობით თუ ვის რამდენი წითელი აქვს
+		 */
+		@Override
+		public List<Integer> getMostReds(int champID) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 }
