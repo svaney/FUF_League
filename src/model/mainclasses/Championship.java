@@ -11,5 +11,8 @@ public interface Championship {
 	public void createGroups();
 	public Group getGroup(String groupName);
 	public void endChamp();
-
+	// id-it kosnstruktori
+	// meore konstractori, rac not null-ia gadaecemodes, cahmpdb-im dagibrunos id
+	// unda kondes jgufebi da matchebi (playoff-shi)
+	//champdb-is yvela geteri da seteri
 }
