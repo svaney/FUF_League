@@ -16,12 +16,19 @@
 <%} %>
 </select>
 <button type="button" onclick="addPlayerForm()">ახალი..</button>
+<button type="button" onclick="editPlayerForm()">შესწორება..</button>
 </section>
-<div id="addPlayer" style="visibility:hidden">
+<div id="addPlayer" style="display:none">
 	<section>
 		<%@include file="CreatePlayer.jsp" %>
 	</section>
 	<button type="button" onclick="addPlayerCancel()">გაუქმება</button>
+</div>
+<div id="editPlayer" style="display:none">
+	<section>
+		<%@include file="EditPlayer.jsp" %>
+	</section>
+	<button type="button" onclick="editPlayerCancel()">გაუქმება</button>
 </div>
 </body>
 </html>
