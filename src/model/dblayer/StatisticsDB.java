@@ -10,6 +10,7 @@ package model.dblayer;
 import java.sql.SQLException;
 import java.util.List;
 
+import model.mainclasses.Goal;
 import model.mainclasses.Player;
 
 public interface StatisticsDB {
@@ -33,10 +34,11 @@ public interface StatisticsDB {
 	/**
 	 *  აბრუნებს ჩემპიონატის განმავლობაში მოთამაშის მიერ გატანილ გოლებს, თანმიმდევრობით (თარიღების მიხედვით). არ ითვლება საკუთარ კარში გატანილი გოლები
 	 * @param champID ჩემპიონატის იდენტიფიკატორი
-	 * @return Goal ტიპის ობიექტების List
+	 * @param player 
+	 * @return Integer ტიპის ობიექტების List
 	 * @throws SQLException 
 	 */
-	List<Integer> getGoalsForPlayer(int champID) throws SQLException;
+	List<Integer> getGoalIDsForPlayer(int champID, Player player) throws SQLException;
 
 	/**
 	 * აბრუნებს სიას სადაც წერია ვინ მიიღო ყვითელი ბარათები ჩემპიონატის განავლობაში
@@ -53,5 +55,29 @@ public interface StatisticsDB {
 	 * @throws SQLException 
 	 */
 	List<Integer> getMostReds(int champID) throws SQLException;
+
+	/**
+	 * აბრუნებს რამდენი ყვითელი მიიღო მოთამაშემ
+	 * @param champID ჩემპიონატის იდენტიფიკატორი
+	 * @param player მოთამაშის იდენტიფიკატორი
+	 * @return რაოდენობა int
+	 */
+	int getYellowsForPlayer(int champID, Player player);
+
+	/**
+	 * აბრუნებს რამდენი წითელი მიიღო მოთამაშემ
+	 * @param champID ჩემპიონატის იდენტიფიკატორი
+	 * @param player მოთამაშის იდენტიფიკატორი
+	 * @return რაოდენობა int
+	 */
+	int getRedsForPlayer(int champID, Player player);
+
+	/**
+	 * აბრუნებს რამდენი წითელი მიიღო მოთამაშემ ჩემპიონატის განმავლობაში იმის გამო რომ ყვითელი გაუორმაგდა
+	 * @param champID ჩემპიონატის იდენტიფიკატორი
+	 * @param player მოთამაშის იდენტიფიკატორი
+	 * @return რაოდენობა int
+	 */
+	int getRedsFromTwoYellowsForPlayer(int champID, Player player);
 
 }

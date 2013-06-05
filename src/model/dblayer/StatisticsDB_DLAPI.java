@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.mainclasses.Converter;
+import model.mainclasses.Goal;
 import model.mainclasses.Player;
 
 public class StatisticsDB_DLAPI implements StatisticsDB{
@@ -60,8 +61,18 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		 */
 		@Override
 		public List<Player> getTopScorers(int champID) throws SQLException {
+			return getFromQueryPlayers("select player_id, count(goal_id) as numberOfGoals from goals where match_id in (select match_id from matches  where championship_id = "+champID+") and auto_goal='N' group by player_idorder by numberOfGoals desc;");
+		}
+		
+		/**
+		 * გვიბრუნებს მოთამაშეების სიას, ისე რომ ამუშავებს ცხრილებს query-ს საშუალებით
+		 * @param query string რომელშიც წერია sql statement
+		 * @return ArrayList<Player> ობიექტი
+		 * @throws SQLException
+		 */
+		private ArrayList<Player> getFromQueryPlayers(String query) throws SQLException{
 			startUpStatement();
-			rs = st.executeQuery("select player_id, count(goal_id) as numberOfGoals from goals where match_id in (select match_id from matches  where championship_id = "+champID+") group by player_idorder by numberOfGoals desc;");
+			rs = st.executeQuery("query");
 			ArrayList<Integer> ids = new ArrayList<Integer>();
 			while(rs.next()){
 				ids.add(rs.getInt("player_id"));
@@ -79,24 +90,25 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		 */
 		@Override
 		public List<Player> getAssistants(int champID) throws SQLException {
-			startUpStatement();
-			
-			st.close();
-			return null;
+			return getFromQueryPlayers("select assistant_id, count(goal_id) as numberOfGoals from goals where match_id in (select match_id from matches where championship_id = 4) and assistant_id<>null and auto_goal='N'group by assistant_id order by numberOfGoals desc;");
 		}
 
 		/**
 		 *  აბრუნებს ჩემპიონატის განმავლობაში მოთამაშის მიერ გატანილ გოლებს, თანმიმდევრობით (თარიღების მიხედვით). არ ითვლება საკუთარ კარში გატანილი გოლები
 		 * @param champID ჩემპიონატის იდენტიფიკატორი
-		 * @return Goal ტიპის ობიექტების List
+		 * @return Integer ტიპის ობიექტების List
 		 * @throws SQLException 
 		 */
 		@Override
-		public List<Integer> getGoalsForPlayer(int champID) throws SQLException {
+		public List<Integer> getGoalIDsForPlayer(int champID, Player pl) throws SQLException {
 			startUpStatement();
-			
+			rs = st.executeQuery("select goal_id from goals inner join matches on goals.match_id=matches.match_id where  player_id="+pl.getPlayerID()+" and auto_goal='N' and matches.championship_id="+champID+"  order by matches.match_date asc, goals.inrow asc;");
+			ArrayList<Integer> ids = new ArrayList<Integer>();
+			while(rs.next()){
+				ids.add(rs.getInt("goal_id"));
+			}
 			st.close();
-			return null;
+			return ids;
 		}
 
 		/**
@@ -125,6 +137,42 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 			
 			st.close();
 			return null;
+		}
+
+		/**
+		 * აბრუნებს რამდენი ყვითელი მიიღო მოთამაშემ
+		 * @param champID ჩემპიონატის იდენტიფიკატორი
+		 * @param player მოთამაშის იდენტიფიკატორი
+		 * @return რაოდენობა int
+		 */
+		@Override
+		public int getYellowsForPlayer(int champID, Player player) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		/**
+		 * აბრუნებს რამდენი წითელი მიიღო მოთამაშემ
+		 * @param champID ჩემპიონატის იდენტიფიკატორი
+		 * @param player მოთამაშის იდენტიფიკატორი
+		 * @return რაოდენობა int
+		 */
+		@Override
+		public int getRedsForPlayer(int champID, Player player) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		/**
+		 * აბრუნებს რამდენი წითელი მიიღო მოთამაშემ ჩემპიონატის განმავლობაში იმის გამო რომ ყვითელი გაუორმაგდა
+		 * @param champID ჩემპიონატის იდენტიფიკატორი
+		 * @param player მოთამაშის იდენტიფიკატორი
+		 * @return რაოდენობა int
+		 */
+		@Override
+		public int getRedsFromTwoYellowsForPlayer(int champID, Player player) {
+			// TODO Auto-generated method stub
+			return 0;
 		}
 
 }

@@ -17,12 +17,25 @@ public class Converter {
 	/**
 	 * გადაცემული ID-ებიდან, ქმნის Player ობიექტების ArrayList-ს 
 	 * @param players ArrayList<Integer> ID-ების ჩამონათვალი
-	 * @return აბრუნებს ArrayList<Player> ობიექტს
+	 * @return აბრუნებს List<Player> ობიექტს
 	 */
-	public static List<Player> setPlayersFromIDs(ArrayList<Integer> players){
+	public static List<Player> setPlayersFromIDs(ArrayList<Integer> playerIDs){
 		ArrayList<Player> result = new ArrayList<Player>();
-		for(int i=0;i<players.size();i++){
-			result.add(new Player_DEO(players.get(i)));
+		for(int i=0;i<playerIDs.size();i++){
+			result.add(new Player_DEO(playerIDs.get(i)));
+		}
+		return result;
+	}
+	
+	/**
+	 * გადაცემული ID-ებიდან, ქმნის Goal ობიექტების ArrayList-ს 
+	 * @param Goals ArrayList<Integer> ID-ების ჩამონათვალი
+	 * @return აბრუნებს List<Goal> ობიექტს
+	 */
+	public static List<Goal> setGoalsFromIDs(ArrayList<Integer> goalIDs){
+		ArrayList<Goal> result = new ArrayList<Goal>();
+		for(int i=0;i<goalIDs.size();i++){
+			result.add(new Goal_kire(goalIDs.get(i)));
 		}
 		return result;
 	}

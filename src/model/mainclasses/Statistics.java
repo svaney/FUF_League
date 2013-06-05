@@ -44,4 +44,25 @@ public interface Statistics {
 	 */
 	List<Player> getMostReds();
 	
+	/**
+	 * აბრუნებს რამდენი ყვითელი მიიღო მოთამაშემ ჩემპიონატის განმავლობაში
+	 * @param player მოთამაშის იდენტიფიკატორი
+	 * @return რაოდენობა
+	 */
+	int howManyYellows(Player player);
+	
+	/**
+	 * აბრუნებს რამდენი წითელი მიიღო მოთამაშემ ჩემპიონატის განმავლობაში
+	 * @param player მოთამაშის იდენტიფიკატორი
+	 * @return რაოდენობა
+	 */
+	int howManyReds(Player player);
+	
+	/**
+	 * აბრუნებს რამდენი წითელი მიიღო ორი ყვითელის გამო მოთამაშემ ჩემპიონატის განმავლობაში
+	 * @param player მოთამაშის იდენტიფიკატორი
+	 * @return რაოდენობა
+	 */
+	int howManyRedsFromTwoYellows(Player player);
+	
 }

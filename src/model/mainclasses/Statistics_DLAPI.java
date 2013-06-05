@@ -70,16 +70,12 @@ public class Statistics_DLAPI implements Statistics{
 	public List<Goal> getGoalsForPlayer(Player player) {
 		ArrayList<Integer> goalIDs;
 		try {
-			goalIDs = (ArrayList<Integer>) db.getGoalsForPlayer(champID);
+			goalIDs = (ArrayList<Integer>) db.getGoalIDsForPlayer(champID, player);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			goalIDs = null;
 		}
-		ArrayList<Goal> answer = new ArrayList<Goal>();
-		for(int i=0;i<goalIDs.size();i++){
-			answer.add(new Goal_kire(goalIDs.get(i)));
-		}
-		return answer;
+		return Converter.setGoalsFromIDs(goalIDs);
 	}
 
 	/**
@@ -108,6 +104,36 @@ public class Statistics_DLAPI implements Statistics{
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	/**
+	 * აბრუნებს რამდენი ყვითელი მიიღო მოთამაშემ ჩემპიონატის განმავლობაში
+	 * @param player მოთამაშის იდენტიფიკატორი
+	 * @return რაოდენობა
+	 */
+	@Override
+	public int howManyYellows(Player player) {
+		return db.getYellowsForPlayer(champID,player);
+	}
+
+	/**
+	 * აბრუნებს რამდენი წითელი მიიღო მოთამაშემ ჩემპიონატის განმავლობაში
+	 * @param player მოთამაშის იდენტიფიკატორი
+	 * @return რაოდენობა
+	 */
+	@Override
+	public int howManyReds(Player player) {
+		return db.getRedsForPlayer(champID,player);
+	}
+
+	/**
+	 * აბრუნებს რამდენი წითელი მიიღო ორი ყვითელის გამო მოთამაშემ ჩემპიონატის განმავლობაში
+	 * @param player მოთამაშის იდენტიფიკატორი
+	 * @return რაოდენობა
+	 */
+	@Override
+	public int howManyRedsFromTwoYellows(Player player) {
+		return db.getRedsFromTwoYellowsForPlayer(champID,player);
 	}
 
 }
