@@ -32,7 +32,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	
 	/**
 	 * playerAtributes არის მხოლოდ და მხოლოდ საფეხბურთო ატრიბუტები (სიჩქარე, დრიბლინგი და სხვ.)
-	 * ამ ატრიბუტების შესაბამისი მნიშვნელობები ბაზაში  არის INT ტიპის;
+	 * ამ ატრიბუტების შესაბამისი მნიშვნელობები ბაზაში  არის INT ან STRING ტიპის;
 	 * სია ემთხვევა Players ცხრილის სვეტების სახელებს;
 	 */
 	private static String[] playerAtributes = {"person_id", "rating", "speed", "dribbling", "heading", "club_loyalty", "diving", "durability", "shooting", "work_rate", "creativity", "fear_factor", "killer_instinct", "vision", "passing", "penalty", "tackling", "penalty_saving", "lidership", "reflexes", "shot_stopping", "mistake_factor", "positioning", "strength", "foot", "def_position", "team_id"};
@@ -40,7 +40,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	
 	/**
 	 * playerParametres არის პერსონის პარამეტრები Person ცხრილიდან.
-	 * ამ პარამეტრების  შესაბამისი მნიშვნელობები ბაზაში არის STRING ან DATE ტიპის;
+	 * ამ პარამეტრების  შესაბამისი მნიშვნელობები ბაზაში არის STRING, INT ან DATE ტიპის;
 	 * სია ემთხვევა Persons ცხრილის სვეტების სახელებს;
 	 */
 	private static String[] playerParametres = {"firstname", "lastname", "nickname", "birth_date", "uni_start", "school", "degree", "uni_cur_course", "graduated", "weight", "height", "image_URL", "biography", "special_atr", "fb_page", "firstname", "lastname", "nickname", "birth_date", "uni_start", "school", "degree", "uni_cur_course", "graduated", "weight", "height", "image_URL", "biography", "special_atr", "fb_page"};
@@ -60,8 +60,7 @@ public class PlayerDB_DEO implements PlayerDB{
 		initConncection();
 	}
 
-	@Override
-	public void initConncection() {
+	private void initConncection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://" + MYSQL_DATABASE_SERVER + "/" + MYSQL_DATABASE_NAME;

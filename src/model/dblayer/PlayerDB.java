@@ -3,20 +3,17 @@ import java.sql.*;
 
 import model.mainclasses.Player_DEO;
 /**
- * PlayerDBInterface-ის ჩემი სამუშაო ვერსია
  * @author DEO.Gochava
  *
  */
 public interface PlayerDB{
 	
 	/* ცხრილები: player_award, Persons, Players
-	 * კლასი, რომელიც ამ ინტერფეისს დაუკეთეს იმპლემენტაციას შეძლებს ბაზიდან ამოიღოს ყველა ინფრომაცია
+	 * კლასი, რომელიც ამ ინტერფეისს გაუკეთებს იმპლემენტაციას შეძლებს ბაზიდან ამოიღოს ყველა ინფრომაცია
 	 * მოთამაშის შესახებ. 
 	 * 
 	 * ---- აქ უნდა ვიკითხო პერსონს ნაწილი ცალკე ხო არ ჯობია.
 	 * */
-	
-	public void initConncection();
 	
 	//მოთამაშის ცხრილიდან ამოღება.
 	public double getRating(int playerID);
