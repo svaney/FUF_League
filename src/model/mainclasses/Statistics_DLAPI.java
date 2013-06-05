@@ -9,6 +9,7 @@
  */
 package model.mainclasses;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,12 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public List<Player> getTopScorers() {
-		return db.getTopScorers(champID);
+		try {
+			return db.getTopScorers(champID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	/**
@@ -47,7 +53,12 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public List<Player> getAssists() {
-		return db.getAssistants(champID);
+		try {
+			return db.getAssistants(champID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	/**
@@ -57,7 +68,13 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public List<Goal> getGoalsForPlayer(Player player) {
-		ArrayList<Integer> goalIDs = (ArrayList<Integer>) db.getGoalsForPlayer(champID);
+		ArrayList<Integer> goalIDs;
+		try {
+			goalIDs = (ArrayList<Integer>) db.getGoalsForPlayer(champID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			goalIDs = null;
+		}
 		ArrayList<Goal> answer = new ArrayList<Goal>();
 		for(int i=0;i<goalIDs.size();i++){
 			answer.add(new Goal_kire(goalIDs.get(i)));
@@ -71,7 +88,12 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public List<Player> getMostYellows() {
-		return setPlayersFromIDs((ArrayList<Integer>) db.getMostYellows(champID));
+		try {
+			return setPlayersFromIDs((ArrayList<Integer>) db.getMostYellows(champID));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	/**
@@ -80,7 +102,12 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public List<Player> getMostReds() {
-		return setPlayersFromIDs((ArrayList<Integer>) db.getMostReds(champID));
+		try {
+			return setPlayersFromIDs((ArrayList<Integer>) db.getMostReds(champID));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	/**

@@ -54,10 +54,13 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		 * აბრუნებს ჩემპიონატის ბომბარდირებს.
 		 * @param champID ჩემპიონატის იდენტიფიკატორი
 		 * @return Player ტიპის ობიექტების List, გოლების კლებადობითაა დალაგებული მოთამაშეები
+		 * @throws SQLException 
 		 */
 		@Override
-		public List<Player> getTopScorers(int champID) {
-			// TODO Auto-generated method stub
+		public List<Player> getTopScorers(int champID) throws SQLException {
+			startUpStatement();
+			
+			st.close();
 			return null;
 		}
 
@@ -65,10 +68,13 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		 * აბრუნებს ჩემპიონატის მონაწილეთა სიას, რომლებმაც ყველაზე მეტი საგოლე გადაცემა გააკეთეს
 		 * @param champID ჩემპიონატის იდენტიფიკატორი
 		 * @return Player ტიპის ობიექტების List, ასისტების კლებადობითაა დალაგებული მოთამაშეები
+		 * @throws SQLException 
 		 */
 		@Override
-		public List<Player> getAssistants(int champID) {
-			// TODO Auto-generated method stub
+		public List<Player> getAssistants(int champID) throws SQLException {
+			startUpStatement();
+			
+			st.close();
 			return null;
 		}
 
@@ -76,10 +82,13 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		 *  აბრუნებს ჩემპიონატის განმავლობაში მოთამაშის მიერ გატანილ გოლებს, თანმიმდევრობით (თარიღების მიხედვით). არ ითვლება საკუთარ კარში გატანილი გოლები
 		 * @param champID ჩემპიონატის იდენტიფიკატორი
 		 * @return Goal ტიპის ობიექტების List
+		 * @throws SQLException 
 		 */
 		@Override
-		public List<Integer> getGoalsForPlayer(int champID) {
-			// TODO Auto-generated method stub
+		public List<Integer> getGoalsForPlayer(int champID) throws SQLException {
+			startUpStatement();
+			
+			st.close();
 			return null;
 		}
 
@@ -87,10 +96,13 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		 * აბრუნებს სიას სადაც წერია ვინ მიიღო ყვითელი ბარათები ჩემპიონატის განავლობაში
 		 * @param champID ჩემპიონატის იდენტიფიკატორი
 		 * @return Player ტიპის ობიექტები, რომლებიც დალაგებულია იმის კლებადობით თუ ვის რამდენი ყვითელი აქვს
+		 * @throws SQLException 
 		 */
 		@Override
-		public List<Integer> getMostYellows(int champID) {
-			// TODO Auto-generated method stub
+		public List<Integer> getMostYellows(int champID) throws SQLException {
+			startUpStatement();
+			
+			st.close();
 			return null;
 		}
 
@@ -98,10 +110,13 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		 * აბრუნებს სიას სადაც წერია ვინ მიიღო წითელი ბარათები ჩემპიონატის განავლობაში
 		 * @param champID ჩემპიონატის იდენტიფიკატორი
 		 * @return Player ტიპის ობიექტები, რომლებიც დალაგებულია იმის კლებადობით თუ ვის რამდენი წითელი აქვს
+		 * @throws SQLException 
 		 */
 		@Override
-		public List<Integer> getMostReds(int champID) {
-			// TODO Auto-generated method stub
+		public List<Integer> getMostReds(int champID) throws SQLException {
+			startUpStatement();
+			
+			st.close();
 			return null;
 		}
 
