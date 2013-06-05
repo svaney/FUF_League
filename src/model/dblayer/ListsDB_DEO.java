@@ -1,10 +1,12 @@
 package model.dblayer;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 	/**
 	 * 
@@ -50,11 +52,13 @@ public class ListsDB_DEO implements ListsDB{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	/**
+	 * აბრუნებს სტრინგების 2 ადგილიან მასივს. მასივი[გუნდის ID][გუნდის სახელი];
+	 */
 	@Override
 	public String[][] listAllTeams() {
-		// TODO Auto-generated method stub
-		return null;
+		return getTeams();
 	}
 
 	@Override
@@ -71,7 +75,7 @@ public class ListsDB_DEO implements ListsDB{
 	
 	/**
 	 * ეს მეთოდი ბაზიდან იღებს მოთხოვნილი ცხრილის ყველა რიგს;
-	 * თუ მითითებული რიგი არსებობს, მაშინ ის გამოძახებს მეთოდს normalized(ResultSet result),
+	 * თუ მითითებული რიგი არსებობს, მაშინ ის გამოიძახებს მეთოდს normalized(ResultSet result),
 	 * რომელიც დააბრუნებს გამზადებულ მასივს;
 	 */
 	private String[][] getTeams() {
@@ -91,13 +95,7 @@ public class ListsDB_DEO implements ListsDB{
 			System.out.println("executeQuery problem at ListDB_DEO.getTeams(); error: "+sql);
 			return null;
 		}
-		try {
-			if(result.next()) {
-				teams = (normalized(result));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		teams = (normalizedTeams(result));
 		try {
 			stmt.close();
 		} catch (SQLException e) {
@@ -106,8 +104,23 @@ public class ListsDB_DEO implements ListsDB{
 		return teams;
 	}
 	
-	private String[][] normalized(ResultSet result){
-		return null;
+	private String[][] normalizedTeams(ResultSet result){
+		ArrayList<String> teamID = new ArrayList<String>();
+		ArrayList<String> teamName = new ArrayList<String>();
+		try {
+			while(result.next()){
+				teamID.add(result.getString(TEAM_ID));
+				teamName.add(result.getString(TEAM_NAME));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String[][] teams = new String[teamID.size()][2];
+		for(int i = 0; i < teams.length; i++){
+			teams[i][0] = teamID.get(i);
+			teams[i][1] = teamName.get(i);
+		}
+		return teams;
 	}
 
 }
