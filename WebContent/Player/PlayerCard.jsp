@@ -1,18 +1,17 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" errorPage="" %>
 <%@ page import="model.mainclasses.Player_DEO" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%Player_DEO card = (Player_DEO) request.getAttribute(request.getParameter("playerID"));%>
 <body>
 <table>
   <tr>
     <td class="CardLeftSide">
-    <table width="100%">
+    <table>
   <tr>
     <td><img src="images/players/<%=card.getAvatar() %>" height="320" width="240"/></td>
   </tr>
   <tr>
-    <td><table width="100%">
+    <td><table>
   <tr>
     <td><img alt="logo_001" src="images/teams/logo_001.png" height="42" width="42"></td>
     <td class="TableCentreText">მფრინავი ჰოლანდიელი</td>
@@ -21,9 +20,8 @@
 </td>
   </tr>
 </table>
-</td>
     <td class="CardRigthSide">
-      <table class="CardDefaultInfo" width="100%">
+      <table class="CardDefaultInfo">
         <tr>
           <td>სახელი:</td>
           <td><strong><%=card.getFirstName()+" "+card.getLastName() %></strong></td>
@@ -52,7 +50,7 @@
           <td><%=card.getUniStartYear() %></td>
         </tr>
         <tr>
-        <%} %>
+        <%}%>
           <td>სიმაღლე:</td>
           <td><%=card.getHeightString() %></td>
         </tr>
