@@ -1,6 +1,5 @@
 package model.dblayer;
 
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -70,7 +69,7 @@ public class ListsDB_DEO implements ListsDB{
 	}
 
 	@Override
-	public String[][] listAllTypes() {
+	public String[] listAllTypes() {
 		// TODO Auto-generated method stub
 		return null;
 	}

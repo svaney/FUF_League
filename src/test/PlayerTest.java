@@ -3,6 +3,7 @@ package test;
 import org.junit.Test;
 
 import model.dblayer.PlayerDB_DEO;
+import model.mainclasses.Lists_DEO;
 import model.mainclasses.Player_DEO;
 
 public class PlayerTest {
@@ -25,5 +26,6 @@ public class PlayerTest {
 		System.out.println("გუნდის ნომერი: "+player.getTeamID());
 		System.out.println("პერსონის ნომერი: "+player.getPersonID());
 		System.out.println("ასაკი: "+player.getAge());
+		System.out.println(Lists_DEO.teams()[3][1]); // უნდა დაწეოს გუნდის სახელი
 	}
 }

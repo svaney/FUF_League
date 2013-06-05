@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" errorPage="" %>
 <%@ page import="model.mainclasses.Player_DEO" %>
+<%@ page import="model.mainclasses.Lists_DEO" %>
 <html>
 <head>
     <link rel="icon" href="../images/design/freeuniLogo.png" type="image/x-icon">
@@ -113,7 +114,9 @@
     <td>პოზიცია:</td>
     <td><select name="position">
     		<option value="">უცნობია</option>
-			<option value="value">ჩასვი პოზიციების სია</option>
+    		<%for(int i = 0; i < Lists_DEO.positions().length; i++){ %>
+				<option value="<%=Lists_DEO.positions()[i]%>"><%=Lists_DEO.positions()[i]%></option>
+			<%} %>
 		</select>
 	</td>
   </tr>
