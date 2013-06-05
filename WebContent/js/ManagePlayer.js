@@ -14,3 +14,9 @@ function editPlayerForm(){
 function editPlayerCancel(){
 	document.getElementById("editPlayer").style.display = "none";
 }
+function show(){
+	var selected = document.getElementById("player");
+	var selectedIndex = selectedPlayer.selectedIndex;
+	var selectedPlayer = selected[selectedIndex].text;
+	document.getElementById("deo").innerHTML=selectedPlayer;
+}
