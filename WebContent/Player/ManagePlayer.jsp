@@ -16,8 +16,6 @@
 <%} %>
 </select>
 <button type="button" onclick="addPlayerForm()">ახალი..</button>
-<button type="button" onclick="editPlayerForm()">შესწორება..</button>
-<button type="button" onclick="show()">მაჩვენე</button>
 </section>
 <div id="addPlayer" style="display:none">
 	<section>
@@ -25,12 +23,5 @@
 	</section>
 	<button type="button" onclick="addPlayerCancel()">გაუქმება</button>
 </div>
-<div id="editPlayer" style="display:none">
-	<section>
-		<%@include file="EditPlayer.jsp" %>
-	</section>
-	<button type="button" onclick="editPlayerCancel()">გაუქმება</button>
-</div>
-<p id="deo"></p>
 </body>
 </html>
