@@ -25,6 +25,9 @@ public class ListsDB_DEO implements ListsDB{
 	private static final String TEAMS = "teams";
 	private static final String TEAM_ID = "team_id";
 	private static final String TEAM_NAME = "name";
+	
+	private static final String POSITIONS = "positions";
+	private static final String POSITION = "position";
 
 	private static Connection con;
 	private static Statement stmt;
@@ -62,9 +65,8 @@ public class ListsDB_DEO implements ListsDB{
 	}
 
 	@Override
-	public String[][] listAllPositions() {
-		// TODO Auto-generated method stub
-		return null;
+	public String[] listAllPositions() {
+		return getPositions();
 	}
 
 	@Override
@@ -74,12 +76,12 @@ public class ListsDB_DEO implements ListsDB{
 	}
 	
 	/**
-	 * ეს მეთოდი ბაზიდან იღებს მოთხოვნილი ცხრილის ყველა რიგს;
+	 * ეს მეთოდი ბაზიდან იღებს გუნდების ცხრილის ყველა რიგს;
 	 * თუ მითითებული რიგი არსებობს, მაშინ ის გამოიძახებს მეთოდს normalized(ResultSet result),
 	 * რომელიც დააბრუნებს გამზადებულ მასივს;
 	 */
 	private String[][] getTeams() {
-		String col = "team_id, name";
+		String col = TEAM_ID+", "+TEAM_NAME;
 		String[][] teams = null;
 		try {
 			stmt = con.createStatement();
@@ -104,6 +106,11 @@ public class ListsDB_DEO implements ListsDB{
 		return teams;
 	}
 	
+	/**
+	 * ResultSet-ს ამუშავებს გუნდების სიის შესაბამის ფორმამდე.
+	 * @param result
+	 * @return
+	 */
 	private String[][] normalizedTeams(ResultSet result){
 		ArrayList<String> teamID = new ArrayList<String>();
 		ArrayList<String> teamName = new ArrayList<String>();
@@ -120,7 +127,61 @@ public class ListsDB_DEO implements ListsDB{
 			teams[i][0] = teamID.get(i);
 			teams[i][1] = teamName.get(i);
 		}
+		teamID.clear();
+		teamName.clear();
 		return teams;
+	}
+	
+	/**
+	 * ეს მეთოდი ბაზიდან იღებს პოზიციების ცხრილის ყველა რიგს;
+	 * თუ მითითებული რიგი არსებობს, მაშინ ის გამოიძახებს მეთოდს normalized(ResultSet result),
+	 * რომელიც დააბრუნებს გამზადებულ მასივს;
+	 */
+	private String[] getPositions() {
+		String col = POSITION;
+		String[] positions = null;
+		try {
+			stmt = con.createStatement();
+		} catch (SQLException e) {
+			System.out.println("createStatement problem at ListDB_DEO.getPositions()");
+			return null;
+		}
+		ResultSet result = null;
+		String sql = "select "+col+" from "+POSITIONS+";";
+		try {
+			result = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			System.out.println("executeQuery problem at ListDB_DEO.getPositions(); error: "+sql);
+			return null;
+		}
+		positions = (normalizedPositions(result));
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return positions;
+	}
+	
+	/**
+	 * ResultSet-ს ამუშავებს პოზიციების სიის შესაბამის ფორმამდე.
+	 * @param result
+	 * @return
+	 */
+	private String[] normalizedPositions(ResultSet result){
+		ArrayList<String> positions = new ArrayList<String>();
+		try {
+			while(result.next()){
+				positions.add(result.getString(POSITION));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		String[] pos = new String[positions.size()];
+		for(int i = 0; i < pos.length; i++){
+			pos[i] = positions.get(i);
+		}
+		return pos;
 	}
 
 }

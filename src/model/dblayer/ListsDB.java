@@ -12,6 +12,6 @@ public interface ListsDB {
 	
 	public String[][] listAllPlayers();
 	public String[][] listAllTeams();
-	public String[][] listAllPositions();
+	public String[] listAllPositions();
 	public String[][] listAllTypes();
 }
