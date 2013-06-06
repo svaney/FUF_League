@@ -10,11 +10,14 @@
 </head>
 <body>
 <section>
-<select id="player" size="<%=Lists_DEO.players().length%>">
+<form action="EditPlayer" method=post>
+<select id="selectedPlayer" name="selectedPlayer" size="<%=Lists_DEO.players().length%>">
 <%for(int i = 0; i < Lists_DEO.players().length; i++){%>
 	<option value=<%=Lists_DEO.players()[i][0]%>><%=Lists_DEO.players()[i][1]%></option>
 <%} %>
 </select>
+<button type="submit">შესწორება</button>
+</form>
 <button type="button" onclick="addPlayerForm()">ახალი..</button>
 </section>
 <div id="addPlayer" style="display:none">
