@@ -24,7 +24,6 @@
 	<section>
 		<%@include file="CreatePlayer.jsp" %>
 	</section>
-	<button type="button" onclick="addPlayerCancel()">გაუქმება</button>
 </div>
 </body>
 </html>

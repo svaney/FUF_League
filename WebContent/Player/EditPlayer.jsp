@@ -5,6 +5,7 @@
 <head>
     <link rel="icon" href="images/design/freeuniLogo.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/CreatePlayer.css" />
+	<script src="js/ManagePlayer.js"></script>
 	<%Player_DEO player = new Player_DEO(Integer.parseInt(request.getParameter("selectedPlayer"))); %>
 </head>
 <body>
@@ -142,7 +143,7 @@
   </tr>
 </table>
 <input type="submit" value="გაუქმება" onclick="form.action='ManagePlayers'; form.method='post';">
-<input type="submit" value="დამახსოვრება" onclick="form.action='EditPlayer'; form.method='post';">
+<input type="button" value="დამახსოვრება" onclick="checkInput()">
 </form>
 </body>
 </html>

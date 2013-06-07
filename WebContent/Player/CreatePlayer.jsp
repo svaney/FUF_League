@@ -7,7 +7,7 @@
 	<script type="text/javascript" src="../js/CreatePlayer.js"></script> 
 </head>
 <body>
-<form action="" method="post" target="_self" accept-charset="utf-8">
+<form action="" method="post" target="_self" accept-charset="utf-8" onsubmit="return checkform(this);">
 <table>
   <tr>
     <td>სახელი:</td>
@@ -126,6 +126,8 @@
 	</td>
   </tr>
 </table>
+	<input type="button" value="გაუქმება" onclick="addPlayerCancel()">
+	<input type="submit" value="შენახვა">
 </form>
 </body>
 </html>
