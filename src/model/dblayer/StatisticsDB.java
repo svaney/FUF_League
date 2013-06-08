@@ -35,7 +35,7 @@ public interface StatisticsDB {
 	 *  აბრუნებს ჩემპიონატის განმავლობაში მოთამაშის მიერ გატანილ გოლებს, თანმიმდევრობით (თარიღების მიხედვით). არ ითვლება საკუთარ კარში გატანილი გოლები
 	 * @param champID ჩემპიონატის იდენტიფიკატორი
 	 * @param player 
-	 * @return Integer ტიპის ობიექტების List
+	 * @return Integer ტიპის ობიექტების List გოლების იდენტიფიკატორი
 	 * @throws SQLException 
 	 */
 	List<Integer> getGoalIDsForPlayer(int champID, Player player) throws SQLException;
@@ -43,7 +43,7 @@ public interface StatisticsDB {
 	/**
 	 * აბრუნებს სიას სადაც წერია ვინ მიიღო ყვითელი ბარათები ჩემპიონატის განავლობაში
 	 * @param champID ჩემპიონატის იდენტიფიკატორი
-	 * @return Player ტიპის ობიექტები, რომლებიც დალაგებულია იმის კლებადობით თუ ვის რამდენი ყვითელი აქვს
+	 * @return player_id Integer ტიპის ობიექტები მოთამაშის იდენტიფიკატორი
 	 * @throws SQLException 
 	 */
 	List<Integer> getMostYellows(int champID) throws SQLException;
@@ -51,7 +51,7 @@ public interface StatisticsDB {
 	/**
 	 * აბრუნებს სიას სადაც წერია ვინ მიიღო წითელი ბარათები ჩემპიონატის განავლობაში
 	 * @param champID ჩემპიონატის იდენტიფიკატორი
-	 * @return Player ტიპის ობიექტები, რომლებიც დალაგებულია იმის კლებადობით თუ ვის რამდენი წითელი აქვს
+	 * @return player_id Integer ტიპის ობიექტები მოთამაშის იდენტიფიკატორი
 	 * @throws SQLException 
 	 */
 	List<Integer> getMostReds(int champID) throws SQLException;
@@ -61,23 +61,26 @@ public interface StatisticsDB {
 	 * @param champID ჩემპიონატის იდენტიფიკატორი
 	 * @param player მოთამაშის იდენტიფიკატორი
 	 * @return რაოდენობა int
+	 * @throws SQLException 
 	 */
-	int getYellowsForPlayer(int champID, Player player);
+	int getYellowsForPlayer(int champID, Player player) throws SQLException;
 
 	/**
 	 * აბრუნებს რამდენი წითელი მიიღო მოთამაშემ
 	 * @param champID ჩემპიონატის იდენტიფიკატორი
 	 * @param player მოთამაშის იდენტიფიკატორი
 	 * @return რაოდენობა int
+	 * @throws SQLException 
 	 */
-	int getRedsForPlayer(int champID, Player player);
+	int getRedsForPlayer(int champID, Player player) throws SQLException;
 
 	/**
 	 * აბრუნებს რამდენი წითელი მიიღო მოთამაშემ ჩემპიონატის განმავლობაში იმის გამო რომ ყვითელი გაუორმაგდა
 	 * @param champID ჩემპიონატის იდენტიფიკატორი
 	 * @param player მოთამაშის იდენტიფიკატორი
 	 * @return რაოდენობა int
+	 * @throws SQLException 
 	 */
-	int getRedsFromTwoYellowsForPlayer(int champID, Player player);
+	int getRedsFromTwoYellowsForPlayer(int champID, Player player) throws SQLException;
 
 }
