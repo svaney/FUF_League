@@ -53,8 +53,12 @@ public class TeamDB_Ruska implements TeamDB{
 		stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(query);
 		while(rs.next()){
-			team.changeName(rs.getString("name"));
-
+			team.setName(rs.getString("name"));
+			team.setEmail(rs.getString("Email"));
+			team.setImageURL(rs.getString("Image_URL"));
+			team.setLogo(rs.getString("logo_url"));
+			team.setTel(rs.getString("tel"));
+			team.setRating(rs.getInt("rating"));
 		}
 	}
 

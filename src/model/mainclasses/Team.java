@@ -50,5 +50,7 @@ public interface Team {
 	public void changeCaptain(Player player); 
 	public void changeName(String name);
 	public void setName(String name);
+	public void setCaptain(Player player);
+	public void setRating(int rating);
 
 }

@@ -46,9 +46,6 @@ public class Team_Ruska implements Team{
 
 	}
 
-
-
-
 	@Override
 	public int getID() {
 		return teamID;
@@ -192,6 +189,18 @@ public class Team_Ruska implements Team{
 
 	@Override
 	public void setName(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setCaptain(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setRating(int rating) {
 		// TODO Auto-generated method stub
 		
 	}
