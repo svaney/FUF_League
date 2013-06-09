@@ -12,7 +12,9 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
+
 
 import model.dblayer.TeamDB;
 
@@ -43,22 +45,20 @@ public class Team_Ruska implements Team{
 	
 	public Team_Ruska(int teamID){
 		this.teamID = teamID;
-		
+		this.team = teamDataBase.getTeam(teamID);
 	}
-	
-	
-	
-	
+
 	@Override
 	public int getID() {
-		return teamID;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	@Override
 	public String getName() {
 		return name;
 	}
-	
+
 	@Override
 	public URL getImageURL() {
 		return imageURL;
@@ -109,7 +109,7 @@ public class Team_Ruska implements Team{
 		URL temp;
 		try {
 			temp = new URL(strURL);
-			if(teamDataBase.setImage(teamID,strURL))
+			if(teamDataBase.setImage(strURL))
 				imageURL = temp;
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -180,10 +180,4 @@ public class Team_Ruska implements Team{
 	}
 
 
-
-
-	@Override
-	public void changeName(String name) {
-		
-	}
 }
