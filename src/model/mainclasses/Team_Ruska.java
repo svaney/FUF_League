@@ -109,7 +109,7 @@ public class Team_Ruska implements Team{
 		URL temp;
 		try {
 			temp = new URL(strURL);
-			if(teamDataBase.setImage(strURL))
+			if(teamDataBase.setImage(teamID,strURL))
 				imageURL = temp;
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -175,6 +175,18 @@ public class Team_Ruska implements Team{
 
 	@Override
 	public void changeCaptain(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changeName(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setName(String name) {
 		// TODO Auto-generated method stub
 		
 	}
