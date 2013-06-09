@@ -24,35 +24,35 @@ public interface GoalDB {
 	 */
 	int createGoal(int playerID, int teamID, int matchID, boolean isAuto) throws SQLException;
 
-	void setScorer(int goalID, int playerID);
+	void setScorer(int goalID, int playerID) throws SQLException;
 
-	void setMatchID(int goalID, int matchID);
+	void setMatchID(int goalID, int matchID) throws SQLException;
 
-	void setAssist(int goalID, int playerID);
+	void setAssist(int goalID, int playerID) throws SQLException;
 
-	void setPenalty(int goalID, char c);
+	void setPenalty(int goalID, char c) throws SQLException;
 
-	void setExtra(int goalID, char c);
+	void setExtra(int goalID, char c) throws SQLException;
 
-	void setAuto(int goalID);
+	void setAuto(int goalID) throws SQLException;
 
-	void setTeam(int goalID, Team tm);
+	void setTeam(int goalID, Team tm) throws SQLException;
 
-	int getPlayerID(int goalID);
+	int getPlayerID(int goalID) throws SQLException;
 
-	int getMatchID(int goalID);
+	int getMatchID(int goalID) throws SQLException;
 
-	int getAssistID(int goalID);
+	int getAssistID(int goalID) throws SQLException;
 
-	boolean isPenalty(int goalID);
+	boolean isPenalty(int goalID) throws SQLException;
 
-	boolean isInExtra(int goalID);
+	boolean isInExtra(int goalID) throws SQLException;
 
-	boolean isAutoGoal(int goalID);
+	boolean isAutoGoal(int goalID) throws SQLException;
 
-	int getHalfTime();
+	int getHalfTime() throws SQLException;
 
-	int getInRow();
+	int getInRow() throws SQLException;
 
-	int getTeamID(int goalID);
+	int getTeamID(int goalID) throws SQLException;
 }
