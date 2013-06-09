@@ -7,12 +7,7 @@
 
 package model.mainclasses;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 import model.dblayer.TeamDB;
@@ -24,8 +19,8 @@ public class Team_Ruska implements Team{
 	private TeamDB teamDataBase;
 	private Team team;
 	private String name;
-	private URL imageURL;
-	private URL logoURL;
+	private String imageURL;
+	private String logoURL;
 	private String email;
 	private String tel;
 	private int rating;
@@ -57,7 +52,7 @@ public class Team_Ruska implements Team{
 	}
 
 	@Override
-	public URL getImageURL() {
+	public String getImageURL() {
 		return imageURL;
 	}
 
@@ -77,7 +72,7 @@ public class Team_Ruska implements Team{
 	}
 
 	@Override
-	public URL getLogoURL() {
+	public String getLogoURL() {
 		return logoURL;
 	}
 
@@ -100,20 +95,14 @@ public class Team_Ruska implements Team{
 
 	@Override
 	public Player getCaptain(int champID) {
+		captain = teamDataBase.getCaptain(teamID, champID);
 		return captain;
 	}
 
 	@Override
 	public void setImageURL(String strURL) {
-		URL temp;
-		try {
-			temp = new URL(strURL);
-			if(teamDataBase.setImage(teamID,strURL))
-				imageURL = temp;
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		if(teamDataBase.setImage(teamID,strURL))
+			imageURL = strURL;
 	}
 
 	@Override

@@ -7,18 +7,16 @@
 
 package model.mainclasses;
 import java.util.List;
-import java.net.URL;
-
 
 public interface Team {
 	
 	public int getID();
 	public String getName();
-	public URL getImageURL();
+	public String getImageURL();
 	public String getEmail();
 	public String getTel();
 	public int getRating();
-	public URL getLogoURL();
+	public String getLogoURL();
 	public List<Player> getPlayers(int champID);
 	public List<Award> getAwards();
 	public Award getAwardInChamp(int champID);
