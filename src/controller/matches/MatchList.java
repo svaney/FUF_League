@@ -55,8 +55,11 @@ public class MatchList extends HttpServlet {
 		for(int i=0;i<matches.size();i++){
 			out.println("<li>");
 			int[] teamIDs = matches.get(i).getTeamIDs();
+//			 es unda iyos wesit
 //			model.mainclasses.Team team1 = new model.mainclasses.Team_Ruska(teamIDs[0]);
 //			model.mainclasses.Team team2 = new model.mainclasses.Team_Ruska(teamIDs[1]);
+//			out.println("<a href=\""+request.getContextPath()+"/EditMatch?id="+matches.get(i).getMatchID()+"\">"+matches.get(i).getDate()+" "+team1.getName()+" vs "+team2.getName()+"</a>");
+// es wasashlelia
 			out.println("<a href=\""+request.getContextPath()+"/EditMatch?id="+matches.get(i).getMatchID()+"\">"+matches.get(i).getDate()+" "+teamIDs[0]+" vs "+teamIDs[1]+"</a>");
 			out.println("</li>");
 		}
