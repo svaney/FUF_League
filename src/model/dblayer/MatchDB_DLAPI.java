@@ -543,7 +543,7 @@ public class MatchDB_DLAPI implements MatchDB{
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param playerID დამრტყმელის იდენტიფიკატორი
 	 * @param teamID გუნდის იდენტიფიკატორი
-	 * @param turnOfTeam მერამდენე პენალი იყო
+	 * @param turnOfTeam მერამდენე პენალი იყო გუნდის
 	 * @param hasScored თუ გაიტანა true თუ ვერა false
 	 * @throws SQLException 
 	 */

@@ -20,7 +20,7 @@ public class PenaltyShoot {
 	 * კონსტრუქტორი
 	 * @param matchID მატჩის იდენტიფიკატორი
 	 * @param teamID გუნდის იდენტიფიკატორი
-	 * @param turn მერამდენე დარტყმაა
+	 * @param turn მერამდენე დარტყმაა გუნდის
 	 * @param Player_ID მოთამაშე
 	 * @param isMissed გაიტანა თუ ვერა, თუ ვერ გაიტანა true, თუ გაიტანა false
 	 */
