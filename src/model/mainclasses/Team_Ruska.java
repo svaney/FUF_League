@@ -10,6 +10,8 @@ package model.mainclasses;
 import java.sql.SQLException;
 import java.util.List;
 
+import controller.TeamListServlet;
+
 import model.dblayer.TeamDB;
 import model.dblayer.TeamDB_Ruska;
 
@@ -119,7 +121,8 @@ public class Team_Ruska implements Team{
 
 	@Override
 	public void removeLogo() {
-		
+		if(teamDataBase.reamoveLogo(teamID))
+			logoURL = null;
 	}
 
 	@Override
@@ -134,8 +137,6 @@ public class Team_Ruska implements Team{
 
 	@Override
 	public void setEmail(String email) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
