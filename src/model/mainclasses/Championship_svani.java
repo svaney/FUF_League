@@ -145,7 +145,11 @@ public class Championship_svani implements Championship{
 	public Date getEndDate() {
 		Date temp = null;
 
-		temp = this.champDB.getChampEndDate(this.champID);
+		try {
+			temp = this.champDB.getChampEndDate(this.champID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return temp;
 	}
 
