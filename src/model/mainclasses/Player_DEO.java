@@ -22,7 +22,6 @@ public class Player_DEO implements Player {
 	private int height = -1;
 	private String homePage = null;
 	private String image = "avatar_000.png";
-	private String fbPage = null;
 	private int teamID = -1;
 
 	//მოთამაშის ატრიბუტები
@@ -84,7 +83,6 @@ public class Player_DEO implements Player {
 			rating = player.getRating(playerID);
 			foot = player.getFoot(playerID);
 			if(player.getImageURL(playerID) != null)image = player.getImageURL(playerID);
-			fbPage = player.getFBPage(playerID);
 			position = player.getPosition(playerID);
 			speed = player.getSpeed(playerID);
 			dribbling = player.getDribbling(playerID);
@@ -265,14 +263,6 @@ public class Player_DEO implements Player {
 	@Override
 	public String getAvatar() {
 		return image;
-	}
-	
-	/**
-	 * აბრუნებს მოთამაშის ფეისბუქის გვერდის მისამართს
-	 */
-	@Override
-	public String getFbPage() {
-		return fbPage;
 	}
 	
 	/**
@@ -497,8 +487,10 @@ public class Player_DEO implements Player {
 	 * მოთამაშის ჩაბარების/დაწყების წელს ანიჭებს გადაცემულ მნიშვნელობას.
 	 */
 	@Override
-	public void setUniStartYear(Date startYear) {
-		this.uniStart = startYear;		
+	public void setUniStartYear(int startYear) {
+		Date startDate = new Date();
+		startDate.setYear((startYear-1900));
+		this.uniStart = startDate;		
 	}
 
 	/**
@@ -570,7 +562,7 @@ public class Player_DEO implements Player {
 	 */
 	@Override
 	public void setFBPage(String fbPage) {
-		this.fbPage = fbPage;
+		this.homePage = fbPage;
 	}
 
 	/**

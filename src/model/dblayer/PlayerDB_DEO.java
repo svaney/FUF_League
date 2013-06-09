@@ -857,7 +857,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	@Override
 	public void commitPlayer(Player_DEO player) {
 		// TODO Auto-generated method stub
-		if(player.getPlayerID()==-1){
+		if(!exists(player.getPlayerID())){
 			newPlayer(player);
 		}else{
 			editPlayer(player);
@@ -868,6 +868,19 @@ public class PlayerDB_DEO implements PlayerDB{
 	 * ბაზაში ახალი მოთამაშის დამატება.
 	 */
 	private void newPlayer(Player_DEO player) {
+		String sql = "INSERT INTO "+PERSONS+" (`firstname`, `lastname`, `nickname`, `birth_date`, `uni_start`, `uni_cur_course`, `school`, `weight`, `height`, `fb_Page`) VALUES ('"+player.getFirstName()+"', '"+player.getLastName()+"', '"+player.getNickname()+"', '"+player.birthDate()+"', "+player.getUniStartYear()+", '"+player.getUniCurrentCourse()+"', '"+player.getSchool()+"', '"+player.getWeight()+"', '"+player.getHeight()+"', '"+player.getFBPage()+"');";
+		try {
+			stmt = con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
