@@ -46,8 +46,9 @@ public class ChampDB_svani implements ChampDB{
 		quer = "select championship_ID from championships where start_date='" + startDate + "' and championship_type='" + type + "';";
 		rs = st.executeQuery(quer);
 		rs.next();
-		champId = rs.getInt(1);
+		champId = rs.getInt("championship_ID");
 		st.close();
+		rs.close();
 
 		return champId;
 	}
@@ -62,6 +63,7 @@ public class ChampDB_svani implements ChampDB{
 		quer = "update championships set championship_type='" + type + "' where championship_id= " + champID + ";";
 		st.executeUpdate(quer);
 		st.close();
+		
 		
 	}
 
@@ -92,7 +94,7 @@ public class ChampDB_svani implements ChampDB{
 	}
 
 	@Override
-	public String getChampType(int champID) throws SQLException {
+	public String getChampType(int champID) throws SQLException  {
 		Statement st;
 		String quer;
 		ResultSet rs;
@@ -104,7 +106,8 @@ public class ChampDB_svani implements ChampDB{
 		
 		rs.next();
 		String tp = rs.getString("championship_type");
-		
+		st.close();
+		rs.close();
 		return tp;
 		
 	}
@@ -123,7 +126,8 @@ public class ChampDB_svani implements ChampDB{
 		rs.next();
 		
 		Date temp = rs.getDate("start_date");
-		
+		rs.close();
+		st.close();
 		return temp;
 	}
 
@@ -141,7 +145,8 @@ public class ChampDB_svani implements ChampDB{
 		rs.next();
 		
 		Date temp = rs.getDate("end_date");
-		
+		st.close();
+		rs.close();
 		return temp;
 
 	}
@@ -157,8 +162,8 @@ public class ChampDB_svani implements ChampDB{
 		quer = "select championship_ID from championships where start_date='" + startDate + "' and championship_type ='" + type + "' ;";
 		rs = st.executeQuery(quer);
 		
-		rs.next();
-		
+		st.close();
+		rs.close();
 		
 		return rs.getInt("championship_ID");
 	}
