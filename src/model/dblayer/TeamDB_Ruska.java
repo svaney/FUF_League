@@ -17,6 +17,7 @@ import java.util.List;
 
 import model.mainclasses.Award;
 import model.mainclasses.Player;
+import model.mainclasses.Player_DEO;
 import model.mainclasses.Team;
 import model.mainclasses.Team_Ruska;
 
@@ -57,6 +58,16 @@ public class TeamDB_Ruska implements TeamDB{
 			team.setTel(rs.getString("tel"));
 			team.setRating(rs.getInt("rating"));
 		}
+		setCaptain(team);
+	}
+	
+	private void setCaptain(Team team) throws SQLException{
+		int teamID = team.getID();
+		String query = "SELECT Team_ID, max(Championship_ID),Player_ID FROM captains WHERE Team_ID =" +teamID;
+		stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		while(rs.next())
+			team.setCaptain(new Player_DEO(rs.getInt("Player_ID")));
 	}
 
 	public Team createTeamFromID(int teamID) throws SQLException{
