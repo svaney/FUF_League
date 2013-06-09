@@ -84,9 +84,9 @@
 		     	</tr>
 		     	<tr>
 		     		<td>
-		     			<div class="progress"><div class="progress-bar" style="width: <%=rating.getShotStoping()%>%; background-color: <%if(rating.getShotStoping()<40){%>#f27011<%}else if(rating.getShotStoping()<75){%>#f2b01e<%}else if(rating.getShotStoping()<85){%>#f2d31b<%}else if(rating.getShotStoping()<90){%>#86e01e<%}else{%>#0C0<%}%>;"></div></div>
+		     			<div class="progress"><div class="progress-bar" style="width: <%=rating.getShotStopping()%>%; background-color: <%if(rating.getShotStopping()<40){%>#f27011<%}else if(rating.getShotStopping()<75){%>#f2b01e<%}else if(rating.getShotStopping()<85){%>#f2d31b<%}else if(rating.getShotStopping()<90){%>#86e01e<%}else{%>#0C0<%}%>;"></div></div>
 					</td>
-						<td width="14%"><%=rating.getShotStoping() %></td>
+						<td width="14%"><%=rating.getShotStopping() %></td>
 				</tr>
 		     </table>
 	     </td>

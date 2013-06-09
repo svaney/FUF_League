@@ -25,7 +25,7 @@ public class Player_DEO implements Player {
 	private String trait = null;
 
 	//მოთამაშის ატრიბუტები
-	private double rating = 0;
+	private double rating = 0.0;
 	private String position = null;
 	private String foot = null;
 	private int speed = 0;
@@ -286,10 +286,16 @@ public class Player_DEO implements Player {
 	 * აბრუნებს მოთამაშის დომინანტ ფეხს;
 	 * მაგ: მარცხენა
 	 */
-	@Override
-	public String getFoot() {
+	public String getFootString() {
 		if(foot.equals("R")) return "მარჯვენა";
 		if(foot.equals("L")) return "მარცხენა";
+		return foot;
+	}
+	/**
+	 * აბრუნებს მოთამაშის დომინანტ ფეხს;
+	 * მაგ: მარცხენა
+	 */
+	public String getFoot() {
 		return foot;
 	}
 
