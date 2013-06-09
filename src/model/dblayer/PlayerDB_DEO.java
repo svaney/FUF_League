@@ -955,7 +955,6 @@ public class PlayerDB_DEO implements PlayerDB{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("deo");
 		ResultSet result = null;
 		try {
 			result = stmt.executeQuery(sqlGetId);
@@ -973,8 +972,7 @@ public class PlayerDB_DEO implements PlayerDB{
 		}
 		String sqlInsert = "INSERT INTO "+PLAYERS+" (`person_id`, `foot`,`def_position`";
 		String sqlValues = ") VALUES ('"+personID+"', '"+player.getFoot()+"', '"+player.getPosition()+"'";
-		System.out.println("deo");
-		if(player.getRating()>0){
+		if(player.getRating()>0.0){
 			sqlInsert += ", `rating`";
 			sqlValues += ", '"+player.getRating()+"'";
 		}
@@ -1074,7 +1072,6 @@ public class PlayerDB_DEO implements PlayerDB{
 			sqlInsert += ", `team_id`";
 			sqlValues += ", '"+player.getTeamID()+"'";
 		}
-		System.out.println("deo");
 		String sql = sqlInsert+sqlValues+");";
 		try {
 			stmt.executeUpdate(sql);
@@ -1083,7 +1080,6 @@ public class PlayerDB_DEO implements PlayerDB{
 			System.out.println("error: "+sql);
 			e.printStackTrace();
 		}
-		System.out.println("deo");
 		try {
 			stmt.close();
 		} catch (SQLException e) {

@@ -60,7 +60,7 @@
         </tr>
         <tr>
           <td>დომინანტი ფეხი:</td>
-          <td><%=card.getFoot() %></td>
+          <td><%=card.getFootString() %></td>
         </tr>
         <tr>
           <td>პოზიცია:</td>
