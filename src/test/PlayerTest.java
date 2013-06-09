@@ -1,5 +1,7 @@
 package test;
 
+import java.sql.Date;
+
 import org.junit.Test;
 
 import model.dblayer.PlayerDB_DEO;
@@ -28,5 +30,20 @@ public class PlayerTest {
 		System.out.println("ასაკი: "+player.getAge());
 		System.out.println(Lists_DEO.teams()[0][1]); // უნდა დაწეროს გუნდის სახელი
 		System.out.println(Lists_DEO.players()[0][1]); // უნდა დაწეროს მოთამაშის სახელი
+		Player_DEO testPlayer = new Player_DEO();
+		Date birth = new Date(0);
+		birth.setYear(88);
+		birth.setMonth(12);
+		birth.setDate(31);
+		testPlayer.setFirstName("ჯონი");
+		testPlayer.setLastName("ჯოლია");
+		testPlayer.setBirthDate(birth);
+		testPlayer.setUniStartYear(2010);
+		testPlayer.setUniCurrentCourse(3);
+		testPlayer.setSchool("ESM");
+		testPlayer.setHeight(185);
+		testPlayer.setWeight(79);
+		playerDB.commitPlayer(testPlayer);
+		
 	}
 }

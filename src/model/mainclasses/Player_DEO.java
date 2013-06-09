@@ -2,7 +2,6 @@ package model.mainclasses;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
-
 import model.dblayer.PlayerDB_DEO;
 
 public class Player_DEO implements Player {
@@ -20,10 +19,10 @@ public class Player_DEO implements Player {
 	private String school = null;
 	private int weight = -1;
 	private int height = -1;
-	private String homePage = null;
+	private String homepage = null;
 	private String image = "avatar_000.png";
-	private String fbPage = null;
 	private int teamID = -1;
+	private String trait = null;
 
 	//მოთამაშის ატრიბუტები
 	private Double rating = null;
@@ -80,11 +79,10 @@ public class Player_DEO implements Player {
 			school = player.getSchool(playerID);
 			weight = player.getWeight(playerID);
 			height = player.getHeight(playerID);
-			homePage = player.getFBPage(playerID);
+			homepage = player.getFBPage(playerID);
 			rating = player.getRating(playerID);
 			foot = player.getFoot(playerID);
 			if(player.getImageURL(playerID) != null)image = player.getImageURL(playerID);
-			fbPage = player.getFBPage(playerID);
 			position = player.getPosition(playerID);
 			speed = player.getSpeed(playerID);
 			dribbling = player.getDribbling(playerID);
@@ -109,6 +107,7 @@ public class Player_DEO implements Player {
 			positioning = player.getPositioning(playerID);
 			position = player.getPosition(playerID);
 			biography = player.getBio(playerID);
+			trait = player.getTrait(playerID);
 			strength = player.getStrength(playerID);
 			teamID = player.getTeamID(playerID);
 		}
@@ -268,14 +267,6 @@ public class Player_DEO implements Player {
 	}
 	
 	/**
-	 * აბრუნებს მოთამაშის ფეისბუქის გვერდის მისამართს
-	 */
-	@Override
-	public String getFbPage() {
-		return fbPage;
-	}
-	
-	/**
 	 * აბრუნებს მოთამაშის ბიოგრაფიას
 	 */
 	@Override
@@ -303,8 +294,13 @@ public class Player_DEO implements Player {
 	}
 
 	@Override
-	public String getFBPage() {
-		return homePage;
+	public String getFbPage() {
+		return homepage;
+	}
+	
+	@Override
+	public String getTrait() {
+		return trait;
 	}
 
 	@Override
@@ -446,7 +442,6 @@ public class Player_DEO implements Player {
 	/**
 	 * გვეუბნება აქვს თუ არა მოთამაშეს რეიტინგის გრაფა.
 	 */
-	@Override
 	public boolean hasRatingBar(){
 		if(speed == 0) return false;
 		return true;
@@ -455,9 +450,40 @@ public class Player_DEO implements Player {
 	/**
 	 * გვეუბნება აქვს თუ არა მოთამაშეს მეტსახელი.
 	 */
-	@Override
 	public boolean hasNickname(){
 		if(nickname == null) return false;
+		return true;
+	}
+	
+	/**
+	 * გვეუბნება აქვს თუ არა მოთამაშეს FB-ს გვერდი.
+	 */
+	public boolean hasHomepage(){
+		if(homepage == null) return false;
+		return true;
+	}
+	
+	/**
+	 * გვეუბნება აქვს თუ არა მოთამაშეს პროფილის სურათი.
+	 */
+	public boolean hasAvatar(){
+		if(image.equals("avatar_000.png")) return false;
+		return true;
+	}
+	
+	/**
+	 * გვეუბნება აქვს თუ არა მოთამაშეს ბიოგრაფია.
+	 */
+	public boolean hasBio(){
+		if(biography == null) return false;
+		return true;
+	}
+	
+	/**
+	 * გვეუბნება აქვს თუ არა მოთამაშეს განსაკუთრებული თვისება/ატრიბუტი.
+	 */
+	public boolean hasTrait(){
+		if(trait == null) return false;
 		return true;
 	}
 
@@ -496,9 +522,12 @@ public class Player_DEO implements Player {
 	/**
 	 * მოთამაშის ჩაბარების/დაწყების წელს ანიჭებს გადაცემულ მნიშვნელობას.
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
-	public void setUniStartYear(Date startYear) {
-		this.uniStart = startYear;		
+	public void setUniStartYear(int startYear) {
+		Date startDate = new Date();
+		startDate.setYear((startYear-1900));
+		this.uniStart = startDate;		
 	}
 
 	/**
@@ -570,7 +599,7 @@ public class Player_DEO implements Player {
 	 */
 	@Override
 	public void setFBPage(String fbPage) {
-		this.fbPage = fbPage;
+		this.homepage = fbPage;
 	}
 
 	/**

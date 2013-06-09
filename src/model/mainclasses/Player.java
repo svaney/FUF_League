@@ -17,12 +17,12 @@ public interface Player{
 	public int getWeight();
 	public int getHeight();
 	public String getAvatar();
-	public String getFbPage();
 	public String getBio();
 	public double getRating();
 	public String getFoot();
-	public String getFBPage();
+	public String getFbPage();
 	public String getPosition();
+	public String getTrait();
 	public String getTeamName();
 
 	public int getSpeed();
@@ -50,15 +50,13 @@ public interface Player{
 	public int getPersonID();
 	public int getPlayerID();
 	public int getTeamID();
-	public boolean hasRatingBar();
-	public boolean hasNickname();
 	
 	// ჩაწერა.
 	public void setFirstName(String firstName);
 	public void setLastName(String lastName);
 	public void setNickname(String nickName);
 	public void setBirthDate(Date birthDate);
-	public void setUniStartYear(Date startYear);
+	public void setUniStartYear(int startYear);
 	public void setUniCurrentCourse(int course);
 	public void setSchool(String school);
 	public void setWeight(int weight);

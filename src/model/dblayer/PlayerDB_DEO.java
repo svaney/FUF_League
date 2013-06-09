@@ -617,6 +617,17 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "biography";
 		return (String)getAtribute(atribute, playerID);
 	}
+	
+	/**
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: მარჯვენა;
+	 */
+	@Override
+	public String getTrait(int playerID) {
+		String atribute = "special_atr";
+		return (String)getAtribute(atribute, playerID);
+	}
 
 	/**
 	 * აბრუნებს მოთამაშის ID-ს;
@@ -857,7 +868,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	@Override
 	public void commitPlayer(Player_DEO player) {
 		// TODO Auto-generated method stub
-		if(player.getPlayerID()==-1){
+		if(!exists(player.getPlayerID())){
 			newPlayer(player);
 		}else{
 			editPlayer(player);
@@ -866,10 +877,78 @@ public class PlayerDB_DEO implements PlayerDB{
 	
 	/**
 	 * ბაზაში ახალი მოთამაშის დამატება.
+	 * @param player
 	 */
 	private void newPlayer(Player_DEO player) {
+		insertPerson(player);
+		insertPlayer(player);
 	}
 	
+	/**
+	 * მოთამაშის დამატების პროცესი შედგება ორი ნაწილისგან. პერსონალური ინფორმაციის დამატება Persons ცხრილში
+	 * და ფეხბურთელის ინფორმაციის დამატება Player ცხრილში.
+	 * ეს მეთოდი პასუხს აგებს პირველი ნაწილის განხორციელებაზე.
+	 * ამატებს ინფორმაციას Person ცხრილში.
+	 * @param player
+	 */
+	private void insertPerson(Player_DEO player) {
+		String sqlInsert = "INSERT INTO "+PERSONS+" (`firstname`, `lastname`,`birth_date`, `uni_start`, `school`, `weight`, `height`";
+		String sqlValues = ") VALUES ('"+player.getFirstName()+"', '"+player.getLastName()+"', '"+player.birthDate()+"', "+player.getUniStartYear()+", '"+player.getSchool()+"', '"+player.getWeight()+"', '"+player.getHeight()+"'";
+		if(player.hasNickname()){
+			sqlInsert += ", 'nickname'";
+			sqlValues += ", '"+player.getNickname()+"'";
+		}
+		if(player.isStudent()){
+			sqlInsert += ", `uni_cur_course`";
+			sqlValues += ", '"+player.getUniCurrentCourse()+"'";
+		}
+		if(player.hasHomepage()){
+			sqlInsert += ", 'FB_Page'";
+			sqlValues += ", '"+player.getFbPage()+"'";
+		}
+		if(player.hasAvatar()){
+			sqlInsert += ", 'Image_URL'";
+			sqlValues += ", '"+player.getAvatar()+"'";
+		}
+		if(player.hasBio()){
+			sqlInsert += ", 'Biography'";
+			sqlValues += ", '"+player.getBio()+"'";
+		}
+		if(player.hasTrait()){
+			sqlInsert += ", 'Special_atr'";
+			sqlValues += ", '"+player.getTrait()+"'";
+		}
+		String sql = sqlInsert+sqlValues+");";
+		try {
+			stmt = con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * მოთამაშის დამატების პროცესი შედგება ორი ნაწილისგან. პერსონალური ინფორმაციის დამატება Persons ცხრილში
+	 * და ფეხბურთელის ინფორმაციის დამატება Player ცხრილში.
+	 * ეს მეთოდი პასუხს აგებს მეორე ნაწილის განხორციელებაზე.
+	 * ამატებს ინფორმაციას Players ცხრილში.
+	 * @param player
+	 */
+	private void insertPlayer(Player_DEO player) {
+	}
+
 	/**
 	 * ბაზაში არსებული მოთამაშის შესწორების დადასტურება.
 	 */

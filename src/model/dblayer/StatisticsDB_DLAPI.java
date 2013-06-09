@@ -120,9 +120,13 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		@Override
 		public List<Integer> getMostYellows(int champID) throws SQLException {
 			startUpStatement();
-			
+			rs = st.executeQuery("select player_id, count(yellow_id) as total from yellows inner join matches on yellows.match_id=matches.match_id where matches.championship_id ="+champID+" group by player_id order by total desc;");
+			ArrayList<Integer> ans = new ArrayList<Integer>();
+			while(rs.next()){
+				ans.add(rs.getInt("player_id"));
+			}
 			st.close();
-			return null;
+			return ans;
 		}
 
 		/**
@@ -134,9 +138,13 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		@Override
 		public List<Integer> getMostReds(int champID) throws SQLException {
 			startUpStatement();
-			
+			rs = st.executeQuery("select player_id, count(red_id) as total from reds inner join matches on reds.match_id=matches.match_id where matches.championship_id ="+champID+" group by player_id order by total desc;");
+			ArrayList<Integer> ans = new ArrayList<Integer>();
+			while(rs.next()){
+				ans.add(rs.getInt("player_id"));
+			}
 			st.close();
-			return null;
+			return ans;
 		}
 
 		/**
@@ -144,11 +152,16 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		 * @param champID ჩემპიონატის იდენტიფიკატორი
 		 * @param player მოთამაშის იდენტიფიკატორი
 		 * @return რაოდენობა int
+		 * @throws SQLException 
 		 */
 		@Override
-		public int getYellowsForPlayer(int champID, Player player) {
-			// TODO Auto-generated method stub
-			return 0;
+		public int getYellowsForPlayer(int champID, Player player) throws SQLException {
+			startUpStatement();
+			rs = st.executeQuery("select count(yellow_id) as total from yellows inner join matches on yellows.match_id=matches.match_id where matches.championship_id ="+champID+" and player_id="+player.getPlayerID()+";");
+			rs.next();
+			int ans = rs.getInt("total");
+			st.close();
+			return ans;
 		}
 
 		/**
@@ -156,11 +169,16 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		 * @param champID ჩემპიონატის იდენტიფიკატორი
 		 * @param player მოთამაშის იდენტიფიკატორი
 		 * @return რაოდენობა int
+		 * @throws SQLException 
 		 */
 		@Override
-		public int getRedsForPlayer(int champID, Player player) {
-			// TODO Auto-generated method stub
-			return 0;
+		public int getRedsForPlayer(int champID, Player player) throws SQLException {
+			startUpStatement();
+			rs = st.executeQuery("select count(red_id) as total from reds inner join matches on reds.match_id=matches.match_id where matches.championship_id ="+champID+" and player_id="+player.getPlayerID()+";");
+			rs.next();
+			int ans = rs.getInt("total");
+			st.close();
+			return ans;
 		}
 
 		/**
@@ -168,11 +186,16 @@ public class StatisticsDB_DLAPI implements StatisticsDB{
 		 * @param champID ჩემპიონატის იდენტიფიკატორი
 		 * @param player მოთამაშის იდენტიფიკატორი
 		 * @return რაოდენობა int
+		 * @throws SQLException 
 		 */
 		@Override
-		public int getRedsFromTwoYellowsForPlayer(int champID, Player player) {
-			// TODO Auto-generated method stub
-			return 0;
+		public int getRedsFromTwoYellowsForPlayer(int champID, Player player) throws SQLException {
+			startUpStatement();
+			rs = st.executeQuery("select count(a.mm) as total from(select match_id as mm from yellows inner join matches on yellows.match_id=matches.match_id  where player_id="+player.getPersonID()+" and matches.championship_id="+champID+" group by match_idhaving count(match_id)>1) as a;");
+			rs.next();
+			int ans = rs.getInt("total");
+			st.close();
+			return ans;
 		}
 
 }

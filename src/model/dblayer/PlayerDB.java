@@ -42,6 +42,7 @@ public interface PlayerDB{
 	public String getPosition(int playerID);
 	public String getFoot(int playerID);
 	public String getBio(int playerID);
+	public String getTrait(int playerID);
 	
 	//პერსონის ცხრილიდან ამოღება
 	public int getPersonID(int playerID);

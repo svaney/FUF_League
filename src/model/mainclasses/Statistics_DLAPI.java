@@ -113,7 +113,12 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public int howManyYellows(Player player) {
-		return db.getYellowsForPlayer(champID,player);
+		try {
+			return db.getYellowsForPlayer(champID,player);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 	/**
@@ -123,7 +128,12 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public int howManyReds(Player player) {
-		return db.getRedsForPlayer(champID,player);
+		try {
+			return db.getRedsForPlayer(champID,player);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 	/**
@@ -133,7 +143,12 @@ public class Statistics_DLAPI implements Statistics{
 	 */
 	@Override
 	public int howManyRedsFromTwoYellows(Player player) {
-		return db.getRedsFromTwoYellowsForPlayer(champID,player);
+		try {
+			return db.getRedsFromTwoYellowsForPlayer(champID,player);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 }
