@@ -7,30 +7,32 @@ import java.util.ArrayList;
 import model.dblayer.ChampDB;
 import model.dblayer.ChampDB_svani;
 
-//svani test
-
 public class Championship_svani implements Championship{
 	private ChampDB champDB;
-	private String champType;
-	private Date startDate;
-	private Date endDate;
 	private int champID;
 	
 	public Championship_svani(String type, Date startDate) {
-		this.champType = type;
-		this.startDate = startDate;
-		this.endDate = null;
 		this.champDB = new ChampDB_svani();
 		try {
-			this.champID = champDB.addChampionship(type, startDate);
+			this.champID = this.champDB.addChampionship(type, startDate);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		try {
+			this.champID = this.champDB.getChampID(type, startDate);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public Championship_svani(int champID){
-		// aq udna bazastan kavshiri da ikidan amogeba????
+		this.champID = champID;
+		this.champDB = new ChampDB_svani();
+		
 	}
+	
 
 	@Override
 	public int getChampID() {
@@ -39,7 +41,13 @@ public class Championship_svani implements Championship{
 
 	@Override
 	public String getChampType() {
-		return this.champType;
+		String type = null;
+		try {
+			type = this.champDB.getChampType(this.champID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return type;
 	}
 
 	@Override
@@ -62,27 +70,18 @@ public class Championship_svani implements Championship{
 
 	@Override
 	public Date getStartDate() {
-		return this.startDate;
+		Date temp = null;
+		
+		try {
+			temp = this.champDB.getChampStartDate(this.champID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return temp;
 	}
 
-	@Override
-	public Team getTeam(String teamName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Team getTeam(int teamID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getTeamCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	
 	@Override
 	public int getTeamCountInGroup(String groupName) {
 		// TODO Auto-generated method stub
@@ -133,8 +132,7 @@ public class Championship_svani implements Championship{
 
 	@Override
 	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-		
+				
 		try {
 			this.champDB.setEndDate(endDate, champID);
 		} catch (SQLException e) {
@@ -145,7 +143,10 @@ public class Championship_svani implements Championship{
 
 	@Override
 	public Date getEndDate() {
-		return this.endDate;
+		Date temp = null;
+
+		temp = this.champDB.getChampEndDate(this.champID);
+		return temp;
 	}
 
 }
