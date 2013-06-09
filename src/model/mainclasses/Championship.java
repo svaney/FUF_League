@@ -9,9 +9,6 @@ public interface Championship {
 	public void setChampType(String type);
 	public void setStartDate(Date startDate);
 	public Date getStartDate(); 
-	public Team getTeam(String teamName);
-	public Team getTeam(int teamID);
-	public int getTeamCount();
 	public int getTeamCountInGroup(String groupName);
 	public ArrayList<Team> getAllTeams();
 	public void addGroup(Group group);

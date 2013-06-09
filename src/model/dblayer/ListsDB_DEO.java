@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 	/**
 	 * 
@@ -380,6 +381,25 @@ public class ListsDB_DEO implements ListsDB{
 		playerID.clear();
 		personID.clear();
 		return persons;
+	}
+
+	/**
+	 * აბრუნებს მატჩების ID_ებს, თარიღების მიხედვით - უკანასკნელი წერია ყველაზე პირველი
+	 * @return Integer ობიექტების List
+	 * @author Data
+	 * @throws SQLException 
+	 */
+	@Override
+	public List<Integer> getMatchIDs() throws SQLException {
+		stmt = con.createStatement();
+		stmt.executeQuery("USE " + MYSQL_DATABASE_NAME);
+		ResultSet rs = stmt.executeQuery("select match_ID from matches order by match_date desc");
+		ArrayList<Integer> answer = new ArrayList<Integer>();
+		while(rs.next()){
+			answer.add(rs.getInt("match_ID"));
+		}
+		stmt.close();
+		return answer;
 	}
 
 }

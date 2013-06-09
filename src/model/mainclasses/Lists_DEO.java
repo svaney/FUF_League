@@ -1,5 +1,10 @@
 package model.mainclasses;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import model.dblayer.ListsDB;
 import model.dblayer.ListsDB_DEO;
 
 public class Lists_DEO{
@@ -38,6 +43,22 @@ public class Lists_DEO{
 	public static String[] types() {
 		ListsDB_DEO types = new ListsDB_DEO();
 		return types.listAllTypes();
+	}
+	
+	/**
+	 * აბრუნებს მატჩების ჩამონათვალს, თარიღების მიხედვით - უკანასკნელი წერია ყველაზე პირველი
+	 * @return Match ობიექტების List
+	 * @author Data
+	 */
+	public static ArrayList<Match> getAllMatches(){
+		ListsDB lists = new ListsDB_DEO();
+		ArrayList<Integer> matchIDs = new ArrayList<Integer>();
+		try {
+			matchIDs = (ArrayList<Integer>) lists.getMatchIDs();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return (ArrayList<Match>)Converter.setMatchesFromIDs(matchIDs);
 	}
 
 }

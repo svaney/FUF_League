@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.mainclasses.Championship;
+import model.mainclasses.Championship_svani;
+
 public class ChampDB_svani implements ChampDB{
 	private static final String MYSQL_USERNAME = "root";
 	private static final String MYSQL_PASSWORD = "123456";
@@ -38,9 +41,9 @@ public class ChampDB_svani implements ChampDB{
 		
 		st = con.createStatement();
 		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
-		quer = "insert into championships (start_date, championship_type) values (" + startDate + "," + type +");";
+		quer = "insert into championships (start_date, championship_type) values ('" + startDate + "','" + type +"');";
 		st.executeUpdate(quer);
-		quer = "select championship_ID from championships where start_date="+startDate +" and championship_type='" + type + "';";
+		quer = "select championship_ID from championships where start_date='" + startDate + "' and championship_type='" + type + "';";
 		rs = st.executeQuery(quer);
 		rs.next();
 		champId = rs.getInt(1);
@@ -69,7 +72,7 @@ public class ChampDB_svani implements ChampDB{
 		
 		st = con.createStatement();
 		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
-		quer = "update championships set start_date=" + startDate + " where championship_id= " + champID + ";";
+		quer = "update championships set start_date='" + startDate + "' where championship_id= " + champID + ";";
 		st.executeUpdate(quer);
 		st.close();
 		
@@ -82,9 +85,83 @@ public class ChampDB_svani implements ChampDB{
 		
 		st = con.createStatement();
 		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
-		quer = "update championships set start_date=" + endDate + " where championship_id= " + champID + ";";
+		quer = "update championships set start_date='" + endDate + "' where championship_id= " + champID + ";";
 		st.executeUpdate(quer);
 		st.close();
 		
 	}
+
+	@Override
+	public String getChampType(int champID) throws SQLException {
+		Statement st;
+		String quer;
+		ResultSet rs;
+		
+		st = con.createStatement();
+		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
+		quer = "select championship_type from championships where championship_ID=" + champID + ";";
+		rs = st.executeQuery(quer);
+		
+		rs.next();
+		String tp = rs.getString("championship_type");
+		
+		return tp;
+		
+	}
+
+	@Override
+	public Date getChampStartDate(int champID) throws SQLException {
+		Statement st;
+		String quer;
+		ResultSet rs;
+		
+		st = con.createStatement();
+		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
+		quer = "select start_date from championships where championship_ID=" + champID + ";";
+		rs = st.executeQuery(quer);
+		
+		rs.next();
+		
+		Date temp = rs.getDate("start_date");
+		
+		return temp;
+	}
+
+	@Override
+	public Date getChampEndDate(int champID) throws SQLException {
+		Statement st;
+		String quer;
+		ResultSet rs;
+		
+		st = con.createStatement();
+		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
+		quer = "select end_date from championships where championship_ID=" + champID + ";";
+		rs = st.executeQuery(quer);
+		
+		rs.next();
+		
+		Date temp = rs.getDate("end_date");
+		
+		return temp;
+
+	}
+
+	@Override
+	public int getChampID(String type, Date startDate) throws SQLException {
+		Statement st;
+		String quer;
+		ResultSet rs;
+		
+		st = con.createStatement();
+		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
+		quer = "select championship_ID from championships where start_date='" + startDate + "' and championship_type ='" + type + "' ;";
+		rs = st.executeQuery(quer);
+		
+		rs.next();
+		
+		
+		return rs.getInt("championship_ID");
+	}
+
+	
 }

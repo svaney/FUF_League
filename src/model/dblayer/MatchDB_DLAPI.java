@@ -133,10 +133,10 @@ public class MatchDB_DLAPI implements MatchDB{
 		int[] answer = new int[2];
 		rs = st.executeQuery("select team1_id, team2_id from matches where match_id='"+matchID+"';");
 		rs.next();
-		answer[0] = rs.getInt("team1");
-		answer[1] = rs.getInt("team2");
+		answer[0] = rs.getInt("team1_ID");
+		answer[1] = rs.getInt("team2_ID");
 		st.close();
-		return null;
+		return answer;
 	}
 
 	/**
@@ -437,7 +437,7 @@ public class MatchDB_DLAPI implements MatchDB{
 	@Override
 	public void setDateForMatch(int matchID, Date date) throws SQLException {
 		startUpStatement();
-		st.executeUpdate("update matches set match_date="+date+" where match_id="+matchID+";");
+		st.executeUpdate("update matches set match_date='"+date+"' where match_id="+matchID+";");
 		st.close();
 	}
 
