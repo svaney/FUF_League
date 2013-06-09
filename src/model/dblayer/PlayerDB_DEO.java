@@ -877,8 +877,21 @@ public class PlayerDB_DEO implements PlayerDB{
 	
 	/**
 	 * ბაზაში ახალი მოთამაშის დამატება.
+	 * @param player
 	 */
 	private void newPlayer(Player_DEO player) {
+		insertPerson(player);
+		insertPlayer(player);
+	}
+	
+	/**
+	 * მოთამაშის დამატების პროცესი შედგება ორი ნაწილისგან. პერსონალური ინფორმაციის დამატება Persons ცხრილში
+	 * და ფეხბურთელის ინფორმაციის დამატება Player ცხრილში.
+	 * ეს მეთოდი პასუხს აგებს პირველი ნაწილის განხორციელებაზე.
+	 * ამატებს ინფორმაციას Person ცხრილში.
+	 * @param player
+	 */
+	private void insertPerson(Player_DEO player) {
 		String sqlInsert = "INSERT INTO "+PERSONS+" (`firstname`, `lastname`,`birth_date`, `uni_start`, `school`, `weight`, `height`";
 		String sqlValues = ") VALUES ('"+player.getFirstName()+"', '"+player.getLastName()+"', '"+player.birthDate()+"', "+player.getUniStartYear()+", '"+player.getSchool()+"', '"+player.getWeight()+"', '"+player.getHeight()+"'";
 		if(player.hasNickname()){
@@ -926,6 +939,16 @@ public class PlayerDB_DEO implements PlayerDB{
 		}
 	}
 	
+	/**
+	 * მოთამაშის დამატების პროცესი შედგება ორი ნაწილისგან. პერსონალური ინფორმაციის დამატება Persons ცხრილში
+	 * და ფეხბურთელის ინფორმაციის დამატება Player ცხრილში.
+	 * ეს მეთოდი პასუხს აგებს მეორე ნაწილის განხორციელებაზე.
+	 * ამატებს ინფორმაციას Players ცხრილში.
+	 * @param player
+	 */
+	private void insertPlayer(Player_DEO player) {
+	}
+
 	/**
 	 * ბაზაში არსებული მოთამაშის შესწორების დადასტურება.
 	 */
