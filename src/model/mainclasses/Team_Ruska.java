@@ -12,14 +12,12 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-
 
 import model.dblayer.TeamDB;
 
 public class Team_Ruska implements Team{
-	
+
 	private int teamID;
 	private TeamDB teamDataBase;
 	private Team team;
@@ -33,7 +31,7 @@ public class Team_Ruska implements Team{
 	private List<Award> awards;
 	private Award award;
 	private Player captain;
-	
+
 	static String account = "root"; 
 	static String password = "123456"; 
 	static String server = "localhost";
@@ -42,18 +40,17 @@ public class Team_Ruska implements Team{
 	private static ResultSet rs = null;
 	private static Connection con;
 	private static Statement stmt;
-	
+
 	public Team_Ruska(int teamID){
 		this.teamID = teamID;
-		this.team = teamDataBase.getTeam(teamID);
+
 	}
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
-		return 0;
+		return teamID;
 	}
-	
+
 	@Override
 	public String getName() {
 		return name;
@@ -125,12 +122,12 @@ public class Team_Ruska implements Team{
 
 	@Override
 	public void setLogo(String strURL) {
-		
+
 	}
 
 	@Override
 	public void removeLogo() {
-		
+
 	}
 
 	@Override
@@ -146,44 +143,49 @@ public class Team_Ruska implements Team{
 	@Override
 	public void setEmail(String email) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void removeEmail() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setTel(String tel) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void removeTel() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void addAward(Award award) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void changeCaptain(Player player) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
+
+
 
 	@Override
 	public void changeName(String name) {
-		// TODO Auto-generated method stub
-		
+
 	}
+
+
+
 
 	@Override
 	public void setName(String name) {
@@ -191,5 +193,15 @@ public class Team_Ruska implements Team{
 		
 	}
 
+	@Override
+	public void setCaptain(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void setRating(int rating) {
+		// TODO Auto-generated method stub
+		
+	}
 }

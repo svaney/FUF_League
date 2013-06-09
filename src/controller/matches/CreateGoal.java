@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CreateMatch
+ * Servlet implementation class CreateGoal
  */
-@WebServlet("/CreateMatch")
-public class CreateMatch extends HttpServlet {
+@WebServlet("/CreateGoal")
+public class CreateGoal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateMatch() {
+    public CreateGoal() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class CreateMatch extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		// TODO Auto-generated method stub
 	}
 
 	/**
