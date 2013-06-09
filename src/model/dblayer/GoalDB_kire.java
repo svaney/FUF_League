@@ -130,72 +130,90 @@ public class GoalDB_kire implements GoalDB {
 	@Override
 	public int getPlayerID(int goalID) throws SQLException {
 		startUpStatement();
-		
+		rs = st.executeQuery("select player_id from goals where goal_id="+goalID+";");
+		rs.next();
+		int res = rs.getInt("player_id");
 		st.close();
-		return 0;
+		return res;
 	}
 
 	@Override
 	public int getMatchID(int goalID) throws SQLException {
 		startUpStatement();
-
+		rs = st.executeQuery("select match_id from goals where goal_id="+goalID+";");
+		rs.next();
+		int res = rs.getInt("match_id");
 		st.close();
-		return 0;
+		return res;
 	}
 
 	@Override
 	public int getAssistID(int goalID) throws SQLException {
 		startUpStatement();
-
+		rs = st.executeQuery("select assistant_id from goals where goal_id="+goalID+";");
+		rs.next();
+		int res = rs.getInt("assistant_id");
 		st.close();
-		return 0;
+		return res;
 	}
 
 	@Override
 	public boolean isPenalty(int goalID) throws SQLException {
 		startUpStatement();
-
+		rs = st.executeQuery("select penalty from goals where goal_id="+goalID+";");
+		rs.next();
+		String res = rs.getString("penalty");
 		st.close();
-		return false;
+		return res.charAt(0)=='Y';
 	}
 
 	@Override
 	public boolean isInExtra(int goalID) throws SQLException {
 		startUpStatement();
-
+		rs = st.executeQuery("select extra_time from goals where goal_id="+goalID+";");
+		rs.next();
+		String res = rs.getString("extra_time");
 		st.close();
-		return false;
+		return res.charAt(0)=='Y';
 	}
 
 	@Override
 	public boolean isAutoGoal(int goalID) throws SQLException {
 		startUpStatement();
-
+		rs = st.executeQuery("select auto_goal from goals where goal_id="+goalID+";");
+		rs.next();
+		String res = rs.getString("auto_goal");
 		st.close();
-		return false;
+		return res.charAt(0)=='Y';
 	}
 
 	@Override
-	public int getHalfTime() throws SQLException {
+	public int getHalfTime(int goalID) throws SQLException {
 		startUpStatement();
-
+		rs = st.executeQuery("select half from goals where goal_id="+goalID+";");
+		rs.next();
+		int res = rs.getInt("half");
 		st.close();
-		return 0;
+		return res;
 	}
 
 	@Override
-	public int getInRow() throws SQLException {
+	public int getInRow(int goalID) throws SQLException {
 		startUpStatement();
-
+		rs = st.executeQuery("select inrow from goals where goal_id="+goalID+";");
+		rs.next();
+		int res = rs.getInt("inrow");
 		st.close();
-		return 0;
+		return res;
 	}
 
 	@Override
 	public int getTeamID(int goalID) throws SQLException {
 		startUpStatement();
-
+		rs = st.executeQuery("select team_id from goals where goal_id="+goalID+";");
+		rs.next();
+		int res = rs.getInt("team_id");
 		st.close();
-		return 0;
+		return res;
 	}
 }

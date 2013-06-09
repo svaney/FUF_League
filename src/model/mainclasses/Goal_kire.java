@@ -103,7 +103,7 @@ public class Goal_kire implements Goal {
 	@Override
 	public int whichHalf() {
 		try {
-			return gt.getHalfTime();
+			return gt.getHalfTime(goalID);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return 0;
@@ -113,7 +113,7 @@ public class Goal_kire implements Goal {
 	@Override
 	public int queNumber() {
 		try {
-			return gt.getInRow();
+			return gt.getInRow(goalID);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return 0;

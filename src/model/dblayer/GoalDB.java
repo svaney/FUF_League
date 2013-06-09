@@ -50,9 +50,9 @@ public interface GoalDB {
 
 	boolean isAutoGoal(int goalID) throws SQLException;
 
-	int getHalfTime() throws SQLException;
+	int getHalfTime(int goalID) throws SQLException;
 
-	int getInRow() throws SQLException;
+	int getInRow(int goalID) throws SQLException;
 
 	int getTeamID(int goalID) throws SQLException;
 }
