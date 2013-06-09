@@ -39,4 +39,17 @@ public class Converter {
 		}
 		return result;
 	}
+
+	/**
+	 * გადაცემული ID-ებიდან ქმნის Match ობიექტების ArrayList-ს
+	 * @param matchIDs  ArrayList<Integer> ID-ების ჩამონათვალი
+	 * @return
+	 */
+	public static List<Match> setMatchesFromIDs(ArrayList<Integer> matchIDs) {
+		ArrayList<Match> result = new ArrayList<Match>();
+		for(int i=0;i<matchIDs.size();i++){
+			result.add(new Match_DLAPI(matchIDs.get(i)));
+		}
+		return result;
+	}
 }

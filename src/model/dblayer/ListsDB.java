@@ -1,4 +1,8 @@
 package model.dblayer;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 	/**
 	 * უნდა გადმომცეს გამოძახებული სიები.
 	 * @author DEO.Gochava
@@ -14,4 +18,12 @@ public interface ListsDB {
 	public String[][] listAllTeams();
 	public String[] listAllPositions();
 	public String[] listAllTypes();
+	
+	/**
+	 * აბრუნებს მატჩების ID_ებს.
+	 * @return Integer ობიექტების List
+	 * @author Data
+	 * @throws SQLException 
+	 */
+	public List<Integer> getMatchIDs() throws SQLException;
 }
