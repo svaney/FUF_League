@@ -2,8 +2,6 @@ package model.mainclasses;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
-
-import sun.security.x509.AVA;
 import model.dblayer.PlayerDB_DEO;
 
 public class Player_DEO implements Player {
@@ -444,7 +442,6 @@ public class Player_DEO implements Player {
 	/**
 	 * გვეუბნება აქვს თუ არა მოთამაშეს რეიტინგის გრაფა.
 	 */
-	@Override
 	public boolean hasRatingBar(){
 		if(speed == 0) return false;
 		return true;
@@ -453,7 +450,6 @@ public class Player_DEO implements Player {
 	/**
 	 * გვეუბნება აქვს თუ არა მოთამაშეს მეტსახელი.
 	 */
-	@Override
 	public boolean hasNickname(){
 		if(nickname == null) return false;
 		return true;
@@ -462,7 +458,6 @@ public class Player_DEO implements Player {
 	/**
 	 * გვეუბნება აქვს თუ არა მოთამაშეს FB-ს გვერდი.
 	 */
-	@Override
 	public boolean hasHomepage(){
 		if(homepage == null) return false;
 		return true;
@@ -471,7 +466,6 @@ public class Player_DEO implements Player {
 	/**
 	 * გვეუბნება აქვს თუ არა მოთამაშეს პროფილის სურათი.
 	 */
-	@Override
 	public boolean hasAvatar(){
 		if(image.equals("avatar_000.png")) return false;
 		return true;
@@ -480,7 +474,6 @@ public class Player_DEO implements Player {
 	/**
 	 * გვეუბნება აქვს თუ არა მოთამაშეს ბიოგრაფია.
 	 */
-	@Override
 	public boolean hasBio(){
 		if(biography == null) return false;
 		return true;
@@ -489,7 +482,6 @@ public class Player_DEO implements Player {
 	/**
 	 * გვეუბნება აქვს თუ არა მოთამაშეს განსაკუთრებული თვისება/ატრიბუტი.
 	 */
-	@Override
 	public boolean hasTrait(){
 		if(trait == null) return false;
 		return true;
@@ -530,6 +522,7 @@ public class Player_DEO implements Player {
 	/**
 	 * მოთამაშის ჩაბარების/დაწყების წელს ანიჭებს გადაცემულ მნიშვნელობას.
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void setUniStartYear(int startYear) {
 		Date startDate = new Date();

@@ -50,12 +50,6 @@ public interface Player{
 	public int getPersonID();
 	public int getPlayerID();
 	public int getTeamID();
-	public boolean hasRatingBar();
-	public boolean hasNickname();
-	public boolean hasAvatar();
-	public boolean hasHomepage();
-	public boolean hasBio();
-	public boolean hasTrait();
 	
 	// ჩაწერა.
 	public void setFirstName(String firstName);
