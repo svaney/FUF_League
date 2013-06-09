@@ -35,7 +35,7 @@ public interface PlayerDB{
 	public int getLidership(int playerID);
 	public int getReflexes(int playerID);
 	public int getTackling(int playerID);
-	public int getShotStoping(int playerID);
+	public int getShotStopping(int playerID);
 	public int getMistakeFactor(int playerID);
 	public int getPositioning(int playerID);
 	public int getStrength(int playerID);

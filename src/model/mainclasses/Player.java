@@ -43,7 +43,7 @@ public interface Player{
 	public int getLidership();
 	public int getReflexes();
 	public int getTackling();
-	public int getShotStoping();
+	public int getShotStopping();
 	public int getMistakeFactor();
 	public int getPositioning();
 	public int getStrength();	
@@ -86,7 +86,7 @@ public interface Player{
 	public void setLidership(int param);
 	public void setReflexes(int param);
 	public void setTackling(int param);
-	public void setShotStoping(int param);
+	public void setShotStopping(int param);
 	public void setMistakeFactor(int param);
 	public void setPositioning(int param);
 	public void setStrength(int param);	

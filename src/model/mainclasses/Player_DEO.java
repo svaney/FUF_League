@@ -25,7 +25,7 @@ public class Player_DEO implements Player {
 	private String trait = null;
 
 	//მოთამაშის ატრიბუტები
-	private Double rating = null;
+	private double rating = 0;
 	private String position = null;
 	private String foot = null;
 	private int speed = 0;
@@ -100,7 +100,7 @@ public class Player_DEO implements Player {
 			passing = player.getPassing(playerID);
 			penalty = player.getPenalty(playerID);
 			penalty_saveing = player.getPenaltySaving(playerID);
-			shot_stopping = player.getShotStoping(playerID);
+			shot_stopping = player.getShotStopping(playerID);
 			lidership = player.getLidership(playerID);
 			reflexes = player.getReflexes(playerID);
 			mistake_factor = player.getMistakeFactor(playerID);
@@ -399,7 +399,7 @@ public class Player_DEO implements Player {
 	}
 
 	@Override
-	public int getShotStoping() {
+	public int getShotStopping() {
 		return shot_stopping;
 	}
 
@@ -758,7 +758,7 @@ public class Player_DEO implements Player {
 	 * მოთამაშის ატრიბუტს ანიჭებს გადაცემულ მნიშვნელობას.
 	 */
 	@Override
-	public void setShotStoping(int param) {
+	public void setShotStopping(int param) {
 		this.shot_stopping = param;
 	}
 

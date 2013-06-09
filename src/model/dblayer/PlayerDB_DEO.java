@@ -350,7 +350,7 @@ public class PlayerDB_DEO implements PlayerDB{
 	 * მაგალითად: 95;
 	 */
 	@Override
-	public int getShotStoping(int playerID) {
+	public int getShotStopping(int playerID) {
 		String atribute = "shot_stopping";
 		Object res = getAtribute(atribute,playerID);
 		if(res == null){
@@ -903,19 +903,19 @@ public class PlayerDB_DEO implements PlayerDB{
 			sqlValues += ", '"+player.getUniCurrentCourse()+"'";
 		}
 		if(player.hasHomepage()){
-			sqlInsert += ", 'FB_Page'";
+			sqlInsert += ", `FB_Page`";
 			sqlValues += ", '"+player.getFbPage()+"'";
 		}
 		if(player.hasAvatar()){
-			sqlInsert += ", 'Image_URL'";
+			sqlInsert += ", `Image_URL`";
 			sqlValues += ", '"+player.getAvatar()+"'";
 		}
 		if(player.hasBio()){
-			sqlInsert += ", 'Biography'";
+			sqlInsert += ", `Biography`";
 			sqlValues += ", '"+player.getBio()+"'";
 		}
 		if(player.hasTrait()){
-			sqlInsert += ", 'Special_atr'";
+			sqlInsert += ", `Special_atr`";
 			sqlValues += ", '"+player.getTrait()+"'";
 		}
 		String sql = sqlInsert+sqlValues+");";
@@ -947,6 +947,149 @@ public class PlayerDB_DEO implements PlayerDB{
 	 * @param player
 	 */
 	private void insertPlayer(Player_DEO player) {
+		String sqlGetId = "SELECT "+PERSON_ID+" FROM "+PERSONS+" ORDER BY "+PERSON_ID+" DESC LIMIT 1";
+		int personID = -1;
+		try {
+			stmt = con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("deo");
+		ResultSet result = null;
+		try {
+			result = stmt.executeQuery(sqlGetId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			if(result.next()){
+				personID = result.getInt(PERSON_ID);
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String sqlInsert = "INSERT INTO "+PLAYERS+" (`person_id`, `foot`,`def_position`";
+		String sqlValues = ") VALUES ('"+personID+"', '"+player.getFoot()+"', '"+player.getPosition()+"'";
+		System.out.println("deo");
+		if(player.getRating()>0){
+			sqlInsert += ", `rating`";
+			sqlValues += ", '"+player.getRating()+"'";
+		}
+		if(player.getSpeed()>0){
+			sqlInsert += ", `speed`";
+			sqlValues += ", '"+player.getSpeed()+"'";
+		}
+		if(player.getDribbling()>0){
+			sqlInsert += ", `rating`";
+			sqlValues += ", '"+player.getDribbling()+"'";
+		}
+		if(player.getHeading()>0){
+			sqlInsert += ", `rating`";
+			sqlValues += ", '"+player.getHeading()+"'";
+		}
+		if(player.getClubLoyalty()>0){
+			sqlInsert += ", `club_loyalty`";
+			sqlValues += ", '"+player.getClubLoyalty()+"'";
+		}
+		if(player.getDiving()>0){
+			sqlInsert += ", `diving`";
+			sqlValues += ", '"+player.getDiving()+"'";
+		}
+		if(player.getDurability()>0){
+			sqlInsert += ", `durability`";
+			sqlValues += ", '"+player.getDurability()+"'";
+		}
+		if(player.getShooting()>0){
+			sqlInsert += ", `shooting`";
+			sqlValues += ", '"+player.getShooting()+"'";
+		}
+		if(player.getWorkRate()>0){
+			sqlInsert += ", `work_rate`";
+			sqlValues += ", '"+player.getWorkRate()+"'";
+		}
+		if(player.getCreativity()>0){
+			sqlInsert += ", `creativity`";
+			sqlValues += ", '"+player.getCreativity()+"'";
+		}
+		if(player.getFearFactor()>0){
+			sqlInsert += ", `fear_factor`";
+			sqlValues += ", '"+player.getFearFactor()+"'";
+		}
+		if(player.getKillerInstinct()>0){
+			sqlInsert += ", `killer_instinct`";
+			sqlValues += ", '"+player.getKillerInstinct()+"'";
+		}
+		if(player.getRating()>0){
+			sqlInsert += ", `rating`";
+			sqlValues += ", '"+player.getRating()+"'";
+		}
+		if(player.getTackling()>0){
+			sqlInsert += ", `tackling`";
+			sqlValues += ", '"+player.getTackling()+"'";
+		}
+		if(player.getVision()>0){
+			sqlInsert += ", `vision`";
+			sqlValues += ", '"+player.getVision()+"'";
+		}
+		if(player.getPassing()>0){
+			sqlInsert += ", `passing`";
+			sqlValues += ", '"+player.getPassing()+"'";
+		}
+		if(player.getPenalty()>0){
+			sqlInsert += ", `penalty`";
+			sqlValues += ", '"+player.getPenalty()+"'";
+		}
+		if(player.getPenaltySaving()>0){
+			sqlInsert += ", `penalty_saving`";
+			sqlValues += ", '"+player.getPenaltySaving()+"'";
+		}
+		if(player.getLidership()>0){
+			sqlInsert += ", `lidership`";
+			sqlValues += ", '"+player.getLidership()+"'";
+		}
+		if(player.getReflexes()>0){
+			sqlInsert += ", `reflexes`";
+			sqlValues += ", '"+player.getReflexes()+"'";
+		}
+		if(player.getShotStopping()>0){
+			sqlInsert += ", `shot_stopping`";
+			sqlValues += ", '"+player.getShotStopping()+"'";
+		}
+		if(player.getMistakeFactor()>0){
+			sqlInsert += ", `mistake_factor`";
+			sqlValues += ", '"+player.getMistakeFactor()+"'";
+		}
+		if(player.getPositioning()>0){
+			sqlInsert += ", `positioning`";
+			sqlValues += ", '"+player.getPositioning()+"'";
+		}
+		if(player.getStrength()>0){
+			sqlInsert += ", `strength`";
+			sqlValues += ", '"+player.getStrength()+"'";
+		}
+		if(player.getTeamID()>0){
+			sqlInsert += ", `team_id`";
+			sqlValues += ", '"+player.getTeamID()+"'";
+		}
+		System.out.println("deo");
+		String sql = sqlInsert+sqlValues+");";
+		try {
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error: "+sql);
+			e.printStackTrace();
+		}
+		System.out.println("deo");
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

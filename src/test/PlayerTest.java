@@ -43,7 +43,9 @@ public class PlayerTest {
 		testPlayer.setSchool("ESM");
 		testPlayer.setHeight(185);
 		testPlayer.setWeight(79);
-		playerDB.commitPlayer(testPlayer);
+		testPlayer.setTeamID(2);
+		testPlayer.setPosition("მცველი");
 		
+		playerDB.commitPlayer(testPlayer);
 	}
 }
