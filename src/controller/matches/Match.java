@@ -1,4 +1,4 @@
-package controller;
+package controller.matches;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EditMatch
+ * Servlet implementation class Match
+ * @author Data
  */
-@WebServlet("/EditMatch")
-public class EditMatch extends HttpServlet {
+@WebServlet("/Match")
+public class Match extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditMatch() {
+    public Match() {
         super();
         // TODO Auto-generated constructor stub
     }
