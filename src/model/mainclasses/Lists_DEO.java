@@ -50,7 +50,7 @@ public class Lists_DEO{
 	 * @return Match ობიექტების List
 	 * @author Data
 	 */
-	public static List<Match> getAllMatches(){
+	public static ArrayList<Match> getAllMatches(){
 		ListsDB lists = new ListsDB_DEO();
 		ArrayList<Integer> matchIDs = new ArrayList<Integer>();
 		try {
@@ -58,7 +58,7 @@ public class Lists_DEO{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return Converter.setMatchesFromIDs(matchIDs);
+		return (ArrayList<Match>)Converter.setMatchesFromIDs(matchIDs);
 	}
 
 }
