@@ -34,9 +34,9 @@ public interface GoalDB {
 
 	void setExtra(int goalID, char c) throws SQLException;
 
-	void setAuto(int goalID) throws SQLException;
+	void setAuto(int goalID, char c) throws SQLException;
 
-	void setTeam(int goalID, Team tm) throws SQLException;
+	void setTeam(int goalID, int tmID) throws SQLException;
 
 	int getPlayerID(int goalID) throws SQLException;
 

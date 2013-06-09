@@ -191,7 +191,13 @@ public class Goal_kire implements Goal {
 	@Override
 	public void setAuto(boolean isAuto) {
 		try {
-			gt.setAuto(goalID);
+			char c;
+			if(isAuto){
+				c = 'Y';
+			} else {
+				c = 'N';
+			}
+			gt.setAuto(goalID,c);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -199,7 +205,7 @@ public class Goal_kire implements Goal {
 	@Override
 	public void setTeam(Team tm) {
 		try {
-			gt.setTeam(goalID,tm);
+			gt.setTeam(goalID,tm.getID());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

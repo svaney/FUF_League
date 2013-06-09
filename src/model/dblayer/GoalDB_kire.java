@@ -81,56 +81,56 @@ public class GoalDB_kire implements GoalDB {
 	@Override
 	public void setScorer(int goalID, int playerID) throws SQLException {
 		startUpStatement();
-
+		st.executeUpdate("update goals set player_id = "+playerID+" where goal_id="+goalID+";");
 		st.close();
 	}
 
 	@Override
 	public void setMatchID(int goalID, int matchID) throws SQLException {
 		startUpStatement();
-
+		st.executeQuery("update goals set match_id = "+matchID+" where goal_id="+goalID+";");
 		st.close();
 	}
 
 	@Override
 	public void setAssist(int goalID, int playerID) throws SQLException {
 		startUpStatement();
-
+		st.executeUpdate("update goals set assistant_id = "+playerID+" where goal_id="+goalID+";");
 		st.close();
 	}
 
 	@Override
 	public void setPenalty(int goalID, char c) throws SQLException {
 		startUpStatement();
-
+		st.executeUpdate("update goals set penalty = '"+c+"' where goal_id="+goalID+";");
 		st.close();
 	}
 
 	@Override
 	public void setExtra(int goalID, char c) throws SQLException {
 		startUpStatement();
-
+		st.executeUpdate("update goals set extra_time = '"+c+"' where goal_id="+goalID+";");
 		st.close();
 	}
 
 	@Override
-	public void setAuto(int goalID) throws SQLException {
+	public void setAuto(int goalID, char c) throws SQLException {
 		startUpStatement();
-
+		st.executeUpdate("update goals set auto_goal = '"+c+"' where goal_id="+goalID+";");
 		st.close();
 	}
 
 	@Override
-	public void setTeam(int goalID, Team tm) throws SQLException {
+	public void setTeam(int goalID, int tmID) throws SQLException {
 		startUpStatement();
-
+		st.executeUpdate("update goals set team_id ="+tmID+" where goal_id="+goalID+";");
 		st.close();
 	}
 
 	@Override
 	public int getPlayerID(int goalID) throws SQLException {
 		startUpStatement();
-
+		
 		st.close();
 		return 0;
 	}
