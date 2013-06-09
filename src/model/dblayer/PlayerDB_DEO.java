@@ -1099,5 +1099,41 @@ public class PlayerDB_DEO implements PlayerDB{
 	 */
 	@Override
 	public void deletePlayer(Player_DEO player) {
+		deletePlayer(player.getPlayerID());
+	}
+	/**
+	 * ბაზაში არსებული მოთამაშის წაშლა.
+	 */
+	@Override
+	public void deletePlayer(int playerID) {
+		int personID = getPersonID(playerID);
+		try {
+			stmt = con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String sqlPlayer = "DELETE FROM `"+PLAYERS+"` WHERE `"+PLAYER_ID+"`='"+playerID+"';";
+		String sqlPerson = "DELETE FROM `"+PERSONS+"` WHERE `"+PERSON_ID+"`='"+personID+"';";
+		try {
+			stmt.executeUpdate(sqlPlayer);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error: "+sqlPlayer);
+			e.printStackTrace();
+		}
+		try {
+			stmt.executeUpdate(sqlPerson);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error: "+sqlPlayer);
+			e.printStackTrace();
+		}
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

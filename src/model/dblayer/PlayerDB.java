@@ -68,4 +68,5 @@ public interface PlayerDB{
 	// მოთამაშის შენახვა/წაშლა.
 	public void commitPlayer(Player_DEO player);
 	public void deletePlayer(Player_DEO player);
+	public void deletePlayer(int playerID);
 }

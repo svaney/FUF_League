@@ -46,6 +46,7 @@ public class PlayerTest {
 		testPlayer.setTeamID(2);
 		testPlayer.setFoot("L");
 		testPlayer.setPosition("მცველი");		
-		playerDB.commitPlayer(testPlayer);
+		playerDB.deletePlayer(9);
+		
 	}
 }
