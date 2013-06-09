@@ -556,23 +556,6 @@ public class MatchDB_DLAPI implements MatchDB{
 		st.close();
 	}
 
-	/**
-	 * ამატებს გოლს
-	 * @param playerID დამრტყმელის იდენტიფიკატორი
-	 * @param teamID  გუნდის იდენტიფიკატორი
-	 * @param matchID მატჩის იდენტიფიკატორი
-	 * @param isAuto საკუთარ კარში გავიდა თუ არა გოლი
-	 * @author gkire
-	 * @throws SQLException 
-	 */
-	@Override
-	public void createGoal(int playerID, int teamID, int matchID, boolean isAuto) throws SQLException {
-		startUpStatement();
-		char auto;
-		if(isAuto) auto = 'Y';
-			auto = 'N';
-		st.executeUpdate("insert into goals(player_id,team_id,auto_goal,match_id) values("+playerID+","+teamID+","+auto+","+matchID+")");
-		st.close();
-	}
+	
 	
 }

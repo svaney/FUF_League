@@ -2,10 +2,12 @@ package model.mainclasses;
 
 import java.sql.SQLException;
 
+import model.dblayer.GoalDB;
+import model.dblayer.GoalDB_kire;
 import model.dblayer.MatchDB;
 
 public class Goal_kire implements Goal {
-	private MatchDB mt;
+	private GoalDB gt;
 	private int goalID;
 	private Player scorer;
 	private Player assist;
@@ -20,18 +22,16 @@ public class Goal_kire implements Goal {
 	/*კონსტრუქტორი*/
 	public Goal_kire(int goalID){
 		this.goalID=goalID;
+		gt= new GoalDB_kire();
 	}
-	public Goal_kire(int goalID, MatchDB mt){
-		this.goalID=goalID;
-		this.mt=mt;
-	}
+	
 	public Goal_kire(Player scorer, Team team, Match match, boolean isAuto){
 		this.scorer=scorer;
 		this.team=team;
 		this.match=match;
 		this.isAuto=isAuto;
 		try {
-			mt.createGoal(scorer.getPlayerID(), team.getID(), match.getMatchID(), isAuto);
+			gt.createGoal(scorer.getPlayerID(), team.getID(), match.getMatchID(), isAuto);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

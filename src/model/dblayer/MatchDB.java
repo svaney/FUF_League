@@ -294,16 +294,7 @@ public interface MatchDB {
 	void setPenaltyForTeam(int matchID, int playerID, int teamID, int turnOfTeam,
 			boolean hasScored) throws SQLException;
 
-	/**
-	 * ამატებს გოლს
-	 * @param playerID დამრტყმელის იდენტიფიკატორი
-	 * @param teamID  გუნდის იდენტიფიკატორი
-	 * @param matchID მატჩის იდენტიფიკატორი
-	 * @param isAuto საკუთარ კარში გავიდა თუ არა გოლი
-	 * @author gkire
-	 * @throws SQLException 
-	 */
-	void createGoal(int playerID, int teamID, int matchID, boolean isAuto) throws SQLException;
+
 
 	
 }
