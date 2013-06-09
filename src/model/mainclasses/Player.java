@@ -20,8 +20,9 @@ public interface Player{
 	public String getBio();
 	public double getRating();
 	public String getFoot();
-	public String getFBPage();
+	public String getFbPage();
 	public String getPosition();
+	public String getTrait();
 	public String getTeamName();
 
 	public int getSpeed();
@@ -51,6 +52,10 @@ public interface Player{
 	public int getTeamID();
 	public boolean hasRatingBar();
 	public boolean hasNickname();
+	public boolean hasAvatar();
+	public boolean hasHomepage();
+	public boolean hasBio();
+	public boolean hasTrait();
 	
 	// ჩაწერა.
 	public void setFirstName(String firstName);

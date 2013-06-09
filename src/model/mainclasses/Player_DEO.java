@@ -3,6 +3,7 @@ package model.mainclasses;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
+import sun.security.x509.AVA;
 import model.dblayer.PlayerDB_DEO;
 
 public class Player_DEO implements Player {
@@ -20,9 +21,10 @@ public class Player_DEO implements Player {
 	private String school = null;
 	private int weight = -1;
 	private int height = -1;
-	private String homePage = null;
+	private String homepage = null;
 	private String image = "avatar_000.png";
 	private int teamID = -1;
+	private String trait = null;
 
 	//მოთამაშის ატრიბუტები
 	private Double rating = null;
@@ -79,7 +81,7 @@ public class Player_DEO implements Player {
 			school = player.getSchool(playerID);
 			weight = player.getWeight(playerID);
 			height = player.getHeight(playerID);
-			homePage = player.getFBPage(playerID);
+			homepage = player.getFBPage(playerID);
 			rating = player.getRating(playerID);
 			foot = player.getFoot(playerID);
 			if(player.getImageURL(playerID) != null)image = player.getImageURL(playerID);
@@ -107,6 +109,7 @@ public class Player_DEO implements Player {
 			positioning = player.getPositioning(playerID);
 			position = player.getPosition(playerID);
 			biography = player.getBio(playerID);
+			trait = player.getTrait(playerID);
 			strength = player.getStrength(playerID);
 			teamID = player.getTeamID(playerID);
 		}
@@ -293,8 +296,13 @@ public class Player_DEO implements Player {
 	}
 
 	@Override
-	public String getFBPage() {
-		return homePage;
+	public String getFbPage() {
+		return homepage;
+	}
+	
+	@Override
+	public String getTrait() {
+		return trait;
 	}
 
 	@Override
@@ -450,6 +458,42 @@ public class Player_DEO implements Player {
 		if(nickname == null) return false;
 		return true;
 	}
+	
+	/**
+	 * გვეუბნება აქვს თუ არა მოთამაშეს FB-ს გვერდი.
+	 */
+	@Override
+	public boolean hasHomepage(){
+		if(homepage == null) return false;
+		return true;
+	}
+	
+	/**
+	 * გვეუბნება აქვს თუ არა მოთამაშეს პროფილის სურათი.
+	 */
+	@Override
+	public boolean hasAvatar(){
+		if(image.equals("avatar_000.png")) return false;
+		return true;
+	}
+	
+	/**
+	 * გვეუბნება აქვს თუ არა მოთამაშეს ბიოგრაფია.
+	 */
+	@Override
+	public boolean hasBio(){
+		if(biography == null) return false;
+		return true;
+	}
+	
+	/**
+	 * გვეუბნება აქვს თუ არა მოთამაშეს განსაკუთრებული თვისება/ატრიბუტი.
+	 */
+	@Override
+	public boolean hasTrait(){
+		if(trait == null) return false;
+		return true;
+	}
 
 	/**
 	 * მოთამაშის სახელს ანიშებს გადაცემულ მნიშვნელობას.
@@ -562,7 +606,7 @@ public class Player_DEO implements Player {
 	 */
 	@Override
 	public void setFBPage(String fbPage) {
-		this.homePage = fbPage;
+		this.homepage = fbPage;
 	}
 
 	/**

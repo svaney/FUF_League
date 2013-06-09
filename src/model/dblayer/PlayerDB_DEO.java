@@ -617,6 +617,17 @@ public class PlayerDB_DEO implements PlayerDB{
 		String atribute = "biography";
 		return (String)getAtribute(atribute, playerID);
 	}
+	
+	/**
+	 * თუ დააბრუნა null, მაშინ მითითებული მოთამაშის ეს პარამეტრი არის null ან მოთამაშე არ არსებობს.
+	 * სხვა შემთხვევაში აბრუნებს მოთამაშის მოთხოვნილი ატრიბუტის ზუსტ მნიშვნელობას;
+	 * მაგალითად: მარჯვენა;
+	 */
+	@Override
+	public String getTrait(int playerID) {
+		String atribute = "special_atr";
+		return (String)getAtribute(atribute, playerID);
+	}
 
 	/**
 	 * აბრუნებს მოთამაშის ID-ს;
@@ -868,7 +879,33 @@ public class PlayerDB_DEO implements PlayerDB{
 	 * ბაზაში ახალი მოთამაშის დამატება.
 	 */
 	private void newPlayer(Player_DEO player) {
-		String sql = "INSERT INTO "+PERSONS+" (`firstname`, `lastname`, `nickname`, `birth_date`, `uni_start`, `uni_cur_course`, `school`, `weight`, `height`, `fb_Page`) VALUES ('"+player.getFirstName()+"', '"+player.getLastName()+"', '"+player.getNickname()+"', '"+player.birthDate()+"', "+player.getUniStartYear()+", '"+player.getUniCurrentCourse()+"', '"+player.getSchool()+"', '"+player.getWeight()+"', '"+player.getHeight()+"', '"+player.getFBPage()+"');";
+		String sqlInsert = "INSERT INTO "+PERSONS+" (`firstname`, `lastname`,`birth_date`, `uni_start`, `school`, `weight`, `height`";
+		String sqlValues = ") VALUES ('"+player.getFirstName()+"', '"+player.getLastName()+"', '"+player.birthDate()+"', "+player.getUniStartYear()+", '"+player.getSchool()+"', '"+player.getWeight()+"', '"+player.getHeight()+"'";
+		if(player.hasNickname()){
+			sqlInsert += ", 'nickname'";
+			sqlValues += ", '"+player.getNickname()+"'";
+		}
+		if(player.isStudent()){
+			sqlInsert += ", `uni_cur_course`";
+			sqlValues += ", '"+player.getUniCurrentCourse()+"'";
+		}
+		if(player.hasHomepage()){
+			sqlInsert += ", 'FB_Page'";
+			sqlValues += ", '"+player.getFbPage()+"'";
+		}
+		if(player.hasAvatar()){
+			sqlInsert += ", 'Image_URL'";
+			sqlValues += ", '"+player.getAvatar()+"'";
+		}
+		if(player.hasBio()){
+			sqlInsert += ", 'Biography'";
+			sqlValues += ", '"+player.getBio()+"'";
+		}
+		if(player.hasTrait()){
+			sqlInsert += ", 'Special_atr'";
+			sqlValues += ", '"+player.getTrait()+"'";
+		}
+		String sql = sqlInsert+sqlValues+");";
 		try {
 			stmt = con.createStatement();
 		} catch (SQLException e) {
