@@ -7,8 +7,10 @@
 
 package model.dblayer;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
 import model.mainclasses.Award;
 import model.mainclasses.Player;
 import model.mainclasses.Team;
+import model.mainclasses.Team_Ruska;
 
 public class TeamDB_Ruska implements TeamDB{
 	
@@ -34,9 +37,41 @@ public class TeamDB_Ruska implements TeamDB{
 
 	@Override
 	public Team getTeam(int teamID) {
-		// TODO Auto-generated method stub
+		
+		Team result = new Team_Ruska(teamID);
+		
 		return null;
 	}
+	
+	public void setParametersForTeam(Team team, String name, URL imageURL,  String email, String tel, int rating){
+		
+	}
+	
+	public void createTeam(Team team) throws SQLException{
+		int teamID = team.getID();
+		String query = "SELECT * FROM teams WHERE team_id = " + teamID;
+		stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		while(rs.next()){
+			team.changeName(rs.getString("name"));
+			
+		}
+	}
+	
+	public Team createTeamFromID(int teamID) throws SQLException{
+		
+		String query = "SELECT * FROM teams WHERE team_id = " + teamID;
+		
+		stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		while(rs.next())
+			System.out.println(rs.getString("name"));
+		
+		return null;
+		
+	}
+	
+	
 
 	@Override
 	public List<Player> getPlayers(int teamID, int champID) {
@@ -75,7 +110,7 @@ public class TeamDB_Ruska implements TeamDB{
 	}
 
 	@Override
-	public boolean setImage(String url) {
+	public boolean setImage(int teamID, String url) {
 		// TODO Auto-generated method stub
 		return false;
 	}
