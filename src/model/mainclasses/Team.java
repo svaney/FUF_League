@@ -49,6 +49,7 @@ public interface Team {
 	 * ყავს კაპიტანი.
 	 * */
 	public void changeCaptain(Player player); 
-	
+	public void changeName(String name);
+	public void setName(String name);
 
 }

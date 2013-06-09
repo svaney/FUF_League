@@ -21,6 +21,6 @@ public interface TeamDB {
 	public void addPlayer(int teamID, int playerID);
 	public Player getCaptain(int teamID, int champID);
 	public boolean removeImage(int teamID);
-	public boolean setImage(String url);
+	public boolean setImage(int teamID, String url);
 	
 }
