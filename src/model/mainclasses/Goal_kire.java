@@ -22,7 +22,7 @@ public class Goal_kire implements Goal {
 	/*კონსტრუქტორი*/
 	public Goal_kire(int goalID){
 		this.goalID=goalID;
-		gt= new GoalDB_kire();
+		gt = new GoalDB_kire();
 	}
 	
 	public Goal_kire(Player scorer, Team team, Match match, boolean isAuto){
@@ -30,8 +30,9 @@ public class Goal_kire implements Goal {
 		this.team=team;
 		this.match=match;
 		this.isAuto=isAuto;
+		gt = new GoalDB_kire();
 		try {
-			gt.createGoal(scorer.getPlayerID(), team.getID(), match.getMatchID(), isAuto);
+			goalID = gt.createGoal(scorer.getPlayerID(), team.getID(), match.getMatchID(), isAuto);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -39,88 +40,108 @@ public class Goal_kire implements Goal {
 	
 	@Override
 	public int getGoalId() {
-		// TODO Auto-generated method stub
 		return goalID;
 	}
+	
 	@Override
 	public Player getPlayer() {
-		// TODO Auto-generated method stub
-		return scorer;
+		int playerID = gt.getPlayerID(goalID);
+		return new Player_DEO(playerID);
 	}
+	
 	@Override
 	public Match getMatch() {
-		// TODO Auto-generated method stub
-		return match;
+		int matchID = gt.getMatchID(goalID);
+		return new Match_DLAPI(matchID);
 	}
+	
 	@Override
 	public Player getAssist() {
-		// TODO Auto-generated method stub
+		int playerID = gt.getAssistID(goalID);
 		return assist;
 	}
+	
 	@Override
 	public boolean isPenalty() {
-		// TODO Auto-generated method stub
-		return isPenalty;
+		return gt.isPenalty(goalID);
 	}
+	
 	@Override
 	public boolean inExtra() {
-		// TODO Auto-generated method stub
-		return inExtra;
+		return gt.isInExtra(goalID);
 	}
+	
 	@Override
 	public boolean isAuto() {
-		// TODO Auto-generated method stub
-		return isAuto;
+		return gt.isAutoGoal(goalID);
 	}
+	
 	@Override
 	public int whichHalf() {
-		// TODO Auto-generated method stub
-		return whichHalf;
+		return gt.getHalfTime();
 	}
+	
 	@Override
 	public int queNumber() {
-		// TODO Auto-generated method stub
-		return queNumber;
+		return gt.getInRow();
 	}
+	
 	@Override
 	public Team getTeam() {
-		// TODO Auto-generated method stub
-		return team;
+		int teamID = gt.getTeamID(goalID);
+		return new Team_Ruska(teamID);
 	}
+	
 	@Override
 	public void setPlayer(Player scorer) {
-		// TODO Auto-generated method stub
 		this.scorer=scorer;
+		gt.setScorer(goalID,scorer.getPlayerID());
 	}
+	
 	@Override
 	public void setMatch(Match mt) {
-		// TODO Auto-generated method stub
 		match=mt;
+		gt.setMatchID(goalID,mt.getMatchID());
 	}
+	
 	@Override
 	public void setAssist(Player assist) {
-		// TODO Auto-generated method stub
 		this.assist=assist;
+		gt.setAssist(goalID,assist.getPlayerID());
 	}
+	
 	@Override
 	public void setPenalty(boolean isPenalty) {
-		// TODO Auto-generated method stub
 		this.isPenalty=isPenalty;
+		char c;
+		if(inExtra){
+			c = 'Y';
+		} else {
+			c = 'N';
+		}
+		gt.setPenalty(goalID,c);
 	}
+	
 	@Override
 	public void setExtra(boolean inExtra) {
-		// TODO Auto-generated method stub
 		this.inExtra=inExtra;
+		char c;
+		if(inExtra){
+			c = 'Y';
+		} else {
+			c = 'N';
+		}
+		gt.setExtra(goalID,c);
 	}
 	@Override
 	public void setAuto(boolean isAuto) {
-		// TODO Auto-generated method stub
-		
+		this.isAuto = isAuto;
+		gt.setAuto(goalID);
 	}
 	@Override
 	public void setTeam(Team tm) {
-		// TODO Auto-generated method stub
 		team=tm;
+		gt.setTeam(goalID,tm);
 	}
 	
 }
