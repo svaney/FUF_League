@@ -166,4 +166,22 @@ public class TeamDB_Ruska implements TeamDB{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean changeCaptain(int teamID, Player newCaptain) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean changeName(int teamID, String newName) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean setRating(int teamID, int rating) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
