@@ -11,10 +11,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
 import model.dblayer.TeamDB;
+import model.dblayer.TeamDB_Ruska;
 
 public class Team_Ruska implements Team{
 
@@ -32,18 +34,16 @@ public class Team_Ruska implements Team{
 	private Award award;
 	private Player captain;
 
-	static String account = "root"; 
-	static String password = "123456"; 
-	static String server = "localhost";
-	static String database = "test";
-
-	private static ResultSet rs = null;
-	private static Connection con;
-	private static Statement stmt;
+	
 
 	public Team_Ruska(int teamID){
 		this.teamID = teamID;
-
+		teamDataBase = new TeamDB_Ruska();
+		try {
+			teamDataBase.createTeam(this);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -83,11 +83,13 @@ public class Team_Ruska implements Team{
 
 	@Override
 	public List<Player> getPlayers(int champID) {
+		players = teamDataBase.getPlayers(teamID, champID);
 		return players;
 	}
 
 	@Override
 	public List<Award> getAwards() {
+		awards = teamDataBase.getAwards(teamID);
 		return awards;
 	}
 

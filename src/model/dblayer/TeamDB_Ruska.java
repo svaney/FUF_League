@@ -69,25 +69,10 @@ public class TeamDB_Ruska implements TeamDB{
 		while(rs.next())
 			team.setCaptain(new Player_DEO(rs.getInt("Player_ID")));
 	}
-
-	public Team createTeamFromID(int teamID) throws SQLException{
-
-		String query = "SELECT * FROM teams WHERE team_id = " + teamID;
-
-		stmt = con.createStatement();
-		ResultSet rs = stmt.executeQuery(query);
-		while(rs.next())
-			System.out.println(rs.getString("name"));
-
-		return null;
-
-	}
-
-
-
+	
 	@Override
 	public List<Player> getPlayers(int teamID, int champID) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

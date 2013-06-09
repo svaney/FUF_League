@@ -15,12 +15,7 @@ public class RuskasTest {
 	public static void main(String[] args) {
 		Team r = new Team_Ruska(2);
 		TeamDB_Ruska d = new TeamDB_Ruska();
-		try {
-			d.createTeamFromID(2);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 	}
 
