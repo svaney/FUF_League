@@ -13,6 +13,7 @@ public interface TeamDB {
 	 * სხვა ცრილთან ინფრომაციას შესაბამისი კლასს დავაბრუნებინებ.
 	 * */
 	
+	public void initConnection();
 	public Team getTeam(int teamID);
 	public List<Player> getPlayers(int teamID, int champID);
 	public List<Award> getAwards(int teamID);

@@ -9,7 +9,14 @@ package model.mainclasses;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
+
+import web.Product;
+import web.ProductCatalog;
 
 import model.dblayer.TeamDB;
 
@@ -29,9 +36,18 @@ public class Team_Ruska implements Team{
 	private Award award;
 	private Player captain;
 	
+	static String account = "root"; 
+	static String password = "123456"; 
+	static String server = "localhost";
+	static String database = "test";
+
+	private static ResultSet rs = null;
+	private static Connection con;
+	private static Statement stmt;
+	
 	public Team_Ruska(int teamID){
 		this.teamID = teamID;
-		team = teamDataBase.getTeam(teamID);
+		this.team = teamDataBase.getTeam(teamID);
 	}
 
 	@Override
