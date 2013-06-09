@@ -7,13 +7,10 @@
 
 package model.mainclasses;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
+
+import controller.TeamListServlet;
 
 import model.dblayer.TeamDB;
 import model.dblayer.TeamDB_Ruska;
@@ -22,10 +19,9 @@ public class Team_Ruska implements Team{
 
 	private int teamID;
 	private TeamDB teamDataBase;
-	private Team team;
 	private String name;
-	private URL imageURL;
-	private URL logoURL;
+	private String imageURL;
+	private String logoURL;
 	private String email;
 	private String tel;
 	private int rating;
@@ -57,7 +53,7 @@ public class Team_Ruska implements Team{
 	}
 
 	@Override
-	public URL getImageURL() {
+	public String getImageURL() {
 		return imageURL;
 	}
 
@@ -77,7 +73,7 @@ public class Team_Ruska implements Team{
 	}
 
 	@Override
-	public URL getLogoURL() {
+	public String getLogoURL() {
 		return logoURL;
 	}
 
@@ -100,20 +96,14 @@ public class Team_Ruska implements Team{
 
 	@Override
 	public Player getCaptain(int champID) {
+		captain = teamDataBase.getCaptain(teamID, champID);
 		return captain;
 	}
 
 	@Override
-	public void setImageURL(String strURL) {
-		URL temp;
-		try {
-			temp = new URL(strURL);
-			if(teamDataBase.setImage(teamID,strURL))
-				imageURL = temp;
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void setImageURL(String url) {
+		if(teamDataBase.setImage(teamID,url))
+			imageURL = url;
 	}
 
 	@Override
@@ -123,13 +113,16 @@ public class Team_Ruska implements Team{
 	}
 
 	@Override
-	public void setLogo(String strURL) {
+	public void setLogo(String url) {
+		if(teamDataBase.setLogo(teamID,url))
+			logoURL = url;
 
 	}
 
 	@Override
 	public void removeLogo() {
-
+		if(teamDataBase.reamoveLogo(teamID))
+			logoURL = null;
 	}
 
 	@Override
@@ -144,8 +137,6 @@ public class Team_Ruska implements Team{
 
 	@Override
 	public void setEmail(String email) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

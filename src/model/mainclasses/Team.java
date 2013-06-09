@@ -7,27 +7,25 @@
 
 package model.mainclasses;
 import java.util.List;
-import java.net.URL;
-
 
 public interface Team {
 	
 	public int getID();
 	public String getName();
-	public URL getImageURL();
+	public String getImageURL();
 	public String getEmail();
 	public String getTel();
 	public int getRating();
-	public URL getLogoURL();
+	public String getLogoURL();
 	public List<Player> getPlayers(int champID);
 	public List<Award> getAwards();
 	public Award getAwardInChamp(int champID);
 	public Player getCaptain(int champID);
 	
-	public void setImageURL(String strURL);
+	public void setImageURL(String url);
 	public void removeImage();
 	
-	public void setLogo(String strURL);
+	public void setLogo(String url);
 	public void removeLogo();
 	
 	public boolean addPlayer(int playerID);

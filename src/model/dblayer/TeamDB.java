@@ -24,5 +24,12 @@ public interface TeamDB {
 	public boolean removeImage(int teamID);
 	public boolean setImage(int teamID, String url);
 	public void createTeam(Team team) throws SQLException;
+	public boolean setLogo(int teamID, String url);
+	public boolean reamoveLogo(int teamID);
+	public boolean setEmail(int teamID, String email);
+	public boolean removeEmail(int teamID);
+	public boolean setTel(int teamID, String tel);
+	public boolean removeTel(int teamID);
+	public boolean addAward(int teamID, Award award);
 	
 }
