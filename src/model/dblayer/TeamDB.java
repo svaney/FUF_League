@@ -31,5 +31,9 @@ public interface TeamDB {
 	public boolean setTel(int teamID, String tel);
 	public boolean removeTel(int teamID);
 	public boolean addAward(int teamID, Award award);
+	public boolean changeCaptain(int teamID, Player newCaptain);
+	public boolean changeName(int teamID, String newName);
+	public boolean setRating(int teamID, int rating);
+	
 	
 }

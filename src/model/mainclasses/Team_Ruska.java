@@ -137,36 +137,36 @@ public class Team_Ruska implements Team{
 
 	@Override
 	public void setEmail(String email) {
+		if(teamDataBase.setEmail(teamID, email))
+			this.email = email;
 	}
 
 	@Override
 	public void removeEmail() {
-		// TODO Auto-generated method stub
-
+		if(teamDataBase.removeEmail(teamID))
+			email = null;
 	}
 
 	@Override
 	public void setTel(String tel) {
-		// TODO Auto-generated method stub
-
+		if(teamDataBase.setTel(teamID, tel))
+			this.tel = tel;
 	}
 
 	@Override
 	public void removeTel() {
-		// TODO Auto-generated method stub
-
+		if(teamDataBase.removeTel(teamID))
+			tel = null;
 	}
 
 	@Override
 	public void addAward(Award award) {
-		// TODO Auto-generated method stub
-
+		teamDataBase.addAward(teamID, award);
 	}
 
 	@Override
 	public void changeCaptain(Player player) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 
