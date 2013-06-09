@@ -15,8 +15,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import web.Product;
-import web.ProductCatalog;
 
 import model.dblayer.TeamDB;
 

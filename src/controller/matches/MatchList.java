@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.mainclasses.Lists_DEO;
+import model.mainclasses.Team;
+import model.mainclasses.Team_Ruska;
 
 /**
  * Servlet implementation class MatchList
@@ -31,7 +33,7 @@ public class MatchList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		doPost(request,response);
 	}
 
 	/**
@@ -49,7 +51,15 @@ public class MatchList extends HttpServlet {
 		out.println("<title>List of Matches</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h1>List of Matches By Date</h1>");
+		out.println("<h1>List of Matches By Date</h1><br>");
+		for(int i=0;i<matches.size();i++){
+			out.println("<li>");
+			int[] teamIDs = matches.get(i).getTeamIDs();
+//			model.mainclasses.Team team1 = new model.mainclasses.Team_Ruska(teamIDs[0]);
+//			model.mainclasses.Team team2 = new model.mainclasses.Team_Ruska(teamIDs[1]);
+			out.println("<a href=\""+request.getContextPath()+"/EditMatch?id="+matches.get(i).getMatchID()+"\">"+matches.get(i).getDate()+" "+teamIDs[0]+" vs "+teamIDs[1]+"</a>");
+			out.println("</li>");
+		}
 		out.println("</body>");
 		out.println("</html>");
 	}

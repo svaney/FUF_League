@@ -20,7 +20,7 @@ public interface ListsDB {
 	public String[] listAllTypes();
 	
 	/**
-	 * აბრუნებს მატჩების ID_ებს.
+	 * აბრუნებს მატჩების ID_ებს,  თარიღების მიხედვით - უკანასკნელი წერია ყველაზე პირველი
 	 * @return Integer ობიექტების List
 	 * @author Data
 	 * @throws SQLException 

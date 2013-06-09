@@ -384,7 +384,7 @@ public class ListsDB_DEO implements ListsDB{
 	}
 
 	/**
-	 * აბრუნებს მატჩების ID_ებს.
+	 * აბრუნებს მატჩების ID_ებს, თარიღების მიხედვით - უკანასკნელი წერია ყველაზე პირველი
 	 * @return Integer ობიექტების List
 	 * @author Data
 	 * @throws SQLException 
@@ -393,7 +393,7 @@ public class ListsDB_DEO implements ListsDB{
 	public List<Integer> getMatchIDs() throws SQLException {
 		stmt = con.createStatement();
 		stmt.executeQuery("USE " + MYSQL_DATABASE_NAME);
-		ResultSet rs = stmt.executeQuery("select match_ID from matches");
+		ResultSet rs = stmt.executeQuery("select match_ID from matches order by match_date desc");
 		ArrayList<Integer> answer = new ArrayList<Integer>();
 		while(rs.next()){
 			answer.add(rs.getInt("match_ID"));
