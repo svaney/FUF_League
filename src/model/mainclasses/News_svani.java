@@ -10,11 +10,17 @@ public class News_svani implements News{
 	private NewsDB_svani newsDB;
 	
 	public News_svani(Date newsDate){
+		this.newsDB = new NewsDB_svani();
 		try {
 			this.newsID = this.newsDB.addNewNews(newsDate);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public News_svani(int newsID){
+		this.newsDB = new NewsDB_svani();
+		this.newsID = newsID; 
 	}
 
 	@Override
@@ -65,6 +71,66 @@ public class News_svani implements News{
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public int getChampID() {
+		int champID = 0;
+		
+		try {
+			champID = this.newsDB.getChampID(this.newsID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return champID;
+	}
+
+	@Override
+	public String getText() {
+		String txt = "";
+		
+		try {
+			txt = this.newsDB.getText(this.newsID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return txt;
+	}
+
+	@Override
+	public String getPicture() {
+		String pic = "";
+		
+		try {
+			pic = this.newsDB.getPicture(this.newsID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pic;
+	}
+
+	@Override
+	public String getVideo() {
+		String vid = "";
+		
+		try {
+			vid = this.newsDB.getVideo(this.newsID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return vid;
+	}
+
+	@Override
+	public String getAuthor() {
+		String auth = "";
+		
+		try {
+			auth = this.newsDB.getAuthor(this.newsID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return auth;
 	}
 	
 }

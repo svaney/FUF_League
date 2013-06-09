@@ -118,6 +118,110 @@ public class NewsDB_svani implements NewsDB{
 		
 	}
 
-	
+	@Override
+	public int getChampID(int newsID) throws SQLException {
+		Statement st;
+		ResultSet rs;
+		String quer;
+		int champID;
+		
+		st = con.createStatement();
+		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
+		
+		quer = "select championship_id from news where news_id=" + newsID + ";";
+		rs = st.executeQuery(quer);
+		rs.next();
+		
+		champID = rs.getInt("championship_id");
+		st.close();
+		rs.close();
+		return champID;
+	}
+
+	@Override
+	public String getText(int newsID) throws SQLException {
+		Statement st;
+		ResultSet rs;
+		String quer;
+		String text;
+		
+		st = con.createStatement();
+		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
+		
+
+		quer = "select txt from news where news_id=" + newsID + ";";
+		rs = st.executeQuery(quer);
+		rs.next();
+		
+		text = rs.getString("txt");
+		
+		st.close();
+		rs.close();
+		return text;
+	}
+
+	@Override
+	public String getPicture(int newsID) throws SQLException {
+		Statement st;
+		ResultSet rs;
+		String quer;
+		String picture;
+		
+		st = con.createStatement();
+		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
+		
+
+		quer = "select Picture_URL from news where news_id=" + newsID + ";";
+		rs = st.executeQuery(quer);
+		rs.next();
+		
+		picture = rs.getString("Picture_URL");
+		
+		st.close();
+		rs.close();
+		return picture;
+	}
+
+	@Override
+	public String getVideo(int newsID) throws SQLException {
+		Statement st;
+		ResultSet rs;
+		String quer;
+		String vid;
+		
+		st = con.createStatement();
+		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
+		
+		quer = "select video_URL from news where news_id=" + newsID + ";";
+		rs = st.executeQuery(quer);
+		rs.next();
+		
+		vid = rs.getString("video_URL");
+		
+		st.close();
+		rs.close();
+		return vid;
+	}
+
+	@Override
+	public String getAuthor(int newsID) throws SQLException {
+		Statement st;
+		ResultSet rs;
+		String quer;
+		String auth;
+		
+		st = con.createStatement();
+		st.executeQuery("USE " + MYSQL_DATABASE_NAME);
+		
+		quer = "select author from news where news_id=" + newsID + ";";
+		rs = st.executeQuery(quer);
+		rs.next();
+		
+		auth = rs.getString("author");
+		
+		st.close();
+		rs.close();
+		return auth;
+	}
 
 }

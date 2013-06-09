@@ -16,4 +16,9 @@ public interface NewsDB {
 	public void addPicture(int newsID, String picURL) throws SQLException;
 	public void addVideo(int newsID, String vidURL) throws SQLException;
 	public void addAuthor(int newsID, String author) throws SQLException;
+	public int getChampID(int newsID) throws SQLException;
+	public String getText(int newsID) throws SQLException;
+	public String getPicture(int newsID) throws SQLException;
+	public String getVideo(int newsID) throws SQLException;
+	public String getAuthor(int newsID) throws SQLException;
 }
