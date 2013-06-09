@@ -21,32 +21,32 @@ import model.mainclasses.Team;
 import model.mainclasses.Team_Ruska;
 
 public class TeamDB_Ruska implements TeamDB{
-	
+
 	// ბაზის პარამეტრები
 	private static final String MYSQL_USERNAME = "root";
 	private static final String MYSQL_PASSWORD = "123456";
 	private static final String MYSQL_DATABASE_SERVER = "localhost";
 	private static final String MYSQL_DATABASE_NAME = "fuf_league";
-	
+
 	private static Connection con;
 	private static Statement stmt;
-	
+
 	public TeamDB_Ruska(){
 		initConnection();
 	}
 
 	@Override
 	public Team getTeam(int teamID) {
-		
+
 		Team result = new Team_Ruska(teamID);
-		
+
 		return null;
 	}
-	
+
 	public void setParametersForTeam(Team team, String name, URL imageURL,  String email, String tel, int rating){
-		
+
 	}
-	
+
 	public void createTeam(Team team) throws SQLException{
 		int teamID = team.getID();
 		String query = "SELECT * FROM teams WHERE team_id = " + teamID;
@@ -54,24 +54,24 @@ public class TeamDB_Ruska implements TeamDB{
 		ResultSet rs = stmt.executeQuery(query);
 		while(rs.next()){
 			team.changeName(rs.getString("name"));
-			
+
 		}
 	}
-	
+
 	public Team createTeamFromID(int teamID) throws SQLException{
-		
+
 		String query = "SELECT * FROM teams WHERE team_id = " + teamID;
-		
+
 		stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(query);
 		while(rs.next())
 			System.out.println(rs.getString("name"));
-		
+
 		return null;
-		
+
 	}
-	
-	
+
+
 
 	@Override
 	public List<Player> getPlayers(int teamID, int champID) {
@@ -94,7 +94,7 @@ public class TeamDB_Ruska implements TeamDB{
 	@Override
 	public void addPlayer(int teamID, int playerID) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

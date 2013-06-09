@@ -6,7 +6,6 @@
  */
 
 package model.mainclasses;
-
 import java.util.List;
 import java.net.URL;
 
