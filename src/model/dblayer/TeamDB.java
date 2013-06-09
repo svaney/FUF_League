@@ -1,5 +1,6 @@
 package model.dblayer;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import model.mainclasses.Award;
@@ -22,6 +23,6 @@ public interface TeamDB {
 	public Player getCaptain(int teamID, int champID);
 	public boolean removeImage(int teamID);
 	public boolean setImage(int teamID, String url);
-	public void createTeam(Team team);
+	public void createTeam(Team team) throws SQLException;
 	
 }

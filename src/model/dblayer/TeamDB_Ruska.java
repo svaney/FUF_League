@@ -43,10 +43,7 @@ public class TeamDB_Ruska implements TeamDB{
 		return null;
 	}
 
-	public void setParametersForTeam(Team team, String name, URL imageURL,  String email, String tel, int rating){
-
-	}
-
+	@Override
 	public void createTeam(Team team) throws SQLException{
 		int teamID = team.getID();
 		String query = "SELECT * FROM teams WHERE team_id = " + teamID;
