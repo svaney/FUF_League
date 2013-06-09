@@ -124,4 +124,16 @@ public class TeamDB_Ruska implements TeamDB{
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public boolean setLogo(int teamID, String url) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean reamoveLogo(int teamID) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

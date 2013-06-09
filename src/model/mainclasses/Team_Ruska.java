@@ -17,7 +17,6 @@ public class Team_Ruska implements Team{
 
 	private int teamID;
 	private TeamDB teamDataBase;
-	private Team team;
 	private String name;
 	private String imageURL;
 	private String logoURL;
@@ -100,9 +99,9 @@ public class Team_Ruska implements Team{
 	}
 
 	@Override
-	public void setImageURL(String strURL) {
-		if(teamDataBase.setImage(teamID,strURL))
-			imageURL = strURL;
+	public void setImageURL(String url) {
+		if(teamDataBase.setImage(teamID,url))
+			imageURL = url;
 	}
 
 	@Override
@@ -112,13 +111,15 @@ public class Team_Ruska implements Team{
 	}
 
 	@Override
-	public void setLogo(String strURL) {
+	public void setLogo(String url) {
+		if(teamDataBase.setLogo(teamID,url))
+			logoURL = url;
 
 	}
 
 	@Override
 	public void removeLogo() {
-
+		
 	}
 
 	@Override

@@ -24,5 +24,7 @@ public interface TeamDB {
 	public boolean removeImage(int teamID);
 	public boolean setImage(int teamID, String url);
 	public void createTeam(Team team) throws SQLException;
+	public boolean setLogo(int teamID, String url);
+	public boolean reamoveLogo(int teamID);
 	
 }

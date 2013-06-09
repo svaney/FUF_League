@@ -22,10 +22,10 @@ public interface Team {
 	public Award getAwardInChamp(int champID);
 	public Player getCaptain(int champID);
 	
-	public void setImageURL(String strURL);
+	public void setImageURL(String url);
 	public void removeImage();
 	
-	public void setLogo(String strURL);
+	public void setLogo(String url);
 	public void removeLogo();
 	
 	public boolean addPlayer(int playerID);
